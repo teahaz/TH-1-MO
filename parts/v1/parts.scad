@@ -16,8 +16,12 @@ MODULE_W = 90;
 
 KB_ROWS = 5;
 KB_COLS = 12;
+KB_W = 98;
 KB_H = 40;
 KB_D = 10;
+KB_CASE_THICKNESS = 0.5;
+KB_PCB_D = 1.56;
+KB_CHIN = 5;
 
 KB_BTN = button_6mm;
 KB_KEY_W = KB_BTN[1];
@@ -43,42 +47,92 @@ KB_MACRO_GAP = (
     / (KB_MK_COUNT-1)
 );
 
-KB_H_TOTAL = KB_H + KB_MK_H;
+KB_H_TOTAL = KB_H+KB_MK_H;
+
+module _KeyboardPosts(cutout=false) {
+    depth = cutout ? KB_PCB_D*2 : KB_CASE_THICKNESS+e;
+    y_off = cutout ? KB_PCB_D : KB_CASE_THICKNESS;
+
+    translate([KB_CASE_THICKNESS, y_off, KB_CASE_THICKNESS]) {
+        if (!cutout) cube([4, KB_D-2*KB_CASE_THICKNESS, 4]);
+        translate([2, 0, 2])
+            rotate([90, 0, 0]) cylinder(depth, 1, 1, center=false);
+
+        translate([KB_W-2*KB_CASE_THICKNESS-4, 0, 0]) {
+            if (!cutout) cube([4, KB_D-2*KB_CASE_THICKNESS, 4]);
+            translate([2, 0, 2])
+                rotate([90, 0, 0]) cylinder(depth, 1, 1, center=false);
+        }
+
+        translate([KB_W-2*KB_CASE_THICKNESS-4, 0, KB_H]) {
+            if (!cutout) cube([4, KB_D-2*KB_CASE_THICKNESS, 4]);
+            translate([2, 0, 2])
+                rotate([90, 0, 0]) cylinder(depth, 1, 1, center=false);
+        }
+
+        translate([0, 0, KB_H]) {
+            if (!cutout) cube([4, KB_D-2*KB_CASE_THICKNESS, 4]);
+            translate([2, 0, 2])
+                rotate([90, 0, 0]) cylinder(depth, 1, 1, center=false);
+        }
+    }
+}
+
+module _KeyboardPCB(cutout=false) {
+    case = 2*KB_CASE_THICKNESS;
+
+    difference() {
+        translate([KB_CASE_THICKNESS, -e, KB_CASE_THICKNESS]) {
+            if (cutout) {
+                cube([KB_W-case, KB_D-KB_CASE_THICKNESS+e, KB_H+KB_MK_H-case]);
+            } else {
+                cube([KB_W-case, KB_PCB_D, KB_H+KB_MK_H-case]);
+            }
+        }
+        _KeyboardPosts(cutout=true);
+    }
+}
 
 module Keyboard(cutout=false) {
     w_incr = KB_GAP_X+KB_KEY_W;
     h_incr = KB_GAP_Y+KB_KEY_H;
+    off = KB_W-MODULE_W;
 
-    color("black")
-        translate([0, 0, 0])
-        cube([MODULE_W, KB_D, KB_H+KB_MK_H]);
-    
-    color("gray")
-        translate([MODULE_MARGIN, 0, MODULE_MARGIN])
-        for (row = [0:KB_ROWS-1]) {
-            for (col = [0:KB_COLS-1]) {
-                translate([col*w_incr, 0, row*h_incr]) rotate([90, 0, 0]) {
-                    if (row == 0 && 3 < col && col < 8) {
-                        if (col == 5) translate([(w_incr)/2, 0, 0])
-                            square_button(KB_BTN);
-                    } else {
-                        square_button(KB_BTN);
+    translate([-off/2, 0, KB_CHIN]) {
+        _KeyboardPosts();
+        difference() {
+            color("purple") cube([KB_W, KB_D, KB_H+KB_MK_H]);
+            _KeyboardPCB(cutout=true);
+        }
+
+        translate([0, 0, 0]) {
+            color("black") _KeyboardPCB();
+            translate([MODULE_MARGIN + off/2, 0, MODULE_MARGIN]) {
+                for (row = [0:KB_ROWS-1]) {
+                    for (col = [0:KB_COLS-1]) {
+                        translate([col*w_incr, 0, row*h_incr]) rotate([90, 0, 0]) {
+                            if (row == 0 && 3 < col && col < 8) {
+                                if (col == 5) translate([(w_incr)/2, 0, 0])
+                                    square_button(KB_BTN);
+                            } else {
+                                square_button(KB_BTN);
+                            }
+                        }
                     }
+                }
+
+                for (col = [0:KB_MK_COUNT-1]) {
+                    translate([
+                        col*(KB_MACRO_GAP+KB_MK_W),
+                        0,
+                        KB_H - MODULE_MARGIN
+                    ])
+                        rotate([90, 0, 0])
+                            square_button(KB_BTN);
                 }
             }
         }
-    
-    color("gray")
-        translate([MODULE_MARGIN, 0, MODULE_MARGIN])
-        for (col = [0:KB_MK_COUNT-1]) {
-            translate([
-                col*(KB_MACRO_GAP+KB_MK_W),
-                0,
-                KB_H - MODULE_MARGIN
-            ])
-                rotate([90, 0, 0])
-                    square_button(KB_BTN);
-        }
+    }
 }
 
 SCR_W = 67.25;
@@ -135,9 +189,9 @@ module Speaker() {
     }
 }
 
-CASE_THICKNESS = 3;
-CASE_RADIUS = 4;
-CASE_H = 2*MODULE_MARGIN+2*CASE_THICKNESS+KB_H_TOTAL+SCR_H_TOTAL;
+CASE_THICKNESS = 2;
+CASE_RADIUS = 3;
+CASE_H = 140;
 CASE_W = 2*MODULE_MARGIN+MODULE_W+2*CASE_THICKNESS;
 CASE_D = 23;
 
@@ -171,11 +225,11 @@ module Frontplate() {
         cube([
             MODULE_W+2*MODULE_MARGIN-2,
             FPT_D+e,
-            KB_H_TOTAL+SCR_H_TOTAL+2*MODULE_MARGIN-2
+            CASE_H-2*CASE_THICKNESS-2*CORE_THICKNESS,
         ]);
 
         x = MODULE_MARGIN;
-        y = MODULE_MARGIN;
+        y = MODULE_MARGIN+KB_CHIN;
 
         translate([0, -1, 0]) {
             translate([x, 0, y])
@@ -274,11 +328,11 @@ module Externals(cutout=false, fw=false) {
     }
 }
 
-CORE_THICKNESS = 0.5;
+CORE_THICKNESS = 1;
 CORE_MARGIN = 0.1;
 
 module Internals(cutout=false) {
-    core_d = CASE_D - FPT_D - 2*CORE_MARGIN;
+    core_d = CASE_D - FPT_D - 2*CORE_MARGIN+FWB_INSET;
     w = CASE_W-2*CASE_THICKNESS-2*CORE_MARGIN;
 
     translate([CASE_THICKNESS+CORE_MARGIN, CORE_MARGIN, CASE_THICKNESS+CORE_MARGIN]) {
@@ -295,10 +349,4 @@ module Internals(cutout=false) {
                 ]);
         }
     }
-
-    
 }
-
-/*
-
-*/
