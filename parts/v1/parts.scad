@@ -166,8 +166,8 @@ module Screen() {
 }
 
 SPK_MARGIN = 0;
-SPK_W = MODULE_W - SCR_W - SPK_MARGIN - SCR_BEZEL_X;
-SPK_H = SCR_H - SCR_BEZEL_Y;
+SPK_W = MODULE_W - SCR_H - SPK_MARGIN;
+SPK_H = SCR_W - SCR_BEZEL_X;
 
 module Speaker() {
     hole_d = 2;
@@ -180,9 +180,9 @@ module Speaker() {
     x_offset = (SPK_W - (cols-1)*spacing) / 2;
     z_offset = (SPK_H - (rows-1)*spacing) / 2;
 
-    *difference() {
-        color("silver") cube([SPK_W, 5, SPK_H]);
-        for (row = [0:rows-1]) {
+    difference() {
+        color("black") cube([SPK_W, 5, SPK_H]);
+        *for (row = [0:rows-1]) {
             for (col = [0:cols-1]) {
                 translate([x_offset + col*spacing, -1, z_offset + row*spacing])
                     rotate([-90, 0, 0])
@@ -250,7 +250,7 @@ module Frontplate() {
                 cube([SCR_H-SCR_BEZEL_Y, cut_depth, SCR_W-SCR_BEZEL_X]);
 
             // Indicator
-            *let(x = x+SCR_W+SPK_MARGIN) {
+            let(x = x+SCR_H+SPK_MARGIN) {
                 translate([x, 0, y])
                 cube([SPK_W, cut_depth, SPK_H]);
             }}
@@ -290,7 +290,7 @@ module ExpansionBay(cutout=false) {
 }
 
 module Externals(cutout=false, fw=false) {
-    translate([CASE_W-30, CASE_D/2, CASE_H-8])
+    translate([24, CASE_D/2, CASE_H-12])
         rotate([0, 90, 0])
         mirror([1, 0, 0])
         jack(cutout=cutout);
@@ -300,23 +300,9 @@ module Externals(cutout=false, fw=false) {
         rotate([0, -90, 90])
         usb_C(cutout=cutout);
 
-    *translate([CASE_THICKNESS+MODULE_MARGIN-1, FPT_D, CASE_THICKNESS+MODULE_MARGIN-1]) color("green") {
-        translate([0, KB_D, 0]) cube([MODULE_W+2, 2, 65]);
-        translate([0, SCR_D, 60]) cube([MODULE_W+2, 10, 60]);
-    }
-        
-    *translate([CASE_W-18, CASE_D/2, CASE_H+e])
-        rotate([0, 0, 90])
-        rocker(micro_rocker, colour="green");
-
     translate([CASE_W-12, CASE_D/2, CASE_H+e])
         rotate([0, 0, 90])
-        rocker(micro_rocker);
-
-    *translate([MODULE_MARGIN+SCR_H+SPK_MARGIN, 0, KB_H_TOTAL+SCR_BEZEL_R+MODULE_MARGIN+KB_CHIN])
-        color("silver") cube([8+e, 3, 60]);
-        rotate([0, 90, 0])
-        cylinder(2, 1.5, 1.5);
+        rocker(micro_rocker, colour="green");
 
     if (fw) {
         color("silver") translate([CASE_THICKNESS, FWB_D+FPT_D+KB_D+2-FWB_INSET, 0])
@@ -327,6 +313,8 @@ module Externals(cutout=false, fw=false) {
                 }
             }
     }
+
+    PinInterface();
 }
 
 module Internals(cutout=false) {
