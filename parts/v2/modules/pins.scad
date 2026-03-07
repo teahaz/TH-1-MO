@@ -1,4 +1,4 @@
-module Pins(cutout=false) {
+module Pins(cutout=false, avail_width) {
     cols = 15;
     rows = 2;
 
@@ -11,7 +11,7 @@ module Pins(cutout=false) {
 
     margin = 0.5;
 
-    translate([(WIDTH-width)/2, 0, 0]) {
+    translate([(avail_width-width)/2, 0, 0]) {
         if (cutout) {
             translate([-margin/2, -depth+e, -margin/2])
                 cube([width+margin, depth+e, height+margin]);

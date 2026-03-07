@@ -8,32 +8,33 @@ include <modules/keyboard.scad>
 include <modules/framework.scad>
 include <modules/pins.scad>
 
-// TODO: Pass avail width to modules and let them center themselves
+INNER_WIDTH = 81.674;
+CUTOUT_HEIGHT = 121.05;
 
-MARGIN = 2.5;
 CASE = 1.5;
-RADIUS = 3;
+CORE = 1;
 
-FP_DEPTH = 1;
-
-INNER_WIDTH = 81.674+2*MARGIN;
-INNER_HEIGHT = 122+2*MARGIN;
-
-FP_WIDTH = INNER_WIDTH;
-FP_HEIGHT = INNER_HEIGHT;
-
-WIDTH = FP_WIDTH;
-HEIGHT = FP_HEIGHT;
+WIDTH = INNER_WIDTH + 2*(CASE+CORE);
+BORDER = (WIDTH - 80) / 2;
+HEIGHT = CUTOUT_HEIGHT + 2*BORDER;
 DEPTH = 20;
+
+RADIUS = 3;
+CORE_MARGIN = 0.2;
+
+FP_MARGIN = 0;
+FP_DEPTH = 1;
+FP_WIDTH = WIDTH - FP_MARGIN;
+FP_HEIGHT = HEIGHT - FP_MARGIN;
 
 FW_MARGIN = 8;
 
 module FrameworkGrid() {
-    translate([MARGIN + FW_MARGIN, DEPTH - 1, 1]) {
+    translate([CASE + CORE + FW_MARGIN, DEPTH - 1, 1]) {
         Grid(
             grid = [2, 1],
             size = [fw_exp[0], fw_exp[2]],
-            space = [INNER_WIDTH - 2*(MARGIN + FW_MARGIN), INNER_HEIGHT]
+            space = [WIDTH - 2*(CASE + CORE + FW_MARGIN), HEIGHT]
         ) {
             children();
         }
@@ -41,16 +42,16 @@ module FrameworkGrid() {
 }
 
 module _assembly(cutout) {
-    translate([MARGIN, 0, MARGIN]) {
-        Keyboard(cutout=cutout);
+    translate([0, 0, BORDER]) {
+        Keyboard(cutout=cutout, avail_width=WIDTH);
         translate([0, 0, KB_HEIGHT])
-            Screen(cutout=cutout);
+            Screen(cutout=cutout, avail_width=WIDTH);
     }
 }
 
 module Frontplate(cutout=false) {
     color("silver") difference() {
-        rounded_cube_xz([WIDTH, FP_DEPTH+(cutout ? 10 : 0)-e, HEIGHT], RADIUS);
+        rounded_cube_xz([FP_WIDTH, FP_DEPTH+(cutout ? 10 : 0)-e, FP_HEIGHT], RADIUS);
         translate([0, FP_DEPTH+e, 0]) _assembly(cutout=true);
     }
 }
@@ -59,36 +60,32 @@ module Inserts(cutout=false) {
     depth = 18;
     b_cutout = cutout ? 1 : 0;
 
-    // NopSCADlib connector dimensions
     jack_d = 6;
     jack_h = 6;
     usbc_w = 8.94;
     usbc_h = 3.26;
 
-    // Center both ports at the same height on the back wall
-    port_z = HEIGHT - CASE - usbc_w/2 - 1;
+    core_top = HEIGHT - CASE - CORE_MARGIN - CORE;
 
     translate([0, DEPTH, HEIGHT*0.85])
-        Pins(cutout=cutout);
+        Pins(cutout=cutout, avail_width=WIDTH);
 
-    if (cutout) {
-        translate([FW_MARGIN, depth/2, port_z])
-            mirror([0, 0, b_cutout])
-            rotate([0, 90, 90])
-            jack(cutout=cutout);
+    translate([FW_MARGIN, (depth-jack_d)/2, core_top-9])
+        mirror([0, 0, 1])
+        rotate([0, 90, 90])
+        jack(cutout=cutout);
 
-        translate([FW_MARGIN + jack_d + 4, depth/2, port_z])
-            mirror([0, 0, b_cutout])
-            rotate([0, 90, 90])
-            usb_C(cutout=cutout);
-    }
+    translate([FW_MARGIN + jack_d + 6, (depth-usbc_h)/2, HEIGHT-CASE-usbc_w/2-1])
+        mirror([0, 0, 1])
+        rotate([0, 90, 90])
+        usb_C(cutout=cutout);
 
-    translate([WIDTH-FW_MARGIN-8, depth/2, HEIGHT])
+    translate([WIDTH-FW_MARGIN-8, depth/2, core_top+2.7])
         rotate([0, 0, 90])
         rocker(micro_rocker, colour="green");
 
     *FrameworkGrid() {
-        color("silver") FrameworkExpansion();
+        Framework();
     }
 }
 
@@ -119,9 +116,6 @@ module SpeakerCutout(filled=false) {
 }
 
 module Core(cutout=false) {
-    CORE = 1;
-    CORE_MARGIN = 0.2;
-
     width = WIDTH-2*CASE;
     height = HEIGHT-2*CASE;
     depth = DEPTH-CASE;
@@ -148,7 +142,7 @@ module Core(cutout=false) {
 
                 Inserts(cutout=true);
                 SpeakerCutout(filled=true);
-                FrameworkGrid() { FrameworkVolume(); }
+                FrameworkGrid() { Framework(cutout=true); }
             }
 
             render() difference() {
@@ -161,7 +155,7 @@ module Core(cutout=false) {
                         cube([WIDTH, fw_exp[2]+1, fw_exp[1]+2]);
                 }
 
-                FrameworkGrid() { FrameworkVolume(); }
+                FrameworkGrid() { Framework(cutout=true); }
             }
         }
     }
@@ -169,7 +163,7 @@ module Core(cutout=false) {
 
 module Shell() {
     color("white") render() difference() {
-            translate([0, -RADIUS, 0])
+        translate([0, -RADIUS, 0])
             Rounded([WIDTH, DEPTH+RADIUS, HEIGHT], RADIUS);
 
         Core(cutout=true);
@@ -177,22 +171,31 @@ module Shell() {
         translate([0, -10+e, 0])
             cube([FP_WIDTH+e, 10+FP_DEPTH, FP_HEIGHT+e]);
 
-        FrameworkGrid() { FrameworkVolume(); }
+        FrameworkGrid() { Framework(cutout=true); }
 
         Inserts(cutout=true);
         SpeakerCutout();
     }
 }
 
+module PCB() {
+    color("green") translate([CASE+CORE+0.2, DEPTH-15-2, CASE+CORE+0.2+KB_HEIGHT]) {
+        cube([WIDTH-2*CASE-2*CORE-0.2, 2, HEIGHT-2*CASE-2*CORE-0.2-KB_HEIGHT-5]);
+    }
+}
+
 union() {
     Shell();
-    Core();
+    *Core();
+    *Frontplate();
 
-    union() {
-        *Inserts();
-        Frontplate();
+    *union() {
+        Inserts();
+        PCB();
+        //SpeakerCutout(true);
+        FrameworkGrid() { Framework(cutout=false); }
 
-        *translate([0, FP_DEPTH, 0])
+        translate([0, FP_DEPTH, 0])
             _assembly(cutout=false);
     }
 }

@@ -3,14 +3,14 @@ include <NopSCADlib/vitamins/pcbs.scad>
 
 KB_HEIGHT = 50;
 
-module Keyboard(cutout=false) {
+module Keyboard(cutout=false, avail_width) {
     macro_height = 10;
 
     width = 80;
     height = KB_HEIGHT-macro_height;
     depth = 10;
 
-    gap = (81.674-width)/2;
+    gap = (avail_width-width)/2;
     margin = 3;
     btn = button_4p5mm;
 
@@ -21,7 +21,7 @@ module Keyboard(cutout=false) {
 
     inr_w = width-2*margin;
     inr_h = height-2*margin;
-    inr_r = RADIUS-MARGIN;
+    inr_r = 0;
 
     translate([gap, -e, 0]) {
         if (cutout) {
