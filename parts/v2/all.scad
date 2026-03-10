@@ -19,13 +19,13 @@ BORDER = (WIDTH - 80) / 2;
 HEIGHT = CUTOUT_HEIGHT + 2*BORDER;
 DEPTH = 20;
 
-RADIUS = 3;
-CORE_MARGIN = 0.2;
+RADIUS = 5;
+CORE_MARGIN = 0.4;
 
 FP_MARGIN = 0;
-FP_DEPTH = 1;
-FP_WIDTH = WIDTH - FP_MARGIN;
-FP_HEIGHT = HEIGHT - FP_MARGIN;
+FP_DEPTH = 2;
+FP_WIDTH = WIDTH - FP_MARGIN - CASE*2 - 2*CORE_MARGIN;
+FP_HEIGHT = HEIGHT - FP_MARGIN - CASE*2 - 2*CORE_MARGIN;
 
 FW_MARGIN = 8;
 
@@ -49,10 +49,39 @@ module _assembly(cutout) {
     }
 }
 
+module Clips(cutout=false) {
+    margin = cutout ? 0.1 : 0;
+
+    translate([WIDTH*0.2, 0, CASE]) {
+        cube([3+margin, 2, 1]);
+        translate([0, -1, 0]) cube([3+margin, 1, 2]);
+    }
+
+    translate([WIDTH*0.8-3, 0, CASE]) {
+        cube([3+margin, 2, 1]);
+        translate([0, -1, 0]) cube([3+margin, 1, 2]);
+    }
+
+    translate([WIDTH*0.8-3, 0, HEIGHT-CASE-1.84]) {
+        cube([3+margin, 2, 1]);
+        translate([0, -1, 0]) cube([3+margin, 1, 1.84]);
+    }
+
+    translate([WIDTH*0.2, 0, HEIGHT-CASE-1.84]) {
+        cube([3+margin, 2, 1]);
+        translate([0, -1, 0]) cube([3+margin, 1, 1.84]);
+    }
+}
+
 module Frontplate(cutout=false) {
     color("silver") difference() {
-        rounded_cube_xz([FP_WIDTH, FP_DEPTH+(cutout ? 10 : 0)-e, FP_HEIGHT], RADIUS);
-        translate([0, FP_DEPTH+e, 0]) _assembly(cutout=true);
+        translate([CASE+CORE_MARGIN, 0, CASE+CORE_MARGIN])
+            rounded_cube_xz([FP_WIDTH, FP_DEPTH+(cutout ? 10 : 0)-e, FP_HEIGHT], RADIUS-CASE);
+
+        translate([0, FP_DEPTH+e, 0])
+            _assembly(cutout=true);
+
+        Clips(cutout=true);
     }
 }
 
@@ -80,7 +109,7 @@ module Inserts(cutout=false) {
         rotate([0, 90, 90])
         usb_C(cutout=cutout);
 
-    translate([WIDTH-FW_MARGIN-8, depth/2, core_top+2.7])
+    translate([WIDTH-FW_MARGIN-8, depth/2, core_top+2.9])
         rotate([0, 0, 90])
         rocker(micro_rocker, colour="green");
 
@@ -92,11 +121,10 @@ module Inserts(cutout=false) {
 module SpeakerCutout(filled=false) {
     length = 4;
     width = 1;
- 
 
     render() translate([-e, 4, HEIGHT*0.51]) rotate([0, 0, 90]) {
         if (filled) {
-            mirror([0, 1, 0]) cube([DEPTH/2, 5, HEIGHT*0.35]);
+            mirror([0, 1, 0]) cube([DEPTH/2, 5, HEIGHT*0.3735]);
         } else {
             Grid([6, 10], [1, 1], [DEPTH/2, HEIGHT*0.35]) {
                 mirror([0, 1, 0]) cube([width, 5, length]);
@@ -106,7 +134,7 @@ module SpeakerCutout(filled=false) {
 
     render() translate([WIDTH+e, DEPTH/2-6, HEIGHT*0.51]) rotate([0, 0, 90]) {
         if (filled) {
-            cube([DEPTH/2, 5, HEIGHT*0.35]);
+            cube([DEPTH/2, 5, HEIGHT*0.3735]);
         } else {
             Grid([6, 10], [1, 1], [DEPTH/2, HEIGHT*0.35]) {
                 cube([width, 5, length]);
@@ -133,12 +161,15 @@ module Core(cutout=false) {
                     rounded_cube_xz([width, RADIUS, height], RADIUS-CASE-CORE_MARGIN);
                 }
 
-                translate([CASE+CORE_MARGIN+CORE, 0, CASE+CORE_MARGIN+CORE])
-                    cube([
+                translate([CASE+CORE_MARGIN+CORE, 0, CASE+CORE_MARGIN+CORE]) {
+                    Rounded([
                         width-2*CORE,
                         depth-CORE,
                         height-2*CORE
-                    ]);
+                    ], RADIUS-CASE-CORE_MARGIN-CORE);
+
+                    rounded_cube_xz([width-2*CORE, RADIUS, height-2*CORE], RADIUS-CASE-CORE_MARGIN-CORE);
+                }
 
                 Inserts(cutout=true);
                 SpeakerCutout(filled=true);
@@ -157,6 +188,8 @@ module Core(cutout=false) {
 
                 FrameworkGrid() { Framework(cutout=true); }
             }
+
+            Clips();
         }
     }
 }
@@ -168,8 +201,9 @@ module Shell() {
 
         Core(cutout=true);
 
+        // Flatten front face
         translate([0, -10+e, 0])
-            cube([FP_WIDTH+e, 10+FP_DEPTH, FP_HEIGHT+e]);
+            cube([WIDTH+e, 10, HEIGHT+e]);
 
         FrameworkGrid() { Framework(cutout=true); }
 
@@ -185,17 +219,20 @@ module PCB() {
 }
 
 union() {
-    Shell();
-    *Core();
-    *Frontplate();
+    *Shell();
 
-    *union() {
-        Inserts();
-        PCB();
-        //SpeakerCutout(true);
-        FrameworkGrid() { Framework(cutout=false); }
+    translate([0, 1, 0]) {
+        *Core();
+        Frontplate();
 
-        translate([0, FP_DEPTH, 0])
-            _assembly(cutout=false);
+        *union() {
+            Inserts();
+            PCB();
+            //SpeakerCutout(true);
+            FrameworkGrid() { Framework(cutout=false); }
+
+            translate([0, FP_DEPTH, 0])
+                _assembly(cutout=false);
+        }
     }
 }
