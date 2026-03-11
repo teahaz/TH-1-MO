@@ -1,0 +1,180 @@
+(footprint "tact_switch_4.5x4.5_PTS647"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "PTS**"
+		(at -0.05 -2.2 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "2999d5aa-8b91-4c17-b7c1-d253f89e5ddd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "tact_switch_4.5x4.5_PTS647"
+		(at 2.7 4.85 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a828728d-683f-4179-8c53-616bdc9b30e5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.lcsc.com/datasheet/C2689518.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fc6839ba-9caa-43c5-8ead-44571c155628")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "4.5mm SMD tactile switch"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b0c6cfc4-cafe-41e5-a37a-7d66175d80ec")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start 1 3.2)
+		(end 4.3 3.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "6e6e581b-cad2-478c-a0ea-5422989c1f93")
+	)
+	(fp_line
+		(start 1.1 0)
+		(end 4.2 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "f69799ac-2cb9-4897-aa71-d20760e4da9e")
+	)
+	(fp_line
+		(start 2.65 0)
+		(end 2.65 0.8)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "39c5d3fb-5f0c-416a-8fd9-05889ec236f5")
+	)
+	(fp_line
+		(start 2.65 0.8)
+		(end 1.9 1.9)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "77d28032-d03a-4338-9b90-0bf08467c18e")
+	)
+	(fp_line
+		(start 2.65 3.2)
+		(end 2.65 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "20ab9ad8-108e-42b4-b3fe-31751a9eca88")
+	)
+	(fp_line
+		(start 2.65 3.2)
+		(end 2.65 2.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "78b80d2c-2b08-4640-bc27-cbf7707dccd9")
+	)
+	(fp_rect
+		(start 0.1 -0.9)
+		(end 5.1 4.1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "63a12cda-d560-494b-a29e-8b5960f8c04b")
+	)
+	(fp_rect
+		(start -1.05 -1.1)
+		(end 6.3 4.3)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "4b2bb61a-a95b-4433-a5e6-9f5e48cf8a1b")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 2.45 1.85 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "4388e5f4-271b-402a-9583-ac5aba214003")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at 0 0)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.15)
+		(uuid "cb58ab33-daa1-4a1e-8b55-9151f8657a9e")
+	)
+	(pad "2" smd roundrect
+		(at 5.25 0)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.15)
+		(uuid "2969a81f-7928-433e-8790-3d268914780b")
+	)
+	(pad "3" smd roundrect
+		(at 0 3.2)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.15)
+		(uuid "f87219dc-25ab-403c-b5df-4c4ee9213ce0")
+	)
+	(pad "4" smd roundrect
+		(at 5.25 3.2)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.15)
+		(uuid "9ebf0a83-6d0b-49ed-a750-0b2da5b7ca1d")
+	)
+	(embedded_fonts no)
+)

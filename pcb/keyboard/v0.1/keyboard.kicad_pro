@@ -473,7 +473,9 @@
     }
   },
   "libraries": {
-    "pinned_footprint_libs": [],
+    "pinned_footprint_libs": [
+      "TH-A1OC"
+    ],
     "pinned_symbol_libs": [
       "TH-A10C"
     ]
@@ -637,6 +639,11 @@
     "subpart_first_id": 65,
     "subpart_id_separator": 0
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "c19feaf6-aecc-4469-9f12-5cd065a0782d",
+      "Root"
+    ]
+  ],
   "text_variables": {}
 }
