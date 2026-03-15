@@ -5,50 +5,23 @@
 
 fw_exp = [30.0, 32.0, 6.8];
 
-// USB-C plug dimensions
-_fw_usb_c_r = 1.315;
-_fw_usb_c_w = 5.86 + _fw_usb_c_r * 2;
-_fw_usb_c_h = 2.2;
-
-// Internal: USB-C plug cutout shape (in card-local space)
-module _fw_usb_c_cutout(open_top) {
-    translate([-_fw_usb_c_w/2 + _fw_usb_c_r, 7-10+0.6, _fw_usb_c_r])
-    rotate([-90, 0, 0]) union() {
-        translate([0, _fw_usb_c_r, 0])
-            cylinder(r = _fw_usb_c_r, h = 10, $fn = 64);
-        translate([_fw_usb_c_w - _fw_usb_c_r*2, _fw_usb_c_r, 0])
-            cylinder(r = _fw_usb_c_r, h = 10, $fn = 64);
-        cube([_fw_usb_c_w - _fw_usb_c_r*2, _fw_usb_c_r*2, 10]);
-
-        // Pin-side shell expansion
-        translate([0, _fw_usb_c_r, 0])
-            cylinder(r2 = _fw_usb_c_r, r1 = 3.84/2, h = 10-7.7, $fn = 64);
-        translate([_fw_usb_c_w - _fw_usb_c_r*2, _fw_usb_c_r, 0])
-            cylinder(r2 = _fw_usb_c_r, r1 = 3.84/2, h = 10-7.7, $fn = 64);
-        translate([_fw_usb_c_w/2 - _fw_usb_c_r, _fw_usb_c_r, 0])
-            scale([1.8, 1, 1]) rotate([0, 0, 45])
-            cylinder(r2 = _fw_usb_c_r*sqrt(2), r1 = 3.84/2*sqrt(2), h = 10-7.7, $fn = 4);
-
-        if (open_top) {
-            translate([-_fw_usb_c_r, -10 + _fw_usb_c_r, 0])
-                cube([_fw_usb_c_w, 10, 10]);
-        }
-    }
-}
+// NopSCADlib usb_C connector height (h inside usb_C module)
+_usb_c_h = 3.26;
 
 module Framework(cutout=false) {
-    e = 0.01;
-
-    if (cutout) {
-        translate([0, -fw_exp[2], -e-1])
-        mirror([0, 1, 0])
-        rotate([90, 0, 0]) {
+    translate([0, -fw_exp[2], -e-1])
+    mirror([0, 1, 0])
+    rotate([90, 0, 0]) {
+        if (cutout) {
             cube([fw_exp[0]+0.1, fw_exp[1]+1.1, fw_exp[2]*2]);
-
-            translate([fw_exp[0]/2, fw_exp[1], _fw_usb_c_r + _fw_usb_c_h])
-                _fw_usb_c_cutout(false);
+        } else {
+            translate([fw_exp[0]/2, fw_exp[1]+(cutout ? 0 : 6), fw_exp[2]/2 - _usb_c_h/2])
+                rotate([0, 0, 90])
+                usb_C(cutout=cutout);
         }
-    } else {
+    }
+
+    if (!cutout) {
         rotate([90, 0, 0])
             color("silver")
             cube(fw_exp);
@@ -58,7 +31,7 @@ module Framework(cutout=false) {
 FW_M = 3;
 
 module FrameworkGrid() {
-    translate([BODY_T+CORE_T+FW_M, BODY_D-BODY_T-1, 1]) {
+    translate([BODY_T+CORE_T+FW_M, BODY_D-BODY_T-2, 1]) {
         Grid(
             grid = [2, 1],
             size = [fw_exp[0], fw_exp[2]],

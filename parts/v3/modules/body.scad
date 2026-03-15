@@ -6,12 +6,12 @@ include <NopSCADlib/vitamins/rockers.scad>
 include <framework.scad>
 
 FP_D = 2;
-FP_W = 4;
+FP_W = 2;
 
-BODY_W = 94;
+BODY_W = 87;
 BODY_D = 25;
-BODY_H = 80.5+KB_H;
-BODY_T = 2.5;
+BODY_H = SCR_H+KB_H+3*FP_W+0.7;
+BODY_T = 1.5;
 BODY_R = 5;
 BODY_L = 0;
 
@@ -19,13 +19,13 @@ BODY_I_W = BODY_W - 2*BODY_T;
 BODY_I_H = BODY_H - 2*BODY_T;
 BODY_I_D = BODY_D - 2*BODY_T;
 
-CORE_T = 2.5;
+CORE_T = 1.5;
 CORE_M = 0;
 
 CORE_W = BODY_I_W - 2*CORE_M;
 CORE_D = BODY_I_D - 2*CORE_M;
 CORE_H = BODY_I_H - 2*CORE_M;
-CORE_R = 1;
+CORE_R = 1.75;
 CORE_O = BODY_T + CORE_M;
 
 module _Inserts(cutout=false) {
@@ -83,10 +83,20 @@ module Body() {
             }
             
             translate([BODY_T, -e, BODY_T])
+                intersection() {
                 rounded_cube_xz(
                     [BODY_W-2*BODY_T, BODY_D-BODY_T+e, BODY_H-2*BODY_T],
                     BODY_R-BODY_T
                 );
+                rounded_cube_xy(
+                    [BODY_W-2*BODY_T, BODY_D-BODY_T+e, BODY_H-2*BODY_T],
+                    BODY_R-BODY_T
+                );
+                rounded_cube_yz(
+                    [BODY_W-2*BODY_T, BODY_D-BODY_T+e, BODY_H-2*BODY_T],
+                    BODY_R-BODY_T
+                );
+                }
 
             translate([-e, BODY_T-BODY_L, -e]) mirror([0, 1, 0])
                 cube([BODY_W+2*e, BODY_D+2*e, BODY_H+2*e]);
@@ -128,7 +138,7 @@ module Core() {
     render() difference() {
         union() {
             difference() {
-                translate([BODY_T+CORE_T+FW_M-1, BODY_D-BODY_T-1, 1]) mirror([0, 1, 0]) {
+                translate([BODY_T+CORE_T+FW_M-1, BODY_D-BODY_T-2, 1]) mirror([0, 1, 0]) {
                     cube([BODY_W - 2*(BODY_T+CORE_T+FW_M)+2, fw_exp[2]+1, fw_exp[1]+1]);
                 }
                 FrameworkGrid() { Framework(cutout=true); }
@@ -155,7 +165,7 @@ module Core() {
                         CORE_R-CORE_T
                     );
 
-                translate([-e, CORE_T, -e]) mirror([0, 1, 0])
+                translate([-e, FP_D+CORE_M, -e]) mirror([0, 1, 0])
                     cube([CORE_W+2*e, CORE_D+2*e, CORE_H+2*e]);
 
                 translate([0, FP_D-CORE_M, 0]) {
@@ -213,7 +223,7 @@ module Frontplate() {
             translate([FP_W, -1, FP_W]) cube([CORE_W-2*FP_W, FP_D+2, CORE_H-2*FP_W]);
         }
 
-        translate([0, 0, KB_H]) cube([CORE_W, FP_D, FP_W]);
+        translate([0, 0, KB_H]) cube([CORE_W, FP_D, FP_W*3+0.5]);
     }
 
     translate([0, BODY_T+FP_D, 0]) {
