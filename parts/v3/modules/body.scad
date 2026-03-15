@@ -10,7 +10,7 @@ FP_W = 4;
 
 BODY_W = 94;
 BODY_D = 25;
-BODY_H = 131.5;
+BODY_H = 80.5+KB_H;
 BODY_T = 2.5;
 BODY_R = 5;
 BODY_L = 0;
@@ -26,7 +26,6 @@ CORE_W = BODY_I_W - 2*CORE_M;
 CORE_D = BODY_I_D - 2*CORE_M;
 CORE_H = BODY_I_H - 2*CORE_M;
 CORE_R = 1;
-//CORE_R = BODY_R - CORE_M;
 CORE_O = BODY_T + CORE_M;
 
 module _Inserts(cutout=false) {
@@ -52,7 +51,7 @@ module _Inserts(cutout=false) {
 
     margin = 1;
 
-    translate([(BODY_W-width)/2, BODY_D-BODY_T, BODY_H*0.72]) {
+    translate([(BODY_W-width)/2, BODY_D-BODY_T, BODY_H*0.735]) {
         if (cutout) {
             translate([-margin/2, -depth+e, -margin/2])
                 cube([width+margin, depth+e, height+margin]);
@@ -92,7 +91,11 @@ module Body() {
             translate([-e, BODY_T-BODY_L, -e]) mirror([0, 1, 0])
                 cube([BODY_W+2*e, BODY_D+2*e, BODY_H+2*e]);
 
-            translate([(BODY_W-(BODY_W*cutout))/2, BODY_D-BODY_T-e, 75]) {
+            translate([
+                (BODY_W-(BODY_W*cutout))/2,
+                BODY_D-BODY_T-e,
+                BODY_T+FP_D+KB_H+FP_W+14
+            ]) {
                 cube([BODY_W*cutout, 5, 42]);
             }
 
@@ -106,7 +109,7 @@ module Body() {
                 }
             }
 
-            translate([-e, -65, 27]) rotate([-45, 0, 0]) {
+            translate([-e, -BODY_H/2, KB_H/2]) rotate([-45, 0, 0]) {
                 translate([0, 0, 0])
                     cube([BODY_T*2, 30, BODY_H]);
 
