@@ -126,6 +126,17 @@
 		(layer "F.Fab")
 		(uuid "38bb55e8-2bd6-4099-a261-a74c6dcf3005")
 	)
+	(fp_rect
+		(start -3.275 -2.1)
+		(end 14.775 4.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "e7d7ae83-5743-4f2c-9896-7d0cf01121d3")
+	)
 	(fp_text user "${REFERENCE}"
 		(at 5.7442 8.195999 0)
 		(unlocked yes)
@@ -503,6 +514,44 @@
 		(size 0.4064 0.6096)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "2728bd89-595b-4fcd-be9e-76320a688626")
+	)
+	(zone
+		(net 0)
+		(net_name "")
+		(layers "F.Cu" "B.Cu" "In1.Cu" "In2.Cu" "In3.Cu" "In4.Cu" "In5.Cu" "In6.Cu"
+			"In7.Cu" "In8.Cu" "In9.Cu" "In10.Cu" "In11.Cu" "In12.Cu" "In13.Cu" "In14.Cu"
+			"F.CrtYd" "In15.Cu" "In16.Cu" "In17.Cu" "In18.Cu" "In19.Cu" "In20.Cu"
+			"In21.Cu" "In22.Cu" "In23.Cu" "In24.Cu" "In25.Cu" "In26.Cu" "In27.Cu"
+			"In28.Cu" "In29.Cu" "In30.Cu"
+		)
+		(uuid "817a6831-5499-439d-a62a-f0f1f0ae758f")
+		(name "RF keepout zone")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(filled_areas_thickness no)
+		(keepout
+			(tracks not_allowed)
+			(vias not_allowed)
+			(pads allowed)
+			(copperpour not_allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+		)
+		(polygon
+			(pts
+				(xy -3.25 -2.05) (xy 14.75 -2.05) (xy 14.75 4.3) (xy -3.25 4.3)
+			)
+		)
 	)
 	(embedded_fonts no)
 )
