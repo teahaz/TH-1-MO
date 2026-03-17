@@ -522,7 +522,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "keyboard.step",
+      "step": "keyboard.stl",
       "svg": "",
       "vrml": ""
     },

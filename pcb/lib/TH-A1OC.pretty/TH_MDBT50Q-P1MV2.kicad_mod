@@ -554,4 +554,15 @@
 		)
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3D_models/nrf52840_module.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 90)
+		)
+	)
 )

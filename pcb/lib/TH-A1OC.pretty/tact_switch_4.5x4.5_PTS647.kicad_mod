@@ -189,4 +189,15 @@
 		(uuid "9ebf0a83-6d0b-49ed-a750-0b2da5b7ca1d")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3D_models/4.5mm_button.stp"
+		(offset
+			(xyz 14.85 0.6 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
 )
