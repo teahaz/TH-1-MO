@@ -3093,12 +3093,6 @@
 		(uuid "02ef388e-a4cf-4fe1-a4d9-772f596c8168")
 	)
 	(junction
-		(at 368.3 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "03caeff9-7592-4146-a399-82652d9393da")
-	)
-	(junction
 		(at 368.3 309.88)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3117,6 +3111,12 @@
 		(uuid "04853ebd-9671-4c73-8777-cf44ffb8d409")
 	)
 	(junction
+		(at 330.2 304.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0618fca0-f777-4267-8057-0e02393702e1")
+	)
+	(junction
 		(at 203.2 304.8)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3129,34 +3129,16 @@
 		(uuid "076c9128-baa8-4ee1-8366-9b8868b9f939")
 	)
 	(junction
-		(at 318.77 330.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "08df31af-7f38-4def-b707-699a19ccf75f")
-	)
-	(junction
-		(at 406.4 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "09a67d5d-d416-40ba-9114-7f7acaa5fcda")
-	)
-	(junction
-		(at 342.9 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0d473404-ab04-4d99-9c76-6b8ba1939d5c")
-	)
-	(junction
 		(at 215.9 309.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0ec7fb4e-846f-4181-9e73-1f7c0cb36703")
 	)
 	(junction
-		(at 381 203.2)
+		(at 443.23 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "18479982-efe3-4c38-8373-9c1341172e4f")
+		(uuid "1a32c727-a8d6-4c1a-8015-24a1b29d931e")
 	)
 	(junction
 		(at 228.6 304.8)
@@ -3175,12 +3157,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "21699afa-544f-4e7f-891b-ab3afe29d788")
-	)
-	(junction
-		(at 317.5 284.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "273a567c-19bc-48af-bd3f-552f4e2a8d96")
 	)
 	(junction
 		(at 444.5 53.34)
@@ -3207,18 +3183,6 @@
 		(uuid "2da91e9d-99c9-482e-b89a-0324ee0a872f")
 	)
 	(junction
-		(at 203.2 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2e97ce11-6a77-49a1-870f-400eef2b0113")
-	)
-	(junction
-		(at 355.6 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2f79a40f-aafb-4658-82fe-0e51a6345554")
-	)
-	(junction
 		(at 406.4 254)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3243,18 +3207,6 @@
 		(uuid "360d7dce-9ce0-4821-8684-0da2b0161cd2")
 	)
 	(junction
-		(at 330.2 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "36c7e363-eb24-48e9-a0be-9d14b3465664")
-	)
-	(junction
-		(at 317.5 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "36ef9106-61be-4859-a721-d246a96e0dfd")
-	)
-	(junction
 		(at 444.5 284.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3267,28 +3219,10 @@
 		(uuid "403928a4-d27a-467e-bd1f-9fdf5b9d9cd7")
 	)
 	(junction
-		(at 190.5 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "422f4b5b-5cbb-486d-a1e5-d047f71d13cf")
-	)
-	(junction
-		(at 431.8 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "46f442d1-0e9f-422c-a66e-7ec18e603cb0")
-	)
-	(junction
 		(at 203.2 254)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "479c3883-8f91-42c3-a0c1-09bd652a1e36")
-	)
-	(junction
-		(at 292.1 284.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5035391f-4d1a-4192-b561-0481edf48ed2")
 	)
 	(junction
 		(at 355.6 279.4)
@@ -3313,12 +3247,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5361abfe-c172-4ec2-b84e-0317953635a7")
-	)
-	(junction
-		(at 292.1 304.8)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "60897ac2-dba8-450c-a293-306da94ad2a9")
 	)
 	(junction
 		(at 215.9 233.68)
@@ -3375,6 +3303,12 @@
 		(uuid "6e5c8ad6-3dfb-40e9-b5a5-a30cd2f31cf7")
 	)
 	(junction
+		(at 342.9 284.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "70825b08-3f8d-4105-9dd8-7ba3bdc520c0")
+	)
+	(junction
 		(at 292.1 233.68)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3399,12 +3333,6 @@
 		(uuid "7c5cee31-58e4-410b-b10d-928f227e0367")
 	)
 	(junction
-		(at 444.5 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "835f19c2-cc04-4232-b824-3423b0cfcc15")
-	)
-	(junction
 		(at 368.3 259.08)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3421,18 +3349,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "86013c6e-7532-445a-a0e0-47d54b8b0084")
-	)
-	(junction
-		(at 292.1 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8710d327-3af4-4ff8-bd37-8d781c8698a0")
-	)
-	(junction
-		(at 393.7 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "88ae2cd8-6b75-4265-9e4a-6b111a4fe396")
 	)
 	(junction
 		(at 190.5 259.08)
@@ -3459,18 +3375,6 @@
 		(uuid "91ec6d92-3b56-45ff-96d0-d0ea8a0590a6")
 	)
 	(junction
-		(at 304.8 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "94e95187-9ea0-44c0-a418-5ab073ea6e44")
-	)
-	(junction
-		(at 241.3 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9720f31a-47a8-424a-8619-b55d37469f70")
-	)
-	(junction
 		(at 553.72 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3495,28 +3399,10 @@
 		(uuid "9ef51d49-aa66-47e0-8dff-a62420630653")
 	)
 	(junction
-		(at 419.1 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "aaefb7db-8da9-447b-88f4-b5105581633e")
-	)
-	(junction
 		(at 317.5 259.08)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "abecca2a-3bed-4645-9f31-2cb47b44459c")
-	)
-	(junction
-		(at 165.1 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "acbf348e-e81e-45b4-aea4-b7f28e2b0c22")
-	)
-	(junction
-		(at 266.7 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ad5d9041-abd9-4de4-bfc9-9544d1f7768f")
 	)
 	(junction
 		(at 381 228.6)
@@ -3547,18 +3433,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b612cc97-4443-4fa6-815a-3df164da3b3d")
-	)
-	(junction
-		(at 177.8 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b62d4ef9-bf45-411e-94fa-5958d23240e5")
-	)
-	(junction
-		(at 254 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b8916522-c7f5-44e1-9620-b7b1d3411d21")
 	)
 	(junction
 		(at 165.1 259.08)
@@ -3615,12 +3489,6 @@
 		(uuid "c6b8b5b3-89b7-42cc-a61d-d7db5833e170")
 	)
 	(junction
-		(at 279.4 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c9e1af21-784f-44b8-9265-9ddb9e92b154")
-	)
-	(junction
 		(at 330.2 254)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3649,12 +3517,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d305e7c8-7a63-4c4b-8257-6648d1bc0fe4")
-	)
-	(junction
-		(at 228.6 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d31582c7-3401-4688-be7a-974c2d06ca40")
 	)
 	(junction
 		(at 447.04 45.72)
@@ -3717,12 +3579,6 @@
 		(uuid "e6fc0d8f-627b-460d-aa51-6289c7d75b57")
 	)
 	(junction
-		(at 266.7 330.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e8c8190a-8455-473e-b49c-ffe673d0de28")
-	)
-	(junction
 		(at 292.1 259.08)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3745,6 +3601,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "eddc3f2e-39b4-4ff0-ac09-3e6722975122")
+	)
+	(junction
+		(at 254 304.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f11aef1e-43e1-4ad3-860e-fdcdc966f862")
 	)
 	(junction
 		(at 266.7 284.48)
@@ -3771,12 +3633,6 @@
 		(uuid "fa7e6094-4a81-470a-9ae6-ac7d1bcff8c3")
 	)
 	(junction
-		(at 215.9 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "fb23e492-0b36-4471-ba23-e5971cb789ca")
-	)
-	(junction
 		(at 419.1 233.68)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3793,14 +3649,6 @@
 		(uuid "02fac5f9-e9dc-4528-b2c1-20db3153a608")
 	)
 	(no_connect
-		(at 508 165.1)
-		(uuid "2054e8ed-6a93-4487-a8e2-21b025af7e1b")
-	)
-	(no_connect
-		(at 510.54 165.1)
-		(uuid "21750596-8a50-42c7-8fd3-0410b738a48b")
-	)
-	(no_connect
 		(at 530.86 154.94)
 		(uuid "32a7e416-3e40-46f3-a0a9-aeb247a867ea")
 	)
@@ -3813,8 +3661,16 @@
 		(uuid "4c6916c1-df7e-43a2-9d5a-6ddd9c343273")
 	)
 	(no_connect
+		(at 505.46 165.1)
+		(uuid "4d2dd745-412b-4062-a15e-ecd286a21280")
+	)
+	(no_connect
 		(at 530.86 121.92)
 		(uuid "560103ff-bb5b-4b27-be23-cd96325cd54e")
+	)
+	(no_connect
+		(at 500.38 165.1)
+		(uuid "56bd8394-4264-4403-8bd4-5aadfc9e2866")
 	)
 	(no_connect
 		(at 530.86 104.14)
@@ -3823,10 +3679,6 @@
 	(no_connect
 		(at 530.86 106.68)
 		(uuid "5daf8021-6f80-4cca-88c7-f3dfc6a629ad")
-	)
-	(no_connect
-		(at 513.08 165.1)
-		(uuid "623a2fd8-699c-4023-87a5-6d6b5f833d22")
 	)
 	(no_connect
 		(at 530.86 147.32)
@@ -3845,8 +3697,8 @@
 		(uuid "824d64ea-f328-453f-829b-8d9cfb49bd4d")
 	)
 	(no_connect
-		(at 515.62 165.1)
-		(uuid "84d2f01e-8070-4eff-af53-c5d1cb2255d3")
+		(at 492.76 165.1)
+		(uuid "95606865-a5b4-4ad6-b68f-c89bedf8835a")
 	)
 	(no_connect
 		(at 530.86 109.22)
@@ -3873,6 +3725,10 @@
 		(uuid "c2fe0a7e-6d88-4f37-8d85-99e71a3bb3bc")
 	)
 	(no_connect
+		(at 495.3 165.1)
+		(uuid "c577b0c4-0500-4b49-ba25-d26d7567abf9")
+	)
+	(no_connect
 		(at 530.86 124.46)
 		(uuid "c9b38665-5589-4d9c-9029-05b262499790")
 	)
@@ -3889,12 +3745,16 @@
 		(uuid "e7d526a1-26bb-4218-ba8e-2d13f0b1aeec")
 	)
 	(no_connect
+		(at 510.54 165.1)
+		(uuid "fd3b5b26-eb53-4876-98fa-4ca82fb4bac8")
+	)
+	(no_connect
 		(at 530.86 132.08)
 		(uuid "fec1238a-912f-4afa-b804-a6d6400ac3ca")
 	)
 	(wire
 		(pts
-			(xy 431.8 228.6) (xy 495.3 228.6)
+			(xy 431.8 228.6) (xy 497.84 228.6)
 		)
 		(stroke
 			(width 0)
@@ -3904,7 +3764,17 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 208.28) (xy 215.9 233.68)
+			(xy 330.2 304.8) (xy 355.6 304.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0162ad18-fe08-4164-b291-1eb92208bff0")
+	)
+	(wire
+		(pts
+			(xy 215.9 123.19) (xy 215.9 233.68)
 		)
 		(stroke
 			(width 0)
@@ -3974,26 +3844,6 @@
 	)
 	(wire
 		(pts
-			(xy 444.5 208.28) (xy 444.5 233.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0bbf34a5-d75b-4c8c-8177-f3abc93eaaec")
-	)
-	(wire
-		(pts
-			(xy 292.1 298.45) (xy 292.1 284.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0d0b9c19-2fa6-4fce-aa0a-30cb7152c508")
-	)
-	(wire
-		(pts
 			(xy 543.56 46.99) (xy 542.29 46.99)
 		)
 		(stroke
@@ -4031,16 +3881,6 @@
 			(type default)
 		)
 		(uuid "18905ef2-cb78-4208-a247-bc7c15c8b386")
-	)
-	(wire
-		(pts
-			(xy 292.1 304.8) (xy 355.6 304.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "18ff9c97-bc5c-4372-81cc-95a3fa13b0d9")
 	)
 	(wire
 		(pts
@@ -4084,7 +3924,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 208.28) (xy 165.1 233.68)
+			(xy 165.1 118.11) (xy 165.1 233.68)
 		)
 		(stroke
 			(width 0)
@@ -4114,7 +3954,7 @@
 	)
 	(wire
 		(pts
-			(xy 419.1 208.28) (xy 419.1 233.68)
+			(xy 419.1 146.05) (xy 419.1 233.68)
 		)
 		(stroke
 			(width 0)
@@ -4161,6 +4001,16 @@
 			(type default)
 		)
 		(uuid "27e24ccd-f99c-4cf5-9801-4bf02e4a66b9")
+	)
+	(wire
+		(pts
+			(xy 513.08 304.8) (xy 513.08 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "284f409d-81b0-41a8-8b50-ad0860cab312")
 	)
 	(wire
 		(pts
@@ -4214,17 +4064,7 @@
 	)
 	(wire
 		(pts
-			(xy 254 203.2) (xy 279.4 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "30229333-6aa2-4573-9d2e-1e74e8e0081d")
-	)
-	(wire
-		(pts
-			(xy 431.8 304.8) (xy 502.92 304.8)
+			(xy 431.8 304.8) (xy 513.08 304.8)
 		)
 		(stroke
 			(width 0)
@@ -4234,7 +4074,7 @@
 	)
 	(wire
 		(pts
-			(xy 368.3 208.28) (xy 368.3 233.68)
+			(xy 368.3 138.43) (xy 368.3 233.68)
 		)
 		(stroke
 			(width 0)
@@ -4244,13 +4084,13 @@
 	)
 	(wire
 		(pts
-			(xy 304.8 309.88) (xy 304.8 298.45)
+			(xy 254 304.8) (xy 330.2 304.8)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3202abd1-68bd-49a7-9e65-1157dbfe32da")
+		(uuid "3185ea0d-335e-47e3-b7da-a05bbaf73b00")
 	)
 	(wire
 		(pts
@@ -4274,36 +4114,6 @@
 	)
 	(wire
 		(pts
-			(xy 292.1 130.81) (xy 292.1 208.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3364a189-3a5b-4c6c-88e4-7061947b0a9e")
-	)
-	(wire
-		(pts
-			(xy 279.4 203.2) (xy 304.8 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "34600c51-c322-465e-947f-6640f82ba259")
-	)
-	(wire
-		(pts
-			(xy 502.92 304.8) (xy 502.92 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3464ad55-18ff-4655-b1c2-b5333cd23090")
-	)
-	(wire
-		(pts
 			(xy 266.7 128.27) (xy 482.6 128.27)
 		)
 		(stroke
@@ -4321,16 +4131,6 @@
 			(type default)
 		)
 		(uuid "35071a8e-f797-43ab-854b-5738b1e6c757")
-	)
-	(wire
-		(pts
-			(xy 304.8 298.45) (xy 292.1 298.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3605cbc7-48d2-460c-a915-06739bb68cf8")
 	)
 	(wire
 		(pts
@@ -4354,17 +4154,7 @@
 	)
 	(wire
 		(pts
-			(xy 505.46 330.2) (xy 505.46 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "36e49036-fe1f-4864-ba11-b2b76c600ec4")
-	)
-	(wire
-		(pts
-			(xy 292.1 208.28) (xy 292.1 233.68)
+			(xy 292.1 130.81) (xy 292.1 233.68)
 		)
 		(stroke
 			(width 0)
@@ -4381,6 +4171,16 @@
 			(type default)
 		)
 		(uuid "3c4b1565-2f7b-4511-8e9a-b13f63b6484f")
+	)
+	(wire
+		(pts
+			(xy 515.62 165.1) (xy 515.62 330.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c5e1f88-c11d-463b-871c-d8757436558c")
 	)
 	(wire
 		(pts
@@ -4434,16 +4234,6 @@
 	)
 	(wire
 		(pts
-			(xy 393.7 208.28) (xy 393.7 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "414a53c3-c78b-4a1e-80ac-302f104472e6")
-	)
-	(wire
-		(pts
 			(xy 438.15 73.66) (xy 438.15 78.74)
 		)
 		(stroke
@@ -4481,16 +4271,6 @@
 			(type default)
 		)
 		(uuid "49495cf7-9a8d-4616-ab2f-cd1ddabee6aa")
-	)
-	(wire
-		(pts
-			(xy 266.7 323.85) (xy 266.7 284.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "49737586-3aee-434d-8151-bec8135f19f3")
 	)
 	(wire
 		(pts
@@ -4544,23 +4324,23 @@
 	)
 	(wire
 		(pts
-			(xy 381 203.2) (xy 406.4 203.2)
+			(xy 497.84 228.6) (xy 497.84 165.1)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "53111bc0-260d-4475-9d0f-a52ff8801d2c")
+		(uuid "536e300a-8992-4eb4-9d24-33ef1ea684cd")
 	)
 	(wire
 		(pts
-			(xy 431.8 203.2) (xy 492.76 203.2)
+			(xy 342.9 284.48) (xy 342.9 309.88)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5499b640-e0d8-4afc-a423-50b93ecc1d73")
+		(uuid "54eebf32-d5c7-4676-b2af-d6072a2cc0c3")
 	)
 	(wire
 		(pts
@@ -4601,16 +4381,6 @@
 			(type default)
 		)
 		(uuid "5b1405ee-7412-4ebf-b31b-9f8ab5662951")
-	)
-	(wire
-		(pts
-			(xy 279.4 335.28) (xy 279.4 323.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5bd9d5fb-8470-46c2-bf9f-d63de2bef816")
 	)
 	(wire
 		(pts
@@ -4714,37 +4484,7 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 335.28) (xy 331.47 323.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "66dab9a7-0ba0-4f82-b618-396e97c41214")
-	)
-	(wire
-		(pts
-			(xy 331.47 323.85) (xy 317.5 323.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "67a6d475-0c6d-4b9d-8980-5a7814ca0706")
-	)
-	(wire
-		(pts
-			(xy 203.2 203.2) (xy 228.6 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "68d64623-0e15-414b-82ea-858ad8f53141")
-	)
-	(wire
-		(pts
-			(xy 368.3 330.2) (xy 505.46 330.2)
+			(xy 368.3 330.2) (xy 515.62 330.2)
 		)
 		(stroke
 			(width 0)
@@ -4764,13 +4504,13 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 208.28) (xy 342.9 135.89)
+			(xy 443.23 60.96) (xy 459.74 60.96)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "6bb85249-5456-48e6-8efe-e868c16ff306")
+		(uuid "6df62ec9-b4ff-40ad-b3a1-fa24f340211d")
 	)
 	(wire
 		(pts
@@ -4784,33 +4524,13 @@
 	)
 	(wire
 		(pts
-			(xy 497.84 254) (xy 497.84 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6fddda09-b8cd-4efa-ab82-adb56509a491")
-	)
-	(wire
-		(pts
-			(xy 190.5 208.28) (xy 190.5 233.68)
+			(xy 190.5 120.65) (xy 190.5 233.68)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "71b20242-4cfe-41bb-8281-44ee5743d79e")
-	)
-	(wire
-		(pts
-			(xy 317.5 208.28) (xy 317.5 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "727ef7f8-93e7-4fa6-9bb5-0406d724030d")
 	)
 	(wire
 		(pts
@@ -4824,33 +4544,13 @@
 	)
 	(wire
 		(pts
-			(xy 152.4 203.2) (xy 177.8 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "74bd3332-e990-4618-9b0d-325d983317d6")
-	)
-	(wire
-		(pts
-			(xy 393.7 208.28) (xy 393.7 233.68)
+			(xy 393.7 140.97) (xy 393.7 233.68)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "75237bf0-7767-457d-8279-5e9bcc37fad4")
-	)
-	(wire
-		(pts
-			(xy 495.3 228.6) (xy 495.3 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "75b6c35f-0834-4da3-b18e-1429c3c17404")
 	)
 	(wire
 		(pts
@@ -4864,7 +4564,7 @@
 	)
 	(wire
 		(pts
-			(xy 317.5 208.28) (xy 317.5 233.68)
+			(xy 317.5 133.35) (xy 317.5 233.68)
 		)
 		(stroke
 			(width 0)
@@ -4881,16 +4581,6 @@
 			(type default)
 		)
 		(uuid "79ac2577-0d38-4630-90da-31a21ca16f60")
-	)
-	(wire
-		(pts
-			(xy 279.4 323.85) (xy 266.7 323.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7b114e79-929b-4319-bd54-1fb42481b2bc")
 	)
 	(wire
 		(pts
@@ -4914,16 +4604,6 @@
 	)
 	(wire
 		(pts
-			(xy 419.1 208.28) (xy 419.1 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7cc306d7-924a-49d5-98d6-89493bd03c5b")
-	)
-	(wire
-		(pts
 			(xy 444.5 259.08) (xy 444.5 284.48)
 		)
 		(stroke
@@ -4931,6 +4611,16 @@
 			(type default)
 		)
 		(uuid "7e5b0a69-a8ff-4f38-9033-f7ee325496c4")
+	)
+	(wire
+		(pts
+			(xy 502.92 165.1) (xy 502.92 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f999f4e-6768-48da-ba4b-f5048d1d073d")
 	)
 	(wire
 		(pts
@@ -4964,6 +4654,16 @@
 	)
 	(wire
 		(pts
+			(xy 508 279.4) (xy 508 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8335e373-4965-4819-a186-cd5426372a62")
+	)
+	(wire
+		(pts
 			(xy 482.6 118.11) (xy 165.1 118.11)
 		)
 		(stroke
@@ -4971,16 +4671,6 @@
 			(type default)
 		)
 		(uuid "843ab7d7-292c-47ef-b3d3-f4c8d965158f")
-	)
-	(wire
-		(pts
-			(xy 215.9 208.28) (xy 215.9 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "85174267-3107-42ce-b438-cd18e85e94d2")
 	)
 	(wire
 		(pts
@@ -5051,16 +4741,6 @@
 			(type default)
 		)
 		(uuid "8ec26f5e-57dc-42b6-8ad2-f6fb7c893feb")
-	)
-	(wire
-		(pts
-			(xy 165.1 118.11) (xy 165.1 208.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8f355b0c-6f10-4e50-8c19-84ebdfaac32b")
 	)
 	(wire
 		(pts
@@ -5144,7 +4824,7 @@
 	)
 	(wire
 		(pts
-			(xy 444.5 208.28) (xy 444.5 148.59)
+			(xy 444.5 148.59) (xy 444.5 233.68)
 		)
 		(stroke
 			(width 0)
@@ -5204,17 +4884,7 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 330.2) (xy 318.77 330.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "99eacd9b-8225-4db3-8be4-f5f59a87fe5e")
-	)
-	(wire
-		(pts
-			(xy 431.8 279.4) (xy 500.38 279.4)
+			(xy 431.8 279.4) (xy 508 279.4)
 		)
 		(stroke
 			(width 0)
@@ -5261,26 +4931,6 @@
 			(type default)
 		)
 		(uuid "9e6953bb-1525-43e3-888b-3bfe388f6d78")
-	)
-	(wire
-		(pts
-			(xy 177.8 203.2) (xy 203.2 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9ecc4598-2c9a-4eac-bc03-a3d6bc728872")
-	)
-	(wire
-		(pts
-			(xy 330.2 203.2) (xy 355.6 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a397bed1-0091-4f51-8e2f-ec5add2f441b")
 	)
 	(wire
 		(pts
@@ -5344,7 +4994,7 @@
 	)
 	(wire
 		(pts
-			(xy 431.8 254) (xy 497.84 254)
+			(xy 431.8 254) (xy 502.92 254)
 		)
 		(stroke
 			(width 0)
@@ -5374,7 +5024,7 @@
 	)
 	(wire
 		(pts
-			(xy 440.69 60.96) (xy 459.74 60.96)
+			(xy 440.69 60.96) (xy 443.23 60.96)
 		)
 		(stroke
 			(width 0)
@@ -5394,17 +5044,7 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 208.28) (xy 266.7 128.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b0e369bd-26d9-4077-852e-dbf5c865df6c")
-	)
-	(wire
-		(pts
-			(xy 342.9 208.28) (xy 342.9 233.68)
+			(xy 342.9 135.89) (xy 342.9 233.68)
 		)
 		(stroke
 			(width 0)
@@ -5484,16 +5124,6 @@
 	)
 	(wire
 		(pts
-			(xy 304.8 203.2) (xy 330.2 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b8ab2e7c-ff9e-4ff6-9279-1e04ddd85d33")
-	)
-	(wire
-		(pts
 			(xy 436.88 68.58) (xy 440.69 68.58)
 		)
 		(stroke
@@ -5501,16 +5131,6 @@
 			(type default)
 		)
 		(uuid "b8af0ea8-8f91-4bc1-b48a-2b0fdb8f07ea")
-	)
-	(wire
-		(pts
-			(xy 406.4 203.2) (xy 431.8 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b99ba253-d04c-468e-9a2b-7d3e276859eb")
 	)
 	(wire
 		(pts
@@ -5524,7 +5144,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 330.2) (xy 266.7 330.2)
+			(xy 215.9 330.2) (xy 368.3 330.2)
 		)
 		(stroke
 			(width 0)
@@ -5564,16 +5184,6 @@
 	)
 	(wire
 		(pts
-			(xy 492.76 203.2) (xy 492.76 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "beb284b6-3f2a-4bc6-ac84-d764eaff1ee6")
-	)
-	(wire
-		(pts
 			(xy 228.6 323.85) (xy 228.6 335.28)
 		)
 		(stroke
@@ -5594,26 +5204,6 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 203.2) (xy 381 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c80a6e0a-47ff-4c73-8ac6-4407e663ada7")
-	)
-	(wire
-		(pts
-			(xy 500.38 279.4) (xy 500.38 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c8bb4a2c-790c-4ebc-9668-f1f6d77bd099")
-	)
-	(wire
-		(pts
 			(xy 485.14 58.42) (xy 485.14 60.96)
 		)
 		(stroke
@@ -5631,16 +5221,6 @@
 			(type default)
 		)
 		(uuid "cbb1d969-85cd-46d2-8efc-d517ae03573f")
-	)
-	(wire
-		(pts
-			(xy 368.3 208.28) (xy 368.3 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc296ea3-54ff-4e78-bdca-3107bf243d7d")
 	)
 	(wire
 		(pts
@@ -5674,16 +5254,6 @@
 	)
 	(wire
 		(pts
-			(xy 317.5 323.85) (xy 317.5 284.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0c5f74d-b446-4c54-8880-1c49e849f9b1")
-	)
-	(wire
-		(pts
 			(xy 436.88 60.96) (xy 440.69 60.96)
 		)
 		(stroke
@@ -5714,17 +5284,7 @@
 	)
 	(wire
 		(pts
-			(xy 318.77 330.2) (xy 368.3 330.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d3bf9d73-1afe-4859-a20f-bb0d5389a0f1")
-	)
-	(wire
-		(pts
-			(xy 228.6 304.8) (xy 292.1 304.8)
+			(xy 228.6 304.8) (xy 254 304.8)
 		)
 		(stroke
 			(width 0)
@@ -5814,7 +5374,7 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 208.28) (xy 266.7 233.68)
+			(xy 266.7 128.27) (xy 266.7 233.68)
 		)
 		(stroke
 			(width 0)
@@ -5864,7 +5424,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 208.28) (xy 241.3 233.68)
+			(xy 241.3 125.73) (xy 241.3 233.68)
 		)
 		(stroke
 			(width 0)
@@ -5974,16 +5534,6 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 208.28) (xy 190.5 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f37a4046-27b9-43fe-bc46-963d9718984b")
-	)
-	(wire
-		(pts
 			(xy 438.15 73.66) (xy 439.42 73.66)
 		)
 		(stroke
@@ -6014,13 +5564,13 @@
 	)
 	(wire
 		(pts
-			(xy 228.6 203.2) (xy 254 203.2)
+			(xy 266.7 309.88) (xy 266.7 284.48)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f7efec17-e5c3-47ed-be55-5d8881962738")
+		(uuid "f970b703-ec74-4370-bcf8-10b73049b255")
 	)
 	(wire
 		(pts
@@ -6041,16 +5591,6 @@
 			(type default)
 		)
 		(uuid "fc92c5cf-5b29-482e-8249-0557c0e7004e")
-	)
-	(wire
-		(pts
-			(xy 241.3 208.28) (xy 241.3 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fd041137-ef43-4a95-88ca-37b9a4bd1122")
 	)
 	(label "INPUT8"
 		(at 476.25 135.89 180)
@@ -6122,16 +5662,6 @@
 		)
 		(uuid "242d735b-8d6d-48df-9798-b4b8f308334a")
 	)
-	(label "SOURCE1"
-		(at 492.76 189.23 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "276ce26e-6f57-479f-9d1d-0be30521262c")
-	)
 	(label "XL2"
 		(at 524.51 59.69 270)
 		(effects
@@ -6163,7 +5693,7 @@
 		(uuid "3dc3956b-19ec-4fa7-93dd-ab489fd2c83c")
 	)
 	(label "SOURCE4"
-		(at 500.38 189.23 90)
+		(at 513.08 184.15 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6312,8 +5842,8 @@
 		)
 		(uuid "a65b99f9-44e7-465a-970c-d6c1c6d79c44")
 	)
-	(label "SOURCE6"
-		(at 505.46 189.23 90)
+	(label "SOURCE1"
+		(at 497.84 184.15 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6323,7 +5853,7 @@
 		(uuid "a8be46af-7da0-4ebf-a2d5-40b74b34b5c5")
 	)
 	(label "SOURCE2"
-		(at 495.3 189.23 90)
+		(at 502.92 184.15 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6363,7 +5893,7 @@
 		(uuid "c76ca2ab-459b-4e61-8d77-d4b66d568347")
 	)
 	(label "SOURCE3"
-		(at 497.84 189.2112 90)
+		(at 508 184.15 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6373,7 +5903,7 @@
 		(uuid "cd1e3d93-6a01-4057-b2fd-bd07915d282b")
 	)
 	(label "SOURCE5"
-		(at 502.92 189.23 90)
+		(at 515.62 184.15 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6505,33 +6035,36 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 180.34 205.74 0)
+		(lib_id "power:PWR_FLAG")
+		(at 443.23 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "065b1b46-f553-497e-adfe-951dbfa60b40")
-		(property "Reference" "SW2"
-			(at 180.34 198.12 0)
+		(uuid "0b436f25-061d-41ba-9089-538571102334")
+		(property "Reference" "#FLG05"
+			(at 443.23 59.055 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Value" "1"
-			(at 180.34 200.66 0)
+		(property "Value" "PWR_FLAG"
+			(at 443.2301 57.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
+				(hide yes)
 			)
 		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 180.34 205.74 0)
+		(property "Footprint" ""
+			(at 443.23 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6540,7 +6073,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 180.34 205.74 0)
+			(at 443.23 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6548,44 +6081,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 180.086 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 180.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 180.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 180.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 180.34 205.74 0)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 443.23 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6594,259 +6091,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "dbe447c0-c844-4b38-82cc-3381980bced9")
-		)
-		(pin "2"
-			(uuid "e9c71349-1c80-43d5-b417-cb775238bb42")
+			(uuid "00548ec0-0924-4396-8aa9-b0e52dc964a5")
 		)
 		(instances
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 364.49 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "084bce6d-927c-4b63-bef1-32358fc01eda")
-		(property "Reference" "D9"
-			(at 364.49 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 364.49 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 364.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2de17ff7-e57a-442c-87fe-710d52637fd0")
-		)
-		(pin "2"
-			(uuid "167b596a-abf7-4143-a700-2672a68553b2")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 186.69 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "090b8a25-2e8a-4a69-bd95-162fe81bb174")
-		(property "Reference" "D2"
-			(at 186.69 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 186.69 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 186.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5f6c3619-a518-4357-9d58-ff5e8f4efdde")
-		)
-		(pin "2"
-			(uuid "a276989a-ac74-45f9-b9cf-2c8534a423f3")
-		)
-		(instances
-			(project ""
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D2")
+					(reference "#FLG05")
 					(unit 1)
 				)
 			)
@@ -7073,110 +6323,6 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "D25")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 269.24 332.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "127dda15-1f2d-4437-b4f7-fd3d31a3be0b")
-		(property "Reference" "SW60"
-			(at 269.24 325.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "C3"
-			(at 269.24 327.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 269.24 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 269.24 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 268.986 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 269.24 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 269.24 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 269.24 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 269.24 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "55a65693-d199-486d-895e-b5999cdb0677")
-		)
-		(pin "2"
-			(uuid "204434f1-f4d7-447a-8ffa-6d8a0a38ef9f")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW60")
 					(unit 1)
 				)
 			)
@@ -8295,214 +7441,6 @@
 	)
 	(symbol
 		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 205.74 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "27fc2b16-4d97-4a12-a6f9-5facb92eed42")
-		(property "Reference" "SW3"
-			(at 205.74 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "2"
-			(at 205.74 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 205.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 205.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 205.486 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 205.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 205.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 205.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 205.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "052add6c-4cd2-4052-8959-905a939b3f69")
-		)
-		(pin "2"
-			(uuid "05e66cc8-4b97-4772-9318-ddd8458a6a12")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 332.74 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "28dac388-2748-4172-8bc8-d1d99bcd1b01")
-		(property "Reference" "SW8"
-			(at 332.74 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "7"
-			(at 332.74 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 332.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 332.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 332.486 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 332.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 332.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 332.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 332.74 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "18a56b60-fb7d-457b-81af-a8b466691fea")
-		)
-		(pin "2"
-			(uuid "1df6b337-131c-4b19-9038-69f1502fd8dc")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
 		(at 358.14 281.94 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8954,110 +7892,6 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 307.34 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "35e25066-32fd-4cd4-89f1-0c880fe4e804")
-		(property "Reference" "SW7"
-			(at 307.34 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "6"
-			(at 307.34 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 307.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 307.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 307.086 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 307.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 307.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 307.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 307.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "123cddc4-e98a-4ee7-9a0a-5c0e03776f58")
-		)
-		(pin "2"
-			(uuid "e40e0323-e5e7-45f7-a56d-d74a08eead7b")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 515.62 88.9 0)
 		(unit 1)
@@ -9449,6 +8283,128 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "D57")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D")
+		(at 262.89 309.88 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3f9fa389-2df0-45c6-8dbe-4c9895542bf0")
+		(property "Reference" "D1"
+			(at 262.89 303.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1N4148"
+			(at 262.89 306.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-523"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diode"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YONGYUTAI"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfr. Part no." "CD4148WTP"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part no." "C30584800"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
+			(at 262.89 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bdd08498-11a7-48ac-9e0b-1ca70847f0e2")
+		)
+		(pin "2"
+			(uuid "d2964c59-c20c-42a0-924e-e3a167570455")
+		)
+		(instances
+			(project "keyboard"
+				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
+					(reference "D1")
 					(unit 1)
 				)
 			)
@@ -10970,128 +9926,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D")
-		(at 313.69 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4fd4192b-d9b9-4c0f-8270-efd3d64dcdb4")
-		(property "Reference" "D7"
-			(at 313.69 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 313.69 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 313.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "07543e94-3fc6-47d1-b1ab-bc9e436d3e31")
-		)
-		(pin "2"
-			(uuid "59a12437-56ac-4d6d-9949-0a1bc4037770")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "TH-A10C:SW_Push_45deg")
 		(at 180.34 256.54 0)
 		(unit 1)
@@ -11642,128 +10476,6 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "D45")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 288.29 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5fa58c1c-0e02-4908-94cf-7ade11e33bcb")
-		(property "Reference" "D6"
-			(at 288.29 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 288.29 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 288.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8eb73195-a3b8-4080-942c-8909db6ef96e")
-		)
-		(pin "2"
-			(uuid "ac167691-af5a-457e-a718-68d402448176")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D6")
 					(unit 1)
 				)
 			)
@@ -12759,6 +11471,110 @@
 		)
 	)
 	(symbol
+		(lib_id "TH-A10C:SW_Push_45deg")
+		(at 256.54 307.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "731bdc2c-15b9-46c2-beed-dbb6f9b54dd3")
+		(property "Reference" "SW1"
+			(at 256.54 299.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SPACE"
+			(at 256.54 302.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
+			(at 256.54 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 256.54 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
+			(at 256.286 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "C&K"
+			(at 256.54 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
+			(at 256.54 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part no." "C2689518"
+			(at 256.54 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
+			(at 256.54 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f24d2464-794f-466e-bf26-2d2ed32ef737")
+		)
+		(pin "2"
+			(uuid "f9e483e5-cd8c-4623-a2fb-897164a47dd5")
+		)
+		(instances
+			(project "keyboard"
+				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:D")
 		(at 389.89 309.88 180)
 		(unit 1)
@@ -12985,128 +11801,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D")
-		(at 300.99 309.88 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7535ac2b-c1ac-479e-bf8f-d532aecc2643")
-		(property "Reference" "D53"
-			(at 300.99 303.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 300.99 306.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 300.99 309.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cc9fc116-b23f-448c-8b82-9bb6cc9f696c")
-		)
-		(pin "2"
-			(uuid "53872945-6d50-438c-a6ca-6f44f3b27a86")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D53")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "TH-A10C:SW_Push_45deg")
 		(at 154.94 307.34 0)
 		(unit 1)
@@ -13205,110 +11899,6 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "SW49")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 294.64 307.34 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7965cc22-f638-4046-b087-43ae457918c7")
-		(property "Reference" "SW53"
-			(at 294.64 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SPACE"
-			(at 294.64 302.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 294.64 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 294.64 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 294.386 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 294.64 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 294.64 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 294.64 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 294.64 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1ccaf064-a76c-435b-bde8-96d05962aea4")
-		)
-		(pin "2"
-			(uuid "7a90e7ca-6253-4ca5-8667-9ecd3d691880")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW53")
 					(unit 1)
 				)
 			)
@@ -14323,232 +12913,6 @@
 	)
 	(symbol
 		(lib_id "Device:D")
-		(at 275.59 335.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8c29e48b-ba6a-4318-8dfe-38e761d7a02d")
-		(property "Reference" "D60"
-			(at 275.59 328.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 275.59 331.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 275.59 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ba4626e6-a0ed-4318-852f-4931b4d420c8")
-		)
-		(pin "2"
-			(uuid "b3be453f-9702-4785-a7c4-a02e24b6d147")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D60")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 231.14 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8c39d588-4de1-4b9d-bb16-e44e75a5b9ab")
-		(property "Reference" "SW4"
-			(at 231.14 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "3"
-			(at 231.14 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 231.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 231.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 230.886 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 231.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 231.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 231.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 231.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "27226661-9d81-478c-82df-be726056626c")
-		)
-		(pin "2"
-			(uuid "b3a92e90-9b31-4fef-a4e6-84e084015874")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
 		(at 440.69 284.48 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15134,128 +13498,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D")
-		(at 415.29 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9025c726-c225-4f2b-b881-fe53da91d58f")
-		(property "Reference" "D11"
-			(at 415.29 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 415.29 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 415.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "140a6aaf-04d4-46c0-a339-1d16a7901a42")
-		)
-		(pin "2"
-			(uuid "d2318619-ae17-43b1-bd28-4893df613fd6")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "TH-A10C:SW_Push_45deg")
 		(at 180.34 281.94 0)
 		(unit 1)
@@ -15792,372 +14034,6 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "SW17")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 339.09 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9774d82b-e29b-41ae-a944-12de2ef80c88")
-		(property "Reference" "D8"
-			(at 339.09 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 339.09 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 339.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "107572a2-7b5b-49eb-93cf-2a5e3e5c722d")
-		)
-		(pin "2"
-			(uuid "31d9f20f-4d91-4703-a8b8-3867df6a52c6")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 262.89 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "98fee2b1-980f-4a69-8832-91fee8a22169")
-		(property "Reference" "D5"
-			(at 262.89 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 262.89 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 262.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6f967c24-6c8d-4b0a-a147-27e5b4f9ea07")
-		)
-		(pin "2"
-			(uuid "b4dd56c6-9e7e-4526-b6d8-35bdbe681501")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 389.89 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9b62ac18-6f99-444d-ae2c-b3dfb49ffa4b")
-		(property "Reference" "D10"
-			(at 389.89 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 389.89 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 389.89 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "dfd416aa-3ba1-415c-a866-841e2437b143")
-		)
-		(pin "2"
-			(uuid "3473eff8-f16a-4518-8772-56e519c93c08")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D10")
 					(unit 1)
 				)
 			)
@@ -17666,6 +15542,128 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D")
+		(at 339.09 309.88 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b9462e4b-c075-49f5-bb2c-4a67c63d4c3b")
+		(property "Reference" "D2"
+			(at 339.09 303.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1N4148"
+			(at 339.09 306.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-523"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diode"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YONGYUTAI"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfr. Part no." "CD4148WTP"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part no." "C30584800"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
+			(at 339.09 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "47bb53f9-7af9-47a0-8963-2bca57bb1530")
+		)
+		(pin "2"
+			(uuid "852298fb-2152-4a5d-b8f7-e2b286c76c3f")
+		)
+		(instances
+			(project "keyboard"
+				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "TH-A10C:SW_Push_45deg")
 		(at 383.54 307.34 0)
 		(unit 1)
@@ -18519,110 +16517,6 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 358.14 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c5ee742f-68e4-44a5-af68-3186991ef6b5")
-		(property "Reference" "SW9"
-			(at 358.14 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "8"
-			(at 358.14 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 358.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 358.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 357.886 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 358.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 358.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 358.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 358.14 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "711e4178-ddbf-4549-9f14-12a7ca65be32")
-		)
-		(pin "2"
-			(uuid "0ca2de07-2322-415b-adf6-a98e6a9e98b0")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 444.5 63.5 180)
 		(unit 1)
@@ -18685,128 +16579,6 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "#FLG03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 237.49 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c76d42cb-35c0-462f-b70f-0e73b93ec8d8")
-		(property "Reference" "D4"
-			(at 237.49 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 237.49 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 237.49 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0588d795-14b7-45d0-af58-3a991d4d9f0a")
-		)
-		(pin "2"
-			(uuid "515871ac-776a-466e-9d09-f4557313ae98")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -18936,562 +16708,6 @@
 	)
 	(symbol
 		(lib_id "Device:D")
-		(at 161.29 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cbc5c003-d171-40ad-94ee-0e4abf334687")
-		(property "Reference" "D1"
-			(at 161.29 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 161.29 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 161.29 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a5bc861b-5fec-430d-89a4-fde07bf8902a")
-		)
-		(pin "2"
-			(uuid "39d11545-4808-46f1-b642-4c248e95aabe")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 408.94 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cbe90c71-9fa1-421e-83ef-b3f12096ef24")
-		(property "Reference" "SW11"
-			(at 408.94 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0"
-			(at 408.94 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 408.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 408.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 408.686 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 408.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 408.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 408.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 408.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2d8a800b-ebe1-4f95-8751-9f05fbc42dd9")
-		)
-		(pin "2"
-			(uuid "c1ed0cc9-0cfe-4c46-91f5-e513ab5a5cad")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 383.54 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cc63884c-a069-4aac-8bbd-0ee3d4ec5361")
-		(property "Reference" "SW10"
-			(at 383.54 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "9"
-			(at 383.54 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 383.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 383.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 383.286 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 383.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 383.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 383.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 383.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6704a5b3-0450-42fd-928d-143f6e4555b0")
-		)
-		(pin "2"
-			(uuid "d8736155-dd7c-43dd-b3e4-8b58debb7982")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 440.69 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cd021154-12d2-4af2-a30f-e08d94717a49")
-		(property "Reference" "D12"
-			(at 440.69 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 440.69 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 440.69 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6fec5615-867d-4883-95ea-acdb05956280")
-		)
-		(pin "2"
-			(uuid "ef923857-3560-4b49-a416-01cfb807b8cd")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 321.31 332.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ce246f58-ebf4-4d1b-829f-11638be73ab6")
-		(property "Reference" "SW61"
-			(at 321.31 325.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "C4"
-			(at 321.31 327.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 321.31 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 321.31 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 321.056 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 321.31 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 321.31 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 321.31 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 321.31 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "10d93b3d-b2ce-4b0c-8946-e9d5f25b4693")
-		)
-		(pin "2"
-			(uuid "d7b60d9d-06cc-47ce-9e39-ff431818200c")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW61")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
 		(at 186.69 309.88 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -19607,6 +16823,110 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "D50")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-A10C:SW_Push_45deg")
+		(at 332.74 307.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ce74ef2a-ae72-452f-9e39-c2c60aba17f3")
+		(property "Reference" "SW2"
+			(at 332.74 299.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SPACE"
+			(at 332.74 302.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
+			(at 332.74 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 332.74 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
+			(at 332.486 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "C&K"
+			(at 332.74 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
+			(at 332.74 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part no." "C2689518"
+			(at 332.74 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
+			(at 332.74 307.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "95aa8175-9f96-45db-8a5d-c71f6dd210b5")
+		)
+		(pin "2"
+			(uuid "6f95124b-cc3f-403c-8e9b-fcf0b156cc43")
+		)
+		(instances
+			(project "keyboard"
+				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
+					(reference "SW2")
 					(unit 1)
 				)
 			)
@@ -20582,110 +17902,6 @@
 	)
 	(symbol
 		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 434.34 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d98e643d-6956-452a-8a41-56b5f0abbcdd")
-		(property "Reference" "SW12"
-			(at 434.34 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BACKSPACE"
-			(at 434.34 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 434.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 434.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 434.086 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 434.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 434.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 434.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 434.34 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8b21c083-628e-4f84-9b41-462789090e86")
-		)
-		(pin "2"
-			(uuid "779cac69-d0ee-49e5-a45a-ad7bda093d64")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
 		(at 358.14 256.54 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -20905,110 +18121,6 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "D17")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 281.94 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "db7d9a9d-9e0c-4851-8cf3-c279010b0fb5")
-		(property "Reference" "SW6"
-			(at 281.94 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "5"
-			(at 281.94 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 281.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 281.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 281.686 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 281.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 281.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 281.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 281.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "85c5ba98-c47d-40ce-9675-505d195fc94a")
-		)
-		(pin "2"
-			(uuid "2695a858-f679-4853-8d61-c7aa9eeeecaf")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW6")
 					(unit 1)
 				)
 			)
@@ -21588,110 +18700,6 @@
 			(project ""
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "#FLG01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 154.94 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e13da553-ad9a-4066-8f21-8f4330ebf809")
-		(property "Reference" "SW1"
-			(at 154.94 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BACKTICK"
-			(at 154.94 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 154.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C2689518.pdf"
-			(at 154.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 154.686 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 154.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 154.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 154.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 154.94 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3a9efae4-b880-4f35-8bfa-d0aadc3e20ed")
-		)
-		(pin "2"
-			(uuid "90308827-a0eb-4264-a32a-1e1be0411ced")
-		)
-		(instances
-			(project ""
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW1")
 					(unit 1)
 				)
 			)
@@ -22304,232 +19312,6 @@
 	)
 	(symbol
 		(lib_id "TH-A10C:SW_Push_45deg")
-		(at 256.54 205.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ed2e6e6b-e74e-42bb-9525-55b49e9f90b0")
-		(property "Reference" "SW5"
-			(at 256.54 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "4"
-			(at 256.54 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TH-A1OC:tact_switch_4.5x4.5_PTS647"
-			(at 256.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 256.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 256.286 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "C&K"
-			(at 256.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "PTS647SM50SMTR2LFS"
-			(at 256.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C2689518"
-			(at 256.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C2689518.html?s_z=n_4.5mm%20push%20button%20SMT"
-			(at 256.54 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "33d7fa1c-a816-4450-bc27-4bbf32b9f52a")
-		)
-		(pin "2"
-			(uuid "6e10b588-7c0a-476d-81a8-8dc14bae6f84")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "SW5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 327.66 335.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ef34a197-81a6-4e0e-a311-13ae86991a57")
-		(property "Reference" "D61"
-			(at 327.66 328.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 327.66 331.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 327.66 335.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7aaba7d3-6524-4d52-9b2a-b337aa2f4e28")
-		)
-		(pin "2"
-			(uuid "c81ab3fa-c23b-429a-9be6-2b83e385507c")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D61")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-A10C:SW_Push_45deg")
 		(at 434.34 281.94 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -22627,128 +19409,6 @@
 			(project "keyboard"
 				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
 					(reference "SW48")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 212.09 208.28 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f1abea17-58fc-4593-9032-7346df940b2a")
-		(property "Reference" "D3"
-			(at 212.09 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 212.09 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YONGYUTAI"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. Part no." "CD4148WTP"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part no." "C30584800"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor Link" "https://www.lcsc.com/product-detail/C30584800.html"
-			(at 212.09 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "81c1422e-0944-4092-af55-72f10f734af2")
-		)
-		(pin "2"
-			(uuid "123eefb7-e8b5-46b6-ac68-02f01fa37b69")
-		)
-		(instances
-			(project "keyboard"
-				(path "/c19feaf6-aecc-4469-9f12-5cd065a0782d"
-					(reference "D3")
 					(unit 1)
 				)
 			)
