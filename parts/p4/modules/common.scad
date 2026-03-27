@@ -18,3 +18,18 @@ module Grid(grid, size, space) {
             children();
     }
 }
+
+module USBC(space=0) {
+    l = 7.35;
+    w = 8.94;
+    h = 3.26;
+    r = h / 2 - 0.5;
+
+    align = space == 0 ? 0 : (space - w) / 2;
+
+    translate([align, 0, 0])
+        linear_extrude(l)
+        translate([0, h / 2])
+        offset(r) offset(-r)
+            square([w, h]);
+}
