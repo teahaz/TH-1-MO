@@ -4,15 +4,18 @@ include <modules/keyboard.scad>
 include <modules/screen.scad>
 include <modules/body.scad>
 
+CORE_HOLLOW = false;
+CORE_M = 0;
+
 incr = 0;
 
 color("silver") Frontplate();
 
 translate([0, incr*4.5, 0])
-    color("white") Core();
+    color("#5544FF") Core();
 
 translate([0, incr*7.5, 0])
-    color("gray") Body();
+    color("white") Body();
 
 *FrameworkBay(BODY_W);
 

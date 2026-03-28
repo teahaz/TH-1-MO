@@ -14,7 +14,7 @@ BODY_W = 87;
 BODY_D = 25;
 BODY_H = SCR_H+KB_H+3*FP_W+0.7;
 BODY_T = 1.5;
-BODY_R = 2;
+BODY_R = 4;
 BODY_L = 0;
 
 BODY_I_W = BODY_W - 2*BODY_T;
@@ -31,6 +31,8 @@ CORE_R = BODY_R-CORE_T-CORE_M;
 CORE_O = BODY_T + CORE_M;
 
 module _Inserts(cutout=false) {
+    $fn = 20;
+
     translate([15, BODY_D/2, CORE_H]) {
         translate([0, 2, -3.675])
             rotate([90, 90, 0])
@@ -53,25 +55,46 @@ module _Inserts(cutout=false) {
 
     margin = 1;
 
-    translate([BODY_W*0.8, BODY_D, BODY_H-16.5])
-    rotate([0, 90, 0]) {
-        if (cutout) {
-            translate([-margin/2, -depth+e, -margin/2])
-                cube([width+margin, depth+e, height+margin]);
-        } else {
-            mirror([0, 1, 0]) Grid([15, 2], [2.5, 2.5], [width, height]) {
-                difference() {
-                    color("black") cube([size, depth, size]);
-                    color("silver")
-                        translate([(size-size*ratio)/2, -e, (size-size*ratio)/2])
-                        cube([size*ratio, depth*ratio, size*ratio]);
+    translate([BODY_W*0.8, BODY_D, BODY_H-15.5]) {
+        rotate([0, 90, 0]) {
+            if (cutout) {
+                translate([-margin/2, -depth+e, -margin/2])
+                    cube([width+margin, depth+e, height+margin]);
+            } else {
+                mirror([0, 1, 0]) Grid([15, 2], [2.5, 2.5], [width, height]) {
+                    difference() {
+                        color("black") cube([size, depth, size]);
+                        color("silver")
+                            translate([(size-size*ratio)/2, -e, (size-size*ratio)/2])
+                            cube([size*ratio, depth*ratio, size*ratio]);
+                    }
                 }
             }
         }
     }
+
+    mount_w = 35;
+    mount_h = 35;
+
+    if (cutout) translate([11, BODY_D, BODY_H-50]) {
+        Grid([2,2], [3, 3], [mount_w, mount_h]) {
+            rotate([90, 0, 0]) cylinder(6, 1.5, 1.5);
+        }
+    }
+
+    *if (cutout)
+    translate([34.5, BODY_D, 85])
+        mirror([1, 0, 0])
+        rotate([90, 0, 0])
+        linear_extrude(height=BODY_T+e) {
+            translate([0, 16]) text(" (( ", font="Berkeley Mono", size=5);
+            translate([0, 8]) text("|th|", font="Berkeley Mono", size=5);
+            text("`--`", font="Berkeley Mono", size=5);
+        }
 }
 
 module Body() {
+    $fn = 1;
     render() {
         difference() {
             translate([BODY_R, BODY_R, BODY_R]) hull() {
@@ -108,28 +131,13 @@ module Body() {
             translate([-e, BODY_T-BODY_L, -e]) mirror([0, 1, 0])
                 cube([BODY_W+2*e, BODY_D+2*e, BODY_H+2*e]);
 
-            translate([0, -(BODY_H-BODY_D)/2, KB_H]) difference() {
-                rotate([15, 0, 0]) {
-                    cube([BODY_T*2, BODY_H, 45]);
-                    translate([BODY_W-BODY_T, 0, 0])
-                        cube([BODY_T*2, BODY_H, 45]);
-                }
-            }
-
-            translate([3, BODY_D-2, 73.3]) let(h=37) {
-                hull() {
-                    rotate([0, 45, 0]) cube(4, center=true);
-                    cube(3);
-                }
-
-                hull() {
-                    cube(3);
-                    translate([0, 0, h]) cube(3);
-                }
-
-                translate([0, 0, h+4]) rotate([0, 90, 0]) hull() {
-                    cube(3);
-                    rotate([0, 45, 0]) cube(4, center=true);
+            difference() {
+                translate([0, 0, KB_H+15]) {
+                    rotate([15, 0, 0]) {
+                        cube([BODY_T*2, 40, 45]);
+                        translate([BODY_W-BODY_T, 0, 0])
+                            cube([BODY_T*3, 40, 45]);
+                    }
                 }
             }
 
@@ -151,6 +159,7 @@ module Body() {
 }
 
 module Core() {
+    $fn = 1;
     render() difference() {
         union() {
             translate([BODY_T+CORE_M, BODY_T+CORE_M, BODY_T+CORE_M]) difference() {
@@ -171,7 +180,7 @@ module Core() {
                         CORE_R-CORE_T
                     );
 
-                translate([-e, FP_D+CORE_M+0.081+e, -e]) mirror([0, 1, 0])
+                translate([-e, FP_D+CORE_M+e, -e]) mirror([0, 1, 0])
                     cube([CORE_W+2*e, CORE_D+2*e, CORE_H+2*e]);
 
                 translate([0, FP_D-CORE_M, 0]) {
@@ -222,6 +231,7 @@ module _ScrewPost(cutout=false) {
 }
 
 module Frontplate() {
+    $fn = 1;
     translate([CORE_O, BODY_T, CORE_O]) {
         difference() {
             rounded_cube_xz([CORE_W, FP_D, CORE_H], BODY_R-BODY_T-CORE_M);
