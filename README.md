@@ -4,6 +4,7 @@ Base computing platform for the TH-1.
 
 > Teahaz 1: Modular Operator
 
+---
 
 The inagural hardware project for the Teaház Computer Company. The TH-1 is a modular computer made with custom components. It runs its own distribution of Linux, and uses a terminal-based interface system named CEL for its UI. All of its apps are built on CEL, including everything from configuration to the built in software.
 
