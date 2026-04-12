@@ -15,7 +15,7 @@
 #define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)S
 
 
-#define MSG_SIZE 32
+#define MSG_SIZE 128
 
 
 // store up to 10 messages aligned to 4-byte boundary in a queue
@@ -25,7 +25,8 @@ LOG_MODULE_REGISTER(basic_io, LOG_LEVEL_INF);
 
 static int rx_buf_pos;
 static char rx_buf[MSG_SIZE];
-static const struct device *const uart_dev = DEVICE_DT_GET(UART_DEVICE_NODE);
+
+const struct device *const uart_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_console));
 
 void print_uart(char *buf);
 void serial_cb(const struct device *dev, void *user_data);
@@ -114,4 +115,16 @@ void print_uart(char *buf)
     for (int i = 0; i < msg_len; i++) {
         uart_poll_out(uart_dev, buf[i]);
     }
+}
+
+
+/*
+ * Dispatch the base level command (first word) to the 
+ * correct sub-dispatcher.
+ */
+int argument_dispatch(char *input)
+{
+
+    // Incorrect command
+    return -1; 
 }
