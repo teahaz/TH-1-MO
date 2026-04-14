@@ -10,6 +10,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/logging/log_core.h>
 
+#include "th_ble.h"
 
 
 #define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)S
@@ -20,7 +21,7 @@
 
 // store up to 10 messages aligned to 4-byte boundary in a queue
 K_MSGQ_DEFINE(uart_msgq, MSG_SIZE, 10, 4);
-LOG_MODULE_REGISTER(basic_io, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(TH_IO, LOG_LEVEL_INF);
 
 
 static int rx_buf_pos;
@@ -30,6 +31,7 @@ const struct device *const uart_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_console));
 
 void print_uart(char *buf);
 void serial_cb(const struct device *dev, void *user_data);
+int argument_dispatch(char *input);
 
 int main(void)
 {
@@ -41,6 +43,7 @@ int main(void)
         LOG_ERR("Uart device is not ready!");
         return -1;
     }
+    ble_initialise();
 
     // configure interrupt and callback to receive data
     err = uart_irq_callback_user_data_set(uart_dev, serial_cb, NULL);
@@ -61,6 +64,7 @@ int main(void)
 
     while (k_msgq_get(&uart_msgq, &tx_buf, K_FOREVER) == 0)
     {
+        argument_dispatch(tx_buf);
         print_uart(tx_buf);
         print_uart("\r\n");
     }
@@ -124,6 +128,12 @@ void print_uart(char *buf)
  */
 int argument_dispatch(char *input)
 {
+
+    if (strcmp(input, "scan start") == 0)
+        scan_start(-100);
+
+    if (strcmp(input, "scan stop") == 0)
+        scan_stop();
 
     // Incorrect command
     return -1; 
