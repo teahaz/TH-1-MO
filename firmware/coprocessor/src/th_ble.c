@@ -20,6 +20,7 @@
 #include <zephyr/bluetooth/assigned_numbers.h>
 
 #include "th_ble.h"
+#include "bt_company_ids.h"
 
 LOG_MODULE_REGISTER(TH_BLE, LOG_LEVEL_INF);
 
@@ -154,16 +155,10 @@ static bool data_cb(struct bt_data *data, void *user_data)
             // Company ID is little-endian in the first 2 bytes
             uint16_t company_id = data->data[0] | (data->data[1] << 8);
 
-            switch (company_id)
-            {
-                case 0x004C:
-                    snprintf((char *)name+name_len, MAX_NAME_LEN - name_len,  "%s", "Apple ");
-                    name_len += 6;
-                    break;
-                default:
-                    snprintf((char *)name+name_len, MAX_NAME_LEN - name_len,  "%s", "Unknown ");
-                    name_len += 8;
-            }
+            int cname_len;
+            // returns 0 or negative if not found
+            if ((cname_len = search_company_id(company_id, name, MAX_NAME_LEN/2)) > 0)
+                name_len += cname_len;
 
             uint8_t br_type = data->data[2];
 
@@ -195,4 +190,14 @@ static bool data_cb(struct bt_data *data, void *user_data)
     }
 }
 
-
+uint8_t search_company_id(uint16_t cid, char *c_name, size_t c_name_size)
+{
+    for (int i = 0; i < BT_COMPANY_IDS_COUNT; i++)
+    {
+        if (bt_company_ids[i].code == cid)
+        {
+            return snprintf(c_name, c_name_size, "%s", bt_company_ids[i].name);
+        }
+    }
+    return -1;
+}
