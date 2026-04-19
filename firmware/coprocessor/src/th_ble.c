@@ -79,26 +79,22 @@ int8_t scan_start(int min_rssi)
 {
     int err;
     MIN_RSSI = min_rssi;
-    while (true)
+    if ((err = bt_le_scan_start(&scan_param, device_found)))
     {
-        k_usleep(100000);
-        if (scanner_running)
-        {
-            if ((err = bt_le_scan_start(&scan_param, device_found)))
-            {
-                LOG_ERR("Failed to start scanning! (err: %d)", err);
-                k_usleep(1000000);
-                continue;
-            }
-            scanner_running = false;
-        }
+        LOG_ERR("Failed to start scanning! (err: %d)", err);
+        return -1;
     }
     return 0;
 }
 
 void scan_stop()
 {
-    scanner_running = false;
+    int err;
+    if ((err = bt_le_scan_stop()) != 0)
+    {
+        printk("ERROR: Failed to stop scanning... (err: %d)\n", err);
+        return;
+    }
 }
 
 
@@ -116,12 +112,6 @@ static void device_found (const bt_addr_le_t *addr, int8_t rssi, uint8_t type, s
 
     bt_data_parse(ad, data_cb, name);
     bt_addr_le_to_str(addr, addr_str, sizeof(addr_str));
-
-    if ((err = bt_le_scan_stop()) != 0)
-    {
-        printk("ERROR: Failed to stop scanning... (err: %d)\n", err);
-        return;
-    }
 
     if (rssi < MIN_RSSI)
         return;
@@ -148,9 +138,8 @@ static bool data_cb(struct bt_data *data, void *user_data)
     {
         case BT_DATA_MANUFACTURER_DATA:
             // Need at least 2 bytes for company ID
-            if (data->data_len < 3) {
+            if (data->data_len < 3)
                 return true; // continue parsing
-            }
 
             // Company ID is little-endian in the first 2 bytes
             uint16_t company_id = data->data[0] | (data->data[1] << 8);
@@ -165,11 +154,11 @@ static bool data_cb(struct bt_data *data, void *user_data)
             switch (br_type)
             {
                 case 0x12:
-                    snprintf((char *)name+name_len, MAX_NAME_LEN - name_len,  "%s", "FindMy device ");
+                    snprintf((char *)name+name_len, MAX_NAME_LEN - name_len,  "%s", " FindMy device ");
                     name_len += 14;
                     break;
                 default:
-                    snprintf((char *)name+name_len, MAX_NAME_LEN - name_len,  "%s", "device ");
+                    snprintf((char *)name+name_len, MAX_NAME_LEN - name_len,  "%s", " device ");
                     name_len += 7;
             }
 
@@ -195,9 +184,7 @@ uint8_t search_company_id(uint16_t cid, char *c_name, size_t c_name_size)
     for (int i = 0; i < BT_COMPANY_IDS_COUNT; i++)
     {
         if (bt_company_ids[i].code == cid)
-        {
             return snprintf(c_name, c_name_size, "%s", bt_company_ids[i].name);
-        }
     }
     return -1;
 }
