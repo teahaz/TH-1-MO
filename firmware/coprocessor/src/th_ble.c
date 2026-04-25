@@ -25,8 +25,9 @@
 LOG_MODULE_REGISTER(TH_BLE, LOG_LEVEL_INF);
 
 static struct bt_conn *active_conn;
-static int MIN_RSSI = 0;
+static int MIN_RSSI = -100;
 
+static bool ble_initialised = false;
 
 /* static void connected(struct bt_conn *conn, uint8_t err); */
 static bool data_cb(struct bt_data *data, void *user_data);
@@ -42,9 +43,55 @@ static struct bt_le_scan_param scan_param = {
 };
 
 
-static bool scanner_running = true;
 struct bt_uuid_16 uuid = BT_UUID_INIT_16(0);
 struct bt_gatt_discover_params discover_params = {0};
+
+
+
+
+int8_t ble_argument_dispatch(char *input)
+{
+    int err;
+    char *unprocessed;
+    char *token = strtok_r(input, " ", &unprocessed);
+
+    if (token == NULL)
+    {
+        LOG_WRN("Incomplete BLE command! (%s)", input);
+        return -EINVAL;
+    }
+
+    if (strcmp(token, "scan") == 0)
+    {
+        token = strtok_r(NULL, " ", &unprocessed);
+        if (token == NULL)
+        {
+            LOG_WRN("Incomplete ble scan command! (%s)", input);
+            return -EINVAL;
+        }
+
+        if (strcmp(token, "start") == 0)
+        {
+            if (!ble_initialised)
+                if ((err = ble_initialise()) != 0)
+                    return err;
+            return scan_start();
+        }
+
+        if (strcmp(token, "stop") == 0)
+            return scan_stop();
+    }
+
+    if (strcmp(token, "find") == 0)
+    {
+        LOG_WRN("Not yet implemented!");
+        return (int8_t)-ENOTSUP;
+    }
+
+    LOG_WRN("Incorrect BLE command! (%s)", input);
+    return -ENOSYS;
+}
+
 
 
 /* BT_CONN_CB_DEFINE(conn_callbacks) = { */
@@ -60,41 +107,30 @@ int8_t ble_initialise()
         LOG_ERR("Bluetooth module initialisation failed! (err: %d)\n", err);
         return -1;
     }
+    ble_initialised = true;
     return 0;
 }
 
-
-int8_t scan_once(int min_rssi)
+int8_t scan_start()
 {
     int err;
-    MIN_RSSI = min_rssi;
     if ((err = bt_le_scan_start(&scan_param, device_found)))
     {
         LOG_ERR("Failed to start scanning! (err: %d)", err);
-        return -2;
-    }
-}
-
-int8_t scan_start(int min_rssi)
-{
-    int err;
-    MIN_RSSI = min_rssi;
-    if ((err = bt_le_scan_start(&scan_param, device_found)))
-    {
-        LOG_ERR("Failed to start scanning! (err: %d)", err);
-        return -1;
+        return -EIO;
     }
     return 0;
 }
 
-void scan_stop()
+int8_t scan_stop()
 {
     int err;
     if ((err = bt_le_scan_stop()) != 0)
     {
         printk("ERROR: Failed to stop scanning... (err: %d)\n", err);
-        return;
+        return -EIO;
     }
+    return 0;
 }
 
 
@@ -123,7 +159,6 @@ static void device_found (const bt_addr_le_t *addr, int8_t rssi, uint8_t type, s
     /*     printk("Failed to connect to target.. (err: %d)\n", err); */
     /*     return; */
     /* } */
-    scanner_running = true;
 
 }
 
@@ -179,7 +214,7 @@ static bool data_cb(struct bt_data *data, void *user_data)
     }
 }
 
-uint8_t search_company_id(uint16_t cid, char *c_name, size_t c_name_size)
+int8_t search_company_id(uint16_t cid, char *c_name, size_t c_name_size)
 {
     for (int i = 0; i < BT_COMPANY_IDS_COUNT; i++)
     {

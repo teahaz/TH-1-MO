@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <string.h>
+#include <errno.h>
 
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
@@ -31,7 +32,7 @@ const struct device *const uart_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_console));
 
 void print_uart(char *buf);
 void serial_cb(const struct device *dev, void *user_data);
-int argument_dispatch(char *input);
+int8_t argument_dispatch(char *input);
 
 int main(void)
 {
@@ -43,8 +44,6 @@ int main(void)
         LOG_ERR("Uart device is not ready!");
         return -1;
     }
-    ble_initialise();
-
     // configure interrupt and callback to receive data
     err = uart_irq_callback_user_data_set(uart_dev, serial_cb, NULL);
     if (err < 0)
@@ -64,9 +63,12 @@ int main(void)
 
     while (k_msgq_get(&uart_msgq, &tx_buf, K_FOREVER) == 0)
     {
-        argument_dispatch(tx_buf);
+        // I don't trust this thing
+        tx_buf[MSG_SIZE-1] = '\0';
         print_uart(tx_buf);
         print_uart("\r\n");
+
+        argument_dispatch(tx_buf);
     }
     return 0;
 
@@ -126,15 +128,28 @@ void print_uart(char *buf)
  * Dispatch the base level command (first word) to the 
  * correct sub-dispatcher.
  */
-int argument_dispatch(char *input)
+int8_t argument_dispatch(char *input)
 {
+    char *unprocessed;
+    char *token = strtok_r(input, " ", &unprocessed);
 
-    if (strcmp(input, "scan start") == 0)
-        scan_start(-100);
+    if (token == NULL)
+        return -EINVAL;
 
-    if (strcmp(input, "scan stop") == 0)
-        scan_stop();
 
-    // Incorrect command
-    return -1; 
+    if (strcmp(token, "ble") == 0)
+    {
+        ble_argument_dispatch(unprocessed);
+        return 0;
+    }
+
+
+    if (strcmp(input, "help") == 0)
+    {
+        LOG_INF("help");
+        return 0;
+    }
+
+    LOG_WRN("Invalid command! (%s %s)", input, unprocessed);
+    return -ENOSYS;
 }
