@@ -1,155 +1,163 @@
 #include <stdint.h>
-#include <string.h>
-#include <errno.h>
+#include <stdlib.h>
 
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
-#include <zephyr/device.h>
+#include <zephyr/sys/util.h>
 #include <zephyr/devicetree.h>
-#include <zephyr/drivers/uart.h>
+#include <zephyr/drivers/pwm.h>
+#include <zephyr/dt-bindings/pwm/pwm.h>
 
 #include <zephyr/logging/log.h>
 #include <zephyr/logging/log_core.h>
 
-#include "th_ble.h"
+
+LOG_MODULE_REGISTER(ir_replay, LOG_LEVEL_INF);
 
 
-#define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)S
+// Carrier config
+#define IR_CARRIER_HZ   38000U
+#define IR_PERIOD_NS    PWM_HZ(IR_CARRIER_HZ)
+#define IR_PULSE_NS     (IR_PERIOD_NS / 3U)   /* ~33% duty */
 
 
-#define MSG_SIZE 128
+static const struct pwm_dt_spec ir_pwm = PWM_DT_SPEC_GET(DT_NODELABEL(ir_tx_led));
 
 
-// store up to 10 messages aligned to 4-byte boundary in a queue
-K_MSGQ_DEFINE(uart_msgq, MSG_SIZE, 10, 4);
-LOG_MODULE_REGISTER(TH_IO, LOG_LEVEL_INF);
+// This is just a test sequence, it turns on an IR controlled
+// light I own.
+static const uint32_t raw_data[] = {
+    8995, 4461,  638,  512,  588,  528,  595,  532,  569,  563,
+     598,  533,  599,  534,  598,  529,  590,  567,  551, 1635,
+     617, 1611,  621, 1612,  598, 1638,  592, 1660,  606, 1608,
+     619, 1615,  638, 1601,  592, 1654,  581,  536,  588, 1638,
+     598,  530,  600,  534,  594,  537,  589, 1644,  589,  562,
+     580,  534,  593, 1639,  592,  536,  611, 1627,  583, 1647,
+     594, 1663,  574,  534,  590, 1646,  607, 39810, 9035, 2205
+};
+
+static const uint32_t raw_data1[] = {
+    9015, 4467,  622,  527,  590,  526,  605,  524,  577,  554,
+     624,  506,  572,  610,  559,  523,  594,  533,  599, 1622,
+     643, 1572,  601, 1626,  662, 1601,  615, 1593,  601, 1634,
+     622, 1607,  652, 1606,  607, 1608,  649, 1573,  634, 1607,
+     621,  536,  598,  533,  598,  552,  558, 1629,  625,  528,
+     594,  541,  593,  509,  594,  538,  641, 1597,  584, 1665,
+     582, 1636,  589,  536,  593, 1632,  600, 39817, 9048, 2198
+};
+
+static int ir_transmit(const uint32_t *duration_us, size_t count);
 
 
-static int rx_buf_pos;
-static char rx_buf[MSG_SIZE];
-
-const struct device *const uart_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_console));
-
-void print_uart(char *buf);
-void serial_cb(const struct device *dev, void *user_data);
-int8_t argument_dispatch(char *input);
 
 int main(void)
 {
     int err;
-    char tx_buf[MSG_SIZE];
 
-    if (!device_is_ready(uart_dev))
+    if (!(err = pwm_is_ready_dt(&ir_pwm)))
     {
-        LOG_ERR("Uart device is not ready!");
-        return -1;
+        LOG_ERR("PWM device %s is not ready! (err: %d)", ir_pwm.dev->name, err);
+        return err;
     }
-    // configure interrupt and callback to receive data
-    err = uart_irq_callback_user_data_set(uart_dev, serial_cb, NULL);
-    if (err < 0)
+
+
+    /*
+     * Make sure the carrier starts off. Setting period+pulse with
+     * pulse=0 establishes the period without producing output.
+     */
+    if ((err = pwm_set_dt(&ir_pwm, IR_PERIOD_NS, 0)) != 0)
     {
-        if (err == -ENOTSUP)
-            LOG_ERR("Interrupt-driver UART API support not enabled!");
-        else if (err == -ENOSYS)
-            LOG_ERR("UART device does not support interrupt-driven API!");
+        LOG_ERR("PWM initial set failed! (err: %d)", err);
+        return err;
+    }
+
+    LOG_INF("IR replay ready. Period=%ld ns, pulse=%ld ns, %zu symbols", IR_PERIOD_NS, IR_PULSE_NS, ARRAY_SIZE(raw_data));
+
+
+
+    while (1)
+    {
+        LOG_INF("Transmitting...");
+        if ((err = ir_transmit(raw_data, ARRAY_SIZE(raw_data))) != 0)
+        {
+            LOG_ERR("Transmit failed! (err: %d)", err);
+            return err;
+        }
+        k_sleep(K_SECONDS(1));
+
+        if ((err = ir_transmit(raw_data1, ARRAY_SIZE(raw_data1))) != 0)
+        {
+            LOG_ERR("Transmit failed! (err: %d)", err);
+            return err;
+        }
+        k_sleep(K_SECONDS(1));
+    }
+}
+
+
+
+static int ir_transmit(const uint32_t *duration_us, size_t count)
+{
+    int err;
+
+    for (size_t i = 0; i < count; i++)
+    {
+        const uint32_t us = duration_us[i];
+
+
+        // Even offsets in the array are marks, odd ones are 0s
+        if ((i & 1U) == 0U)
+        {
+            if ((err = pwm_set_pulse_dt(&ir_pwm, IR_PULSE_NS)) != 0)
+            {
+                LOG_ERR("PWM pulse generation failed! (err: %d)", err);
+                return err;
+            }
+            k_busy_wait(us);
+
+            if ((err = pwm_set_pulse_dt(&ir_pwm, 0)) != 0)
+            {
+                LOG_ERR("PWM off failed! (err: %d)", err);
+                return err;
+            }
+        }
         else
-            LOG_ERR("Error setting UART callback! (err: %d)", err);
-
-        return 0;
-    }
-
-    uart_irq_rx_enable(uart_dev);
-    LOG_INF("System initialised!");
-
-    while (k_msgq_get(&uart_msgq, &tx_buf, K_FOREVER) == 0)
-    {
-        // I don't trust this thing
-        tx_buf[MSG_SIZE-1] = '\0';
-        print_uart(tx_buf);
-        print_uart("\r\n");
-
-        argument_dispatch(tx_buf);
+        {
+            k_busy_wait(us);
+        }
     }
     return 0;
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
- * Read characters from UART until line end is detected. Afterwards push the
- * data to the message queue.
+ * Notes on BLE coexistence -- courtesy of Dario himself
+ * ------------------------
+ * This implementation runs from the main (preemptible) thread and uses
+ * k_busy_wait() between PWM transitions. It will NOT disrupt BLE timing,
+ * but BLE events WILL preempt it and insert gaps (typically <3 ms) into
+ * the IR frame.
+ *
+ * If decode reliability with BLE active is poor, in order of escalating
+ * effort:
+ *   1. Re-send the frame 2-3x (NEC remotes do this anyway).
+ *   2. Move the transmit loop into a cooperative-priority thread
+ *      (K_PRIO_COOP(7) or so). This stops other application threads
+ *      from preempting, but BLE interrupts still will.
+ *   3. Switch the carrier driver to nrfx_pwm sequence playback, which
+ *      runs entirely in the PWM peripheral via EasyDMA. The CPU only
+ *      sets it up and gets a "done" interrupt — BLE can't disturb it.
  */
-void serial_cb(const struct device *dev, void *user_data)
-{
-    uint8_t c;
-
-    if (!uart_irq_update(uart_dev))
-        return;
-
-    if (!uart_irq_rx_ready(uart_dev))
-        return;
-
-    /* read until FIFO empty */
-    while (uart_fifo_read(uart_dev, &c, 1) == 1)
-    {
-        if ((c == '\n' || c == '\r') && rx_buf_pos > 0)
-        {
-            /* terminate string */
-            rx_buf[rx_buf_pos] = '\0';
-
-            /* if queue is full, message is silently dropped */
-            k_msgq_put(&uart_msgq, &rx_buf, K_NO_WAIT);
-
-            /* reset the buffer (it was copied to the msgq) */
-            rx_buf_pos = 0;
-        }
-        else if (rx_buf_pos < (sizeof(rx_buf) - 1))
-        {
-            rx_buf[rx_buf_pos++] = c;
-        }
-        /* else: characters beyond buffer size are dropped */
-    }
-}
-
-/*
- * Print a null-terminated string character by character to the UART interface
- */
-void print_uart(char *buf)
-{
-    int msg_len = strlen(buf);
-
-    for (int i = 0; i < msg_len; i++) {
-        uart_poll_out(uart_dev, buf[i]);
-    }
-}
-
-
-/*
- * Dispatch the base level command (first word) to the 
- * correct sub-dispatcher.
- */
-int8_t argument_dispatch(char *input)
-{
-    char *unprocessed;
-    char *token = strtok_r(input, " ", &unprocessed);
-
-    if (token == NULL)
-        return -EINVAL;
-
-
-    if (strcmp(token, "ble") == 0)
-    {
-        ble_argument_dispatch(unprocessed);
-        return 0;
-    }
-
-
-    if (strcmp(input, "help") == 0)
-    {
-        LOG_INF("help");
-        return 0;
-    }
-
-    LOG_WRN("Invalid command! (%s %s)", input, unprocessed);
-    return -ENOSYS;
-}

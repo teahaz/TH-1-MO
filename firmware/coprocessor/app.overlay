@@ -1,8 +1,52 @@
+/*
+ * IR transmit overlay for nRF52840 DK.
+ *
+ * Routes PWM0 channel 0 to P0.21.
+ * Drive your IR LED through this pin (with appropriate transistor +
+ * current-limiting resistor — don't drive an IR LED straight from a GPIO).
+ *
+ * To change the pin, edit the NRF_PSEL line below. To change the carrier
+ * frequency, edit PWM_USEC(26) — 26 µs ≈ 38 kHz. The exact value
+ * doesn't matter much; TSOP receivers tolerate ~10% off.
+ */
+
 &pinctrl {
+    pwm0_ir_default: pwm0_ir_default {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 21)>;
+        };
+    };
+
+    pwm0_ir_sleep: pwm0_ir_sleep {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 21)>;
+            low-power-enable;
+        };
+    };
+
     uart0_default: uart0_default {
         group1 {
-            psels = <NRF_PSEL(UART_TX, 0, 25)>,
-                    <NRF_PSEL(UART_RX, 0, 24)>;
+            psels = <NRF_PSEL(UART_TX, 0, 4)>,
+                    <NRF_PSEL(UART_RX, 0, 5)>;
+        };
+    };
+};
+
+&pwm0 {
+    status = "okay";
+    pinctrl-0 = <&pwm0_ir_default>;
+    pinctrl-1 = <&pwm0_ir_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+
+/ {
+    ir_tx: ir_tx {
+        compatible = "pwm-leds";
+        status = "okay";
+
+        ir_tx_led: ir_tx_led {
+            pwms = <&pwm0 0 PWM_USEC(26) PWM_POLARITY_NORMAL>;
+            label = "IR TX carrier";
         };
     };
 };
