@@ -6,6 +6,6 @@ project(TH-1-MOc)
 
 target_sources(app PRIVATE
     src/main.c
-    src/th_ble.c
+    # src/th_ble.c
 )
 

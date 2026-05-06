@@ -1,52 +1,69 @@
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
+#include <zephyr/sys/printk.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/counter.h>
+
 #include <zephyr/sys/util.h>
+#include <zephyr/sys/util_macro.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/pwm.h>
 #include <zephyr/dt-bindings/pwm/pwm.h>
+
+#include <zephyr/toolchain.h>
 
 #include <zephyr/logging/log.h>
 #include <zephyr/logging/log_core.h>
 
 
-LOG_MODULE_REGISTER(ir_replay, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(ir_record, LOG_LEVEL_INF);
 
 
-// Carrier config
-#define IR_CARRIER_HZ   38000U
-#define IR_PERIOD_NS    PWM_HZ(IR_CARRIER_HZ)
-#define IR_PULSE_NS     (IR_PERIOD_NS / 3U)   /* ~33% duty */
+/* #define IR_NODE          DT_NODELABEL(ir_rx) */
+/* #define COUNTER_NODE     DT_NODELABEL(timer2) */
+#define MAX_EDGES        500
+#define FRAME_GAP_MS     150
+#define EDGE_QUEUE_DEPTH 64 // ISR thread handoff buffer
 
 
-static const struct pwm_dt_spec ir_pwm = PWM_DT_SPEC_GET(DT_NODELABEL(ir_tx_led));
+static const struct gpio_dt_spec ir_rx_pin     = GPIO_DT_SPEC_GET(DT_NODELABEL(ir_rx_pin), gpios);
+static const struct device *const counter_dev  = DEVICE_DT_GET(DT_NODELABEL(timer2));
 
 
-// This is just a test sequence, it turns on an IR controlled
-// light I own.
-static const uint32_t raw_data[] = {
-    8995, 4461,  638,  512,  588,  528,  595,  532,  569,  563,
-     598,  533,  599,  534,  598,  529,  590,  567,  551, 1635,
-     617, 1611,  621, 1612,  598, 1638,  592, 1660,  606, 1608,
-     619, 1615,  638, 1601,  592, 1654,  581,  536,  588, 1638,
-     598,  530,  600,  534,  594,  537,  589, 1644,  589,  562,
-     580,  534,  593, 1639,  592,  536,  611, 1627,  583, 1647,
-     594, 1663,  574,  534,  590, 1646,  607, 39810, 9035, 2205
+/* ----------------------------- */
+/*          ISR config           */
+/* ----------------------------- */
+struct edge_event {
+    uint32_t ticks;
 };
+static struct gpio_callback ir_rx_cb_data;
 
-static const uint32_t raw_data1[] = {
-    9015, 4467,  622,  527,  590,  526,  605,  524,  577,  554,
-     624,  506,  572,  610,  559,  523,  594,  533,  599, 1622,
-     643, 1572,  601, 1626,  662, 1601,  615, 1593,  601, 1634,
-     622, 1607,  652, 1606,  607, 1608,  649, 1573,  634, 1607,
-     621,  536,  598,  533,  598,  552,  558, 1629,  625,  528,
-     594,  541,  593,  509,  594,  538,  641, 1597,  584, 1665,
-     582, 1636,  589,  536,  593, 1632,  600, 39817, 9048, 2198
-};
+K_MSGQ_DEFINE(edge_msgq, sizeof(struct edge_event), EDGE_QUEUE_DEPTH, 4);
 
-static int ir_transmit(const uint32_t *duration_us, size_t count);
+static void ir_rx_isr(const struct device *port, struct gpio_callback *cb, gpio_port_pins_t pins);
+
+
+/* ----------------------------- */
+/*        Frame config           */
+/* ----------------------------- */
+static uint32_t edge_tick[MAX_EDGES];
+static size_t edge_count;
+// Can cache the frequency at startup so ticks_to_us() doesn't
+// have to call into the driver on every edge.
+static uint32_t counter_freq;
+
+static void frame_complete_handler(struct k_work *work);
+static inline uint32_t ticks_to_us(uint32_t delta_ticks);
+static void emit_frame(void);
+
+// For the idle gap detector
+static K_WORK_DELAYABLE_DEFINE(frame_complete_work, frame_complete_handler);
+
 
 
 
@@ -54,110 +71,180 @@ int main(void)
 {
     int err;
 
-    if (!(err = pwm_is_ready_dt(&ir_pwm)))
+    if (!(err = gpio_is_ready_dt(&ir_rx_pin)))
     {
-        LOG_ERR("PWM device %s is not ready! (err: %d)", ir_pwm.dev->name, err);
+        LOG_ERR("IR GPIO not ready! (err: %d)", err);
+        return -ENODEV;
+    }
+
+
+    if (!(err = device_is_ready(counter_dev)))
+    {
+        LOG_ERR("IR counter device not ready! (err: %d)", err);
+        return -ENODEV;
+    }
+
+
+    // Checking for 0 to avoid div by zero errors coming up
+    // later. Although 0 in itself is most likely invalid anyway.
+    if ((counter_freq = counter_get_frequency(counter_dev)) == 0)
+    {
+        LOG_ERR("IR counter reports an invalid frequency of 0");
+        return -EINVAL;
+    }
+
+    // Start the counter
+    // the counter should count up at 1mhz. After bit more
+    // than an hour it should overflow and restart. This is
+    // not a concern.
+    if ((err = counter_start(counter_dev)) != 0)
+    {
+        LOG_ERR("Starting IR counter failed! (err: %d)", err);
+        return err;
+    }
+    LOG_INF("IR counter device ready!");
+
+    if ((err = gpio_pin_configure_dt(&ir_rx_pin, GPIO_INPUT)) != 0)
+    {
+        LOG_ERR("Failed to configure IR receiver pin! (err: %d)", err);
         return err;
     }
 
 
-    /*
-     * Make sure the carrier starts off. Setting period+pulse with
-     * pulse=0 establishes the period without producing output.
-     */
-    if ((err = pwm_set_dt(&ir_pwm, IR_PERIOD_NS, 0)) != 0)
+    // The VS1838B receiver will give a digital output
+    // corresponding to the received IR signal.
+    if ((err = gpio_pin_interrupt_configure_dt(&ir_rx_pin, GPIO_INT_EDGE_BOTH)) != 0)
     {
-        LOG_ERR("PWM initial set failed! (err: %d)", err);
+        LOG_ERR("Failed to configure GPIO edge interrupt! (err: %d)", err);
         return err;
     }
+    LOG_INF("IR receiver device ready!");
 
-    LOG_INF("IR replay ready. Period=%ld ns, pulse=%ld ns, %zu symbols", IR_PERIOD_NS, IR_PULSE_NS, ARRAY_SIZE(raw_data));
 
+    gpio_init_callback(&ir_rx_cb_data, ir_rx_isr, BIT(ir_rx_pin.pin));
+    gpio_add_callback(ir_rx_pin.port, &ir_rx_cb_data);
+
+
+    return 0;
+
+}
+
+
+
+
+/* ----------------------------- */
+/*          ISR Activity         */
+/* ----------------------------- */
+static void ir_rx_isr(const struct device *port, struct gpio_callback *cb, gpio_port_pins_t pins)
+{
+    ARG_UNUSED(port);
+    ARG_UNUSED(cb);
+    ARG_UNUSED(pins);
+
+    struct edge_event ev;
+
+    if (counter_get_value(counter_dev, &ev.ticks) != 0)
+        return;
+
+
+    (void)k_msgq_put(&edge_msgq, &ev, K_NO_WAIT);
+}
+
+
+
+
+
+/* ----------------------------- */
+/*             Frame             */
+/* ----------------------------- */
+
+
+
+
+static inline uint32_t ticks_to_us(uint32_t delta_ticks)
+{
+    return (uint32_t)(((uint64_t)delta_ticks * 1000000U) / counter_freq);
+}
+
+static void emit_frame(void)
+{
+    // incomplete packet
+    if (edge_count < 2)
+        return;
+
+
+    size_t n_durations = edge_count -1;
+
+    // The format requires alternating mark/space pairs. If
+    // we somehow get an odd number (incomplete packet),
+    // then just drop the last one.
+    if (n_durations & 1U)
+        n_durations--;
+
+    if (n_durations == 0)
+        return;
+
+
+    static char output_buf[3600];
+    int offset = 0;
+
+    offset += snprintf(output_buf + offset, sizeof(output_buf) - offset, "data:");
+
+    for (size_t i = 0; i < n_durations; i++) {
+        uint32_t delta = edge_tick[i + 1] - edge_tick[i];
+        offset += snprintf(output_buf + offset, sizeof(output_buf) - offset,
+                           " %u", ticks_to_us(delta));
+    }
+
+    LOG_INF("Captured IR packet");
+    LOG_INF("type: raw");
+    LOG_INF("frequency: 38000");
+    LOG_INF("duty_cycle: 0.330000");
+    LOG_INF("%s", output_buf);
+}
+
+
+// Run when the IR has been silent for FRAME_GAP_MS
+static void frame_complete_handler(struct k_work *work)
+{
+    ARG_UNUSED(work);
+
+    emit_frame();
+
+    edge_count = 0;
+}
+
+
+/* ----------------------------- */
+/*       Consumer Thread         */
+/* ----------------------------- */
+
+static void ir_rx_consumer_thread(void *a, void *b, void *c)
+{
+    ARG_UNUSED(a);
+    ARG_UNUSED(b);
+    ARG_UNUSED(c);
+
+
+    struct edge_event ev;
 
 
     while (1)
     {
-        LOG_INF("Transmitting...");
-        if ((err = ir_transmit(raw_data, ARRAY_SIZE(raw_data))) != 0)
-        {
-            LOG_ERR("Transmit failed! (err: %d)", err);
-            return err;
-        }
-        k_sleep(K_SECONDS(1));
+        k_msgq_get(&edge_msgq, &ev, K_FOREVER);
 
-        if ((err = ir_transmit(raw_data1, ARRAY_SIZE(raw_data1))) != 0)
-        {
-            LOG_ERR("Transmit failed! (err: %d)", err);
-            return err;
-        }
-        k_sleep(K_SECONDS(1));
-    }
-}
-
-
-
-static int ir_transmit(const uint32_t *duration_us, size_t count)
-{
-    int err;
-
-    for (size_t i = 0; i < count; i++)
-    {
-        const uint32_t us = duration_us[i];
-
-
-        // Even offsets in the array are marks, odd ones are 0s
-        if ((i & 1U) == 0U)
-        {
-            if ((err = pwm_set_pulse_dt(&ir_pwm, IR_PULSE_NS)) != 0)
-            {
-                LOG_ERR("PWM pulse generation failed! (err: %d)", err);
-                return err;
-            }
-            k_busy_wait(us);
-
-            if ((err = pwm_set_pulse_dt(&ir_pwm, 0)) != 0)
-            {
-                LOG_ERR("PWM off failed! (err: %d)", err);
-                return err;
-            }
-        }
+        if (edge_count < MAX_EDGES)
+            edge_tick[edge_count++] = ev.ticks;
         else
-        {
-            k_busy_wait(us);
-        }
+            LOG_WRN("Truncated frame due to MAX_EDGES limit!");
+
+        // reset the frame end counter
+        k_work_reschedule(&frame_complete_work, K_MSEC(FRAME_GAP_MS));
     }
-    return 0;
+
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- * Notes on BLE coexistence -- courtesy of Dario himself
- * ------------------------
- * This implementation runs from the main (preemptible) thread and uses
- * k_busy_wait() between PWM transitions. It will NOT disrupt BLE timing,
- * but BLE events WILL preempt it and insert gaps (typically <3 ms) into
- * the IR frame.
- *
- * If decode reliability with BLE active is poor, in order of escalating
- * effort:
- *   1. Re-send the frame 2-3x (NEC remotes do this anyway).
- *   2. Move the transmit loop into a cooperative-priority thread
- *      (K_PRIO_COOP(7) or so). This stops other application threads
- *      from preempting, but BLE interrupts still will.
- *   3. Switch the carrier driver to nrfx_pwm sequence playback, which
- *      runs entirely in the PWM peripheral via EasyDMA. The CPU only
- *      sets it up and gets a "done" interrupt — BLE can't disturb it.
- */
+// Always running with cooperative priority
+K_THREAD_DEFINE(ir_rx_consumer_tid, 1024, ir_rx_consumer_thread,
+        NULL, NULL, NULL,
+        K_PRIO_COOP(7), 0, 0);

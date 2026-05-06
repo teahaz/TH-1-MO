@@ -49,27 +49,6 @@
             label = "IR TX carrier";
         };
     };
-
-
-    ir_rx: ir_rx {
-        compatible = "gpio-keys";
-        ir_rx_pin: ir_rx_pin {
-            gpios = <&gpio0 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // Im not sure if this should be active high and pull down
-            label = "VS1838B IR rx";
-        };
-    };
-
-
-    aliases {
-        ir-in = &ir_rx_pin;
-        ir-counter = &timer2;
-    };
-};
-
-&timer2 {
-    status = "okay";
-    prescaler = <4>; // 16Mhz / 2^4 = 1MHZ or 1 us;
-
 };
 
 &uart0 {
