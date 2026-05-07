@@ -12,12 +12,13 @@
 #include <zephyr/logging/log_core.h>
 
 #include "th_ble.h"
+#include "th_infrared.h"
 
 
-#define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)S
+#define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)
 
 
-#define MSG_SIZE 128
+#define MSG_SIZE 512
 
 
 // store up to 10 messages aligned to 4-byte boundary in a queue
@@ -143,6 +144,11 @@ int8_t argument_dispatch(char *input)
         return 0;
     }
 
+    if (strcmp(token, "ir") == 0)
+    {
+        ir_argument_dispatch(unprocessed);
+        return 0;
+    }
 
     if (strcmp(input, "help") == 0)
     {

@@ -1,10 +1,63 @@
 &pinctrl {
-    uart0_default: uart0_default {
+    pwm0_ir_default: pwm0_ir_default {
         group1 {
-            psels = <NRF_PSEL(UART_TX, 0, 25)>,
-                    <NRF_PSEL(UART_RX, 0, 24)>;
+            psels = <NRF_PSEL(PWM_OUT0, 0, 21)>;
         };
     };
+
+    pwm0_ir_sleep: pwm0_ir_sleep {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 21)>;
+            low-power-enable;
+        };
+    };
+
+    uart0_default: uart0_default {
+        group1 {
+            psels = <NRF_PSEL(UART_TX, 0, 4)>,
+                    <NRF_PSEL(UART_RX, 0, 5)>;
+        };
+    };
+};
+
+&pwm0 {
+    status = "okay";
+    pinctrl-0 = <&pwm0_ir_default>;
+    pinctrl-1 = <&pwm0_ir_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+
+/ {
+    ir_tx: ir_tx {
+        compatible = "pwm-leds";
+        status = "okay";
+
+        ir_tx_led: ir_tx_led {
+            pwms = <&pwm0 0 PWM_USEC(26) PWM_POLARITY_NORMAL>;
+            label = "IR TX carrier";
+        };
+    };
+
+
+    ir_rx: ir_rx {
+        compatible = "gpio-keys";
+        ir_rx_pin: ir_rx_pin {
+            gpios = <&gpio0 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            label = "VS1838B IR rx";
+        };
+    };
+
+
+    aliases {
+        ir-in = &ir_rx_pin;
+        ir-counter = &timer2;
+    };
+};
+
+&timer2 {
+    status = "okay";
+    prescaler = <4>; // 16Mhz / 2^4 = 1MHZ or 1 us;
+
 };
 
 &uart0 {
