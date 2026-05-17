@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "prototypes")(type "KiCad")(uri "/home/antone/Music/TEAHAZ/TH-1-KCL/prototypes.pretty")(options "")(descr ""))
+)
