@@ -5635,7 +5635,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+		(property "Footprint" "prototypes:resistor_tht"
 			(at 62.23 44.958 90)
 			(effects
 				(font
@@ -6310,7 +6310,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+		(property "Footprint" "prototypes:resistor_tht"
 			(at 36.83 150.368 90)
 			(effects
 				(font
@@ -6582,7 +6582,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+		(property "Footprint" "prototypes:resistor_tht"
 			(at 76.2 30.988 90)
 			(effects
 				(font
@@ -6845,7 +6845,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LED_THT:LED_D5.0mm"
+		(property "Footprint" "prototypes:LED_D5.0mm"
 			(at 72.39 43.18 0)
 			(effects
 				(font
@@ -6922,7 +6922,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+		(property "Footprint" "prototypes:resistor_tht"
 			(at 36.83 155.448 90)
 			(effects
 				(font
@@ -6990,7 +6990,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+		(property "Footprint" "prototypes:resistor_tht"
 			(at 36.83 152.908 90)
 			(effects
 				(font
@@ -7150,7 +7150,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+		(property "Footprint" "prototypes:resistor_tht"
 			(at 36.83 157.988 90)
 			(effects
 				(font
