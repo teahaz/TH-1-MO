@@ -1,33 +1,17 @@
-&pinctrl {
-    pwm0_ir_default: pwm0_ir_default {
-        group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 0, 21)>;
-        };
-    };
-
-    pwm0_ir_sleep: pwm0_ir_sleep {
-        group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 0, 21)>;
-            low-power-enable;
-        };
-    };
-
-    uart0_default: uart0_default {
-        group1 {
-            psels = <NRF_PSEL(UART_TX, 0, 4)>,
-                    <NRF_PSEL(UART_RX, 0, 5)>;
-        };
-    };
-};
-
-&pwm0 {
-    status = "okay";
-    pinctrl-0 = <&pwm0_ir_default>;
-    pinctrl-1 = <&pwm0_ir_sleep>;
-    pinctrl-names = "default", "sleep";
-};
-
 / {
+    chosen {
+        zephyr,console = &uart0;
+        zephyr,shell-uart = &uart0;
+    };
+
+    zephyr,user {
+        // program select
+        ps-gpios = <&gpio0 23 (GPIO_ACTIVE_HIGH)>,
+                   <&gpio0 13 (GPIO_ACTIVE_HIGH)>,
+                   <&gpio0 17 (GPIO_ACTIVE_HIGH)>,
+                   <&gpio0 20 (GPIO_ACTIVE_HIGH)>;
+    };
+
     ir_tx: ir_tx {
         compatible = "pwm-leds";
         status = "okay";
@@ -38,31 +22,76 @@
         };
     };
 
-
     ir_rx: ir_rx {
         compatible = "gpio-keys";
         ir_rx_pin: ir_rx_pin {
-            gpios = <&gpio0 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            gpios = <&gpio0 26 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
             label = "VS1838B IR rx";
         };
     };
 
+};
 
-    aliases {
-        ir-in = &ir_rx_pin;
-        ir-counter = &timer2;
+&pinctrl {
+    uart0_default: uart0_default {
+        group1 {
+            psels = <NRF_PSEL(UART_RX, 0, 19)>,
+                    <NRF_PSEL(UART_TX, 0, 21)>;
+        };
+    };
+
+    uart1_default: uart1_default {
+        group1 {
+            psels = <NRF_PSEL(UART_RX, 0, 22)>,
+                    <NRF_PSEL(UART_TX, 0, 24)>;
+        };
+    };
+
+    pwm0_ir_default: pwm0_ir_default {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 5)>;
+        };
+    };
+
+    pwm0_ir_sleep: pwm0_ir_sleep {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 5)>;
+            low-power-enable;
+        };
     };
 };
 
-&timer2 {
-    status = "okay";
-    prescaler = <4>; // 16Mhz / 2^4 = 1MHZ or 1 us;
 
+&pwm0 {
+    status = "okay";
+    pinctrl-0 = <&pwm0_ir_default>;
+    pinctrl-1 = <&pwm0_ir_sleep>;
+    pinctrl-names = "default", "sleep";
 };
 
 &uart0 {
     status = "okay";
+    current-speed = <115200>;
     pinctrl-0 = <&uart0_default>;
     pinctrl-names = "default";
     /delete-property/ pinctrl-1;
+};
+
+&uart1 {
+    status = "okay";
+    current-speed = <115200>;
+    pinctrl-0 = <&uart1_default>;
+    pinctrl-names = "default";
+    /delete-property/ pinctrl-1;
+};
+
+// 16Mhz for IR
+&timer3 {
+    status = "okay";
+    prescaler = <4>;
+};
+
+&uicr {
+    nfct-pins-as-gpios;
+    gpio-as-nreset;
 };
