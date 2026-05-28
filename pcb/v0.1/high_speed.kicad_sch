@@ -11885,7 +11885,7 @@
 	)
 	(symbol
 		(lib_id "TH-1-CC:USB_C_Receptacle_fw")
-		(at 161.29 60.96 0)
+		(at 167.64 60.96 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -11896,7 +11896,7 @@
 		(dnp no)
 		(uuid "66db9363-990b-4354-a1fd-edee1840699d")
 		(property "Reference" "J1"
-			(at 161.29 27.94 0)
+			(at 167.64 27.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11906,7 +11906,7 @@
 			)
 		)
 		(property "Value" "USB_C_Receptacle_fw"
-			(at 161.29 30.48 0)
+			(at 167.64 30.48 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11916,7 +11916,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 157.48 60.96 0)
+			(at 163.83 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11927,7 +11927,7 @@
 			)
 		)
 		(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
-			(at 157.48 60.96 0)
+			(at 163.83 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11938,7 +11938,7 @@
 			)
 		)
 		(property "Description" "USB Full-Featured Type-C Receptacle connector"
-			(at 161.29 60.96 0)
+			(at 167.64 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11949,7 +11949,7 @@
 			)
 		)
 		(property "Manufacturer" "GCT"
-			(at 161.29 60.96 0)
+			(at 167.64 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11960,7 +11960,7 @@
 			)
 		)
 		(property "Mfr. Part no" "USB4056-03-A"
-			(at 161.29 60.96 0)
+			(at 167.64 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11971,7 +11971,7 @@
 			)
 		)
 		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038"
-			(at 161.29 60.96 0)
+			(at 167.64 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11982,7 +11982,7 @@
 			)
 		)
 		(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
-			(at 161.29 60.96 0)
+			(at 167.64 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11993,7 +11993,7 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 161.29 60.96 0)
+			(at 167.64 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13341,7 +13341,7 @@
 	)
 	(symbol
 		(lib_id "TH-1-CC:USB_C_Receptacle_fw")
-		(at 200.66 60.96 0)
+		(at 194.31 60.96 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13352,7 +13352,7 @@
 		(fields_autoplaced yes)
 		(uuid "b5cbd935-3817-4d7c-bdd1-ba8ea9e54f35")
 		(property "Reference" "J2"
-			(at 200.66 27.94 0)
+			(at 194.31 27.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13362,7 +13362,7 @@
 			)
 		)
 		(property "Value" "USB_C_Receptacle_fw"
-			(at 200.66 30.48 0)
+			(at 194.31 30.48 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13372,7 +13372,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 204.47 60.96 0)
+			(at 198.12 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13383,7 +13383,7 @@
 			)
 		)
 		(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
-			(at 204.47 60.96 0)
+			(at 198.12 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13394,7 +13394,7 @@
 			)
 		)
 		(property "Description" "USB Full-Featured Type-C Receptacle connector"
-			(at 200.66 60.96 0)
+			(at 194.31 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13405,7 +13405,7 @@
 			)
 		)
 		(property "Manufacturer" "GCT"
-			(at 200.66 60.96 0)
+			(at 194.31 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13416,7 +13416,7 @@
 			)
 		)
 		(property "Mfr. Part no" "USB4056-03-A"
-			(at 200.66 60.96 0)
+			(at 194.31 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13427,7 +13427,7 @@
 			)
 		)
 		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038"
-			(at 200.66 60.96 0)
+			(at 194.31 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13438,7 +13438,7 @@
 			)
 		)
 		(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
-			(at 200.66 60.96 0)
+			(at 194.31 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13449,7 +13449,7 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 200.66 60.96 0)
+			(at 194.31 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
