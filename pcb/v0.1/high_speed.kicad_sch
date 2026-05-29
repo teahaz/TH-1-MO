@@ -4,6 +4,12 @@
 	(generator_version "10.0")
 	(uuid "a18119c2-ef9c-487d-a7c8-b7fa3ec08ae6")
 	(paper "A4")
+	(title_block
+		(title "TH-1 Mainbaord devkit: High speed components")
+		(date "2026-05-29")
+		(rev "0.1")
+		(company "Teahaz Computer")
+	)
 	(lib_symbols
 		(symbol "CM5IO:AP2553W6"
 			(exclude_from_sim no)
