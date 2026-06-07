@@ -634,7 +634,7 @@
         "uuid": "5b8aa782-5c3d-43e7-a869-3bd000015f52"
       }
     ],
-    "used_designators": "R8-9,Q1,D1,C11,S1,#PWR1,#PWR16-19",
+    "used_designators": "SW1,U2-3,U18,R1-2,R10-11,R13-14,J3,J7,J12,C1,C14-16,#PWR20-21,#PWR30,#PWR33-34,#PWR107-108,#PWR113",
     "variants": []
   },
   "sheets": [
@@ -653,6 +653,14 @@
     [
       "7870ee9f-55aa-45c7-9cfc-bb8c349d3c52",
       "Co processor"
+    ],
+    [
+      "d35668cc-0b48-4b2a-bc9a-46d15e4baf9a",
+      "Pinout"
+    ],
+    [
+      "6125d0a9-a152-4232-a300-1c14841893d5",
+      "power system"
     ]
   ],
   "text_variables": {},

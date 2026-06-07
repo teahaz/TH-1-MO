@@ -8,8 +8,8 @@
         // program select
         ps-gpios = <&gpio0 23 (GPIO_ACTIVE_HIGH)>,
                    <&gpio0 13 (GPIO_ACTIVE_HIGH)>,
-                   <&gpio0 17 (GPIO_ACTIVE_HIGH)>,
-                   <&gpio0 20 (GPIO_ACTIVE_HIGH)>;
+                   <&gpio0 20 (GPIO_ACTIVE_HIGH)>,
+                   <&gpio0 17 (GPIO_ACTIVE_HIGH)>;
     };
 
     ir_tx: ir_tx {

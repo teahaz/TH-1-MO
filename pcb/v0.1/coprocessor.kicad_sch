@@ -3819,9 +3819,9 @@
 		)
 		(uuid "232c10f1-b4e6-44db-b992-57b03c67f807")
 	)
-	(text "nRF Co Processor"
+	(text "nRF52840 co processor"
 		(exclude_from_sim no)
-		(at 33.782 21.336 0)
+		(at 36.576 21.336 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3987,6 +3987,16 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 59.69) (xy 96.52 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2369649a-7a06-4c05-8fba-5a6621581341")
+	)
+	(wire
+		(pts
 			(xy 50.8 68.58) (xy 50.8 69.85)
 		)
 		(stroke
@@ -4004,6 +4014,16 @@
 			(type default)
 		)
 		(uuid "26ea98ba-1e6d-4676-afc5-efca24a007d7")
+	)
+	(wire
+		(pts
+			(xy 93.98 59.69) (xy 93.98 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2acd4772-cbda-4729-a978-f1eba515f5cd")
 	)
 	(wire
 		(pts
@@ -4257,7 +4277,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 41.91) (xy 68.58 38.1)
+			(xy 68.58 36.83) (xy 68.58 41.91)
 		)
 		(stroke
 			(width 0)
@@ -4649,6 +4669,30 @@
 			)
 		)
 	)
+	(global_label "3v3"
+		(shape input)
+		(at 68.58 36.83 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "982df566-bc7c-4052-bab5-5b904968a310")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 68.58 30.8587 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(hierarchical_label "U1_RX"
 		(shape input)
 		(at 72.39 83.82 180)
@@ -4704,6 +4748,17 @@
 		)
 		(uuid "88e0e8ec-d846-45f6-a6d2-e5f471ba05ac")
 	)
+	(hierarchical_label "SWDCLK"
+		(shape input)
+		(at 96.52 58.42 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "95b6393e-60ff-4b73-b90d-7cc000b99045")
+	)
 	(hierarchical_label "nRESET"
 		(shape input)
 		(at 106.68 55.88 0)
@@ -4747,6 +4802,17 @@
 			(justify right)
 		)
 		(uuid "cca8495a-5aad-479b-ac79-01383b2d8fca")
+	)
+	(hierarchical_label "SWDIO"
+		(shape input)
+		(at 93.98 58.42 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e12391ae-753d-469c-a859-f961acbf71c3")
 	)
 	(hierarchical_label "MOD0"
 		(shape input)
@@ -6810,84 +6876,6 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
 					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 68.58 38.1 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "953e4665-a736-406f-b18f-cbde8fca375f")
-		(property "Reference" "#PWR06"
-			(at 68.58 41.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 68.58 33.02 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 68.58 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 68.58 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "925f7ecb-4c08-4f09-b9a3-f0215ea2b1f6")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR06")
 					(unit 1)
 				)
 			)
