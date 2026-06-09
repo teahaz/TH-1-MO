@@ -1,4 +1,3 @@
-# schematic
 - [x] SD card reader
 - [x] Power button for the raspberry
 - [ ] 3v3 converter
@@ -13,12 +12,6 @@
 - [ ] find part for display connector
 - [ ] find part for HDMI
 
-# layout
-- [ ] Dac chip
-    - Use layout guidelines for the DAC chip
-    - Island with single contact for power plane
-    - keep main ground plane
-
 
 # DAC notes
 
@@ -32,10 +25,30 @@ The way I've seen it done on other designs is by tying it to the source pre regu
 Could potentially test this out?
 
 
-3. Clean routing
-For clean power the whole DAC system should be on a sort of island power plane. It should get 3v3 from the same LDO source, but with only one connection point to its own power plane rather than sitting on the main power plane.
+3. Clean power
 
-The ground plane should still be unified with the rest
+For clean power, the DAC system needs its own island power plane so it does not get mixed with the main one. In fact it needs two of them, one for the analog side and one for the digital side. Additionally, its worth beading every other noisy device on the circuit like the nrf chip. It should ideally sit further away from the RF/noisy components as well.
+
+
+The ground plane should still be unified with the rest. as long as there is no return paths going right under this
 
 4. output power
 I am not sure if this will provide a good enough signal to run my high impedance headphones cleanly, but thats okay for now.
+
+
+5. Series terminating resistors
+Its unclear if its absolutely needed, but might be a good just in case on the signal lines, specifically BCK
+
+6. AVDD capacitor
+
+This absolutely must be as close to the pin as possible.
+
+
+7. Double capacitors
+
+The datasheet reference implementation has a 0.1uF ceramic and 10uf electrolytic capacitor in parallel at multiple different points. Apparently this is in large part because large ceramic capacitors were expensive at the time this datasheet was written. Now they are not, and should be replaced by a single 10uf
+
+# nRF notes
+
+1. Clean power
+This is just a reminder taken over from the DAC notes. The nRF needs a ferrite bead on its power lines so it doesn't dirty up the power plane for the DAC when its doing RF.
