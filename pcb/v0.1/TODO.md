@@ -24,6 +24,13 @@ The way I've seen it done on other designs is by tying it to the source pre regu
 
 Could potentially test this out?
 
+It seems like we will def need a preamp and many of them already have anti pop filters. This system might not be needed, but not sure yet.
+
+a: we are not using a preamp
+b: yes it should still be implemented
+
+Additionally since its sitting on the 5v rail, which is noisy from the CM5, it should also have a capacitor.
+Additionally, if not already, then the regulator also needs a capacitor
 
 3. Clean power
 
@@ -52,3 +59,23 @@ The datasheet reference implementation has a 0.1uF ceramic and 10uf electrolytic
 
 1. Clean power
 This is just a reminder taken over from the DAC notes. The nRF needs a ferrite bead on its power lines so it doesn't dirty up the power plane for the DAC when its doing RF.
+
+
+
+# 3v3 regulator notes
+
+1. DAC mute handling
+
+I've not gotten to the regulator yet so not sure if its already included, but if not, it should have a larger capacitor on it to give the DAC enough time to mute when the power goes out. Should be at least 10uf I think, but at any rate should be orders of magnitude larger than the capacitor on XSMT.
+
+
+
+
+# potential downfalls
+
+In this section I'm documenting deviations from the datasheets or potential issues to look at first if the PCB comes out broken.
+
+
+## 1. Pop on power down DAC
+
+Its possible that the XSMT capacitor is too large and does not power down in enough time to avoid a pop. This will happen if the capacitor on the voltage regulator drains faster than the one on XSMT.
