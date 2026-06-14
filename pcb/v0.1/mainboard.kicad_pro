@@ -634,7 +634,7 @@
         "uuid": "5b8aa782-5c3d-43e7-a869-3bd000015f52"
       }
     ],
-    "used_designators": "SW1,U1-5,Q1,S1,Module1,J1-6,R1-18,Y1,FB1-2,#PWR1-42,D1,C1-24",
+    "used_designators": "#FLG1-2,U6,C22-23,C25-26,R19-20,#PWR37-40,#PWR44-47,J9-12",
     "variants": []
   },
   "sheets": [
@@ -657,10 +657,6 @@
     [
       "d35668cc-0b48-4b2a-bc9a-46d15e4baf9a",
       "Pinout"
-    ],
-    [
-      "6125d0a9-a152-4232-a300-1c14841893d5",
-      "power system"
     ]
   ],
   "text_variables": {},

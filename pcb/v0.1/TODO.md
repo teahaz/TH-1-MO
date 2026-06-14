@@ -1,16 +1,13 @@
 - [x] SD card reader
 - [x] Power button for the raspberry
+- [x] i2s audio
 - [ ] 3v3 converter
-- [ ] PD sync
-- [ ] Alternate power pins (2-3 each for higher current)
-- [ ] i2s audio
+- [ ] PD sync (and spare pins if it doesn't work)
 - [ ] Wire up USB connectors
 - [ ] Signal analyser pins
-    - can these be combined with other gpio when not in signal analyser mode?
-    - how will it work with the resistors?
-    - I anyway need to figure out the correct resistors here.
 - [ ] find part for display connector
 - [ ] find part for HDMI
+- [ ] Deal with the current limit ICs
 
 
 # DAC notes
@@ -60,13 +57,17 @@ The datasheet reference implementation has a 0.1uF ceramic and 10uf electrolytic
 1. Clean power
 This is just a reminder taken over from the DAC notes. The nRF needs a ferrite bead on its power lines so it doesn't dirty up the power plane for the DAC when its doing RF.
 
+2. SWD
 
+SWD will be nominally wired to the raspberry pi. I think it should also have a dedicated pin (separate from pinout) for swd. Both of these inputs should be gated by a solder jumper so you can choose which to enable.
 
 # 3v3 regulator notes
 
 1. DAC mute handling
 
 I've not gotten to the regulator yet so not sure if its already included, but if not, it should have a larger capacitor on it to give the DAC enough time to mute when the power goes out. Should be at least 10uf I think, but at any rate should be orders of magnitude larger than the capacitor on XSMT.
+
+
 
 
 
