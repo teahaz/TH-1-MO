@@ -3889,145 +3889,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:+3.3V"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "+3.3V"
-				(at 0 3.556 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "+3.3V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+3.3V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:GND"
 			(power global)
 			(pin_numbers
@@ -4178,16 +4039,6 @@
 		)
 		(uuid "232c10f1-b4e6-44db-b992-57b03c67f807")
 	)
-	(text "Not yet sure how VBUS will\nreact to having high V\nthrough PD"
-		(exclude_from_sim no)
-		(at 40.894 81.026 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "a0830eb9-abed-4314-a91e-8345d1849126")
-	)
 	(text "Debug Interface"
 		(exclude_from_sim no)
 		(at 210.82 64.516 0)
@@ -4235,12 +4086,6 @@
 		(uuid "1f734056-8b78-40b9-a3f5-cee8bec4799e")
 	)
 	(junction
-		(at 229.87 48.26)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3132c502-0c51-40ec-8516-2847cdbdc892")
-	)
-	(junction
 		(at 238.76 80.01)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4281,6 +4126,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d222671e-cc39-4377-8bd4-0c02560e1176")
+	)
+	(junction
+		(at 229.87 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dddc8ffc-a2c1-4ce9-8b35-76b4d2d3fa45")
 	)
 	(junction
 		(at 49.53 49.53)
@@ -4700,6 +4551,16 @@
 	)
 	(wire
 		(pts
+			(xy 229.87 46.99) (xy 229.87 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8641df3d-86fb-4750-9662-a7384b185525")
+	)
+	(wire
+		(pts
 			(xy 99.06 49.53) (xy 99.06 59.69)
 		)
 		(stroke
@@ -4787,6 +4648,16 @@
 			(type default)
 		)
 		(uuid "9c0927fd-b6c8-4191-a196-4d2870a41987")
+	)
+	(wire
+		(pts
+			(xy 229.87 35.56) (xy 229.87 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ea54fd2-ea26-4d65-b506-e571c49cf349")
 	)
 	(wire
 		(pts
@@ -5020,16 +4891,6 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 45.72) (xy 229.87 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e14a211d-771b-4660-8479-062710447ea3")
-	)
-	(wire
-		(pts
 			(xy 72.39 91.44) (xy 74.93 91.44)
 		)
 		(stroke
@@ -5218,54 +5079,6 @@
 		)
 		(uuid "ffb72ab5-3bda-47f5-bdf2-3d2defdc993b")
 	)
-	(global_label "VBUS_CH"
-		(shape input)
-		(at 64.77 57.15 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "1319d2d0-290e-4159-96b8-64cc50ec9e74")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 75.0195 57.15 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "3v3"
-		(shape input)
-		(at 68.58 36.83 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "982df566-bc7c-4052-bab5-5b904968a310")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 68.58 30.8587 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(hierarchical_label "U1_RX"
 		(shape input)
 		(at 72.39 83.82 180)
@@ -5309,6 +5122,39 @@
 			(justify left)
 		)
 		(uuid "684d8856-a7a3-4211-b028-d07495b2d807")
+	)
+	(hierarchical_label "+5v"
+		(shape input)
+		(at 64.77 57.15 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6fbcbdec-0249-49c4-a4f0-6671e383d500")
+	)
+	(hierarchical_label "+3v3_LDO"
+		(shape input)
+		(at 229.87 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7fc8c61a-66dc-4026-8b2a-dccec54bd751")
+	)
+	(hierarchical_label "+3v3_LDO"
+		(shape input)
+		(at 68.58 36.83 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "94110034-379a-4ede-9b5d-9f13cc9bb25b")
 	)
 	(hierarchical_label "SWDCLK"
 		(shape input)
@@ -7372,6 +7218,7 @@
 		)
 		(property "Value" "Conn_01x02_Pin"
 			(at 86.106 31.242 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7951,84 +7798,6 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
 					(reference "JP2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 229.87 45.72 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ab80af6f-9fb5-452d-8bcf-d402eb8acb79")
-		(property "Reference" "#PWR035"
-			(at 229.87 49.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 229.87 40.64 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 229.87 45.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 229.87 45.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 229.87 45.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "7c8a9fd0-5a16-4a43-a7e1-6b34eaa30d62")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -8833,6 +8602,86 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
 					(reference "#PWR036")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 229.87 41.91 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ea4c7723-6eb0-44e4-954c-e6e264f6c008")
+		(property "Reference" "JP5"
+			(at 227.33 41.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 226.06 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 229.87 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 237.49 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 234.95 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "3a699137-1a6b-474a-b63b-90900c1957f0")
+		)
+		(pin "1"
+			(uuid "4b82baed-6e3d-4e4c-9b75-b65d69023a38")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
+					(reference "JP5")
 					(unit 1)
 				)
 			)

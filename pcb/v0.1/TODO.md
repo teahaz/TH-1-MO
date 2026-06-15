@@ -1,13 +1,26 @@
 - [x] SD card reader
 - [x] Power button for the raspberry
 - [x] i2s audio
-- [ ] 3v3 converter
-- [ ] PD sync (and spare pins if it doesn't work)
+- [x] 3v3 converter
+- [x] Wire up DAC to raspberry pi.
+- [ ] Clean up and unify power lines
+- [ ] Add additional power pins so PD can be bypassed
+- [ ] High side switch so DAC is not wasting power when pi is off.
+- [ ] Double check NRF setup
+    - Verify power wiring
+    - does nRESET need to be pulled high?
+    - should we add a way to detect if the pi is on?
+- [ ] Add pin for nRESET
+- [ ] Ferrite bead for the NRF
+- [ ] Ferrite bead for 3v3 out (or make it pi rail)
+- [ ] Add NRF test points where bridging is not testable
 - [ ] Wire up USB connectors
 - [ ] Signal analyser pins
 - [ ] find part for display connector
 - [ ] find part for HDMI
 - [ ] Deal with the current limit ICs
+- [ ] ESD protection
+- [ ] Remove unused pins
 
 
 # DAC notes

@@ -470,7 +470,8 @@
   "libraries": {
     "pinned_footprint_libs": [],
     "pinned_symbol_libs": [
-      "CM5IO"
+      "CM5IO",
+      "TH-1-CC"
     ]
   },
   "meta": {
@@ -634,7 +635,7 @@
         "uuid": "5b8aa782-5c3d-43e7-a869-3bd000015f52"
       }
     ],
-    "used_designators": "#FLG1-2,U6,C22-23,C25-26,R19-20,#PWR37-40,#PWR44-47,J9-12",
+    "used_designators": "#FLG3,JP5,TP1,J6",
     "variants": []
   },
   "sheets": [

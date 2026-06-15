@@ -10626,7 +10626,7 @@
 		)
 		(uuid "6957df7c-474d-41b8-85c5-9aa563374895")
 	)
-	(hierarchical_label "+3.3v"
+	(hierarchical_label "+3v3_PI"
 		(shape input)
 		(at 254 76.2 180)
 		(effects
