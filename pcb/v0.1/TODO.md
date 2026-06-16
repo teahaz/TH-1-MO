@@ -3,14 +3,14 @@
 - [x] i2s audio
 - [x] 3v3 converter
 - [x] Wire up DAC to raspberry pi.
-- [ ] Clean up and unify power lines
-- [ ] Add additional power pins so PD can be bypassed
-- [ ] High side switch so DAC is not wasting power when pi is off.
+- [x] Clean up and unify power lines
+- [x] Add additional power pins so PD can be bypassed
+- [x] Add test pad for nRESET
+- [x] High side switch so DAC is not wasting power when pi is off.
 - [ ] Double check NRF setup
     - Verify power wiring
     - does nRESET need to be pulled high?
     - should we add a way to detect if the pi is on?
-- [ ] Add pin for nRESET
 - [ ] Ferrite bead for the NRF
 - [ ] Ferrite bead for 3v3 out (or make it pi rail)
 - [ ] Add NRF test points where bridging is not testable
