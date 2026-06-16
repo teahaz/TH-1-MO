@@ -7808,6 +7808,16 @@
 		)
 		(uuid "6c5988d0-487d-424c-95d5-8818f83efda1")
 	)
+	(text "TP Allows powering\nif there is something\nwrong with the switch."
+		(exclude_from_sim no)
+		(at 320.294 140.462 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "7d11320f-ea4f-4bc2-9a4e-65729296b81c")
+	)
 	(text "RPI boot SD card"
 		(exclude_from_sim no)
 		(at 336.042 55.88 0)
@@ -7972,6 +7982,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7b14efc7-25aa-4ff8-9b58-7076d897df30")
+	)
+	(junction
+		(at 336.55 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "82eb7f0d-d171-4902-a2b0-b1b51875b330")
 	)
 	(junction
 		(at 375.92 195.58)
@@ -9457,7 +9473,7 @@
 	)
 	(wire
 		(pts
-			(xy 353.06 143.51) (xy 334.01 143.51)
+			(xy 353.06 143.51) (xy 336.55 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9704,6 +9720,16 @@
 			(type default)
 		)
 		(uuid "d7adc385-c154-47d6-9304-d1269885489b")
+	)
+	(wire
+		(pts
+			(xy 336.55 143.51) (xy 334.01 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da5a8e52-df7d-4be5-ad55-ed3b66dea24d")
 	)
 	(wire
 		(pts
@@ -15693,6 +15719,85 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
 					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 336.55 143.51 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cc9fa8c8-761e-4750-89c4-3c219bdd7bc5")
+		(property "Reference" "TP4"
+			(at 335.28 139.954 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 334.01 138.9381 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 341.63 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 341.63 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 336.55 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d0356e94-be6b-428f-9bec-80d9960174b0")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
+					(reference "TP4")
 					(unit 1)
 				)
 			)
