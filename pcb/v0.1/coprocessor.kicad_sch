@@ -3693,6 +3693,190 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "TH-1-CC:R_10k"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10k"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C98220.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "100mW 10kΩ 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "YAGEO"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part No." "RC0603FR-0710KL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C98220.html?s_z=n_C98220"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part no." "C98220"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_10k_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_10k_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "TH-1-CC:R_20Ω"
 			(pin_numbers
 				(hide yes)
@@ -4647,12 +4831,6 @@
 		(uuid "1517abf3-78cf-4c0b-a469-fd8636978b4c")
 	)
 	(junction
-		(at 123.19 55.88)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "15ead9d6-189a-4c14-905a-50b0df09d2aa")
-	)
-	(junction
 		(at 214.63 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4663,6 +4841,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "42457a5f-ca2a-4fcf-93d6-4cbdff8ae93c")
+	)
+	(junction
+		(at 123.19 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "48224fd5-1c3a-42a6-b8e1-6f603338ec8d")
 	)
 	(junction
 		(at 110.49 38.1)
@@ -4705,6 +4889,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dddc8ffc-a2c1-4ce9-8b35-76b4d2d3fa45")
+	)
+	(junction
+		(at 134.62 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e9351315-de88-4ae7-8ef5-9fd420416fa3")
 	)
 	(junction
 		(at 49.53 49.53)
@@ -5164,7 +5354,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 55.88) (xy 128.27 55.88)
+			(xy 123.19 55.88) (xy 134.62 55.88)
 		)
 		(stroke
 			(width 0)
@@ -5314,6 +5504,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 55.88) (xy 138.43 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bce179c1-182a-4ff1-9c17-e466c5064754")
+	)
+	(wire
+		(pts
 			(xy 45.72 36.83) (xy 45.72 39.37)
 		)
 		(stroke
@@ -5394,6 +5594,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 46.99) (xy 137.16 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c68ffa3f-2675-4268-8bc8-d5d52d37a188")
+	)
+	(wire
+		(pts
 			(xy 271.78 48.26) (xy 271.78 49.53)
 		)
 		(stroke
@@ -5461,6 +5671,16 @@
 			(type default)
 		)
 		(uuid "d89b5b52-7eeb-4e29-bdd1-91366b417e64")
+	)
+	(wire
+		(pts
+			(xy 134.62 48.26) (xy 134.62 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9c87dc0-9237-42f9-9c30-477e84654dbb")
 	)
 	(wire
 		(pts
@@ -5704,6 +5924,17 @@
 		)
 		(uuid "23de925e-7f3f-41b2-b214-17564ef3f362")
 	)
+	(hierarchical_label "+3v3_LDO"
+		(shape input)
+		(at 137.16 46.99 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "45d997dd-ef6d-4563-8c8a-93f992115039")
+	)
 	(hierarchical_label "U1_TX"
 		(shape input)
 		(at 72.39 86.36 180)
@@ -5772,7 +6003,7 @@
 	)
 	(hierarchical_label "nRESET"
 		(shape input)
-		(at 128.27 55.88 0)
+		(at 138.43 55.88 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5847,7 +6078,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00d99b20-1359-4d6a-a122-bbd24502fe1b")
-		(property "Reference" "C19"
+		(property "Reference" "C27"
 			(at 105.41 32.004 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5953,7 +6184,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "C19")
+					(reference "C27")
 					(unit 1)
 				)
 			)
@@ -5970,7 +6201,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "02e896d1-64e8-4960-9011-acc4bf0f72f3")
-		(property "Reference" "R13"
+		(property "Reference" "R17"
 			(at 254 26.67 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6086,7 +6317,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "R13")
+					(reference "R17")
 					(unit 1)
 				)
 			)
@@ -6265,7 +6496,7 @@
 		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "1ccf1a4b-cf4c-4895-9731-4c47ce792d54")
-		(property "Reference" "R11"
+		(property "Reference" "R14"
 			(at 93.98 43.1799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6373,7 +6604,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "R11")
+					(reference "R14")
 					(unit 1)
 				)
 			)
@@ -6391,7 +6622,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2c53d6dc-3b3a-406c-a0d6-94009b03e82a")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR040"
 			(at 52.07 39.37 0)
 			(hide yes)
 			(show_name no)
@@ -6451,7 +6682,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR030")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -6468,7 +6699,7 @@
 		(in_pos_files yes)
 		(dnp yes)
 		(uuid "32f95264-c454-451a-88ee-57034291f559")
-		(property "Reference" "R10"
+		(property "Reference" "R13"
 			(at 83.82 43.434 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6576,7 +6807,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "R10")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -6593,7 +6824,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "3c1b4be4-9e7e-4067-9546-5e00e8f7033a")
-		(property "Reference" "#PWR033"
+		(property "Reference" "#PWR044"
 			(at 129.54 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -6652,7 +6883,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR033")
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -6760,7 +6991,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "469bf0a0-70fd-4083-b6a6-1070a695682b")
-		(property "Reference" "C17"
+		(property "Reference" "C24"
 			(at 54.61 63.5 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6868,7 +7099,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "C17")
+					(reference "C24")
 					(unit 1)
 				)
 			)
@@ -6966,7 +7197,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "51115eac-5e66-4638-84db-e707e85ff0b3")
-		(property "Reference" "U5"
+		(property "Reference" "U7"
 			(at 35.2425 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7260,7 +7491,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "U5")
+					(reference "U7")
 					(unit 2)
 				)
 			)
@@ -7277,7 +7508,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "5351667f-b0d0-4804-aa85-914d44a62b23")
-		(property "Reference" "R12"
+		(property "Reference" "R16"
 			(at 240.03 43.434 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7393,7 +7624,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "R12")
+					(reference "R16")
 					(unit 1)
 				)
 			)
@@ -7410,7 +7641,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "63586cc2-feb3-4bca-ab52-c999b6383c14")
-		(property "Reference" "#PWR031"
+		(property "Reference" "#PWR042"
 			(at 67.31 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -7470,7 +7701,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR031")
+					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -7488,7 +7719,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6777bbe5-cf97-4ae3-aaf3-8310b0404863")
-		(property "Reference" "#PWR034"
+		(property "Reference" "#PWR045"
 			(at 213.36 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -7548,7 +7779,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR034")
+					(reference "#PWR045")
 					(unit 1)
 				)
 			)
@@ -7565,7 +7796,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "69c39efa-598c-43ab-a88d-d1ee6a5033c6")
-		(property "Reference" "J8"
+		(property "Reference" "J11"
 			(at 214.63 79.502 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7627,7 +7858,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "J8")
+					(reference "J11")
 					(unit 1)
 				)
 			)
@@ -7644,7 +7875,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "70a57bf5-1747-4c9d-9b31-382d97caf6f1")
-		(property "Reference" "JP3"
+		(property "Reference" "JP4"
 			(at 245.11 77.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7707,7 +7938,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "JP3")
+					(reference "JP4")
 					(unit 1)
 				)
 			)
@@ -8025,10 +8256,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "796200f3-cc3d-4d9b-9e2b-05e58c9068a0")
-		(property "Reference" "TP2"
-			(at 125.73 51.3079 0)
+		(property "Reference" "TP4"
+			(at 124.46 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8040,6 +8270,7 @@
 		)
 		(property "Value" "TestPoint"
 			(at 125.73 53.8479 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8088,7 +8319,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "TP2")
+					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -8105,7 +8336,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7b6e5a9b-3c1b-4f8c-9ef5-1183347caaa5")
-		(property "Reference" "#PWR038"
+		(property "Reference" "#PWR041"
 			(at 54.61 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -8165,7 +8396,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR038")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -8182,7 +8413,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "90a5c0aa-0232-4037-9806-20ae184e85fe")
-		(property "Reference" "#PWR032"
+		(property "Reference" "#PWR043"
 			(at 101.6 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -8241,7 +8472,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR032")
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -8381,7 +8612,7 @@
 		(in_pos_files yes)
 		(dnp yes)
 		(uuid "91733bde-1b74-486d-9212-1849ab2f7693")
-		(property "Reference" "R9"
+		(property "Reference" "R12"
 			(at 53.086 55.118 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8487,7 +8718,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "R9")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -8505,7 +8736,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9d0915de-5f3c-41ee-90f0-8edec79ec2f6")
-		(property "Reference" "C18"
+		(property "Reference" "C26"
 			(at 71.12 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8613,7 +8844,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "C18")
+					(reference "C26")
 					(unit 1)
 				)
 			)
@@ -8710,7 +8941,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b52ebf82-0516-4f36-851d-2770f41a1a6a")
-		(property "Reference" "JP4"
+		(property "Reference" "JP5"
 			(at 245.11 82.804 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8773,7 +9004,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "JP4")
+					(reference "JP5")
 					(unit 1)
 				)
 			)
@@ -8790,7 +9021,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "baf89e55-11f6-4d9c-94ea-ef40245fbf71")
-		(property "Reference" "U5"
+		(property "Reference" "U7"
 			(at 77.47 60.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9086,7 +9317,133 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "U5")
+					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:R_10k")
+		(at 134.62 52.07 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bca57acb-50a5-4626-bc5a-a3d5664282af")
+		(property "Reference" "R15"
+			(at 137.16 50.7999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 137.16 53.3399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 132.842 52.07 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C98220.pdf"
+			(at 134.62 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100mW 10kΩ 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
+			(at 134.62 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 134.62 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part No." "RC0603FR-0710KL"
+			(at 134.62 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C98220.html?s_z=n_C98220"
+			(at 134.62 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C98220"
+			(at 134.62 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "50db9eb3-7e87-469f-a15d-8d919acee9f4")
+		)
+		(pin "1"
+			(uuid "3791bb60-7818-4d23-860a-1a7e9a98eab7")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
+					(reference "R15")
 					(unit 1)
 				)
 			)
@@ -9103,7 +9460,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cde9e071-b955-4519-bbf6-66770b5c9c1a")
-		(property "Reference" "C20"
+		(property "Reference" "C28"
 			(at 125.73 32.004 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9209,7 +9566,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "C20")
+					(reference "C28")
 					(unit 1)
 				)
 			)
@@ -9226,7 +9583,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ce9b69bf-7245-4668-8757-82ae685134df")
-		(property "Reference" "#PWR029"
+		(property "Reference" "#PWR039"
 			(at 50.8 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -9286,7 +9643,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR029")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -9303,7 +9660,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e3ba0513-1672-465a-9f04-170d3c65580b")
-		(property "Reference" "C21"
+		(property "Reference" "C29"
 			(at 217.424 44.958 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9419,7 +9776,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "C21")
+					(reference "C29")
 					(unit 1)
 				)
 			)
@@ -9437,7 +9794,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e90e400b-dc22-41cb-9236-b422a5b7f717")
-		(property "Reference" "#PWR036"
+		(property "Reference" "#PWR046"
 			(at 271.78 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -9497,7 +9854,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "#PWR036")
+					(reference "#PWR046")
 					(unit 1)
 				)
 			)
@@ -9514,7 +9871,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ea4c7723-6eb0-44e4-954c-e6e264f6c008")
-		(property "Reference" "JP5"
+		(property "Reference" "JP3"
 			(at 227.33 41.91 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9577,7 +9934,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "JP5")
+					(reference "JP3")
 					(unit 1)
 				)
 			)
@@ -9595,7 +9952,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fb8975b8-1b6a-4c43-907c-4bd1d9dcdf8f")
-		(property "Reference" "C29"
+		(property "Reference" "C25"
 			(at 58.42 44.4499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9703,7 +10060,7 @@
 		(instances
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "C29")
+					(reference "C25")
 					(unit 1)
 				)
 			)
