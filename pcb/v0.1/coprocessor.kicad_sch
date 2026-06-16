@@ -694,6 +694,205 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "TH-1-CC:C_100nf"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nf"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C1591.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "100nF ±10% 50V Ceramic Capacitor X7R 0603"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Samsung Electro-Mechanics"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "CL10B104KB8NNNC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C1591.html?s_z=n_100nf%2520capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part no." "C1591"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_100nf_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_100nf_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "TH-1-CC:C_10uf"
 			(pin_numbers
 				(hide yes)
@@ -1283,6 +1482,225 @@
 				(pin passive line
 					(at 0 -3.81 90)
 					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "TH-1-CC:FerriteBead_470"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "FB"
+				(at -3.81 0.635 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "FerriteBead_470"
+				(at 3.81 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C97853.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFdUF1fTlVWVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4%3D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "FERRITE BEAD 470Ω@100hz 0603 1LN"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "muRata"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "BLM18PG471SN1D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C97853.html?s_z=n_q_ferrite%2520bead%25200603&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFdUF1fTlVWVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4%3D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part no." "C97853"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Stock" "NO!"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "L ferrite bead inductor filter"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Inductor_* L_* *Ferrite*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "FerriteBead_470_0_1"
+				(polyline
+					(pts
+						(xy -2.7686 0.4064) (xy -1.7018 2.2606) (xy 2.7686 -0.3048) (xy 1.6764 -2.159) (xy -2.7686 0.4064)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27) (xy 0 1.2954)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -1.2192)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "FerriteBead_470_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
 					(name ""
 						(effects
 							(font
@@ -4183,6 +4601,16 @@
 		)
 		(uuid "a912a09a-310c-405f-88af-1d4fd29123e6")
 	)
+	(text "Both bulk caps should\nbe as close as possible\nto the nRF. The 100nf\nshould be the closest.\n"
+		(exclude_from_sim no)
+		(at 51.562 20.574 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c79e246d-1700-4a07-9420-ca0bec0639dd")
+	)
 	(text "Solder jumpers decide\nif its programmed through\npins or through the RPI"
 		(exclude_from_sim no)
 		(at 240.792 71.628 0)
@@ -4199,6 +4627,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "01961988-51bf-4b14-b6eb-7a242b2651ee")
+	)
+	(junction
+		(at 67.31 41.91)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "06fac67f-20c9-4f50-b5b6-ffb4a05a8aa2")
 	)
 	(junction
 		(at 50.8 57.15)
@@ -4255,10 +4689,10 @@
 		(uuid "8bb74bd5-a490-42e6-82ad-e6f7318d9713")
 	)
 	(junction
-		(at 60.96 41.91)
+		(at 54.61 41.91)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "d07a0ad6-eeaf-4083-ad72-6bdc16f0330a")
+		(uuid "c0d5b7f7-1a4e-48c3-ac52-1581f457241e")
 	)
 	(junction
 		(at 223.52 48.26)
@@ -4400,7 +4834,7 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 41.91) (xy 60.96 41.91)
+			(xy 49.53 41.91) (xy 54.61 41.91)
 		)
 		(stroke
 			(width 0)
@@ -4427,16 +4861,6 @@
 			(type default)
 		)
 		(uuid "37515186-48fd-4c18-8e47-ab7088cd45ef")
-	)
-	(wire
-		(pts
-			(xy 60.96 41.91) (xy 68.58 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "377c2d09-9a40-4229-a2c9-c0dc8c20c3f7")
 	)
 	(wire
 		(pts
@@ -4760,6 +5184,16 @@
 	)
 	(wire
 		(pts
+			(xy 67.31 41.91) (xy 68.58 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "94782037-0ba8-4fdf-845a-7f66002d25a0")
+	)
+	(wire
+		(pts
 			(xy 110.49 49.53) (xy 99.06 49.53)
 		)
 		(stroke
@@ -4930,6 +5364,16 @@
 	)
 	(wire
 		(pts
+			(xy 54.61 41.91) (xy 67.31 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1bfad1d-d0a9-466b-ba0b-437028e68b16")
+	)
+	(wire
+		(pts
 			(xy 91.44 48.26) (xy 91.44 59.69)
 		)
 		(stroke
@@ -5077,6 +5521,16 @@
 			(type default)
 		)
 		(uuid "e91560d6-164d-4bea-9d9a-412307a45eb7")
+	)
+	(wire
+		(pts
+			(xy 68.58 27.94) (xy 68.58 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb6cf1e7-fe0d-4499-83c6-d45690a13546")
 	)
 	(wire
 		(pts
@@ -5296,7 +5750,7 @@
 	)
 	(hierarchical_label "+3v3_LDO"
 		(shape input)
-		(at 68.58 36.83 90)
+		(at 68.58 27.94 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6947,7 +7401,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 60.96 49.53 0)
+		(at 67.31 49.53 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6957,7 +7411,7 @@
 		(dnp no)
 		(uuid "63586cc2-feb3-4bca-ab52-c999b6383c14")
 		(property "Reference" "#PWR031"
-			(at 60.96 55.88 0)
+			(at 67.31 55.88 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6968,7 +7422,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 57.912 50.292 0)
+			(at 69.342 49.784 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6978,7 +7432,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 49.53 0)
+			(at 67.31 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6989,7 +7443,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 49.53 0)
+			(at 67.31 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7000,7 +7454,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 60.96 49.53 0)
+			(at 67.31 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7425,6 +7879,143 @@
 		)
 	)
 	(symbol
+		(lib_id "TH-1-CC:FerriteBead_470")
+		(at 68.58 33.02 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7895624d-b584-4ffc-b3aa-23dae4ee5620")
+		(property "Reference" "FB3"
+			(at 69.85 30.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "FerriteBead_470"
+			(at 72.39 32.9692 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 66.802 33.02 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C97853.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFdUF1fTlVWVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4%3D"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "FERRITE BEAD 470Ω@100hz 0603 1LN"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "muRata"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "BLM18PG471SN1D"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C97853.html?s_z=n_q_ferrite%2520bead%25200603&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFdUF1fTlVWVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4%3D"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C97853"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 70.866 35.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "48f34840-5034-4735-9a62-0340d5c5d5d6")
+		)
+		(pin "2"
+			(uuid "cf0cbe9c-8f55-413d-8bb1-db44090b9193")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
+					(reference "FB3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 123.19 55.88 0)
 		(unit 1)
@@ -7498,6 +8089,83 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
 					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 54.61 49.53 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7b6e5a9b-3c1b-4f8c-9ef5-1183347caaa5")
+		(property "Reference" "#PWR038"
+			(at 54.61 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 56.642 49.784 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 54.61 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 54.61 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 54.61 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a0865315-49c0-484f-a6cd-f43ed5f10f03")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
+					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -7827,7 +8495,7 @@
 	)
 	(symbol
 		(lib_id "TH-1-CC:C_10uf")
-		(at 60.96 45.72 0)
+		(at 67.31 45.72 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7838,7 +8506,7 @@
 		(fields_autoplaced yes)
 		(uuid "9d0915de-5f3c-41ee-90f0-8edec79ec2f6")
 		(property "Reference" "C18"
-			(at 64.77 44.45 0)
+			(at 71.12 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7849,7 +8517,7 @@
 			)
 		)
 		(property "Value" "10uf"
-			(at 64.77 46.99 0)
+			(at 71.12 46.99 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7860,7 +8528,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 61.9252 49.53 0)
+			(at 68.2752 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7871,7 +8539,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/C95841.pdf"
-			(at 60.96 45.72 0)
+			(at 67.31 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7882,7 +8550,7 @@
 			)
 		)
 		(property "Description" "Unpolarized 10uF ±10% 16V Ceramic Capacitor X7R 0805"
-			(at 60.96 45.72 0)
+			(at 67.31 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7893,7 +8561,7 @@
 			)
 		)
 		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 60.96 45.72 0)
+			(at 67.31 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7904,7 +8572,7 @@
 			)
 		)
 		(property "Mfr. Part no." "CL21B106KOQNNNE"
-			(at 60.96 45.72 0)
+			(at 67.31 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7915,7 +8583,7 @@
 			)
 		)
 		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C95841.html?s_z=n_C95841"
-			(at 60.96 45.72 0)
+			(at 67.31 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7926,7 +8594,7 @@
 			)
 		)
 		(property "LCSC Part no." "C95841"
-			(at 60.96 45.72 0)
+			(at 67.31 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8910,6 +9578,132 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
 					(reference "JP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:C_100nf")
+		(at 54.61 45.72 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fb8975b8-1b6a-4c43-907c-4bd1d9dcdf8f")
+		(property "Reference" "C29"
+			(at 58.42 44.4499 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nf"
+			(at 58.42 46.9899 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 55.5752 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C1591.pdf"
+			(at 54.61 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100nF ±10% 50V Ceramic Capacitor X7R 0603"
+			(at 54.61 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 54.61 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "CL10B104KB8NNNC"
+			(at 54.61 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C1591.html?s_z=n_100nf%2520capacitor"
+			(at 54.61 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C1591"
+			(at 54.61 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "74b1ee36-9fab-46c5-85bd-82ff37fccc61")
+		)
+		(pin "1"
+			(uuid "1bf53b52-3228-4e5e-9d3f-7324ee758ac0")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
+					(reference "C29")
 					(unit 1)
 				)
 			)

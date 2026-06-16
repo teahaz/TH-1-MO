@@ -635,7 +635,7 @@
         "uuid": "5b8aa782-5c3d-43e7-a869-3bd000015f52"
       }
     ],
-    "used_designators": "TP4",
+    "used_designators": "C29,#PWR38,FB3,TP4",
     "variants": []
   },
   "sheets": [

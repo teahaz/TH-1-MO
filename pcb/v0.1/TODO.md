@@ -11,7 +11,7 @@
     - Verify power wiring
     - does nRESET need to be pulled high?
     - should we add a way to detect if the pi is on?
-- [ ] Ferrite bead for the NRF
+- [x] Ferrite bead for the NRF
 - [ ] Ferrite bead for 3v3 out (or make it pi rail)
 - [ ] Add NRF test points where bridging is not testable
 - [ ] Wire up USB connectors
