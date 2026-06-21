@@ -4764,7 +4764,7 @@
 		)
 		(uuid "232c10f1-b4e6-44db-b992-57b03c67f807")
 	)
-	(text "why are we adding\nthe resistors to the \nlogic analyser line.\nCould the same lines be\nreused for different things?\nCan we add the resistors to all\nor forgoe them in each place?"
+	(text "Set 8 pins as \"input only\"\nfor the logic analyser with 470R\non them. The rest (ideally 8 more\nwith analog as well) as general purpose.\n\nThis could possibly be done on the pinout\npage."
 		(exclude_from_sim no)
 		(at 146.05 123.698 0)
 		(effects

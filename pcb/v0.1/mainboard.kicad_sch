@@ -1296,7 +1296,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "TH-1-CC:USB_C_Receptacle_fw"
+		(symbol "TH-1-CC:TYPE_C_Receptacle"
 			(pin_names
 				(offset 1.016)
 			)
@@ -1316,7 +1316,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "USB_C_Receptacle_fw"
+			(property "Value" "TYPE_C_Receptacle"
 				(at 10.16 29.21 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1338,7 +1338,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
+			(property "Datasheet" "https://www.molex.com/pdm_docs/ps/PS-105448-001.pdf"
 				(at 3.81 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1360,7 +1360,7 @@
 					)
 				)
 			)
-			(property "Manufacturer" "GCT"
+			(property "Manufacturer" "MOLEX"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1371,7 +1371,7 @@
 					)
 				)
 			)
-			(property "Mfr. Part no" "USB4056-03-A"
+			(property "Mfr. Part no" "1054500101"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1382,7 +1382,7 @@
 					)
 				)
 			)
-			(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038"
+			(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/molex/1054500101/5843890"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1393,7 +1393,7 @@
 					)
 				)
 			)
-			(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
+			(property "Digikey Part no" "WM12856TR-ND"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1437,7 +1437,7 @@
 					)
 				)
 			)
-			(symbol "USB_C_Receptacle_fw_0_0"
+			(symbol "TYPE_C_Receptacle_0_0"
 				(rectangle
 					(start -0.254 -35.56)
 					(end 0.254 -34.544)
@@ -1637,7 +1637,7 @@
 					)
 				)
 			)
-			(symbol "USB_C_Receptacle_fw_0_1"
+			(symbol "TYPE_C_Receptacle_0_1"
 				(rectangle
 					(start -10.16 27.94)
 					(end 10.16 -35.56)
@@ -1757,7 +1757,7 @@
 					)
 				)
 			)
-			(symbol "USB_C_Receptacle_fw_1_1"
+			(symbol "TYPE_C_Receptacle_1_1"
 				(circle
 					(center -2.54 1.143)
 					(radius 0.635)
@@ -4003,6 +4003,210 @@
 		)
 	)
 	(symbol
+		(lib_id "TH-1-CC:TYPE_C_Receptacle")
+		(at 34.29 66.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2b797151-5ab0-4662-b9e9-0b6be103671c")
+		(property "Reference" "J2"
+			(at 34.29 33.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TYPE_C_Receptacle"
+			(at 34.29 35.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 38.1 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/pdm_docs/ps/PS-105448-001.pdf"
+			(at 38.1 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "USB Full-Featured Type-C Receptacle connector"
+			(at 34.29 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "MOLEX"
+			(at 34.29 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no" "1054500101"
+			(at 34.29 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/molex/1054500101/5843890"
+			(at 34.29 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Digikey Part no" "WM12856TR-ND"
+			(at 34.29 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 34.29 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "B5"
+			(uuid "1b5f8a8f-2577-405e-8fb5-4531598117ca")
+		)
+		(pin "B6"
+			(uuid "dec81be2-e10f-4b50-bb8e-0ad6824d40a3")
+		)
+		(pin "B11"
+			(uuid "681e5a65-6529-46b1-8278-f8625ed84895")
+		)
+		(pin "SH"
+			(uuid "86bf3f04-4dee-40cc-aff4-11a15a5c8837")
+		)
+		(pin "B7"
+			(uuid "b74fc0a7-91cf-41ff-8a37-1bc37d7ac0ad")
+		)
+		(pin "B8"
+			(uuid "3190142d-bd51-4c07-9fd1-3ccc3498a1f2")
+		)
+		(pin "B9"
+			(uuid "7e39af8e-35e4-48bf-b374-c81cbfa1259d")
+		)
+		(pin "B12"
+			(uuid "068921e7-d5a0-4d10-91dc-14f2b98516d8")
+		)
+		(pin "B10"
+			(uuid "583140e2-ee63-45e9-966c-fc5bf5c87124")
+		)
+		(pin "A6"
+			(uuid "1c24005e-0ee6-4545-8824-29f29c1d1e7b")
+		)
+		(pin "A7"
+			(uuid "fccfe5c3-c90e-4c53-a83e-be248948b30c")
+		)
+		(pin "A8"
+			(uuid "a797ac76-7f2b-4305-ba31-de4c00efe711")
+		)
+		(pin "A9"
+			(uuid "a0ab50d7-0c2a-4ca9-b055-6feb747b04ac")
+		)
+		(pin "A10"
+			(uuid "a39030c9-0252-4661-a614-b88d38d8a382")
+		)
+		(pin "A11"
+			(uuid "12b98f90-0b5e-4919-a6e6-5b8ff06addc7")
+		)
+		(pin "A12"
+			(uuid "1fb72757-6870-49c7-beb9-105e66952643")
+		)
+		(pin "B1"
+			(uuid "81124528-a9a5-4985-9241-73fd2998c57f")
+		)
+		(pin "B2"
+			(uuid "3c141a6c-d17c-4acd-8dc6-044cb965f108")
+		)
+		(pin "B3"
+			(uuid "af1f0e0f-3c0f-441a-ae2c-665e398655f1")
+		)
+		(pin "B4"
+			(uuid "0379c635-3d45-40db-a30d-1c31fd2e7317")
+		)
+		(pin "A1"
+			(uuid "59440a39-de3f-40b5-8b0e-af2ae1158abc")
+		)
+		(pin "A2"
+			(uuid "39efeb11-b9b2-4ce4-9f64-c4bf5391ab73")
+		)
+		(pin "A3"
+			(uuid "c3e23330-b553-4ec5-ab91-a99dfc0f4316")
+		)
+		(pin "A4"
+			(uuid "73deffc2-d679-44e5-98ce-f2f1b4e3d787")
+		)
+		(pin "A5"
+			(uuid "e5b19f0b-18a0-4395-a018-7c48e8ba0327")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
 		(at 25.4 151.13 0)
 		(unit 1)
@@ -5158,209 +5362,6 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52"
 					(reference "#PWR04")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-1-CC:USB_C_Receptacle_fw")
-		(at 34.29 66.04 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "e92b176c-5597-40f8-b2d2-d7b6335bb610")
-		(property "Reference" "J2"
-			(at 34.29 33.02 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "USB_C_Receptacle_fw"
-			(at 34.29 35.56 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 38.1 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
-			(at 38.1 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "USB Full-Featured Type-C Receptacle connector"
-			(at 34.29 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "GCT"
-			(at 34.29 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part no" "USB4056-03-A"
-			(at 34.29 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038"
-			(at 34.29 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
-			(at 34.29 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 34.29 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "A11"
-			(uuid "484711f1-ed5e-436d-9f94-c1011634c949")
-		)
-		(pin "B7"
-			(uuid "3f56e1fa-d680-4c93-a26c-a192380bfbce")
-		)
-		(pin "B1"
-			(uuid "5d57a8b2-bd86-4b6c-ae73-a5069de80412")
-		)
-		(pin "B4"
-			(uuid "9d1c54ff-3e71-4147-8aa5-53073f57e5f9")
-		)
-		(pin "A12"
-			(uuid "d73ad82c-a21b-40ee-a134-801d2ba6cad9")
-		)
-		(pin "B6"
-			(uuid "7c27be03-c1d7-404a-b28d-a2cd5aafb496")
-		)
-		(pin "A9"
-			(uuid "7e6c5db7-7873-471e-a200-fe512e8fe546")
-		)
-		(pin "B11"
-			(uuid "3621d2c9-0ab3-4f45-86c5-0c95959c3692")
-		)
-		(pin "B2"
-			(uuid "4a578e1b-b806-4d8b-a087-0fb1a6893647")
-		)
-		(pin "B12"
-			(uuid "2d4f4241-5c77-4b8f-9bcd-93f68ccf3ab1")
-		)
-		(pin "A7"
-			(uuid "9ba8da93-895f-4818-b03d-c20328561cab")
-		)
-		(pin "A6"
-			(uuid "eb021d00-74a4-4c2e-bf33-a7c619490f26")
-		)
-		(pin "A5"
-			(uuid "66e828d8-bfeb-4604-b4fc-bb5659235b6b")
-		)
-		(pin "A4"
-			(uuid "3f07f7e9-2e94-4b85-9099-87e092739e8d")
-		)
-		(pin "A3"
-			(uuid "2daa85d4-7b2d-49f6-aac7-27f6a9600110")
-		)
-		(pin "A2"
-			(uuid "7f612735-01fd-445e-b630-61c6260137a6")
-		)
-		(pin "A1"
-			(uuid "1309928f-beeb-4d08-b6ef-2389bd1fdc85")
-		)
-		(pin "B3"
-			(uuid "be5b389c-5ae3-451c-8b42-1a991604830b")
-		)
-		(pin "A10"
-			(uuid "c1f75906-d9f2-4767-b0b0-655467e8e3c9")
-		)
-		(pin "B5"
-			(uuid "4966a59a-2a05-43a6-9d0f-78f5fc7c8cc3")
-		)
-		(pin "B8"
-			(uuid "d50e8b5f-9be3-407e-9713-70d44841bf7b")
-		)
-		(pin "SH"
-			(uuid "9f543e1c-9a6c-4387-869e-deb237d0b2e3")
-		)
-		(pin "A8"
-			(uuid "84578c04-4faa-4e9b-b5b7-cec27a42352e")
-		)
-		(pin "B10"
-			(uuid "7cb4e698-4799-400d-9ade-22228ead8ce3")
-		)
-		(pin "B9"
-			(uuid "9ceae56e-3810-4f9a-b2c4-41fe6e7c55b7")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52"
-					(reference "J2")
 					(unit 1)
 				)
 			)

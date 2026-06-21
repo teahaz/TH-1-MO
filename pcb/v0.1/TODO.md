@@ -12,16 +12,15 @@
     - does nRESET need to be pulled high?
     - should we add a way to detect if the pi is on?
 - [x] Ferrite bead for the NRF
-- [ ] Ferrite bead for 3v3 out (or make it pi rail)
-- [ ] Add NRF test points where bridging is not testable
-- [ ] Wire up USB connectors
-- [ ] Signal analyser pins
-- [ ] find part for display connector
-- [ ] find part for HDMI
 - [ ] Deal with the current limit ICs
+- [ ] Wire up USB connectors
+- [ ] Pinout nrf
+- [ ] Pinout pi
+- [ ] find part for display connector
+- [ ] Remove HDMI
 - [ ] ESD protection
 - [ ] Remove unused pins
-
+- [ ] Add NRF test points where bridging is not testable
 
 # DAC notes
 
