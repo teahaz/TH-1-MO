@@ -14,10 +14,11 @@
 - [x] Ferrite bead for the NRF
 - [x] Deal with the current limit ICs
 - [x] Wire up USB connectors
-- [ ] Remove HDMI
+- [x] Remove HDMI
 - [ ] find part for display connector
 - [ ] Pinout nrf
 - [ ] Pinout pi
+- [ ] Find part for CM5 connector
 - [ ] ESD protection
 - [ ] Remove unused pins
 - [ ] Add NRF test points where bridging is not testable
