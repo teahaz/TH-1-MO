@@ -16,7 +16,7 @@
 - [x] Wire up USB connectors
 - [x] Remove HDMI
 - [x] find part for display connector
-- [ ] Find part for CM5 connector
+- [x] Find part for CM5 connector
 - [ ] Pinout nrf
 - [ ] Pinout pi
 - [ ] ESD protection
@@ -28,7 +28,6 @@
     - every subsystem looks ok
     - power lines look ok
     - everyone has the correct power
-
 
 # DAC notes
 

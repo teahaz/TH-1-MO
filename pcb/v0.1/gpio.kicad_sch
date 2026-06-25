@@ -11,14 +11,21 @@
 		(company "Teahaz Computer")
 	)
 	(lib_symbols
-		(symbol "CM5IO:ComputeModule5-CM5"
+		(symbol "Connector:TestPoint"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "Module"
-				(at 113.03 -68.58 0)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -27,8 +34,8 @@
 					)
 				)
 			)
-			(property "Value" "ComputeModule5-CM5"
-				(at 140.97 2.54 0)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -37,8 +44,8 @@
 					)
 				)
 			)
-			(property "Footprint" "CM5IO:Raspberry-Pi-5-Compute-Module"
-				(at 142.24 -26.67 0)
+			(property "Footprint" ""
+				(at 5.08 0 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -49,6 +56,1180 @@
 				)
 			)
 			(property "Datasheet" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "TH-1-CC:AudioJack3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 8.89 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "AudioJack3"
+				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.kycon.com/Pub_Eng_Draw/STX-3000.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Audio Jack, 3 Poles (Stereo / TRS)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Kycon, Inc."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "STX-3000"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/kycon-inc/STX-3000/9975995"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Digikey Part no." "2092-STX-3000-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Stock" "NO!"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "audio jack receptacle stereo headphones phones TRS connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Jack*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AudioJack3_0_1"
+				(rectangle
+					(start -5.08 -5.08)
+					(end -6.35 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 -2.54) (xy -1.27 -3.175) (xy -0.635 -2.54) (xy -0.635 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0.635 -3.175) (xy 1.27 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.54 3.81)
+					(end -5.08 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy -2.54 2.54) (xy -2.54 -2.54) (xy -3.175 -3.175) (xy -3.81 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "AudioJack3_1_1"
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "R"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "T"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "TH-1-CC:C_100nf"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nf"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C1591.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "100nF ±10% 50V Ceramic Capacitor X7R 0603"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Samsung Electro-Mechanics"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "CL10B104KB8NNNC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C1591.html?s_z=n_100nf%2520capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part no." "C1591"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_100nf_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_100nf_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "TH-1-CC:C_10uf"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "10uf"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C95841.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Unpolarized 10uF ±10% 16V Ceramic Capacitor X7R 0805"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Samsung Electro-Mechanics"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "CL21B106KOQNNNE"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C95841.html?s_z=n_C95841"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part no." "C95841"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_10uf_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_10uf_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "TH-1-CC:C_2.2nf"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "2.2nf"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C33353.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFXV1JWRlNfVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "CAP CER 2.2nF 50V C0G 0603"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Samsung Electro-Mechanics"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "CL10C222JB8NNNC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C33353.html?s_z=n_q_t_2.2nf%25200603&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFXV1JWRlNfVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part no." "C33353"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Stock" "NO!"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_2.2nf_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_2.2nf_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "TH-1-CC:C_2.2uf"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "2.2uf"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C913904.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFaUlJSQlNfUTsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slTlZWUldIHxUDCw%3D%3D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "CAP CER 2.2uF 50V X5R 0603"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Samsung Electro-Mechanics"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "CL10A225KB8NNNC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C913904.html?s_z=n_q_t_2.2uF%25200603&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFaUlJSQlNfUTsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slTlZWUldIHxUDCw%3D%3D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part no." "C913904"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Stock" "NO!"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_2.2uf_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_2.2uf_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "TH-1-CC:ComputeModule5-CM5_connectors"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 113.03 -68.58 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "ComputeModule5-CM5_connector"
+				(at 140.97 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
 				(at 142.24 -26.67 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -59,7 +1240,18 @@
 					)
 				)
 			)
-			(property "Description" "RaspberryPi Compute module 5"
+			(property "Datasheet" "https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/boardwiretoboard/bwb_bergstak_0_40mm_btb.pdf"
+				(at 142.24 -26.67 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "RaspberryPi Compute module : BERGSTAK 0.4MM, 100POSITION, REC"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -70,7 +1262,7 @@
 					)
 				)
 			)
-			(property "Field4" "Amphenol"
+			(property "Manufacturer" "Amphenol"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -80,8 +1272,40 @@
 					)
 				)
 			)
-			(property "Field5" "2x 10164227-1001A1RLF"
+			(property "Mfr. Part no." "10164227-1001A1RLF"
 				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor DigiKey" "https://www.digikey.co.uk/en/products/detail/amphenol-cs-fci/10164227-1001A1RLF/16908921"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Digikey Part no." "609-10164227-1001A1RLFTR-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Stock" "NO!"
+				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -100,7 +1324,7 @@
 					)
 				)
 			)
-			(symbol "ComputeModule5-CM5_1_0"
+			(symbol "ComputeModule5-CM5_connectors_1_0"
 				(text "GPIO"
 					(at 0 6.35 0)
 					(effects
@@ -110,7 +1334,7 @@
 					)
 				)
 			)
-			(symbol "ComputeModule5-CM5_1_1"
+			(symbol "ComputeModule5-CM5_connectors_1_1"
 				(rectangle
 					(start -30.48 -71.12)
 					(end 25.4 58.42)
@@ -1955,7 +3179,7 @@
 					)
 				)
 			)
-			(symbol "ComputeModule5-CM5_2_1"
+			(symbol "ComputeModule5-CM5_connectors_2_1"
 				(rectangle
 					(start 114.3 -66.04)
 					(end 165.1 63.5)
@@ -3768,1198 +4992,6 @@
 						)
 					)
 					(number "200"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Connector:TestPoint"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.762)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "TH-1-CC:AudioJack3"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "J"
-				(at 0 8.89 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "AudioJack3"
-				(at 0 6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.kycon.com/Pub_Eng_Draw/STX-3000.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Audio Jack, 3 Poles (Stereo / TRS)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "Kycon, Inc."
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mfr. Part no." "STX-3000"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/kycon-inc/STX-3000/9975995"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Digikey Part no." "2092-STX-3000-ND"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Stock" "NO!"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "audio jack receptacle stereo headphones phones TRS connector"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Jack*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "AudioJack3_0_1"
-				(rectangle
-					(start -5.08 -5.08)
-					(end -6.35 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.905 -2.54) (xy -1.27 -3.175) (xy -0.635 -2.54) (xy -0.635 0) (xy 2.54 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.54) (xy 0.635 -3.175) (xy 1.27 -2.54) (xy 2.54 -2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 2.54 3.81)
-					(end -5.08 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy -2.54 2.54) (xy -2.54 -2.54) (xy -3.175 -3.175) (xy -3.81 -2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "AudioJack3_1_1"
-				(pin passive line
-					(at 5.08 0 180)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "R"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 2.54 180)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -2.54 180)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "T"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "TH-1-CC:C_100nf"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "100nf"
-				(at 0.635 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-				(at 0.9652 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C1591.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "100nF ±10% 50V Ceramic Capacitor X7R 0603"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "Samsung Electro-Mechanics"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mfr. Part no." "CL10B104KB8NNNC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C1591.html?s_z=n_100nf%2520capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part no." "C1591"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "C_100nf_0_1"
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_100nf_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "TH-1-CC:C_10uf"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "10uf"
-				(at 0.635 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-				(at 0.9652 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C95841.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Unpolarized 10uF ±10% 16V Ceramic Capacitor X7R 0805"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "Samsung Electro-Mechanics"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mfr. Part no." "CL21B106KOQNNNE"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C95841.html?s_z=n_C95841"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part no." "C95841"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "C_10uf_0_1"
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_10uf_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "TH-1-CC:C_2.2nf"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "2.2nf"
-				(at 0.635 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-				(at 0.9652 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C33353.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFXV1JWRlNfVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "CAP CER 2.2nF 50V C0G 0603"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "Samsung Electro-Mechanics"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mfr. Part no." "CL10C222JB8NNNC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C33353.html?s_z=n_q_t_2.2nf%25200603&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFXV1JWRlNfVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part no." "C33353"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Stock" "NO!"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "C_2.2nf_0_1"
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_2.2nf_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "TH-1-CC:C_2.2uf"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "2.2uf"
-				(at 0.635 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-				(at 0.9652 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C913904.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFaUlJSQlNfUTsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slTlZWUldIHxUDCw%3D%3D"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "CAP CER 2.2uF 50V X5R 0603"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "Samsung Electro-Mechanics"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mfr. Part no." "CL10A225KB8NNNC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C913904.html?s_z=n_q_t_2.2uF%25200603&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRlFaUlJSQlNfUTsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slTlZWUldIHxUDCw%3D%3D"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part no." "C913904"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Stock" "NO!"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "C_2.2uf_0_1"
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_2.2uf_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7864,12 +7896,6 @@
 		(uuid "0a45a5ab-288e-441e-ba99-c634fc07b5e9")
 	)
 	(junction
-		(at 156.21 167.64)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "101e1277-ae6b-4a75-ad45-1a2c9dc505c8")
-	)
-	(junction
 		(at 160.02 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7894,6 +7920,12 @@
 		(uuid "23cea4c6-7061-47ff-905c-c6cb94e588e6")
 	)
 	(junction
+		(at 156.21 167.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "27c2058a-4d1d-48ce-b5bb-3e2ef262b2cc")
+	)
+	(junction
 		(at 293.37 220.98)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7904,6 +7936,12 @@
 		(diameter 1.016)
 		(color 0 0 0 0)
 		(uuid "2cba254f-3b05-4a72-afb4-21ce6cf6a20f")
+	)
+	(junction
+		(at 156.21 160.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "389a50c3-7492-4b89-bc94-8063feafd213")
 	)
 	(junction
 		(at 373.38 111.76)
@@ -7924,12 +7962,6 @@
 		(uuid "4305ba8e-5318-42c9-b2ce-a90dc596d101")
 	)
 	(junction
-		(at 156.21 165.1)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4a1041c4-ba6e-492e-85a6-2133ce6b9dd9")
-	)
-	(junction
 		(at 318.77 223.52)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7942,22 +7974,10 @@
 		(uuid "50922766-74d8-4f0d-abdb-5edbbdc8d831")
 	)
 	(junction
-		(at 156.21 170.18)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "58a45996-74ba-438d-9255-31ab67a6dba6")
-	)
-	(junction
 		(at 160.02 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5f361ea0-2b51-4d82-b3cb-b8d31aa71a77")
-	)
-	(junction
-		(at 156.21 160.02)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "628544cb-fb35-49fb-9bdd-67aa94ae08aa")
 	)
 	(junction
 		(at 323.85 184.15)
@@ -8038,12 +8058,6 @@
 		(uuid "a6d0090a-fbc2-439d-9d65-8794c6a5a573")
 	)
 	(junction
-		(at 156.21 162.56)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a707f539-e1ff-4ed4-a730-4c0b35fad77a")
-	)
-	(junction
 		(at 318.77 218.44)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8116,6 +8130,18 @@
 		(uuid "e344014c-cc08-4057-9821-34bc5ebe65d1")
 	)
 	(junction
+		(at 156.21 165.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e7ce5c5b-ec53-4677-a993-929b8450bb43")
+	)
+	(junction
+		(at 156.21 162.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eb160ffe-da18-4c13-9859-0ffb5043cd50")
+	)
+	(junction
 		(at 90.17 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8132,6 +8158,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f5cd382c-1e2c-42d4-9949-c2a95847daf1")
+	)
+	(junction
+		(at 156.21 170.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fd1209d6-aa39-45d2-a1d5-78fe22779e2a")
 	)
 	(no_connect
 		(at 354.33 91.44)
@@ -8200,16 +8232,6 @@
 			(type default)
 		)
 		(uuid "0c947a20-e7cd-4498-b287-8e1ee2bbdb54")
-	)
-	(wire
-		(pts
-			(xy 156.21 167.64) (xy 156.21 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0d61cc55-2cc0-45e2-95dc-28ec61ad7306")
 	)
 	(wire
 		(pts
@@ -8330,16 +8352,6 @@
 			(type default)
 		)
 		(uuid "193cbc69-9aeb-4e1a-aa79-79a63b8bd307")
-	)
-	(wire
-		(pts
-			(xy 156.21 162.56) (xy 156.21 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1b053159-0147-4f26-a33d-9a57ccbc3d99")
 	)
 	(wire
 		(pts
@@ -8743,13 +8755,23 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 170.18) (xy 156.21 172.72)
+			(xy 156.21 160.02) (xy 156.21 162.56)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "4f3be87c-003d-457c-b155-167885473df4")
+	)
+	(wire
+		(pts
+			(xy 156.21 165.1) (xy 156.21 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50f770d4-5212-4d97-ade1-0e359d435bca")
 	)
 	(wire
 		(pts
@@ -8770,6 +8792,16 @@
 			(type solid)
 		)
 		(uuid "542582c9-78e3-4345-95ed-29a54d2574ca")
+	)
+	(wire
+		(pts
+			(xy 156.21 162.56) (xy 156.21 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54b50591-cb45-4742-a66e-2fb7cbcfe212")
 	)
 	(wire
 		(pts
@@ -9693,6 +9725,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 167.64) (xy 156.21 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d66393fb-c144-4129-aa2f-5b0cd04c29f1")
+	)
+	(wire
+		(pts
 			(xy 90.17 144.78) (xy 90.17 137.16)
 		)
 		(stroke
@@ -9913,16 +9955,6 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 160.02) (xy 156.21 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f3909ff2-ee0e-4646-a2e9-c82cdcabaf27")
-	)
-	(wire
-		(pts
 			(xy 375.92 203.2) (xy 375.92 204.47)
 		)
 		(stroke
@@ -9940,16 +9972,6 @@
 			(type default)
 		)
 		(uuid "f78156be-c344-421b-b315-7f166dc6cad6")
-	)
-	(wire
-		(pts
-			(xy 156.21 165.1) (xy 156.21 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f7b9f53b-1dc7-45d1-a01a-361ef9fae808")
 	)
 	(wire
 		(pts
@@ -9980,6 +10002,16 @@
 			(type default)
 		)
 		(uuid "facd3cc6-0ea5-4633-a61e-e80a558208d5")
+	)
+	(wire
+		(pts
+			(xy 156.21 170.18) (xy 156.21 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "faf9bc58-4079-4ce6-ab7f-ff172fb10723")
 	)
 	(wire
 		(pts
@@ -14093,700 +14125,6 @@
 		)
 	)
 	(symbol
-		(lib_id "CM5IO:ComputeModule5-CM5")
-		(at 128.27 119.38 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "987869e7-2ad1-4b76-a191-a5aaa519198a")
-		(property "Reference" "Module1"
-			(at 125.73 50.8 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ComputeModule5-CM5"
-			(at 125.73 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "CM5IO:Raspberry-Pi-5-Compute-Module"
-			(at 270.51 146.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 270.51 146.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "RaspberryPi Compute module 5"
-			(at 128.27 119.38 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Field4" "Amphenol"
-			(at 125.73 55.88 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Field5" "2x 10164227-1001A1RLF"
-			(at 125.73 58.42 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "109"
-			(uuid "9af7b86f-c630-44b0-8a02-89ccd008ea0a")
-		)
-		(pin "18"
-			(uuid "fd77d593-1d90-499b-a4d3-222c93ffe8a7")
-		)
-		(pin "156"
-			(uuid "6dab95ea-384e-4129-82f7-95517a4a50ca")
-		)
-		(pin "159"
-			(uuid "54e265cd-f6e0-4b30-b577-9ab8418c3306")
-		)
-		(pin "151"
-			(uuid "576d6403-5e64-477b-937c-1b8ad4ea9cff")
-		)
-		(pin "147"
-			(uuid "febdd127-f471-4bdd-b402-7149d85962b2")
-		)
-		(pin "63"
-			(uuid "4f7a8fe6-19b2-4cbd-b104-c7e5cdda4811")
-		)
-		(pin "144"
-			(uuid "4c66e264-e36c-4835-aa50-d873a5decb4a")
-		)
-		(pin "149"
-			(uuid "583a9381-8743-4154-ab98-ad73d5493d18")
-		)
-		(pin "50"
-			(uuid "2936b560-e474-4b8f-883d-8a0eb47cb0bb")
-		)
-		(pin "153"
-			(uuid "7ca19434-9cd1-41ee-bcfb-cb85cd095684")
-		)
-		(pin "98"
-			(uuid "3b3b91ea-7a3f-4d45-a126-0dd3f77a5dfb")
-		)
-		(pin "76"
-			(uuid "1d54531b-07b9-4b8a-918e-0484dab84b68")
-		)
-		(pin "146"
-			(uuid "eea5150e-a1fa-4a8e-a54d-6f6a51004399")
-		)
-		(pin "157"
-			(uuid "b8f9aba7-4f30-49e1-bbc9-e45879f5569e")
-		)
-		(pin "79"
-			(uuid "89eb3c89-0754-4aa6-839d-1d0380116e54")
-		)
-		(pin "104"
-			(uuid "03082a9f-5e7a-4eee-9e8d-ad36b1c839a1")
-		)
-		(pin "78"
-			(uuid "26051f84-fdf7-4ee9-8a6e-9b61f9815a24")
-		)
-		(pin "182"
-			(uuid "f51e90f1-2f9f-496f-9ab0-0de50b35f7ca")
-		)
-		(pin "161"
-			(uuid "5fe3d414-9395-4a31-8979-b99bcb737ef4")
-		)
-		(pin "110"
-			(uuid "6f8a7e00-262f-4e48-9b0c-cd1144bbb6d4")
-		)
-		(pin "74"
-			(uuid "922d263f-0e39-4c82-88d6-2e25c7ed4fc5")
-		)
-		(pin "30"
-			(uuid "f66cb8d6-0450-493e-af0a-a96ea218a669")
-		)
-		(pin "71"
-			(uuid "f82de140-1ba4-44ed-b79d-cd4af88b0211")
-		)
-		(pin "83"
-			(uuid "32eba2f3-6593-495d-a8a1-299538d9fa8e")
-		)
-		(pin "81"
-			(uuid "0d78d800-64b5-4178-867b-3409b1f2a9d8")
-		)
-		(pin "82"
-			(uuid "6971b3b8-e0bc-4efe-99a5-71aef128631f")
-		)
-		(pin "107"
-			(uuid "de994ad7-d68a-463f-97f3-59f012783ced")
-		)
-		(pin "111"
-			(uuid "34441186-3be5-48f0-9848-ec62e6d723e6")
-		)
-		(pin "70"
-			(uuid "f80cc50c-2b20-448d-ba6c-e202cb709de6")
-		)
-		(pin "25"
-			(uuid "5b9d3e5d-f45d-4035-a942-a238868b4506")
-		)
-		(pin "80"
-			(uuid "b1d453e2-7a21-481a-8f46-5e300e686fbc")
-		)
-		(pin "31"
-			(uuid "ec1d687c-997f-415d-837b-7ac6a3562e32")
-		)
-		(pin "33"
-			(uuid "7c155441-5100-48d3-a4b0-a28acff43664")
-		)
-		(pin "62"
-			(uuid "75be3ba2-96c1-4b80-a176-38effd6b413b")
-		)
-		(pin "163"
-			(uuid "d614b099-29bd-405e-82ab-b26f7b84fab3")
-		)
-		(pin "162"
-			(uuid "3b8e6b7e-52ea-4a27-8001-783741161a71")
-		)
-		(pin "72"
-			(uuid "94797ca6-8190-492e-9f08-ddbb094a725f")
-		)
-		(pin "24"
-			(uuid "d63bb58b-d21f-43e6-8c6b-b2843a59cd1b")
-		)
-		(pin "150"
-			(uuid "883a9f30-fd52-4f9c-aa59-18c99b29050f")
-		)
-		(pin "152"
-			(uuid "a49f77af-9273-4c7e-92a7-2bbcba75c357")
-		)
-		(pin "105"
-			(uuid "119d9a3d-ec2e-4894-8c7d-26992809ee0f")
-		)
-		(pin "21"
-			(uuid "462e8ffc-cb7a-4fca-bfb6-a0e18e9eb19f")
-		)
-		(pin "27"
-			(uuid "f33d7b55-be49-4745-8e0a-6a94d2c6f9ac")
-		)
-		(pin "97"
-			(uuid "72c21275-fb4a-4905-9d6e-536d1355e1d7")
-		)
-		(pin "108"
-			(uuid "1e115d0f-2b00-4776-88ca-c402b6f4d159")
-		)
-		(pin "69"
-			(uuid "b3012295-f486-4568-a45d-67e7446486c2")
-		)
-		(pin "167"
-			(uuid "485a5cc0-508c-4175-b263-b1d28a5c328c")
-		)
-		(pin "166"
-			(uuid "3b9467b5-9dc6-4562-a20b-0232d68606b3")
-		)
-		(pin "32"
-			(uuid "dda4fd46-73bb-4d01-b74d-964c0c581de7")
-		)
-		(pin "17"
-			(uuid "5e63a147-7ef6-478d-ae58-66abd10dfae8")
-		)
-		(pin "22"
-			(uuid "bc7fa82d-7e30-4859-9a1a-5e6b869819d4")
-		)
-		(pin "99"
-			(uuid "51bddbb7-5d1f-4b62-971e-1889ef3b2f67")
-		)
-		(pin "52"
-			(uuid "0a825b73-dd0c-4cfd-b3ab-f30829cd5163")
-		)
-		(pin "28"
-			(uuid "4708a640-2d23-42e4-8401-af9da126bbb5")
-		)
-		(pin "183"
-			(uuid "3b36f2f1-39fa-45b7-9c7c-79ad38f052fb")
-		)
-		(pin "64"
-			(uuid "59f8848e-79d6-47d1-b544-f17fd66b5c86")
-		)
-		(pin "75"
-			(uuid "7f766e20-c727-4073-8bc6-1ef26b23a31a")
-		)
-		(pin "155"
-			(uuid "8caf9ca7-2126-4259-ad55-43a74347f941")
-		)
-		(pin "158"
-			(uuid "a06dee82-6d9e-49fd-b412-3bcfd65b67e1")
-		)
-		(pin "65"
-			(uuid "62cd5ba7-bcf3-4995-be7b-361ce3688a10")
-		)
-		(pin "165"
-			(uuid "874f4a1f-900f-41f9-ae93-3d3372a76370")
-		)
-		(pin "164"
-			(uuid "1a2d4903-1c9d-4e33-a28b-1c1056fc8c63")
-		)
-		(pin "185"
-			(uuid "3ae20fa2-4edc-48b1-bd74-a47c5d614f5c")
-		)
-		(pin "68"
-			(uuid "dd27dffe-bc43-4860-ae94-19eaed4613a2")
-		)
-		(pin "73"
-			(uuid "bd30a2de-da3b-4fc5-8858-cc2941e413a0")
-		)
-		(pin "106"
-			(uuid "6a28792d-80c4-4234-b1d4-ccaf7de3dd54")
-		)
-		(pin "60"
-			(uuid "5f307442-0318-4504-8839-995eb2cd7216")
-		)
-		(pin "174"
-			(uuid "022fefc5-25cf-4c6f-8b7b-1f72feb7b969")
-		)
-		(pin "29"
-			(uuid "87b442e9-fdd3-4165-9c92-43a6515fd55d")
-		)
-		(pin "101"
-			(uuid "b9edd54a-966e-4d1c-b779-ee9031bb4779")
-		)
-		(pin "16"
-			(uuid "e71b78c1-2af1-49e4-8036-041b3a14c00e")
-		)
-		(pin "14"
-			(uuid "c7d7ddd3-4de5-489e-ac3b-8b9b20633763")
-		)
-		(pin "26"
-			(uuid "b84b7ebb-eb32-4dfe-99f2-8fc96f71a3b3")
-		)
-		(pin "23"
-			(uuid "ede51a3f-8695-4f9a-b815-19c0a9d9866b")
-		)
-		(pin "15"
-			(uuid "367182d7-186c-49db-9d70-b5a586d704ee")
-		)
-		(pin "187"
-			(uuid "7487ce9e-4346-4bd6-a1e0-93ffbf54006f")
-		)
-		(pin "66"
-			(uuid "57350e83-1361-4fba-8496-c4c4efc51da8")
-		)
-		(pin "148"
-			(uuid "0eeee53d-442e-4745-8d2d-8c083438366e")
-		)
-		(pin "53"
-			(uuid "e6df9833-fb3a-408f-a8ac-26792c6499cc")
-		)
-		(pin "103"
-			(uuid "474b56af-48fa-41ad-9f32-ed7c9c27d612")
-		)
-		(pin "77"
-			(uuid "91f09de2-f683-49f8-99c3-6f8de676db3c")
-		)
-		(pin "34"
-			(uuid "10ba3172-4abd-4b72-a0d6-732c0e8d7a4e")
-		)
-		(pin "10"
-			(uuid "c23a08c5-05c0-40fe-97d3-aeebfb485341")
-		)
-		(pin "12"
-			(uuid "adf69cc4-2f20-4b2c-94a3-831c7675081e")
-		)
-		(pin "9"
-			(uuid "2bbeb4b2-8b54-4a54-ad2d-a921cfe71dc4")
-		)
-		(pin "11"
-			(uuid "50ed0a13-5886-446d-be75-6aa9ed9ea67e")
-		)
-		(pin "49"
-			(uuid "8f133e93-53ac-4819-b001-5f9212d85be6")
-		)
-		(pin "188"
-			(uuid "c8777a1b-0276-459b-b2bb-6f1cc00655a0")
-		)
-		(pin "189"
-			(uuid "4bf3f37c-04d4-49de-a13b-1a7d14f555c5")
-		)
-		(pin "8"
-			(uuid "c9e7170b-dcbe-4d2c-bd9f-4256bd2c10ce")
-		)
-		(pin "7"
-			(uuid "c708bd66-7414-401f-a76b-822030a2979e")
-		)
-		(pin "6"
-			(uuid "f7174345-d545-454a-9a69-e7775837291f")
-		)
-		(pin "5"
-			(uuid "428509e1-03a2-41f9-be68-e7ac5856a48f")
-		)
-		(pin "2"
-			(uuid "44cb4006-e985-4f2c-9baa-5dbd63f24e9d")
-		)
-		(pin "4"
-			(uuid "81fa8a50-fe57-4eb2-ab55-7d2e96031f5d")
-		)
-		(pin "1"
-			(uuid "382df1f6-56e1-461b-9495-a2403314fecb")
-		)
-		(pin "190"
-			(uuid "6317129b-66da-4d9a-a7f9-ee391e49351b")
-		)
-		(pin "191"
-			(uuid "ae7c4da5-d16d-499f-ac16-1bc9eb4a5907")
-		)
-		(pin "3"
-			(uuid "9a612e16-e75f-48cd-906b-36195675c649")
-		)
-		(pin "112"
-			(uuid "984c6518-824c-40f4-a355-79865a9be127")
-		)
-		(pin "113"
-			(uuid "df6630c5-b30f-426a-a19a-0c5f4631a436")
-		)
-		(pin "114"
-			(uuid "fbe24d60-8c70-4d58-a9bd-261e5e1b53c0")
-		)
-		(pin "115"
-			(uuid "c5fd336d-4736-481b-bd79-e7a65720c9f7")
-		)
-		(pin "116"
-			(uuid "756d8479-89b5-4853-84dd-f72911ecc470")
-		)
-		(pin "84"
-			(uuid "49500721-d2e0-46cb-a609-3decd75ccfe2")
-		)
-		(pin "168"
-			(uuid "75d448fc-beb4-4ef7-af4a-816b3344f2a3")
-		)
-		(pin "117"
-			(uuid "dcf7e1fc-1382-481b-9dce-e0d4f2a4a50f")
-		)
-		(pin "48"
-			(uuid "f668c845-f74c-4d26-8410-b35f6293f041")
-		)
-		(pin "85"
-			(uuid "b12233c2-9230-4c4c-ae24-6142e3d47d93")
-		)
-		(pin "118"
-			(uuid "f879cac2-1f32-4a05-a58c-21465fc72693")
-		)
-		(pin "120"
-			(uuid "c0082605-30bc-413c-8831-bca72d6a499f")
-		)
-		(pin "86"
-			(uuid "a93c3307-e22e-438c-b94e-f2b2d29f8d2c")
-		)
-		(pin "119"
-			(uuid "3a7eb63d-b414-4d52-82e8-6dfc5a35fbcc")
-		)
-		(pin "122"
-			(uuid "323443fc-5b72-4ee7-92c2-2e31b3db266a")
-		)
-		(pin "192"
-			(uuid "d87a6a3d-20e5-4183-9b13-5edfddc84d6d")
-		)
-		(pin "121"
-			(uuid "ba430d60-c8fd-4e81-a24b-4775de6cfd30")
-		)
-		(pin "87"
-			(uuid "83405327-d81c-41b8-acdf-a889bd255319")
-		)
-		(pin "169"
-			(uuid "a6ad6ef7-93fe-4213-adb9-b9c1516a8528")
-		)
-		(pin "123"
-			(uuid "07d1ba4a-4510-478e-a23c-576300ab5ddf")
-		)
-		(pin "124"
-			(uuid "12ce5f79-d1ca-42e7-b8ed-74e7e63f4740")
-		)
-		(pin "47"
-			(uuid "0f37cc10-feac-4a28-b614-7aeb7d1377bc")
-		)
-		(pin "46"
-			(uuid "60f8df4e-8c4d-41bc-9234-864d0ef39d6f")
-		)
-		(pin "125"
-			(uuid "f59d101f-79b5-4601-9411-ff7308fee641")
-		)
-		(pin "126"
-			(uuid "ae6387b5-ac77-471b-9cfc-b670c5892ef0")
-		)
-		(pin "129"
-			(uuid "3a3544ee-c691-40f2-99a6-f3ee67cdd70e")
-		)
-		(pin "128"
-			(uuid "89202b2b-f723-4887-a4bf-d0baf9238008")
-		)
-		(pin "45"
-			(uuid "36fd8448-adc9-4f96-8d3a-bb7c37cca41a")
-		)
-		(pin "127"
-			(uuid "7d6714b8-8b19-4404-ad8f-760527fabf34")
-		)
-		(pin "44"
-			(uuid "deba7515-5931-4c11-b55b-73f3949df67c")
-		)
-		(pin "88"
-			(uuid "7cf769bd-0dda-4f28-98fc-fa3d6248d581")
-		)
-		(pin "193"
-			(uuid "c1658035-4091-40a9-aa9f-5220715b7b90")
-		)
-		(pin "130"
-			(uuid "6ccb56b5-6a1f-46e8-a64a-f21ae62f6ee2")
-		)
-		(pin "43"
-			(uuid "a6d3ddc0-0596-4693-ac10-db42ccdfb29d")
-		)
-		(pin "42"
-			(uuid "3ee63550-bb88-4a6f-84a0-7ea316ab03cb")
-		)
-		(pin "89"
-			(uuid "eb986bef-ba82-4161-aba7-7d69d0c0951b")
-		)
-		(pin "90"
-			(uuid "04aa7f40-525b-4972-bde1-07ca0ab45786")
-		)
-		(pin "41"
-			(uuid "7f4df286-1df4-4707-9a5a-02e3f48f7240")
-		)
-		(pin "40"
-			(uuid "0711075c-9419-4a98-9f3e-beed094ca0a3")
-		)
-		(pin "131"
-			(uuid "10284702-b001-4342-9dca-13b59ad33d76")
-		)
-		(pin "133"
-			(uuid "e6c722e8-1d61-424c-8067-084964b9b2cb")
-		)
-		(pin "132"
-			(uuid "123d90b4-60d4-4752-85c0-573260f4e3c9")
-		)
-		(pin "134"
-			(uuid "6f2fce4a-a4c2-4f9c-938b-aef40d146ad5")
-		)
-		(pin "39"
-			(uuid "b2cdb1f1-74d6-4ac7-b9fa-515a6ba92120")
-		)
-		(pin "135"
-			(uuid "e9227968-72fe-4aa0-a6ce-c3ae735b6b2a")
-		)
-		(pin "38"
-			(uuid "8347ffe3-c406-4101-be37-2117f55423da")
-		)
-		(pin "91"
-			(uuid "5c2e0be9-169d-4b83-b39d-d6f0beec333f")
-		)
-		(pin "194"
-			(uuid "242d0d9a-363e-4483-bba9-f9877612d59f")
-		)
-		(pin "136"
-			(uuid "0b943b69-6ed6-4bd4-bf8e-dd78d15ee72e")
-		)
-		(pin "92"
-			(uuid "36306fda-41f4-4a0f-8847-c9bdf4a872c2")
-		)
-		(pin "170"
-			(uuid "b4427e42-2a33-40a0-9c89-f2259fb453cd")
-		)
-		(pin "93"
-			(uuid "942ded03-7bbf-4055-9497-79cc25c81316")
-		)
-		(pin "37"
-			(uuid "10089ed6-111d-4cd0-af32-72fea222f515")
-		)
-		(pin "195"
-			(uuid "4391e140-7616-4f3a-948c-6e1870553f96")
-		)
-		(pin "36"
-			(uuid "679f278b-ee4e-41e5-9ae5-10f3776ce05d")
-		)
-		(pin "171"
-			(uuid "7bcaaa60-733b-4700-ab24-73f076d9520c")
-		)
-		(pin "94"
-			(uuid "b283afb3-d5b8-4214-8e6e-71500e75080d")
-		)
-		(pin "95"
-			(uuid "b27e8347-b106-4b9c-99ce-3d3f0316f5b0")
-		)
-		(pin "196"
-			(uuid "c769654e-16cf-487e-8dd2-70f9195adea4")
-		)
-		(pin "137"
-			(uuid "bb6e1c68-60dd-45fd-b079-56415a7f756f")
-		)
-		(pin "197"
-			(uuid "39587b15-75e4-4db8-8adf-fc473c4f93cf")
-		)
-		(pin "138"
-			(uuid "49281d2b-f0a8-40ea-b742-fa35a8547e04")
-		)
-		(pin "198"
-			(uuid "44c65a29-bc19-4342-a631-34fcb483a629")
-		)
-		(pin "139"
-			(uuid "ec3be16d-5d56-4296-b675-ef3dbf9d3000")
-		)
-		(pin "96"
-			(uuid "4e3a0170-a203-4eea-814e-ddea0e0b06c7")
-		)
-		(pin "35"
-			(uuid "1c60037c-1cde-436c-bf8e-34c182774f1f")
-		)
-		(pin "51"
-			(uuid "ff3844d8-0c16-40ee-863e-7fec7eacef80")
-		)
-		(pin "67"
-			(uuid "6782c32d-a5f8-4046-8e98-07118c5fa0e9")
-		)
-		(pin "140"
-			(uuid "d0050bd9-e52f-4853-a4b7-fc6cee3cdefc")
-		)
-		(pin "172"
-			(uuid "ca2634bd-f256-471d-9e38-bc7cd9819f30")
-		)
-		(pin "141"
-			(uuid "d5a48b22-c3f4-4d32-8450-591be40b9656")
-		)
-		(pin "199"
-			(uuid "daf94762-379d-4466-a62d-62fedde9ca3a")
-		)
-		(pin "173"
-			(uuid "0f7c2970-55cd-4d93-9210-8cbae10105d5")
-		)
-		(pin "13"
-			(uuid "6a09943f-81c0-43d2-9027-1b6a305cbf01")
-		)
-		(pin "186"
-			(uuid "8fe4a415-8ca7-4f7c-85cb-dd19fb1febc5")
-		)
-		(pin "19"
-			(uuid "d53c2e0d-bb8e-49d1-b3ab-823099af23d4")
-		)
-		(pin "20"
-			(uuid "dda6c8ee-efb5-4336-8cdc-bcfe401687da")
-		)
-		(pin "184"
-			(uuid "f25089e8-2426-4663-8832-f00e1d91113f")
-		)
-		(pin "175"
-			(uuid "49a72e7a-6b01-400e-9628-4c14bedc0233")
-		)
-		(pin "200"
-			(uuid "36a2531f-835a-4c78-97c7-8a13735d9a35")
-		)
-		(pin "102"
-			(uuid "39a6bc96-b824-4c1b-887e-cf65979a3247")
-		)
-		(pin "54"
-			(uuid "ba2fd33c-0dad-4607-8a45-26592cd3960d")
-		)
-		(pin "61"
-			(uuid "647fc1dc-759b-4fd6-95e4-6b01cc7b251a")
-		)
-		(pin "181"
-			(uuid "4dc060c5-e92b-4675-9faf-843ccbd237d9")
-		)
-		(pin "160"
-			(uuid "d628a675-93da-4268-94d0-d1850b9a5c13")
-		)
-		(pin "178"
-			(uuid "21a82dc3-a645-4a23-aaee-75c4b40ad281")
-		)
-		(pin "57"
-			(uuid "c4d9dff7-c14e-40be-a693-349360cc7479")
-		)
-		(pin "58"
-			(uuid "be9aaa81-fa27-4442-86b0-6f7a2864c9c1")
-		)
-		(pin "179"
-			(uuid "ede028be-045e-4731-a897-69601485e427")
-		)
-		(pin "59"
-			(uuid "36f62572-7c31-4294-b12c-b7f42f260c48")
-		)
-		(pin "56"
-			(uuid "43d37880-ccb3-4367-b028-1b2fe62d06fd")
-		)
-		(pin "145"
-			(uuid "c32a16e3-bd10-41f3-8bcb-7d1dfae44948")
-		)
-		(pin "142"
-			(uuid "5e72e7a0-b885-4eae-84ea-cb201c8709d7")
-		)
-		(pin "180"
-			(uuid "e130942c-7c80-4675-a1cb-519481857e24")
-		)
-		(pin "154"
-			(uuid "68bdb159-9665-416a-a57d-a6743ba3a9de")
-		)
-		(pin "177"
-			(uuid "bd0e378c-0052-496d-b917-f39d2fef4887")
-		)
-		(pin "176"
-			(uuid "15d0790c-d11b-4033-9d93-93a27d4c8540")
-		)
-		(pin "143"
-			(uuid "3718fc7d-a437-407b-89bb-a3847b23d95f")
-		)
-		(pin "100"
-			(uuid "a277fe3d-6563-4fa3-93a1-ced9febad068")
-		)
-		(pin "55"
-			(uuid "68abdd8c-15f6-4c0b-8868-824d183750c6")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
-					(reference "Module1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 351.79 236.22 0)
 		(unit 1)
@@ -15456,6 +14794,731 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
 					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:ComputeModule5-CM5_connectors")
+		(at 128.27 119.38 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c67c77b7-f903-4ba2-88d1-fa2bdda95f2a")
+		(property "Reference" "J7"
+			(at 99.314 59.436 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ComputeModule5-CM5_connector"
+			(at 125.73 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 270.51 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/boardwiretoboard/bwb_bergstak_0_40mm_btb.pdf"
+			(at 270.51 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "RaspberryPi Compute module : BERGSTAK 0.4MM, 100POSITION, REC"
+			(at 128.27 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Amphenol"
+			(at 125.73 53.34 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "10164227-1001A1RLF"
+			(at 125.73 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor DigiKey" "https://www.digikey.co.uk/en/products/detail/amphenol-cs-fci/10164227-1001A1RLF/16908921"
+			(at 128.27 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Digikey Part no." "609-10164227-1001A1RLFTR-ND"
+			(at 128.27 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 125.73 58.42 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "123"
+			(uuid "48ec5b91-c504-4699-8006-ab49079bcd7e")
+		)
+		(pin "59"
+			(uuid "6d2008be-abb9-4904-9bf9-a28acbf8f500")
+		)
+		(pin "47"
+			(uuid "45d0f6bb-afa4-40fc-a4ff-fdc369ce542c")
+		)
+		(pin "27"
+			(uuid "5f033efa-59d2-43ba-96a6-73f36962cdcc")
+		)
+		(pin "37"
+			(uuid "2544e953-4a2d-454a-a08b-c2f2c242fc2e")
+		)
+		(pin "177"
+			(uuid "05275887-6245-436e-90be-6f0d0da340e5")
+		)
+		(pin "185"
+			(uuid "c8be1150-c9cc-41ab-aff7-eb52c2f5eda7")
+		)
+		(pin "30"
+			(uuid "17d8e308-fbdf-420d-9b0f-3b3514e11b96")
+		)
+		(pin "103"
+			(uuid "36551abe-a9f7-40f9-adac-beefa6083f3b")
+		)
+		(pin "24"
+			(uuid "9d393149-b2e8-4a2e-abf9-27bf7282cfc7")
+		)
+		(pin "87"
+			(uuid "ae3fdb9a-df04-4693-a89a-61acf0b03312")
+		)
+		(pin "55"
+			(uuid "156445f6-53e8-4def-8408-8eaee4a21f8e")
+		)
+		(pin "67"
+			(uuid "ea502d21-1f2c-418a-afce-0464b32860eb")
+		)
+		(pin "60"
+			(uuid "969b7f97-6833-424c-8194-30bc9bfe3049")
+		)
+		(pin "63"
+			(uuid "42355d63-9af7-4552-a3ac-f5c323c9a348")
+		)
+		(pin "36"
+			(uuid "00bd2f23-5b70-4f70-bf78-a516546681c9")
+		)
+		(pin "19"
+			(uuid "d0313165-7768-4051-979a-507e22d3c868")
+		)
+		(pin "176"
+			(uuid "ad37bf4a-7d6a-471b-b12b-0312bb2d45be")
+		)
+		(pin "161"
+			(uuid "941b1a43-708e-457c-983c-e2e2f5c140be")
+		)
+		(pin "143"
+			(uuid "45d78a63-a5b4-461b-a87f-bde0b86853cd")
+		)
+		(pin "88"
+			(uuid "5c991282-dedf-4343-9c19-ff09b9f2fa8c")
+		)
+		(pin "168"
+			(uuid "24376296-1151-4c92-bf7a-375e6a269649")
+		)
+		(pin "23"
+			(uuid "b8e1793d-3dbc-4853-ac74-31633c272dfa")
+		)
+		(pin "53"
+			(uuid "34c9e024-b8f2-48b0-bea0-c0ba487d12a0")
+		)
+		(pin "121"
+			(uuid "8534749f-d215-40b8-b43d-873de69be443")
+		)
+		(pin "186"
+			(uuid "a47c6763-5584-4bdf-8322-bce138586c94")
+		)
+		(pin "122"
+			(uuid "075a4d30-bdcd-4d8e-a941-0ee52adea813")
+		)
+		(pin "104"
+			(uuid "10297ea0-e52d-448f-acd3-cbe586c423b2")
+		)
+		(pin "22"
+			(uuid "a3e5f483-9127-456b-b496-4a0880d52832")
+		)
+		(pin "144"
+			(uuid "b02ae5d3-f061-4f40-91cd-5702e7afa47b")
+		)
+		(pin "145"
+			(uuid "f0a838a8-0694-43d0-b46f-9adbeea3cc43")
+		)
+		(pin "41"
+			(uuid "493805c9-1174-493a-a4f1-69e655a74ebc")
+		)
+		(pin "35"
+			(uuid "ea23fc08-2f81-40c4-8452-3dd3ec454652")
+		)
+		(pin "17"
+			(uuid "4e250ba0-54ed-4dc7-a8f5-3ac6177d6750")
+		)
+		(pin "197"
+			(uuid "cdf538d4-f5ae-41a2-b88d-2c19f212cadc")
+		)
+		(pin "149"
+			(uuid "93f67668-9250-4cdc-8696-13152ec2f329")
+		)
+		(pin "96"
+			(uuid "00f59a3b-6bb5-4d9d-aa17-08f94d856b2c")
+		)
+		(pin "173"
+			(uuid "649ff6ba-9ce1-45ba-b5d1-bd573cd36b73")
+		)
+		(pin "172"
+			(uuid "56d8c063-94b8-456f-9a04-c271e9e5f312")
+		)
+		(pin "188"
+			(uuid "3715d25d-39c3-43df-a080-bc4010fa5b02")
+		)
+		(pin "129"
+			(uuid "a762b00e-771c-4bfe-99ed-820ce45443da")
+		)
+		(pin "110"
+			(uuid "a50df1fa-c03a-4d01-84f2-1de14386fe2c")
+		)
+		(pin "77"
+			(uuid "3729a56a-7db9-4ff6-954c-3e2a01063b47")
+		)
+		(pin "95"
+			(uuid "dc2a7f7c-5ca6-416e-9bec-2b7843688522")
+		)
+		(pin "125"
+			(uuid "5a2b6538-fc37-4842-81b3-0e6485b3c8b3")
+		)
+		(pin "79"
+			(uuid "84829e46-b4d5-4853-8ed9-068e1cbdcf7f")
+		)
+		(pin "81"
+			(uuid "ca146269-4ad1-4368-9010-fd0b45014611")
+		)
+		(pin "163"
+			(uuid "52eeb407-5937-450e-9f92-5593e988d75f")
+		)
+		(pin "198"
+			(uuid "b66641da-809f-484e-9f58-f616d2093c48")
+		)
+		(pin "21"
+			(uuid "9d1f9889-2556-4f2c-8dc4-05e8b9750dd7")
+		)
+		(pin "20"
+			(uuid "317cbc4e-ba98-4d2c-be3f-8eee4d7d5ad0")
+		)
+		(pin "151"
+			(uuid "17b94d4e-3238-4de4-97e2-b9411f2cd077")
+		)
+		(pin "128"
+			(uuid "18326c3c-30b2-41e2-8099-bb5e859c6642")
+		)
+		(pin "154"
+			(uuid "99412a6c-d48f-48b9-acbb-fde5d7c228cf")
+		)
+		(pin "150"
+			(uuid "aa4e2178-e6cb-4d85-8549-ab5988919f86")
+		)
+		(pin "68"
+			(uuid "1206d5f3-1be0-49cc-bd66-a78fb4ecc062")
+		)
+		(pin "189"
+			(uuid "0a8b64e0-e43a-450d-9bad-49c571e511b3")
+		)
+		(pin "109"
+			(uuid "4ee694df-0046-46e8-a20e-a5ab5fd3bace")
+		)
+		(pin "18"
+			(uuid "cc8bf524-e8c4-45b9-a5d9-06c269ca4e56")
+		)
+		(pin "80"
+			(uuid "01c86d86-34ad-4622-8f7f-b108f1743bfd")
+		)
+		(pin "200"
+			(uuid "e7e7f7f4-7c34-4264-b323-9ca8326ed445")
+		)
+		(pin "187"
+			(uuid "865fe95c-4468-4684-bfe7-a89400985b12")
+		)
+		(pin "120"
+			(uuid "df32bfb0-4c9e-402b-b3d9-161d8c558f91")
+		)
+		(pin "193"
+			(uuid "3e697ea8-a07f-4e07-858c-bd2efa87d2b9")
+		)
+		(pin "31"
+			(uuid "a4a71721-d088-47ec-8f6f-002ef280c01e")
+		)
+		(pin "152"
+			(uuid "f719bdf2-8849-46b6-89fe-97fbb7808a54")
+		)
+		(pin "148"
+			(uuid "9a94fbc4-8d82-4d6b-9eeb-0d3fc7c6791b")
+		)
+		(pin "78"
+			(uuid "269efcec-1dbb-43ca-b336-a5f0b170379e")
+		)
+		(pin "147"
+			(uuid "44192adc-9934-4971-8dd6-a9d58108d944")
+		)
+		(pin "90"
+			(uuid "ff84d3a8-633b-45a5-a863-cd8973d7d42e")
+		)
+		(pin "94"
+			(uuid "57a22c1b-4d09-4240-9ab2-ebfc4acd2c9a")
+		)
+		(pin "73"
+			(uuid "30d2b798-1816-42f5-a008-b9864f3dc1a4")
+		)
+		(pin "61"
+			(uuid "6415ab19-8bc1-4719-a821-73e9029cf9fe")
+		)
+		(pin "69"
+			(uuid "2f4bd28e-93cf-4306-ae5c-75bbaf39a784")
+		)
+		(pin "134"
+			(uuid "c0bc09b5-92c5-4dfd-b01d-4d4987c27e00")
+		)
+		(pin "199"
+			(uuid "bc6bb8ee-dfd0-4356-9595-6b21b214d358")
+		)
+		(pin "76"
+			(uuid "84981682-16c0-4a2c-bb3f-9e04ea52cdfa")
+		)
+		(pin "65"
+			(uuid "4cee2c16-f6ea-42cb-820a-e080798d995c")
+		)
+		(pin "108"
+			(uuid "b0f138fb-e295-4598-8e6f-cb590f2ad274")
+		)
+		(pin "66"
+			(uuid "1c7af608-eb86-4e52-b9af-991e49d88ec6")
+		)
+		(pin "164"
+			(uuid "cb6ad37c-e844-4fd1-bf12-6d3a7996e18a")
+		)
+		(pin "33"
+			(uuid "0a7fe7d8-0368-4a94-a0b7-cae3e7b12b57")
+		)
+		(pin "16"
+			(uuid "50026255-a430-4fce-94f1-61a20b8123d2")
+		)
+		(pin "15"
+			(uuid "eca051db-9c20-420a-acde-923788f5fcff")
+		)
+		(pin "14"
+			(uuid "5769c1e7-9025-45da-aed5-64ac48c53522")
+		)
+		(pin "13"
+			(uuid "b5f13520-d00a-45ae-989e-2de519ec7428")
+		)
+		(pin "12"
+			(uuid "f6146ca2-b714-4250-8885-0ebc1674db61")
+		)
+		(pin "11"
+			(uuid "5b7747e6-91d4-49ac-8e99-36c45feffa6a")
+		)
+		(pin "127"
+			(uuid "78959ca9-8bf7-4107-9f35-ee771e79772f")
+		)
+		(pin "58"
+			(uuid "58d1a842-a5b5-4db4-9a82-2071532365a6")
+		)
+		(pin "93"
+			(uuid "97114eaa-fa0b-42cc-8456-ed533b09fce3")
+		)
+		(pin "46"
+			(uuid "5a80ff5d-96d3-45e2-bcf9-a32bca73b759")
+		)
+		(pin "166"
+			(uuid "87d83781-c0cd-47c6-84f3-3766bc0f8c7a")
+		)
+		(pin "114"
+			(uuid "9becce21-b8fb-4885-9dde-2c06a8ed7375")
+		)
+		(pin "91"
+			(uuid "9d297755-2336-4e94-80a8-d05b6d17aad8")
+		)
+		(pin "130"
+			(uuid "2b50d20a-8379-4475-8a61-89a8181694a4")
+		)
+		(pin "181"
+			(uuid "b202abbb-2068-4462-81d1-2ae16fbfce9a")
+		)
+		(pin "135"
+			(uuid "5b6124c8-253c-43f4-aba9-197ace782b0b")
+		)
+		(pin "49"
+			(uuid "c2cc30b9-e8e2-4ab2-b2bd-bbc3f38cef1c")
+		)
+		(pin "169"
+			(uuid "501af819-53ba-4e0e-8765-a0d429722a3f")
+		)
+		(pin "139"
+			(uuid "2b51fabb-032d-4475-9b1c-dfb660971c18")
+		)
+		(pin "34"
+			(uuid "c6d5f916-71c4-4903-9aee-6c04ffa0bc66")
+		)
+		(pin "117"
+			(uuid "5528e017-cfc3-449e-ac09-243c6d924c03")
+		)
+		(pin "89"
+			(uuid "13607580-65b9-4ab5-a4ca-565e14fb0819")
+		)
+		(pin "126"
+			(uuid "1495a197-fe6e-4674-aa32-41db3c0a807c")
+		)
+		(pin "107"
+			(uuid "57e4ed7f-1a6a-4473-9f25-e4f986d2b0e7")
+		)
+		(pin "40"
+			(uuid "464e3caa-198c-4d2d-bb2b-372da12940c6")
+		)
+		(pin "86"
+			(uuid "dbaa1136-93c4-4574-8a75-54baead0256f")
+		)
+		(pin "170"
+			(uuid "ec5a1e44-c6ee-4fb6-9957-682a440c781d")
+		)
+		(pin "105"
+			(uuid "13b75449-fa6e-4131-9a43-d5bc2886b06a")
+		)
+		(pin "102"
+			(uuid "ddb982ad-24e8-4cdc-b914-b349d66e5c81")
+		)
+		(pin "146"
+			(uuid "0a8ab99f-25af-4c05-b628-a6ab28112b4a")
+		)
+		(pin "141"
+			(uuid "8e5957ed-bacd-44a6-881c-94eb54a9b996")
+		)
+		(pin "64"
+			(uuid "d7458b18-2b06-4b2c-b7a3-138c9cdf02dc")
+		)
+		(pin "174"
+			(uuid "2b559f6c-2188-44e9-a8db-baeba1417b69")
+		)
+		(pin "56"
+			(uuid "73652abd-d2e5-4378-815d-41c0f28978b0")
+		)
+		(pin "44"
+			(uuid "676931a0-26d4-4326-9f52-afdf8ffadc3a")
+		)
+		(pin "167"
+			(uuid "107b0c7f-94b7-4e57-8b54-518c7f9038d5")
+		)
+		(pin "184"
+			(uuid "df79fa2b-e691-4f3e-89bc-18891b9a7626")
+		)
+		(pin "133"
+			(uuid "4454903e-6e12-4acf-9b72-83ef9c046bf5")
+		)
+		(pin "100"
+			(uuid "22c6e1fe-7137-450c-85ee-3e7880ad22d9")
+		)
+		(pin "83"
+			(uuid "ebe8bb97-8351-4a9d-8e9b-93e6f8e15dee")
+		)
+		(pin "71"
+			(uuid "78061ae0-8ad9-4a15-8be0-d4d22268749b")
+		)
+		(pin "113"
+			(uuid "ed684e76-6a6c-4053-8674-bca34d61c204")
+		)
+		(pin "82"
+			(uuid "8b0ed698-b65b-432e-b0c0-c1b88fcd4756")
+		)
+		(pin "112"
+			(uuid "5ac7c52e-40a1-40ce-81ba-6e1b46aaea98")
+		)
+		(pin "157"
+			(uuid "77eacd1d-a71b-4b96-aceb-8fa16d464a37")
+		)
+		(pin "57"
+			(uuid "91b6d60a-5e15-4d91-9808-6934759d22a7")
+		)
+		(pin "72"
+			(uuid "8f6b10d5-481a-4759-8682-1b993733ee29")
+		)
+		(pin "178"
+			(uuid "1bb1b389-27df-4b02-9143-53375a6e10d6")
+		)
+		(pin "3"
+			(uuid "b0bcc2be-15ff-4a82-a365-e9c3a9aee743")
+		)
+		(pin "2"
+			(uuid "f3877012-9cc2-4529-86a0-945796947dc9")
+		)
+		(pin "1"
+			(uuid "378e7917-678d-4e43-b0e6-9ad46e76614a")
+		)
+		(pin "43"
+			(uuid "733d186c-f5c6-477b-b671-64d3511653f2")
+		)
+		(pin "52"
+			(uuid "fe9974b7-0ac5-447d-a084-4bc872348eaa")
+		)
+		(pin "155"
+			(uuid "4d659807-8a40-4ad5-9cda-da0625c56f86")
+		)
+		(pin "136"
+			(uuid "332801e4-d50c-4ffd-af9e-7ddded5466ee")
+		)
+		(pin "124"
+			(uuid "5754111b-3dec-41f2-bbc1-aa19a9b8d847")
+		)
+		(pin "42"
+			(uuid "2b30c590-3216-46bc-852f-d9d4873bb9a0")
+		)
+		(pin "160"
+			(uuid "89f274d2-efa8-425f-954a-c47dc252c0be")
+		)
+		(pin "25"
+			(uuid "fbed294e-6930-4226-820c-b9a80ad9c154")
+		)
+		(pin "116"
+			(uuid "40907e5c-dc78-4229-9d6a-db473bde1fd4")
+		)
+		(pin "32"
+			(uuid "45860316-b5b9-4347-b256-274363cb5fd2")
+		)
+		(pin "179"
+			(uuid "5a0fb408-59f5-4010-8387-4e7614b7d408")
+		)
+		(pin "195"
+			(uuid "c7330e95-6312-4bd7-ac66-d4ef8214abf1")
+		)
+		(pin "106"
+			(uuid "e2ae9a94-4b1b-44ea-8e3a-9db15edce2a8")
+		)
+		(pin "156"
+			(uuid "96b3bc28-a698-49ac-b24e-c0ef9bb6d511")
+		)
+		(pin "101"
+			(uuid "d88f5cfe-d46d-4820-bd70-d76ccd4547ac")
+		)
+		(pin "28"
+			(uuid "167601de-1c04-4f27-83cc-543126c762c3")
+		)
+		(pin "115"
+			(uuid "c44e8a7d-d164-46e9-bea4-6e250b2fb91e")
+		)
+		(pin "159"
+			(uuid "9eec8019-840e-4150-929e-2be8dd9fdec0")
+		)
+		(pin "38"
+			(uuid "f0a6ada1-b118-452a-9a1a-731f479c4008")
+		)
+		(pin "84"
+			(uuid "b2decdf6-c8f2-4bc4-b269-e659bdc9a1ba")
+		)
+		(pin "85"
+			(uuid "40950583-d099-411d-b581-09af81be29d1")
+		)
+		(pin "140"
+			(uuid "1d76afe7-af3c-4698-ac5f-744f21b01464")
+		)
+		(pin "10"
+			(uuid "93839456-5fcc-4f9e-b2c1-8702cbe8aa55")
+		)
+		(pin "9"
+			(uuid "b1559221-1522-4a55-adb2-51832bcc02e2")
+		)
+		(pin "8"
+			(uuid "95feae7b-8fcf-4f2a-b898-b674eb4c1b6a")
+		)
+		(pin "7"
+			(uuid "35e3d69e-7f48-4c10-a87a-3ca6577049dc")
+		)
+		(pin "6"
+			(uuid "68d5153d-9d11-40bd-a286-e1f5f22a6b08")
+		)
+		(pin "5"
+			(uuid "1b528f30-131d-4c69-9856-e69fa37afe22")
+		)
+		(pin "4"
+			(uuid "1a342625-707b-4b12-99a3-886c373ff683")
+		)
+		(pin "192"
+			(uuid "da510384-834f-4bd6-80ee-ff4b5b613150")
+		)
+		(pin "29"
+			(uuid "12ce2fbb-dfbf-4f2f-b627-1eb32bafb264")
+		)
+		(pin "142"
+			(uuid "42cdfab5-4696-448e-b1b5-bd40476537e9")
+		)
+		(pin "138"
+			(uuid "5d023cb3-d096-4ba0-b37d-80e96570bf76")
+		)
+		(pin "119"
+			(uuid "4b89a598-eb36-466e-b953-0c20b39c145a")
+		)
+		(pin "175"
+			(uuid "62abc1b3-a1a8-4a0d-b627-3c115dc08273")
+		)
+		(pin "158"
+			(uuid "9ff2ac2c-1d19-45a5-a70b-c3e6877ac589")
+		)
+		(pin "50"
+			(uuid "433eef28-84d0-48bd-a038-e10b3fa102c5")
+		)
+		(pin "48"
+			(uuid "febf09ae-1f88-499a-b766-b90e59f7c0cd")
+		)
+		(pin "162"
+			(uuid "aa014053-6e29-4f4c-8efa-ae1b16ef8551")
+		)
+		(pin "118"
+			(uuid "950027e7-366e-49c7-aeac-2aa5c388a66e")
+		)
+		(pin "183"
+			(uuid "5eb5cc8b-c283-4837-aebb-294dc7d2d0c9")
+		)
+		(pin "39"
+			(uuid "600e0c53-098c-4f91-a113-acb727a97385")
+		)
+		(pin "182"
+			(uuid "b319565a-414a-47da-83b2-eb82cd70070f")
+		)
+		(pin "45"
+			(uuid "d2468360-af50-41a7-9acb-58395fd06d36")
+		)
+		(pin "194"
+			(uuid "234082bc-e104-4bbb-ad56-af8d0bcfd366")
+		)
+		(pin "153"
+			(uuid "e0d487df-70d7-4e3a-91d9-b35d42b9cccd")
+		)
+		(pin "137"
+			(uuid "6a6682a4-4c49-40f9-a229-ec7042e2677f")
+		)
+		(pin "132"
+			(uuid "b3fcd5d0-b536-4d0e-8fbf-d0a8b88de0a9")
+		)
+		(pin "26"
+			(uuid "c0387992-bf12-43b5-af59-a408708561cb")
+		)
+		(pin "75"
+			(uuid "2db6d728-6f5f-4408-91c6-345c89822b3b")
+		)
+		(pin "180"
+			(uuid "7bce35ac-8517-45d3-bc69-3708b340c65b")
+		)
+		(pin "98"
+			(uuid "79116ffa-9494-421c-8571-d3f0bf226759")
+		)
+		(pin "190"
+			(uuid "4def3d19-823f-43b0-9c3e-5d7ad80465f8")
+		)
+		(pin "62"
+			(uuid "9e279aa2-12c4-4f9f-a244-cb8d3adbdd61")
+		)
+		(pin "97"
+			(uuid "ae9907ab-2e4c-4554-bbea-2307e111b409")
+		)
+		(pin "111"
+			(uuid "94a0d152-b81a-4a70-81e0-db4edc8d6813")
+		)
+		(pin "196"
+			(uuid "b4bdf85b-7a4f-4909-9383-894bc155540c")
+		)
+		(pin "54"
+			(uuid "033e9f75-b551-4cb5-8677-8efea90f13e4")
+		)
+		(pin "131"
+			(uuid "ceba7f78-d9e8-4d8a-9af2-8971bd5e96f9")
+		)
+		(pin "99"
+			(uuid "75ba5d1e-4579-4bac-92ee-3ab70ec16127")
+		)
+		(pin "51"
+			(uuid "fd7f687b-aab9-480c-ad30-8f506e05b878")
+		)
+		(pin "74"
+			(uuid "969e48da-04ed-41f9-b406-04a8443cfc66")
+		)
+		(pin "70"
+			(uuid "89f27292-6594-41ca-932a-c0c2a467f392")
+		)
+		(pin "191"
+			(uuid "9294f0fd-7217-4b67-b92f-e3ad2e314dca")
+		)
+		(pin "165"
+			(uuid "fd686843-380d-422c-82e8-19fdaa94ceeb")
+		)
+		(pin "171"
+			(uuid "948f2c1b-827e-40ca-8113-6b8a7fa04bf3")
+		)
+		(pin "92"
+			(uuid "5c2a0c87-7a59-415f-b48c-e2ba61c6dea5")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
+					(reference "J7")
 					(unit 1)
 				)
 			)
