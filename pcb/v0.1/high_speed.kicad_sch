@@ -3778,7 +3778,130 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector:Conn_01x22_Socket"
+		(symbol "Connector:TestPoint"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "TH-1-CC:22s_disp_connector"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -3798,7 +3921,7 @@
 					)
 				)
 			)
-			(property "Value" "Conn_01x22_Socket"
+			(property "Value" "22s_disp_connector"
 				(at 0 -30.48 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3819,7 +3942,7 @@
 					)
 				)
 			)
-			(property "Datasheet" ""
+			(property "Datasheet" "https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/flex/flexconnectors_050mm_vll.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3830,7 +3953,7 @@
 					)
 				)
 			)
-			(property "Description" "Generic connector, single row, 01x22, script generated"
+			(property "Description" "CONN FPC BOTTOM 22POS 0.5MM R/A"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3841,7 +3964,51 @@
 					)
 				)
 			)
-			(property "ki_locked" ""
+			(property "Manufacturer" "Amphenol ICC (FCI)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "10051922-2210ELF"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor DigiKey" "https://www.digikey.co.uk/en/products/detail/amphenol-cs-fci/10051922-2210ELF/4238683"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Digikey Part no." "609-10051922-2210ELFTR-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Stock" "NO!"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3873,7 +4040,7 @@
 					)
 				)
 			)
-			(symbol "Conn_01x22_Socket_1_1"
+			(symbol "22s_disp_connector_1_1"
 				(polyline
 					(pts
 						(xy -1.27 25.4) (xy -0.508 25.4)
@@ -4791,129 +4958,6 @@
 						)
 					)
 					(number "22"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Connector:TestPoint"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.762)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -11769,202 +11813,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:Conn_01x22_Socket")
-		(at 167.64 156.21 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "2e257183-938a-447d-9880-02688e23b280")
-		(property "Reference" "J7"
-			(at 144.78 127 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Conn_01x22_Female"
-			(at 149.225 127 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "CM5IO:Hirose_FH12-22S-0.5SH_1x22-1MP_P0.50mm_Horizontal"
-			(at 167.64 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.hirose.com/product/document?clcode=&productname=&series=FH12&documenttype=Catalog&lang=en&documentid=D31648_en"
-			(at 167.64 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 167.64 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Field4" "Mouser"
-			(at 167.64 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Field5" "798-FH12-22S-0.5SH55"
-			(at 167.64 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Field6" "FH12-22S-0.5SH55"
-			(at 167.64 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Field7" "Hirose"
-			(at 167.64 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Part Description" "22 Position FFC, FPC Connector Contacts, Bottom 0.020\" (0.50mm) Surface Mount, Right Angle"
-			(at 167.64 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "907f9b39-1396-4746-8fc6-75ed2c8beaa3")
-		)
-		(pin "10"
-			(uuid "7d9078e7-0718-4bf7-9592-bd87fe1492d7")
-		)
-		(pin "11"
-			(uuid "a142f580-82a7-4c78-a79b-5d565fd36642")
-		)
-		(pin "12"
-			(uuid "ef808c0c-255f-437e-a640-26413dbce53f")
-		)
-		(pin "13"
-			(uuid "ba96f30e-0778-4a58-96e1-97e96c1bcb62")
-		)
-		(pin "14"
-			(uuid "f320de8b-6ab7-41b2-8542-b614c89636cc")
-		)
-		(pin "15"
-			(uuid "30e3da2b-ff58-43df-a40b-1c6cd76f4a43")
-		)
-		(pin "16"
-			(uuid "93005131-a63b-42ca-9d25-d56b4dc1348d")
-		)
-		(pin "17"
-			(uuid "c354cbb8-34b4-432e-9654-2b65ae3dcf6b")
-		)
-		(pin "18"
-			(uuid "f8072e29-03d2-4b3d-9912-38c210dc3be5")
-		)
-		(pin "19"
-			(uuid "2d401e28-16b3-4293-bf5b-3e193e1541cf")
-		)
-		(pin "2"
-			(uuid "448086a2-78d1-4b42-a352-bbb693839820")
-		)
-		(pin "20"
-			(uuid "fee09ba5-521f-4e85-96b1-93b3f1357c4e")
-		)
-		(pin "21"
-			(uuid "b28e8814-3875-4b1e-90fe-2ae6facf4875")
-		)
-		(pin "22"
-			(uuid "11b367e1-8c90-4b42-abca-94bf0b0af369")
-		)
-		(pin "3"
-			(uuid "00dd71f3-edd2-4d82-a24b-02230bc4ca07")
-		)
-		(pin "4"
-			(uuid "093f5101-ff9f-484e-9045-03f416c42467")
-		)
-		(pin "5"
-			(uuid "1774e5b0-b963-4500-bd12-846f0fb19244")
-		)
-		(pin "6"
-			(uuid "10d1958a-c064-41d9-83b2-f84ae3443dc7")
-		)
-		(pin "7"
-			(uuid "b6f40f42-7a8f-4e14-98b0-c5f413aec7d0")
-		)
-		(pin "8"
-			(uuid "ae8a43c9-d80f-41ca-ba60-d822dd5cfcfc")
-		)
-		(pin "9"
-			(uuid "79381d96-3dea-4c10-8fc5-e0ced5b61517")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/8e613e76-cfa9-4d70-9fba-6dbea9bbdbc9"
-					(reference "J7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "CM5IO:ComputeModule5-CM5")
 		(at -68.58 88.9 0)
 		(unit 2)
@@ -14745,6 +14593,202 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/8e613e76-cfa9-4d70-9fba-6dbea9bbdbc9"
 					(reference "TP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:22s_disp_connector")
+		(at 167.64 156.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "fa124a6a-aebb-41ab-9684-e294e3540456")
+		(property "Reference" "J6"
+			(at 157.226 130.302 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22s_disp_connector"
+			(at 151.892 127.762 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 167.64 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/flex/flexconnectors_050mm_vll.pdf"
+			(at 167.64 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "CONN FPC BOTTOM 22POS 0.5MM R/A"
+			(at 167.64 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Amphenol ICC (FCI)"
+			(at 167.64 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "10051922-2210ELF"
+			(at 167.64 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor DigiKey" "https://www.digikey.co.uk/en/products/detail/amphenol-cs-fci/10051922-2210ELF/4238683"
+			(at 167.64 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Digikey Part no." "609-10051922-2210ELFTR-ND"
+			(at 167.64 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 165.1 186.436 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "2"
+			(uuid "2f84811a-e5d9-42cf-af09-6ea27915d079")
+		)
+		(pin "21"
+			(uuid "7831d648-6a36-4615-b463-09c0264609f1")
+		)
+		(pin "20"
+			(uuid "ba0f9aee-7e70-4737-8d31-71cd5837fa8f")
+		)
+		(pin "14"
+			(uuid "286046bd-d904-488d-840e-e6bc4b33e9c9")
+		)
+		(pin "10"
+			(uuid "7a910ad4-b8c1-446e-8f52-001f117f3280")
+		)
+		(pin "18"
+			(uuid "f47480e6-ba65-4cc8-98b8-84b96edc79e6")
+		)
+		(pin "4"
+			(uuid "baee3007-22e0-4767-8c3c-921932379b05")
+		)
+		(pin "22"
+			(uuid "876af5a5-c218-4be5-88c2-36a3ccb44250")
+		)
+		(pin "11"
+			(uuid "c3aedf25-a398-4182-bb6c-cc98ae2e423d")
+		)
+		(pin "15"
+			(uuid "d93ead80-edf6-4656-86ac-7cc775b71c7f")
+		)
+		(pin "13"
+			(uuid "4ddecfd5-3ed2-4f72-82ea-832c52309ecd")
+		)
+		(pin "19"
+			(uuid "03be4e86-2953-4ef2-9239-9a6dac45744a")
+		)
+		(pin "17"
+			(uuid "65619d07-e6e4-471a-9506-e819dc6343cf")
+		)
+		(pin "5"
+			(uuid "299e7133-a70c-41a4-b26f-69249ffc096d")
+		)
+		(pin "8"
+			(uuid "f8d80b10-d82e-4a7f-bc66-28de0fe64328")
+		)
+		(pin "6"
+			(uuid "c0eb8c9d-6619-4fa3-b401-e694b6e6488d")
+		)
+		(pin "3"
+			(uuid "23ed0cc5-0ff5-4af8-9965-44657b66651c")
+		)
+		(pin "1"
+			(uuid "d177f09e-5e4f-4dd4-af08-367affacd540")
+		)
+		(pin "12"
+			(uuid "7ae9e7e5-b10c-4b83-8ea0-607a9b8c3775")
+		)
+		(pin "9"
+			(uuid "8768db72-310f-48a6-ae24-706ae789ec0c")
+		)
+		(pin "7"
+			(uuid "aeb05d5d-f2c6-4522-9163-5795df464429")
+		)
+		(pin "16"
+			(uuid "65e466d9-2547-4047-bc4e-a2ceeb505c08")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/8e613e76-cfa9-4d70-9fba-6dbea9bbdbc9"
+					(reference "J6")
 					(unit 1)
 				)
 			)

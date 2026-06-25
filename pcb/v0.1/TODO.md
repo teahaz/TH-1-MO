@@ -15,14 +15,20 @@
 - [x] Deal with the current limit ICs
 - [x] Wire up USB connectors
 - [x] Remove HDMI
-- [ ] find part for display connector
+- [x] find part for display connector
+- [ ] Find part for CM5 connector
 - [ ] Pinout nrf
 - [ ] Pinout pi
-- [ ] Find part for CM5 connector
 - [ ] ESD protection
 - [ ] Remove unused pins
 - [ ] Add NRF test points where bridging is not testable
 - [ ] Full checkup
+    - do we have all high speed lines
+    - low speed?
+    - every subsystem looks ok
+    - power lines look ok
+    - everyone has the correct power
+
 
 # DAC notes
 
