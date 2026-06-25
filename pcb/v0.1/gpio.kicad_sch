@@ -134,6 +134,148 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:NetTie_2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "NT"
+				(at 0 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NetTie_2"
+				(at 0 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Net tie, 2 pins"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "net tie short"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Net*Tie*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "NetTie_2_0_1"
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NetTie_2_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "TH-1-CC:AudioJack3"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -8305,6 +8447,16 @@
 	)
 	(wire
 		(pts
+			(xy 69.85 124.46) (xy 95.25 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1258c146-f389-43f3-8cd0-fc1f07743491")
+	)
+	(wire
+		(pts
 			(xy 160.02 78.74) (xy 160.02 71.12)
 		)
 		(stroke
@@ -8362,6 +8514,16 @@
 			(type default)
 		)
 		(uuid "1bcbfa1c-4620-49e4-bc7e-766700f806fb")
+	)
+	(wire
+		(pts
+			(xy 74.93 93.98) (xy 95.25 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e57f96d-7592-4797-bb84-eaae5e6d1201")
 	)
 	(wire
 		(pts
@@ -8602,6 +8764,16 @@
 			(type default)
 		)
 		(uuid "395f13c7-1884-459b-8204-242ffeedea00")
+	)
+	(wire
+		(pts
+			(xy 69.85 109.22) (xy 95.25 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ac215f9-adab-42b4-a5de-07f7d45d81b1")
 	)
 	(wire
 		(pts
@@ -8955,7 +9127,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 124.46) (xy 170.18 124.46)
+			(xy 156.21 124.46) (xy 175.26 124.46)
 		)
 		(stroke
 			(width 0)
@@ -9002,6 +9174,16 @@
 			(type default)
 		)
 		(uuid "6b501578-642d-4222-813d-87e430ed1f36")
+	)
+	(wire
+		(pts
+			(xy 69.85 134.62) (xy 95.25 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c7767d3-fd48-4fdd-9413-61abb7f1e78b")
 	)
 	(wire
 		(pts
@@ -9265,6 +9447,16 @@
 	)
 	(wire
 		(pts
+			(xy 69.85 129.54) (xy 95.25 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9881cc52-e268-4b27-8298-c216a4a15537")
+	)
+	(wire
+		(pts
 			(xy 344.17 180.34) (xy 346.71 180.34)
 		)
 		(stroke
@@ -9275,6 +9467,16 @@
 	)
 	(wire
 		(pts
+			(xy 69.85 111.76) (xy 95.25 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ba1d553-8a4c-43ed-85fc-f021b0da348b")
+	)
+	(wire
+		(pts
 			(xy 293.37 219.71) (xy 293.37 220.98)
 		)
 		(stroke
@@ -9282,6 +9484,16 @@
 			(type default)
 		)
 		(uuid "9c5801ad-4a00-4768-93a6-17dd5e76fcd0")
+	)
+	(wire
+		(pts
+			(xy 69.85 104.14) (xy 95.25 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c7988b0-275b-4f6a-8b4f-a39216c10a19")
 	)
 	(wire
 		(pts
@@ -9322,16 +9534,6 @@
 			(type default)
 		)
 		(uuid "a59f2e3c-f1a2-46fb-92c8-5c0bf867a5a9")
-	)
-	(wire
-		(pts
-			(xy 78.74 93.98) (xy 95.25 93.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a5bba4cf-0bd2-4d39-a5e0-747e9f179b58")
 	)
 	(wire
 		(pts
@@ -9645,13 +9847,13 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 119.38) (xy 95.25 119.38)
+			(xy 69.85 132.08) (xy 95.25 132.08)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c57151cc-b24f-4c5d-95fb-542d10e5679f")
+		(uuid "c7638f58-f8d5-4dce-b5bb-46be096e6742")
 	)
 	(wire
 		(pts
@@ -9685,6 +9887,16 @@
 	)
 	(wire
 		(pts
+			(xy 69.85 121.92) (xy 95.25 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9ad597f-594c-476d-b48d-5db5a117ab4b")
+	)
+	(wire
+		(pts
 			(xy 156.21 144.78) (xy 160.02 144.78)
 		)
 		(stroke
@@ -9715,7 +9927,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 121.92) (xy 162.56 121.92)
+			(xy 156.21 121.92) (xy 180.34 121.92)
 		)
 		(stroke
 			(width 0)
@@ -10524,17 +10736,6 @@
 		)
 		(uuid "0c9d7ed0-a34d-4e0b-ac68-f8b34ccd2012")
 	)
-	(hierarchical_label "SCL3"
-		(shape input)
-		(at 162.56 121.92 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "0e3d231b-e028-4d30-a442-26646f875240")
-	)
 	(hierarchical_label "+3v3_LDO"
 		(shape input)
 		(at 400.05 143.51 90)
@@ -10556,6 +10757,28 @@
 			(justify left)
 		)
 		(uuid "311b87f8-dae0-4ba9-8a2e-0755bc6e7032")
+	)
+	(hierarchical_label "GP27"
+		(shape bidirectional)
+		(at 69.85 121.92 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "409043c1-260b-4851-b173-63afafa14e60")
+	)
+	(hierarchical_label "GP05{slash}CLK2{slash}U2_RX{slash}I2C2_SCL"
+		(shape bidirectional)
+		(at 69.85 104.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4c4b0795-b5d0-4cd8-b099-c97035878062")
 	)
 	(hierarchical_label "+3v3_PI"
 		(shape output)
@@ -10579,6 +10802,17 @@
 		)
 		(uuid "65843017-a9bc-4dc3-b730-050fb76682b1")
 	)
+	(hierarchical_label "GP9"
+		(shape bidirectional)
+		(at 69.85 111.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6e491d18-cae9-409f-97d2-7b687f6597dc")
+	)
 	(hierarchical_label "+5v"
 		(shape input)
 		(at 162.56 160.02 0)
@@ -10601,6 +10835,17 @@
 		)
 		(uuid "7e44ed10-357f-4127-ba66-99a65c20ae51")
 	)
+	(hierarchical_label "GP11{slash}I2C1_SCL"
+		(shape bidirectional)
+		(at 69.85 109.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "81c1c7dd-fe27-42f6-ab51-2120ebfd5fd3")
+	)
 	(hierarchical_label "SWDIO"
 		(shape bidirectional)
 		(at 87.63 99.06 180)
@@ -10612,6 +10857,28 @@
 		)
 		(uuid "82d83b80-0fbb-491c-8ab1-90b4f5852552")
 	)
+	(hierarchical_label "GP02{slash}I2C1_SDA"
+		(shape bidirectional)
+		(at 69.85 134.62 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8386819f-733d-4504-9e6c-2154eba389fa")
+	)
+	(hierarchical_label "GP18{slash}I2S_BCK"
+		(shape bidirectional)
+		(at 180.34 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8412badf-0dc3-44ed-b038-047cc7d6b479")
+	)
 	(hierarchical_label "U1_RX"
 		(shape input)
 		(at 87.63 96.52 180)
@@ -10622,6 +10889,17 @@
 			(justify right)
 		)
 		(uuid "88283cfa-8e59-4e41-86f4-8c974ada6788")
+	)
+	(hierarchical_label "GP04{slash}CLK0{slash}U2_TX{slash}I2C2_SDA"
+		(shape bidirectional)
+		(at 69.85 129.54 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8a93f6d2-4645-4316-93b5-e294428fd262")
 	)
 	(hierarchical_label "+5v"
 		(shape input)
@@ -10656,6 +10934,17 @@
 		)
 		(uuid "98fb60fc-8c67-46af-b148-64bfb840922e")
 	)
+	(hierarchical_label "GP17"
+		(shape bidirectional)
+		(at 69.85 124.46 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a958fc85-951b-4e03-abc6-b49ea7d8a7fc")
+	)
 	(hierarchical_label "MOD1"
 		(shape output)
 		(at 162.56 111.76 0)
@@ -10666,6 +10955,17 @@
 			(justify left)
 		)
 		(uuid "ac7f7c08-1a33-4c01-9ae5-45e8e88de6ef")
+	)
+	(hierarchical_label "GP23{slash}I2S_DIN1"
+		(shape bidirectional)
+		(at 180.34 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c70f7270-e405-4c6f-a878-e6340ea0b18d")
 	)
 	(hierarchical_label "USB2_CC2"
 		(shape bidirectional)
@@ -10700,17 +11000,6 @@
 		)
 		(uuid "e8a795d3-5ba4-49df-a234-e1e60da7e392")
 	)
-	(hierarchical_label "SDA3"
-		(shape input)
-		(at 87.63 119.38 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ea7bc01e-da7d-4d29-bff2-c03f6268b910")
-	)
 	(hierarchical_label "MOD2"
 		(shape output)
 		(at 162.56 114.3 0)
@@ -10721,6 +11010,28 @@
 			(justify left)
 		)
 		(uuid "ee249203-88bc-4464-910a-0c08b022841e")
+	)
+	(hierarchical_label "GP03{slash}I2C1_SCL"
+		(shape bidirectional)
+		(at 69.85 132.08 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f3c85ad3-bcde-4b35-b80c-78e677f494da")
+	)
+	(hierarchical_label "GP19{slash}I2S_LRCK"
+		(shape bidirectional)
+		(at 69.85 93.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f4d4d61a-0da6-4192-a591-e5a76208f988")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -12330,6 +12641,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 177.8 124.46 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "431e63f2-bbcf-416c-8d33-bd1200392990")
+		(property "Reference" "NT1"
+			(at 177.8 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 177.8 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 177.8 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "816c9323-6abe-4181-9602-bb51425e2326")
+		)
+		(pin "2"
+			(uuid "bcb8d33a-b0d6-43d4-b94c-ba47b0d96e77")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
+					(reference "NT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "TH-1-CC:C_10uf")
 		(at 332.74 77.47 0)
 		(unit 1)
@@ -13388,6 +13781,89 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
 					(reference "C14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 72.39 93.98 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "83eaa528-5e7d-40fb-a531-72adb1ef5d8b")
+		(property "Reference" "NT2"
+			(at 72.39 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 72.39 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 72.39 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 72.39 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 72.39 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "62f81f11-4c9b-475e-8493-50f7c5bf6494")
+		)
+		(pin "2"
+			(uuid "360391d9-cabf-4db2-9214-94d1e9f3e58e")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
+					(reference "NT2")
 					(unit 1)
 				)
 			)

@@ -17,8 +17,9 @@
 - [x] Remove HDMI
 - [x] find part for display connector
 - [x] Find part for CM5 connector
-- [ ] Pinout nrf
-- [ ] Pinout pi
+- [x] Pinout nrf
+- [x] Pinout pi
+- [ ] Display connector needs traces from gpio page
 - [ ] ESD protection
 - [ ] Remove unused pins
 - [ ] Add NRF test points where bridging is not testable
@@ -28,6 +29,7 @@
     - every subsystem looks ok
     - power lines look ok
     - everyone has the correct power
+
 
 # DAC notes
 
