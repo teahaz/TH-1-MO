@@ -8447,7 +8447,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 124.46) (xy 95.25 124.46)
+			(xy 87.63 124.46) (xy 95.25 124.46)
 		)
 		(stroke
 			(width 0)
@@ -8517,7 +8517,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 93.98) (xy 95.25 93.98)
+			(xy 81.28 93.98) (xy 95.25 93.98)
 		)
 		(stroke
 			(width 0)
@@ -8727,6 +8727,16 @@
 	)
 	(wire
 		(pts
+			(xy 87.63 187.96) (xy 95.25 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37559058-f160-42d6-a422-f7db336c8530")
+	)
+	(wire
+		(pts
 			(xy 293.37 220.98) (xy 293.37 222.25)
 		)
 		(stroke
@@ -8767,7 +8777,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 109.22) (xy 95.25 109.22)
+			(xy 87.63 109.22) (xy 95.25 109.22)
 		)
 		(stroke
 			(width 0)
@@ -9127,7 +9137,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 124.46) (xy 175.26 124.46)
+			(xy 156.21 124.46) (xy 168.91 124.46)
 		)
 		(stroke
 			(width 0)
@@ -9177,7 +9187,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 134.62) (xy 95.25 134.62)
+			(xy 87.63 134.62) (xy 95.25 134.62)
 		)
 		(stroke
 			(width 0)
@@ -9214,6 +9224,16 @@
 			(type solid)
 		)
 		(uuid "6dc843a3-6dde-4c63-aa13-e690b699f1fe")
+	)
+	(wire
+		(pts
+			(xy 87.63 162.56) (xy 95.25 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f909192-f81f-4e94-974a-40bab46857a7")
 	)
 	(wire
 		(pts
@@ -9264,6 +9284,16 @@
 			(type default)
 		)
 		(uuid "7760da4a-7f52-4db9-83b1-1a503e5cf5e8")
+	)
+	(wire
+		(pts
+			(xy 156.21 185.42) (xy 162.56 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7874dada-35eb-4ebe-be8d-c8d03b332a08")
 	)
 	(wire
 		(pts
@@ -9447,7 +9477,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 129.54) (xy 95.25 129.54)
+			(xy 87.63 129.54) (xy 95.25 129.54)
 		)
 		(stroke
 			(width 0)
@@ -9467,7 +9497,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 111.76) (xy 95.25 111.76)
+			(xy 87.63 111.76) (xy 95.25 111.76)
 		)
 		(stroke
 			(width 0)
@@ -9487,7 +9517,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 104.14) (xy 95.25 104.14)
+			(xy 87.63 104.14) (xy 95.25 104.14)
 		)
 		(stroke
 			(width 0)
@@ -9847,7 +9877,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 132.08) (xy 95.25 132.08)
+			(xy 87.63 132.08) (xy 95.25 132.08)
 		)
 		(stroke
 			(width 0)
@@ -9887,7 +9917,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 121.92) (xy 95.25 121.92)
+			(xy 87.63 121.92) (xy 95.25 121.92)
 		)
 		(stroke
 			(width 0)
@@ -9927,7 +9957,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 121.92) (xy 180.34 121.92)
+			(xy 156.21 121.92) (xy 162.56 121.92)
 		)
 		(stroke
 			(width 0)
@@ -10064,6 +10094,16 @@
 			(type solid)
 		)
 		(uuid "e7314c0c-ed8e-4dba-bf43-1d500aa95efb")
+	)
+	(wire
+		(pts
+			(xy 87.63 165.1) (xy 95.25 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e74904ac-f080-4e20-bf9c-a780b2e410da")
 	)
 	(wire
 		(pts
@@ -10725,6 +10765,17 @@
 		)
 		(uuid "fad5e3b4-a34f-4d25-9bbe-7aa450b06dc4")
 	)
+	(hierarchical_label "SDA0"
+		(shape output)
+		(at 87.63 165.1 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "09d55bfd-c9b9-4e3d-b07e-b3e5f9813db1")
+	)
 	(hierarchical_label "U1_TX"
 		(shape output)
 		(at 162.56 101.6 0)
@@ -10758,9 +10809,20 @@
 		)
 		(uuid "311b87f8-dae0-4ba9-8a2e-0755bc6e7032")
 	)
+	(hierarchical_label "CAM_GPIO1"
+		(shape output)
+		(at 87.63 187.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3771c00a-1c29-4eab-bee7-98707fec6bfc")
+	)
 	(hierarchical_label "GP27"
 		(shape bidirectional)
-		(at 69.85 121.92 180)
+		(at 87.63 121.92 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10771,7 +10833,7 @@
 	)
 	(hierarchical_label "GP05{slash}CLK2{slash}U2_RX{slash}I2C2_SCL"
 		(shape bidirectional)
-		(at 69.85 104.14 180)
+		(at 87.63 104.14 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10804,7 +10866,7 @@
 	)
 	(hierarchical_label "GP9"
 		(shape bidirectional)
-		(at 69.85 111.76 180)
+		(at 87.63 111.76 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10837,7 +10899,7 @@
 	)
 	(hierarchical_label "GP11{slash}I2C1_SCL"
 		(shape bidirectional)
-		(at 69.85 109.22 180)
+		(at 87.63 109.22 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10859,7 +10921,7 @@
 	)
 	(hierarchical_label "GP02{slash}I2C1_SDA"
 		(shape bidirectional)
-		(at 69.85 134.62 180)
+		(at 87.63 134.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10870,7 +10932,7 @@
 	)
 	(hierarchical_label "GP18{slash}I2S_BCK"
 		(shape bidirectional)
-		(at 180.34 124.46 0)
+		(at 173.99 124.46 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10892,7 +10954,7 @@
 	)
 	(hierarchical_label "GP04{slash}CLK0{slash}U2_TX{slash}I2C2_SDA"
 		(shape bidirectional)
-		(at 69.85 129.54 180)
+		(at 87.63 129.54 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10936,7 +10998,7 @@
 	)
 	(hierarchical_label "GP17"
 		(shape bidirectional)
-		(at 69.85 124.46 180)
+		(at 87.63 124.46 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10956,9 +11018,31 @@
 		)
 		(uuid "ac7f7c08-1a33-4c01-9ae5-45e8e88de6ef")
 	)
+	(hierarchical_label "SCL0"
+		(shape output)
+		(at 87.63 162.56 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bd8a484e-a2cb-4518-b76c-7c540ef8c6fa")
+	)
+	(hierarchical_label "CAM_GPIO0"
+		(shape output)
+		(at 162.56 185.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c4a583bc-0ede-43b7-9ea9-4fc230bcdff4")
+	)
 	(hierarchical_label "GP23{slash}I2S_DIN1"
 		(shape bidirectional)
-		(at 180.34 121.92 0)
+		(at 162.56 121.92 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11013,7 +11097,7 @@
 	)
 	(hierarchical_label "GP03{slash}I2C1_SCL"
 		(shape bidirectional)
-		(at 69.85 132.08 180)
+		(at 87.63 132.08 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11024,7 +11108,7 @@
 	)
 	(hierarchical_label "GP19{slash}I2S_LRCK"
 		(shape bidirectional)
-		(at 69.85 93.98 180)
+		(at 76.2 93.98 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12642,7 +12726,7 @@
 	)
 	(symbol
 		(lib_id "Device:NetTie_2")
-		(at 177.8 124.46 0)
+		(at 171.45 124.46 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12653,7 +12737,7 @@
 		(fields_autoplaced yes)
 		(uuid "431e63f2-bbcf-416c-8d33-bd1200392990")
 		(property "Reference" "NT1"
-			(at 177.8 119.38 0)
+			(at 171.45 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12664,7 +12748,7 @@
 			)
 		)
 		(property "Value" "NetTie_2"
-			(at 177.8 121.92 0)
+			(at 171.45 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12675,7 +12759,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 177.8 124.46 0)
+			(at 171.45 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12686,7 +12770,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 124.46 0)
+			(at 171.45 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12697,7 +12781,7 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
-			(at 177.8 124.46 0)
+			(at 171.45 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13788,7 +13872,7 @@
 	)
 	(symbol
 		(lib_id "Device:NetTie_2")
-		(at 72.39 93.98 0)
+		(at 78.74 93.98 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -13800,7 +13884,7 @@
 		(fields_autoplaced yes)
 		(uuid "83eaa528-5e7d-40fb-a531-72adb1ef5d8b")
 		(property "Reference" "NT2"
-			(at 72.39 88.9 0)
+			(at 78.74 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13811,7 +13895,7 @@
 			)
 		)
 		(property "Value" "NetTie_2"
-			(at 72.39 91.44 0)
+			(at 78.74 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13822,7 +13906,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 72.39 93.98 0)
+			(at 78.74 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13833,7 +13917,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 72.39 93.98 0)
+			(at 78.74 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13844,7 +13928,7 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
-			(at 72.39 93.98 0)
+			(at 78.74 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

@@ -19,7 +19,7 @@
 - [x] Find part for CM5 connector
 - [x] Pinout nrf
 - [x] Pinout pi
-- [ ] Display connector needs traces from gpio page
+- [x] Display connector needs traces from gpio page
 - [ ] ESD protection
 - [ ] Remove unused pins
 - [ ] Add NRF test points where bridging is not testable
