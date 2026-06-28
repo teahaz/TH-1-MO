@@ -569,6 +569,327 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "TH-1-CC:High_speed_TVS_array"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at -5.842 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "TECH REPUBLIC ESD5302F"
+				(at 1.016 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 13.208 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+				(at 115.824 -15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+				(at 26.924 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "TECH PUBLIC"
+				(at 18.796 -5.334 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mfr. Part no." "ESD5302F"
+				(at 30.48 -5.334 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+				(at 108.966 -17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part no." "C2841442"
+				(at 17.272 -12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Stock" "NO!"
+				(at 14.732 -3.048 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "usb esd protection suppression transient"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "High_speed_TVS_array_0_0"
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "High_speed_TVS_array_0_1"
+				(rectangle
+					(start -4.445 2.54)
+					(end 4.445 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.302 1.016) (xy -3.302 1.27) (xy -1.905 1.27) (xy -1.778 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 2.54) (xy -2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 1.27) (xy -2.54 -1.27) (xy 2.54 -1.27) (xy 2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 1.27) (xy -1.905 0) (xy -3.175 0) (xy -2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 -1.27)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.778 1.016) (xy 1.778 1.27) (xy 3.175 1.27) (xy 3.302 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy 1.905 0) (xy 3.175 0) (xy 2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "High_speed_TVS_array_1_1"
+				(pin passive line
+					(at -2.54 5.08 270)
+					(length 2.54)
+					(name "IO1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "IO2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "TH-1-CC:R_470Ω"
 			(pin_numbers
 				(hide yes)
@@ -881,7 +1202,7 @@
 	)
 	(text "8 input only pins.\nNeeded for the logic analyser\nand perhaps useful for other\nstuff too."
 		(exclude_from_sim no)
-		(at 90.678 87.63 0)
+		(at 156.718 90.17 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -889,9 +1210,159 @@
 		)
 		(uuid "4157805d-1e46-4a3a-9228-8af2484b263d")
 	)
+	(junction
+		(at 198.12 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "059a6ac0-b30c-4985-87d2-4c3c02f40d99")
+	)
+	(junction
+		(at 93.98 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "081a966b-9ea0-4e9b-9f7b-6e84deedad2d")
+	)
+	(junction
+		(at 86.36 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1d17ce1f-8348-47fe-85d4-70fb9c1fec32")
+	)
+	(junction
+		(at 186.69 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "221eeaeb-b51f-47e7-806f-3f6520c1f406")
+	)
+	(junction
+		(at 86.36 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "32774306-e46c-4125-a343-d25e2ff0a016")
+	)
+	(junction
+		(at 203.2 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "35e5e7a0-b87f-407e-9ac5-b7644e82cda4")
+	)
+	(junction
+		(at 203.2 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "55b36a31-56df-424a-b63f-095141a6f9fa")
+	)
+	(junction
+		(at 191.77 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5de381bf-b97a-47b9-90c4-9a3713d04951")
+	)
+	(junction
+		(at 83.82 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "622ce017-48cb-470e-b741-6b4383933548")
+	)
+	(junction
+		(at 88.9 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "62d79118-a8d0-4f58-81dc-e863156d207b")
+	)
+	(junction
+		(at 83.82 114.3)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "69bc5bb3-b480-4da8-92b1-5e6f8e67529e")
+	)
+	(junction
+		(at 93.98 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "89b136a3-962f-4d97-8585-a4e179825a5e")
+	)
+	(junction
+		(at 191.77 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8a505686-0011-4dc5-baf7-77d0e7545ef1")
+	)
+	(junction
+		(at 88.9 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8ca33eb2-5f97-480b-a92c-e823d693e948")
+	)
+	(junction
+		(at 81.28 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8d19e624-8c3e-439b-84c2-a8b2b790382b")
+	)
+	(junction
+		(at 91.44 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e7d42e3-dabf-4fa2-8269-f39ca15b032a")
+	)
+	(junction
+		(at 186.69 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "91909b50-6db4-42e5-afe1-649204a8c76d")
+	)
+	(junction
+		(at 223.52 118.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "94edca4b-5117-4fd6-98ed-cf1a6ac0a1b1")
+	)
+	(junction
+		(at 91.44 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3eedae7-8a8a-486b-8a74-7639fb544ac9")
+	)
+	(junction
+		(at 223.52 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bf1b7639-3609-4a3b-ac46-314c5f35bfb1")
+	)
+	(junction
+		(at 220.98 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cfb14aef-9cba-44c5-909e-0cb38c28ef9a")
+	)
+	(junction
+		(at 226.06 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d7439aac-e829-416a-b6f2-0a0a99085ddf")
+	)
+	(junction
+		(at 220.98 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dcac9df5-411f-4378-8250-7e14391288e9")
+	)
+	(junction
+		(at 226.06 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ec6ba1fd-dbaf-4ac4-a8df-b4d5b8d3777c")
+	)
+	(junction
+		(at 198.12 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f41c66e8-24fd-4fe2-8a3c-548d689ef501")
+	)
 	(wire
 		(pts
-			(xy 154.94 76.2) (xy 154.94 81.28)
+			(xy 83.82 44.45) (xy 83.82 76.2)
 		)
 		(stroke
 			(width 0)
@@ -901,7 +1372,17 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 93.98) (xy 100.33 93.98)
+			(xy 78.74 76.2) (xy 83.82 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "051e5b48-faa4-4f3e-9fae-fef6e6d2c345")
+	)
+	(wire
+		(pts
+			(xy 165.1 99.06) (xy 166.37 99.06)
 		)
 		(stroke
 			(width 0)
@@ -911,7 +1392,27 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 93.98) (xy 162.56 100.33)
+			(xy 88.9 128.27) (xy 88.9 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "076a5976-90e6-4ca5-96f1-2d539c214ab9")
+	)
+	(wire
+		(pts
+			(xy 67.31 50.8) (xy 68.58 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07ff63b5-957e-49c1-b770-b6dba36d9fa9")
+	)
+	(wire
+		(pts
+			(xy 91.44 97.79) (xy 91.44 133.35)
 		)
 		(stroke
 			(width 0)
@@ -921,7 +1422,27 @@
 	)
 	(wire
 		(pts
-			(xy 127 99.06) (xy 127 93.98)
+			(xy 219.71 67.31) (xy 223.52 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11d75439-b575-4094-9df3-c21b20e31f6a")
+	)
+	(wire
+		(pts
+			(xy 226.06 99.06) (xy 226.06 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "121174f6-6488-4d2d-a5ee-dbc6cb3a29c1")
+	)
+	(wire
+		(pts
+			(xy 215.9 104.14) (xy 215.9 96.52)
 		)
 		(stroke
 			(width 0)
@@ -931,7 +1452,7 @@
 	)
 	(wire
 		(pts
-			(xy 152.4 76.2) (xy 152.4 81.28)
+			(xy 81.28 44.45) (xy 81.28 81.28)
 		)
 		(stroke
 			(width 0)
@@ -941,7 +1462,37 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 93.98) (xy 167.64 100.33)
+			(xy 93.98 142.24) (xy 93.98 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d47ed0f-93ca-4a10-b359-dc905fc2dfeb")
+	)
+	(wire
+		(pts
+			(xy 93.98 48.26) (xy 93.98 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ea86e30-8d63-42b3-8e44-d8fde3fd71ec")
+	)
+	(wire
+		(pts
+			(xy 81.28 81.28) (xy 81.28 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2032fb79-b909-4dfd-a5fb-61662e874dc5")
+	)
+	(wire
+		(pts
+			(xy 96.52 97.79) (xy 96.52 104.14)
 		)
 		(stroke
 			(width 0)
@@ -951,7 +1502,67 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 73.66) (xy 100.33 73.66)
+			(xy 173.99 76.2) (xy 191.77 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20afc913-6f45-49ef-aad0-711b144dc145")
+	)
+	(wire
+		(pts
+			(xy 68.58 130.81) (xy 69.85 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21346f72-0b35-4a74-85c6-d77294b30bbf")
+	)
+	(wire
+		(pts
+			(xy 191.77 101.6) (xy 213.36 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c5a438e-09f5-472d-8941-c080650759cd")
+	)
+	(wire
+		(pts
+			(xy 91.44 133.35) (xy 91.44 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2eb4d704-f687-4353-828d-bf828b42f05d")
+	)
+	(wire
+		(pts
+			(xy 173.99 73.66) (xy 186.69 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "319bdb29-0d94-4053-bf31-9bb577284a08")
+	)
+	(wire
+		(pts
+			(xy 219.71 118.11) (xy 223.52 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31d5bc15-f764-4243-b77a-64fd0455ab2f")
+	)
+	(wire
+		(pts
+			(xy 165.1 73.66) (xy 166.37 73.66)
 		)
 		(stroke
 			(width 0)
@@ -961,7 +1572,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 76.2) (xy 107.95 76.2)
+			(xy 215.9 76.2) (xy 191.77 76.2)
 		)
 		(stroke
 			(width 0)
@@ -971,7 +1582,17 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 81.28) (xy 100.33 81.28)
+			(xy 78.74 67.31) (xy 86.36 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3780644c-a879-4270-8b47-cd37eac40773")
+	)
+	(wire
+		(pts
+			(xy 165.1 81.28) (xy 166.37 81.28)
 		)
 		(stroke
 			(width 0)
@@ -981,7 +1602,27 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 76.2) (xy 100.33 76.2)
+			(xy 78.74 48.26) (xy 93.98 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cdec8d9-6360-414e-9b75-60a93b091c66")
+	)
+	(wire
+		(pts
+			(xy 208.28 116.84) (xy 208.28 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4059a2b4-9331-48bd-bccc-bcc4ba097fad")
+	)
+	(wire
+		(pts
+			(xy 165.1 76.2) (xy 166.37 76.2)
 		)
 		(stroke
 			(width 0)
@@ -991,7 +1632,7 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 99.06) (xy 100.33 99.06)
+			(xy 165.1 104.14) (xy 166.37 104.14)
 		)
 		(stroke
 			(width 0)
@@ -1001,7 +1642,37 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 93.98) (xy 165.1 100.33)
+			(xy 223.52 118.11) (xy 223.52 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "441ecddb-3fb3-48e9-aae5-9c39549596af")
+	)
+	(wire
+		(pts
+			(xy 80.01 128.27) (xy 88.9 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "461765cf-a680-46b5-bb3b-dbb7b0d9d1ac")
+	)
+	(wire
+		(pts
+			(xy 80.01 119.38) (xy 86.36 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "467a6f94-85f2-498d-a070-276c5b46ef8f")
+	)
+	(wire
+		(pts
+			(xy 93.98 97.79) (xy 93.98 142.24)
 		)
 		(stroke
 			(width 0)
@@ -1011,7 +1682,27 @@
 	)
 	(wire
 		(pts
-			(xy 137.16 74.93) (xy 137.16 81.28)
+			(xy 210.82 83.82) (xy 210.82 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4767fb54-adcb-4e30-b35a-e43c14bb815d")
+	)
+	(wire
+		(pts
+			(xy 233.68 77.47) (xy 228.6 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4808b660-b7e0-467b-aff1-652a265cd81e")
+	)
+	(wire
+		(pts
+			(xy 226.06 76.2) (xy 226.06 82.55)
 		)
 		(stroke
 			(width 0)
@@ -1021,7 +1712,17 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 101.6) (xy 129.54 93.98)
+			(xy 219.71 113.03) (xy 220.98 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4dd1b636-dc3e-4d71-8ad1-58e8ea1f948e")
+	)
+	(wire
+		(pts
+			(xy 218.44 106.68) (xy 218.44 96.52)
 		)
 		(stroke
 			(width 0)
@@ -1031,7 +1732,17 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 93.98) (xy 160.02 100.33)
+			(xy 83.82 76.2) (xy 83.82 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52f95621-0296-40db-874b-a012e117f4d1")
+	)
+	(wire
+		(pts
+			(xy 88.9 97.79) (xy 88.9 128.27)
 		)
 		(stroke
 			(width 0)
@@ -1041,7 +1752,27 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 78.74) (xy 124.46 78.74)
+			(xy 203.2 81.28) (xy 203.2 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58a1ba33-03f3-4deb-b07f-0fc5835591fc")
+	)
+	(wire
+		(pts
+			(xy 80.01 142.24) (xy 93.98 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5af2632a-9429-439b-a8e7-a96d62dfe686")
+	)
+	(wire
+		(pts
+			(xy 173.99 78.74) (xy 198.12 78.74)
 		)
 		(stroke
 			(width 0)
@@ -1051,7 +1782,37 @@
 	)
 	(wire
 		(pts
-			(xy 127 76.2) (xy 127 81.28)
+			(xy 248.92 90.17) (xy 247.65 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d17c9bb-bb27-4bf5-8fd3-a70dbee74e9b")
+	)
+	(wire
+		(pts
+			(xy 78.74 62.23) (xy 88.9 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fd5247d-505c-481d-bd9c-0acca0d9616d")
+	)
+	(wire
+		(pts
+			(xy 198.12 78.74) (xy 213.36 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "639771c0-0bcc-48e3-be13-3b622965d795")
+	)
+	(wire
+		(pts
+			(xy 215.9 76.2) (xy 215.9 83.82)
 		)
 		(stroke
 			(width 0)
@@ -1061,7 +1822,7 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 96.52) (xy 124.46 96.52)
+			(xy 173.99 101.6) (xy 191.77 101.6)
 		)
 		(stroke
 			(width 0)
@@ -1071,7 +1832,37 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 81.28) (xy 121.92 81.28)
+			(xy 191.77 76.2) (xy 191.77 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65d7d355-ef30-4512-b3aa-1df606b8eb5e")
+	)
+	(wire
+		(pts
+			(xy 186.69 99.06) (xy 186.69 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "681c545e-dbc9-458d-9021-e9e21f425039")
+	)
+	(wire
+		(pts
+			(xy 68.58 146.05) (xy 68.58 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6be32a79-4839-4a8c-983b-c56b3bcad2a4")
+	)
+	(wire
+		(pts
+			(xy 173.99 81.28) (xy 203.2 81.28)
 		)
 		(stroke
 			(width 0)
@@ -1081,7 +1872,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 93.98) (xy 170.18 100.33)
+			(xy 99.06 97.79) (xy 99.06 104.14)
 		)
 		(stroke
 			(width 0)
@@ -1091,7 +1882,17 @@
 	)
 	(wire
 		(pts
-			(xy 137.16 93.98) (xy 137.16 100.33)
+			(xy 83.82 114.3) (xy 83.82 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "720b0e91-6fb5-46ce-b73c-2f87a1516a56")
+	)
+	(wire
+		(pts
+			(xy 226.06 96.52) (xy 226.06 99.06)
 		)
 		(stroke
 			(width 0)
@@ -1101,7 +1902,37 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 96.52) (xy 124.46 93.98)
+			(xy 237.49 82.55) (xy 226.06 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "733dc582-8f01-44fe-be12-19e4d5aa8b92")
+	)
+	(wire
+		(pts
+			(xy 223.52 67.31) (xy 223.52 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "737f4693-f32e-4148-9db6-754ee686d4d8")
+	)
+	(wire
+		(pts
+			(xy 237.49 99.06) (xy 226.06 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74f3ac75-d061-4527-a16e-517bc982d833")
+	)
+	(wire
+		(pts
+			(xy 213.36 101.6) (xy 213.36 96.52)
 		)
 		(stroke
 			(width 0)
@@ -1111,7 +1942,7 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 76.2) (xy 162.56 81.28)
+			(xy 91.44 44.45) (xy 91.44 53.34)
 		)
 		(stroke
 			(width 0)
@@ -1121,17 +1952,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 74.93) (xy 139.7 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a6cdd8d-de44-45f2-ba6d-eeaf14bfafc9")
-	)
-	(wire
-		(pts
-			(xy 157.48 76.2) (xy 157.48 81.28)
+			(xy 86.36 44.45) (xy 86.36 67.31)
 		)
 		(stroke
 			(width 0)
@@ -1141,7 +1962,27 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 76.2) (xy 170.18 81.28)
+			(xy 198.12 78.74) (xy 198.12 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c61e9f7-ebf5-406c-95b5-0617e4196d1c")
+	)
+	(wire
+		(pts
+			(xy 203.2 81.28) (xy 210.82 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d5fe14a-b2b4-46ce-b182-8474633a83fa")
+	)
+	(wire
+		(pts
+			(xy 99.06 80.01) (xy 99.06 85.09)
 		)
 		(stroke
 			(width 0)
@@ -1151,7 +1992,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 76.2) (xy 165.1 81.28)
+			(xy 93.98 44.45) (xy 93.98 48.26)
 		)
 		(stroke
 			(width 0)
@@ -1161,7 +2002,27 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 78.74) (xy 124.46 81.28)
+			(xy 67.31 78.74) (xy 68.58 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "854188d6-3cc2-4bf4-b84a-194ea79453ec")
+	)
+	(wire
+		(pts
+			(xy 220.98 62.23) (xy 220.98 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b51837c-50b7-4738-9092-892cc54e086b")
+	)
+	(wire
+		(pts
+			(xy 213.36 78.74) (xy 213.36 83.82)
 		)
 		(stroke
 			(width 0)
@@ -1171,7 +2032,17 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 99.06) (xy 127 99.06)
+			(xy 80.01 114.3) (xy 83.82 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "917899b4-8af4-4eda-9adf-887af6574755")
+	)
+	(wire
+		(pts
+			(xy 173.99 104.14) (xy 198.12 104.14)
 		)
 		(stroke
 			(width 0)
@@ -1181,7 +2052,17 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 78.74) (xy 100.33 78.74)
+			(xy 219.71 62.23) (xy 220.98 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bfc7ad8-a07f-4ea8-989a-4ba68b03065d")
+	)
+	(wire
+		(pts
+			(xy 165.1 78.74) (xy 166.37 78.74)
 		)
 		(stroke
 			(width 0)
@@ -1191,7 +2072,47 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 74.93) (xy 134.62 81.28)
+			(xy 208.28 66.04) (xy 208.28 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a052f01e-49dd-4dc3-8fab-de64f2bd56c5")
+	)
+	(wire
+		(pts
+			(xy 68.58 144.78) (xy 69.85 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a269df50-6ddf-4eb9-ba1d-6133ad997839")
+	)
+	(wire
+		(pts
+			(xy 68.58 116.84) (xy 69.85 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a468e993-8e6b-4baf-bb2e-ae0689937a58")
+	)
+	(wire
+		(pts
+			(xy 186.69 73.66) (xy 186.69 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4f4f622-849b-4c24-b955-8fb6f63a3f57")
+	)
+	(wire
+		(pts
+			(xy 223.52 54.61) (xy 223.52 67.31)
 		)
 		(stroke
 			(width 0)
@@ -1201,7 +2122,57 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 96.52) (xy 100.33 96.52)
+			(xy 68.58 118.11) (xy 68.58 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8cd1992-9f8e-4bb3-8e7c-42e8f43ccee9")
+	)
+	(wire
+		(pts
+			(xy 186.69 99.06) (xy 210.82 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9e1b022-c6de-46da-8b70-ae4eefb05b16")
+	)
+	(wire
+		(pts
+			(xy 228.6 77.47) (xy 228.6 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acb1c8f3-3505-442f-9beb-8d78a79f53c0")
+	)
+	(wire
+		(pts
+			(xy 173.99 106.68) (xy 203.2 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b12d96dd-a061-499c-bb79-62af6b92798c")
+	)
+	(wire
+		(pts
+			(xy 248.92 91.44) (xy 248.92 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1c5136c-b564-4f5e-b5c1-e57e6f415de8")
+	)
+	(wire
+		(pts
+			(xy 165.1 101.6) (xy 166.37 101.6)
 		)
 		(stroke
 			(width 0)
@@ -1211,7 +2182,37 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 93.98) (xy 139.7 100.33)
+			(xy 198.12 104.14) (xy 215.9 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2a5929d-379e-4be2-b336-ff6e6aae864c")
+	)
+	(wire
+		(pts
+			(xy 67.31 66.04) (xy 67.31 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4b02d9e-40bf-4d40-b5cf-8743a10b35b3")
+	)
+	(wire
+		(pts
+			(xy 68.58 132.08) (xy 68.58 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b70ebbfa-915c-43a0-be35-036251560c39")
+	)
+	(wire
+		(pts
+			(xy 228.6 96.52) (xy 228.6 102.87)
 		)
 		(stroke
 			(width 0)
@@ -1221,7 +2222,77 @@
 	)
 	(wire
 		(pts
-			(xy 152.4 93.98) (xy 152.4 100.33)
+			(xy 220.98 113.03) (xy 220.98 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf5bc37b-bdfc-424c-9fff-3115e5016264")
+	)
+	(wire
+		(pts
+			(xy 203.2 106.68) (xy 203.2 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfa41a0e-861d-43ec-ac43-4c2c3ab9cd5c")
+	)
+	(wire
+		(pts
+			(xy 91.44 53.34) (xy 91.44 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4594fb8-0a42-4a5b-9efb-531adf74aa59")
+	)
+	(wire
+		(pts
+			(xy 78.74 53.34) (xy 91.44 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c54f75fa-cfe3-4c9d-85a3-f2013069c839")
+	)
+	(wire
+		(pts
+			(xy 67.31 64.77) (xy 68.58 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c69c4c78-798a-4cf4-be3a-4f224dfb72f2")
+	)
+	(wire
+		(pts
+			(xy 203.2 106.68) (xy 218.44 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c782d35f-721b-4537-96f9-3ab19bfc5a2a")
+	)
+	(wire
+		(pts
+			(xy 208.28 115.57) (xy 209.55 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9f4a8f5-ce99-4864-92b0-aab6894cceaf")
+	)
+	(wire
+		(pts
+			(xy 81.28 97.79) (xy 81.28 104.14)
 		)
 		(stroke
 			(width 0)
@@ -1231,7 +2302,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 93.98) (xy 154.94 100.33)
+			(xy 83.82 97.79) (xy 83.82 114.3)
 		)
 		(stroke
 			(width 0)
@@ -1241,7 +2312,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 93.98) (xy 132.08 100.33)
+			(xy 220.98 96.52) (xy 220.98 113.03)
 		)
 		(stroke
 			(width 0)
@@ -1251,7 +2322,27 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 93.98) (xy 157.48 100.33)
+			(xy 237.49 87.63) (xy 237.49 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce444608-6e31-42f4-98b4-af5e0c65ed24")
+	)
+	(wire
+		(pts
+			(xy 210.82 99.06) (xy 210.82 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cec886e8-c79e-40c2-9fbc-4758362d6b10")
+	)
+	(wire
+		(pts
+			(xy 86.36 97.79) (xy 86.36 119.38)
 		)
 		(stroke
 			(width 0)
@@ -1261,7 +2352,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 73.66) (xy 107.95 73.66)
+			(xy 218.44 73.66) (xy 186.69 73.66)
 		)
 		(stroke
 			(width 0)
@@ -1271,17 +2362,47 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 101.6) (xy 129.54 101.6)
+			(xy 198.12 104.14) (xy 198.12 107.95)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d388349a-374d-43e2-9572-2c81ecaac586")
+		(uuid "d0765e8d-b51e-4c6a-bb75-bb09d41d1001")
 	)
 	(wire
 		(pts
-			(xy 99.06 101.6) (xy 100.33 101.6)
+			(xy 208.28 64.77) (xy 209.55 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1775471-0d8a-498a-a36c-068c5f98cfb9")
+	)
+	(wire
+		(pts
+			(xy 86.36 67.31) (xy 86.36 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2389c3b-5fbe-4e7b-acc5-0553be1d0eae")
+	)
+	(wire
+		(pts
+			(xy 67.31 52.07) (xy 67.31 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5e79f36-aefa-4f39-bf52-2420db213e38")
+	)
+	(wire
+		(pts
+			(xy 165.1 106.68) (xy 166.37 106.68)
 		)
 		(stroke
 			(width 0)
@@ -1291,7 +2412,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 76.2) (xy 167.64 81.28)
+			(xy 96.52 80.01) (xy 96.52 85.09)
 		)
 		(stroke
 			(width 0)
@@ -1301,7 +2422,57 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 73.66) (xy 129.54 81.28)
+			(xy 237.49 92.71) (xy 237.49 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3dcf42c-e65e-4657-ae4a-d8787fd744b9")
+	)
+	(wire
+		(pts
+			(xy 67.31 80.01) (xy 67.31 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e4420605-45b8-438e-ac08-e68eca64761e")
+	)
+	(wire
+		(pts
+			(xy 78.74 81.28) (xy 81.28 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e47566de-58b6-41d6-9075-b7b1b432fb77")
+	)
+	(wire
+		(pts
+			(xy 88.9 62.23) (xy 88.9 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5327826-8226-4d92-8592-03af55789e91")
+	)
+	(wire
+		(pts
+			(xy 80.01 133.35) (xy 91.44 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e65f5895-9dec-4349-b9e9-c79e7dc876b3")
+	)
+	(wire
+		(pts
+			(xy 218.44 73.66) (xy 218.44 83.82)
 		)
 		(stroke
 			(width 0)
@@ -1311,7 +2482,37 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 93.98) (xy 134.62 100.33)
+			(xy 226.06 82.55) (xy 226.06 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec757d95-e421-4d1a-aba9-a2a8fe546708")
+	)
+	(wire
+		(pts
+			(xy 86.36 119.38) (xy 86.36 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee6b93d2-904f-40cb-8348-5ae076bf7f30")
+	)
+	(wire
+		(pts
+			(xy 191.77 101.6) (xy 191.77 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f66a0d74-15bb-4cf8-9e0b-25d35d4701f3")
+	)
+	(wire
+		(pts
+			(xy 223.52 96.52) (xy 223.52 118.11)
 		)
 		(stroke
 			(width 0)
@@ -1321,7 +2522,7 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 76.2) (xy 160.02 81.28)
+			(xy 88.9 44.45) (xy 88.9 62.23)
 		)
 		(stroke
 			(width 0)
@@ -1331,7 +2532,7 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 93.98) (xy 121.92 93.98)
+			(xy 173.99 99.06) (xy 186.69 99.06)
 		)
 		(stroke
 			(width 0)
@@ -1341,7 +2542,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 74.93) (xy 132.08 81.28)
+			(xy 220.98 54.61) (xy 220.98 62.23)
 		)
 		(stroke
 			(width 0)
@@ -1351,7 +2552,7 @@
 	)
 	(hierarchical_label "GP0.07"
 		(shape bidirectional)
-		(at 134.62 74.93 90)
+		(at 223.52 54.61 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1362,7 +2563,7 @@
 	)
 	(hierarchical_label "GP0.20{slash}INPUT"
 		(shape output)
-		(at 99.06 73.66 180)
+		(at 165.1 73.66 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1373,7 +2574,7 @@
 	)
 	(hierarchical_label "GP0.06"
 		(shape bidirectional)
-		(at 132.08 74.93 90)
+		(at 220.98 54.61 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1384,7 +2585,7 @@
 	)
 	(hierarchical_label "+3v3_PI"
 		(shape input)
-		(at 167.64 76.2 90)
+		(at 96.52 80.01 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1395,7 +2596,7 @@
 	)
 	(hierarchical_label "GP0.13{slash}INPUT"
 		(shape output)
-		(at 99.06 99.06 180)
+		(at 165.1 104.14 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1406,7 +2607,7 @@
 	)
 	(hierarchical_label "GP0.04{slash}A2"
 		(shape bidirectional)
-		(at 134.62 100.33 270)
+		(at 223.52 128.27 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1417,7 +2618,7 @@
 	)
 	(hierarchical_label "GP18{slash}I2S_BCK"
 		(shape bidirectional)
-		(at 154.94 76.2 90)
+		(at 83.82 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1428,7 +2629,7 @@
 	)
 	(hierarchical_label "GP0.14{slash}INPUT"
 		(shape output)
-		(at 99.06 101.6 180)
+		(at 165.1 106.68 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1439,7 +2640,7 @@
 	)
 	(hierarchical_label "GP0.16{slash}INPUT"
 		(shape output)
-		(at 99.06 96.52 180)
+		(at 165.1 101.6 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1450,7 +2651,7 @@
 	)
 	(hierarchical_label "GP0.26"
 		(shape bidirectional)
-		(at 132.08 100.33 270)
+		(at 220.98 128.27 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1461,7 +2662,7 @@
 	)
 	(hierarchical_label "GP0.05{slash}A3"
 		(shape bidirectional)
-		(at 137.16 100.33 270)
+		(at 226.06 102.87 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1472,7 +2673,7 @@
 	)
 	(hierarchical_label "GP03{slash}I2C1_SCL"
 		(shape bidirectional)
-		(at 160.02 76.2 90)
+		(at 88.9 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1483,7 +2684,7 @@
 	)
 	(hierarchical_label "+5v"
 		(shape bidirectional)
-		(at 170.18 100.33 270)
+		(at 99.06 104.14 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1494,7 +2695,7 @@
 	)
 	(hierarchical_label "GP11{slash}I2C1_SCL"
 		(shape bidirectional)
-		(at 165.1 100.33 270)
+		(at 93.98 152.4 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1505,7 +2706,7 @@
 	)
 	(hierarchical_label "GP05{slash}CLK2{slash}U2_RX{slash}I2C2_SCL"
 		(shape bidirectional)
-		(at 157.48 100.33 270)
+		(at 86.36 152.4 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1516,7 +2717,7 @@
 	)
 	(hierarchical_label "GP0.17{slash}INPUT"
 		(shape output)
-		(at 99.06 81.28 180)
+		(at 165.1 81.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1527,7 +2728,7 @@
 	)
 	(hierarchical_label "GP19{slash}I2S_LRCK"
 		(shape bidirectional)
-		(at 152.4 76.2 90)
+		(at 81.28 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1538,7 +2739,7 @@
 	)
 	(hierarchical_label "+5v"
 		(shape bidirectional)
-		(at 170.18 76.2 90)
+		(at 99.06 80.01 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1549,7 +2750,7 @@
 	)
 	(hierarchical_label "GP0.15{slash}INPUT"
 		(shape output)
-		(at 99.06 93.98 180)
+		(at 165.1 99.06 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1560,7 +2761,7 @@
 	)
 	(hierarchical_label "GP0.19{slash}INPUT"
 		(shape output)
-		(at 99.06 78.74 180)
+		(at 165.1 78.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1571,7 +2772,7 @@
 	)
 	(hierarchical_label "GP0.21{slash}INPUT"
 		(shape output)
-		(at 99.06 76.2 180)
+		(at 165.1 76.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1582,7 +2783,7 @@
 	)
 	(hierarchical_label "GP0.08"
 		(shape bidirectional)
-		(at 137.16 74.93 90)
+		(at 226.06 76.2 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1593,7 +2794,7 @@
 	)
 	(hierarchical_label "+3v3_LDO"
 		(shape input)
-		(at 139.7 74.93 90)
+		(at 233.68 77.47 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1604,7 +2805,7 @@
 	)
 	(hierarchical_label "GP23{slash}I2S_DIN1"
 		(shape bidirectional)
-		(at 157.48 76.2 90)
+		(at 86.36 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1615,7 +2816,7 @@
 	)
 	(hierarchical_label "GP17"
 		(shape bidirectional)
-		(at 162.56 100.33 270)
+		(at 91.44 152.4 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1626,7 +2827,7 @@
 	)
 	(hierarchical_label "GP04{slash}CLK0{slash}U2_TX{slash}I2C2_SDA"
 		(shape bidirectional)
-		(at 154.94 100.33 270)
+		(at 83.82 152.4 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1637,7 +2838,7 @@
 	)
 	(hierarchical_label "GP02{slash}I2C1_SDA"
 		(shape bidirectional)
-		(at 162.56 76.2 90)
+		(at 91.44 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1648,7 +2849,7 @@
 	)
 	(hierarchical_label "GP9"
 		(shape bidirectional)
-		(at 165.1 76.2 90)
+		(at 93.98 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1659,7 +2860,7 @@
 	)
 	(hierarchical_label "GP27"
 		(shape bidirectional)
-		(at 160.02 100.33 270)
+		(at 88.9 152.4 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1670,7 +2871,7 @@
 	)
 	(symbol
 		(lib_id "TH-1-CC:R_470Ω")
-		(at 104.14 93.98 90)
+		(at 170.18 99.06 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1680,7 +2881,7 @@
 		(dnp no)
 		(uuid "03084d6d-360b-4e6c-a70e-b64b400e20a6")
 		(property "Reference" "R27"
-			(at 100.33 91.948 90)
+			(at 166.37 97.028 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1691,7 +2892,7 @@
 			)
 		)
 		(property "Value" "470Ω"
-			(at 104.14 93.98 90)
+			(at 170.18 99.06 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1701,7 +2902,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 95.758 90)
+			(at 170.18 100.838 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1712,7 +2913,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 104.14 93.98 0)
+			(at 170.18 99.06 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1723,7 +2924,7 @@
 			)
 		)
 		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 104.14 93.98 0)
+			(at 170.18 99.06 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1734,7 +2935,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 104.14 93.98 0)
+			(at 170.18 99.06 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1745,7 +2946,7 @@
 			)
 		)
 		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 104.14 93.98 0)
+			(at 170.18 99.06 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1756,7 +2957,7 @@
 			)
 		)
 		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 104.14 93.98 0)
+			(at 170.18 99.06 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1767,7 +2968,7 @@
 			)
 		)
 		(property "LCSC Part no." "C114669"
-			(at 104.14 93.98 0)
+			(at 170.18 99.06 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1778,7 +2979,7 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 108.712 95.25 90)
+			(at 174.752 100.33 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1803,8 +3004,9 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 104.14 99.06 90)
+		(lib_id "power:GND")
+		(at 208.28 66.04 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1812,9 +3014,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "154f2482-db8f-4447-81b1-80d3bb2fa837")
-		(property "Reference" "R29"
-			(at 100.33 97.028 90)
+		(uuid "0b067ca8-8119-4347-a3ff-0fb17eadd333")
+		(property "Reference" "#PWR057"
+			(at 208.28 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1824,8 +3026,8 @@
 				)
 			)
 		)
-		(property "Value" "470Ω"
-			(at 104.14 99.06 90)
+		(property "Value" "GND"
+			(at 210.82 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1834,8 +3036,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 100.838 90)
+		(property "Footprint" ""
+			(at 208.28 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1845,8 +3047,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 104.14 99.06 0)
+		(property "Datasheet" ""
+			(at 208.28 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1856,8 +3058,8 @@
 				)
 			)
 		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 104.14 99.06 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 208.28 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1867,8 +3069,41 @@
 				)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
-			(at 104.14 99.06 0)
+		(pin "1"
+			(uuid "6d17b4e9-0a15-4191-9d58-61c05e7e73e3")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR057")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 189.23 87.63 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "144488b8-a059-415e-97ee-2d87b1d4729c")
+		(property "Reference" "D8"
+			(at 183.388 84.074 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 198.12 87.63 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1878,8 +3113,20 @@
 				)
 			)
 		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 104.14 99.06 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 202.438 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 305.054 102.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1889,8 +3136,8 @@
 				)
 			)
 		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 104.14 99.06 0)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 216.154 97.79 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1900,8 +3147,41 @@
 				)
 			)
 		)
-		(property "LCSC Part no." "C114669"
-			(at 104.14 99.06 0)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 208.026 92.964 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 219.71 92.964 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 298.196 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 206.502 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1912,7 +3192,144 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 108.712 100.33 90)
+			(at 192.786 91.694 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "05179a70-bb29-453c-9eb4-1c77f41c5fba")
+		)
+		(pin "1"
+			(uuid "d355d8a9-8581-4c7e-b9e8-04488b5fb059")
+		)
+		(pin "3"
+			(uuid "739b24b5-21b3-4468-b84d-4752fed6ba3a")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:R_470Ω")
+		(at 170.18 104.14 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "154f2482-db8f-4447-81b1-80d3bb2fa837")
+		(property "Reference" "R29"
+			(at 166.37 102.108 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "470Ω"
+			(at 170.18 104.14 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 170.18 105.918 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
+			(at 170.18 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
+			(at 170.18 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 170.18 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part No." "RC0603FR-07470RL"
+			(at 170.18 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
+			(at 170.18 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C114669"
+			(at 170.18 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 174.752 105.41 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1937,9 +3354,9 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 104.14 73.66 90)
-		(mirror x)
+		(lib_id "power:GND")
+		(at 189.23 92.71 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1947,9 +3364,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "3180fb35-a2a0-41fb-973f-87637e955ac1")
-		(property "Reference" "R26"
-			(at 100.33 75.692 90)
+		(uuid "1e850150-4d0d-464b-acd3-d3e89d95cb3b")
+		(property "Reference" "#PWR017"
+			(at 189.23 99.06 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1959,8 +3376,8 @@
 				)
 			)
 		)
-		(property "Value" "470Ω"
-			(at 104.14 73.66 90)
+		(property "Value" "GND"
+			(at 191.77 95.504 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1969,8 +3386,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 71.882 90)
+		(property "Footprint" ""
+			(at 189.23 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1980,8 +3397,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 104.14 73.66 0)
+		(property "Datasheet" ""
+			(at 189.23 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1991,8 +3408,8 @@
 				)
 			)
 		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 104.14 73.66 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 189.23 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2002,8 +3419,41 @@
 				)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
-			(at 104.14 73.66 0)
+		(pin "1"
+			(uuid "dac9df1e-c931-45a0-867e-ff7a3d355e1a")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 74.93 144.78 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2e51a883-7c64-4644-9b16-45d837c0cd6b")
+		(property "Reference" "D18"
+			(at 70.612 139.192 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 74.93 153.67 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2013,8 +3463,20 @@
 				)
 			)
 		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 104.14 73.66 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 67.31 157.988 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 59.69 260.604 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2024,8 +3486,8 @@
 				)
 			)
 		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 104.14 73.66 0)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 64.77 171.704 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2035,8 +3497,41 @@
 				)
 			)
 		)
-		(property "LCSC Part no." "C114669"
-			(at 104.14 73.66 0)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 69.596 163.576 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 69.596 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 57.15 253.746 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 62.23 162.052 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2047,7 +3542,145 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 108.712 74.93 90)
+			(at 77.978 150.622 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "bc82adb3-4438-4ac7-994e-327cf880247f")
+		)
+		(pin "1"
+			(uuid "3bef65d5-dee5-4179-9d0b-523651d6969f")
+		)
+		(pin "3"
+			(uuid "3b8284a9-9580-454c-882c-673bbb7e5e45")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:R_470Ω")
+		(at 170.18 73.66 90)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3180fb35-a2a0-41fb-973f-87637e955ac1")
+		(property "Reference" "R26"
+			(at 166.37 75.692 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "470Ω"
+			(at 170.18 73.66 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 170.18 71.882 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
+			(at 170.18 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
+			(at 170.18 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 170.18 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part No." "RC0603FR-07470RL"
+			(at 170.18 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
+			(at 170.18 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C114669"
+			(at 170.18 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 174.752 74.93 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2072,8 +3705,8 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 104.14 96.52 90)
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 200.66 113.03 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2081,9 +3714,19 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "55cef791-56aa-40e6-ad68-d45971a47858")
-		(property "Reference" "R28"
-			(at 100.33 94.488 90)
+		(uuid "469b8fab-bae7-482e-8ec5-2eb753004f93")
+		(property "Reference" "D6"
+			(at 194.818 109.474 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 209.55 113.03 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2093,18 +3736,20 @@
 				)
 			)
 		)
-		(property "Value" "470Ω"
-			(at 104.14 96.52 90)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 213.868 120.65 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 98.298 90)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 316.484 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2114,8 +3759,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 104.14 96.52 0)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 227.584 123.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2125,8 +3770,8 @@
 				)
 			)
 		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 104.14 96.52 0)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 219.456 118.364 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2136,8 +3781,8 @@
 				)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
-			(at 104.14 96.52 0)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 231.14 118.364 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2147,8 +3792,8 @@
 				)
 			)
 		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 104.14 96.52 0)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 309.626 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2158,19 +3803,8 @@
 				)
 			)
 		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 104.14 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 104.14 96.52 0)
+		(property "LCSC Part no." "C2841442"
+			(at 217.932 125.73 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2181,7 +3815,299 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 108.712 97.79 90)
+			(at 204.216 117.094 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "2c0f6415-fabb-4f7d-8259-4abb9ce2eec1")
+		)
+		(pin "1"
+			(uuid "d3ea9706-544d-47a4-926a-d7d8b6556658")
+		)
+		(pin "3"
+			(uuid "3ea6a4f2-a91f-49a0-a090-754e5cfcb602")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 248.92 91.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4b9bcf28-058c-441c-bcbc-c3a0a08a0baa")
+		(property "Reference" "#PWR060"
+			(at 248.92 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 246.38 93.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 248.92 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.92 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 248.92 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "07a3ae7c-5186-4a0c-af54-b66ac191678d")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR060")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 208.28 116.84 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4e350403-2680-4300-80a3-26defcda3f0a")
+		(property "Reference" "#PWR059"
+			(at 208.28 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 210.82 119.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 208.28 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 208.28 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7e9be4a3-aa0b-4db5-9d80-2d018ed1a1d6")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR059")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:R_470Ω")
+		(at 170.18 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "55cef791-56aa-40e6-ad68-d45971a47858")
+		(property "Reference" "R28"
+			(at 166.37 99.568 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "470Ω"
+			(at 170.18 101.6 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 170.18 103.378 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
+			(at 170.18 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
+			(at 170.18 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 170.18 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part No." "RC0603FR-07470RL"
+			(at 170.18 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
+			(at 170.18 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C114669"
+			(at 170.18 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 174.752 102.87 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2206,9 +4132,8 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 104.14 78.74 90)
-		(mirror x)
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 200.66 87.63 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2216,9 +4141,19 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "61584756-d886-432c-bb1b-561dd92cf624")
-		(property "Reference" "R24"
-			(at 100.33 80.772 90)
+		(uuid "59beecfe-3bf2-4fd3-8ea0-8f1d7f76651f")
+		(property "Reference" "D9"
+			(at 194.818 84.074 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 209.55 87.63 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2228,18 +4163,20 @@
 				)
 			)
 		)
-		(property "Value" "470Ω"
-			(at 104.14 78.74 90)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 213.868 95.25 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 76.962 90)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 316.484 102.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2249,8 +4186,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 104.14 78.74 0)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 227.584 97.79 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2260,8 +4197,8 @@
 				)
 			)
 		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 104.14 78.74 0)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 219.456 92.964 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2271,8 +4208,8 @@
 				)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
-			(at 104.14 78.74 0)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 231.14 92.964 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2282,8 +4219,8 @@
 				)
 			)
 		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 104.14 78.74 0)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 309.626 105.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2293,19 +4230,8 @@
 				)
 			)
 		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 104.14 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 104.14 78.74 0)
+		(property "LCSC Part no." "C2841442"
+			(at 217.932 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2316,7 +4242,145 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 108.712 80.01 90)
+			(at 204.216 91.694 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "381ef52a-216d-48f0-99b2-7bb0a09bb731")
+		)
+		(pin "1"
+			(uuid "3a864a8b-7f9d-4041-8afc-3e14181d7f42")
+		)
+		(pin "3"
+			(uuid "6cfa7809-2e43-4fec-b850-4e57f51225d0")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:R_470Ω")
+		(at 170.18 78.74 90)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "61584756-d886-432c-bb1b-561dd92cf624")
+		(property "Reference" "R24"
+			(at 166.37 80.772 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "470Ω"
+			(at 170.18 78.74 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 170.18 76.962 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
+			(at 170.18 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
+			(at 170.18 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 170.18 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part No." "RC0603FR-07470RL"
+			(at 170.18 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
+			(at 170.18 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C114669"
+			(at 170.18 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 174.752 80.01 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2341,9 +4405,9 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 104.14 81.28 90)
-		(mirror x)
+		(lib_id "power:GND")
+		(at 67.31 80.01 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2351,9 +4415,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "73d25323-1cce-4795-820b-ce99ed955e3e")
-		(property "Reference" "R2"
-			(at 100.33 83.312 90)
+		(uuid "63ca4006-2940-485d-ae53-b2e4d8ed563b")
+		(property "Reference" "#PWR061"
+			(at 67.31 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2363,8 +4427,8 @@
 				)
 			)
 		)
-		(property "Value" "470Ω"
-			(at 104.14 81.28 90)
+		(property "Value" "GND"
+			(at 69.85 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2373,8 +4437,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 79.502 90)
+		(property "Footprint" ""
+			(at 67.31 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2384,8 +4448,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 104.14 81.28 0)
+		(property "Datasheet" ""
+			(at 67.31 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2395,8 +4459,8 @@
 				)
 			)
 		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 104.14 81.28 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 67.31 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2406,8 +4470,41 @@
 				)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
-			(at 104.14 81.28 0)
+		(pin "1"
+			(uuid "6d8c91ce-04ba-4c55-89c4-aae4ea63d888")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR061")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 189.23 113.03 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "64e40aa1-0d30-4e6c-ae8b-f0b3f339b387")
+		(property "Reference" "D7"
+			(at 183.388 109.474 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 198.12 113.03 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2417,8 +4514,20 @@
 				)
 			)
 		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 104.14 81.28 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 202.438 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 305.054 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2428,8 +4537,8 @@
 				)
 			)
 		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 104.14 81.28 0)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 216.154 123.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2439,8 +4548,41 @@
 				)
 			)
 		)
-		(property "LCSC Part no." "C114669"
-			(at 104.14 81.28 0)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 208.026 118.364 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 219.71 118.364 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 298.196 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 206.502 125.73 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2451,7 +4593,499 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 108.712 82.55 90)
+			(at 192.786 117.094 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "f0b30ac6-fbe1-44c3-a279-ea61fb9b08af")
+		)
+		(pin "1"
+			(uuid "ff40d398-2992-4f6e-865c-bb001e28aeb6")
+		)
+		(pin "3"
+			(uuid "668f4028-198b-4184-89ad-dfcf70c58526")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 214.63 115.57 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6706c03a-33e2-4cfa-aa4e-edbd5fb969a7")
+		(property "Reference" "D11"
+			(at 210.312 109.982 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 214.63 124.46 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 207.01 128.778 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 199.39 231.394 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 204.47 142.494 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 209.296 134.366 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 209.296 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 196.85 224.536 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 201.93 132.842 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 217.678 121.412 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "fac51790-8faf-47f1-a242-5bc7439135a0")
+		)
+		(pin "1"
+			(uuid "f23f76d7-c4b4-439a-923c-98c52d6bbfad")
+		)
+		(pin "3"
+			(uuid "48c152a2-8fc3-47aa-b100-c3879b70899b")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 200.66 92.71 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6c0ee114-bb32-47d8-9f33-b2ac1dd6a29f")
+		(property "Reference" "#PWR056"
+			(at 200.66 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 203.2 95.25 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 200.66 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 200.66 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 200.66 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "56f25aae-9028-43fd-bc97-a8d2702b6581")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR056")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 214.63 64.77 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "73b19363-84e6-4ebe-b721-0d0d6a9c4388")
+		(property "Reference" "D10"
+			(at 210.312 59.182 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 214.63 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 207.01 77.978 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 199.39 180.594 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 204.47 91.694 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 209.296 83.566 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 209.296 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 196.85 173.736 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 201.93 82.042 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 217.678 70.612 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "d82f2dd4-b713-4892-8cd6-4c3688d513e7")
+		)
+		(pin "1"
+			(uuid "adf6fb80-c98a-4ecc-991c-14b7f2c28783")
+		)
+		(pin "3"
+			(uuid "7b772cf6-9982-4470-a5c1-ad512b3ed1be")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:R_470Ω")
+		(at 170.18 81.28 90)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "73d25323-1cce-4795-820b-ce99ed955e3e")
+		(property "Reference" "R2"
+			(at 166.37 83.312 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "470Ω"
+			(at 170.18 81.28 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 170.18 79.502 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
+			(at 170.18 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
+			(at 170.18 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 170.18 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part No." "RC0603FR-07470RL"
+			(at 170.18 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
+			(at 170.18 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C114669"
+			(at 170.18 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 174.752 82.55 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2477,7 +5111,7 @@
 	)
 	(symbol
 		(lib_id "TH-1-CC:R_470Ω")
-		(at 104.14 101.6 90)
+		(at 170.18 106.68 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2487,7 +5121,7 @@
 		(dnp no)
 		(uuid "76053e18-2ebe-45e4-a37b-b37fec4cf349")
 		(property "Reference" "R30"
-			(at 100.33 99.568 90)
+			(at 166.37 104.648 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2498,7 +5132,7 @@
 			)
 		)
 		(property "Value" "470Ω"
-			(at 104.14 101.6 90)
+			(at 170.18 106.68 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2508,7 +5142,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 103.378 90)
+			(at 170.18 108.458 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2519,7 +5153,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 104.14 101.6 0)
+			(at 170.18 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2530,7 +5164,7 @@
 			)
 		)
 		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 104.14 101.6 0)
+			(at 170.18 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2541,7 +5175,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 104.14 101.6 0)
+			(at 170.18 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2552,7 +5186,7 @@
 			)
 		)
 		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 104.14 101.6 0)
+			(at 170.18 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2563,7 +5197,7 @@
 			)
 		)
 		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 104.14 101.6 0)
+			(at 170.18 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2574,7 +5208,7 @@
 			)
 		)
 		(property "LCSC Part no." "C114669"
-			(at 104.14 101.6 0)
+			(at 170.18 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2585,7 +5219,7 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 108.712 102.87 90)
+			(at 174.752 107.95 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2611,7 +5245,7 @@
 	)
 	(symbol
 		(lib_id "TH-1-CC:R_470Ω")
-		(at 104.14 76.2 90)
+		(at 170.18 76.2 90)
 		(mirror x)
 		(unit 1)
 		(body_style 1)
@@ -2622,7 +5256,7 @@
 		(dnp no)
 		(uuid "926cd47b-f388-4975-9f32-a8012cb1e9fd")
 		(property "Reference" "R25"
-			(at 100.33 78.232 90)
+			(at 166.37 78.232 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2633,7 +5267,7 @@
 			)
 		)
 		(property "Value" "470Ω"
-			(at 104.14 76.2 90)
+			(at 170.18 76.2 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2643,7 +5277,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 74.422 90)
+			(at 170.18 74.422 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2654,7 +5288,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 104.14 76.2 0)
+			(at 170.18 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2665,7 +5299,7 @@
 			)
 		)
 		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 104.14 76.2 0)
+			(at 170.18 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2676,7 +5310,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 104.14 76.2 0)
+			(at 170.18 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2687,7 +5321,7 @@
 			)
 		)
 		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 104.14 76.2 0)
+			(at 170.18 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2698,7 +5332,7 @@
 			)
 		)
 		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 104.14 76.2 0)
+			(at 170.18 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2709,7 +5343,7 @@
 			)
 		)
 		(property "LCSC Part no." "C114669"
-			(at 104.14 76.2 0)
+			(at 170.18 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2720,7 +5354,7 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 108.712 77.47 90)
+			(at 174.752 77.47 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2745,8 +5379,146 @@
 		)
 	)
 	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 73.66 64.77 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "95729ac6-6c6d-42a4-a136-3ca5aab35f1c")
+		(property "Reference" "D14"
+			(at 69.342 59.182 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 73.66 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 66.04 77.978 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 58.42 180.594 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 63.5 91.694 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 68.326 83.566 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 68.326 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 55.88 173.736 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 60.96 82.042 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 76.708 70.612 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "e1624924-cd9c-4b50-b711-3db0ae334721")
+		)
+		(pin "1"
+			(uuid "f0857c8d-84cb-468e-a587-92bcc0c26562")
+		)
+		(pin "3"
+			(uuid "f586fa7d-097b-45fc-8a54-48adfbdaadc1")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
-		(at 139.7 100.33 0)
+		(at 228.6 102.87 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2757,7 +5529,7 @@
 		(fields_autoplaced yes)
 		(uuid "96fec0a9-1848-432d-b63f-4463f7927930")
 		(property "Reference" "#PWR08"
-			(at 139.7 106.68 0)
+			(at 228.6 109.22 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2768,7 +5540,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 139.7 105.41 0)
+			(at 228.6 107.95 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2778,7 +5550,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 139.7 100.33 0)
+			(at 228.6 102.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2789,7 +5561,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 139.7 100.33 0)
+			(at 228.6 102.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2800,7 +5572,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 139.7 100.33 0)
+			(at 228.6 102.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2823,8 +5595,9 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_02x08_Odd_Even")
-		(at 160.02 88.9 90)
+		(lib_id "power:GND")
+		(at 68.58 118.11 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2832,31 +5605,30 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "a8fca8bf-ac07-42a0-91f0-c35ad9fac87f")
-		(property "Reference" "J13"
-			(at 149.86 86.36 90)
+		(uuid "9bd2cef0-86f6-4454-8c71-2b569c2dc191")
+		(property "Reference" "#PWR064"
+			(at 68.58 124.46 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "Conn_02x08_Odd_Even"
-			(at 171.45 87.63 90)
+		(property "Value" "GND"
+			(at 71.12 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 160.02 88.9 0)
+			(at 68.58 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2867,7 +5639,223 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 160.02 88.9 0)
+			(at 68.58 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 68.58 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "46ec6a18-f772-4e18-a30a-8df9f45ca3c0")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR064")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 73.66 78.74 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a8c0f915-b361-44c3-9b3b-d28edcd83c86")
+		(property "Reference" "D13"
+			(at 69.342 73.152 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 73.66 87.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 66.04 91.948 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 58.42 194.564 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 63.5 105.664 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 68.326 97.536 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 68.326 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 55.88 187.706 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 60.96 96.012 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 76.708 84.582 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "294b13cf-7b15-4a60-b232-23ea21b34e1a")
+		)
+		(pin "1"
+			(uuid "172a448f-a7fc-41a6-ade0-6fdd99495c05")
+		)
+		(pin "3"
+			(uuid "6d73dc0a-a77b-42ab-8d02-c31162ff94f0")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_02x08_Odd_Even")
+		(at 88.9 92.71 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a8fca8bf-ac07-42a0-91f0-c35ad9fac87f")
+		(property "Reference" "J13"
+			(at 78.74 90.17 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Conn_02x08_Odd_Even"
+			(at 100.33 91.44 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2878,7 +5866,7 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x08, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 160.02 88.9 0)
+			(at 88.9 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2947,7 +5935,8 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 152.4 100.33 0)
+		(at 67.31 66.04 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2955,10 +5944,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ad38366f-61be-4cad-8bd4-6f72e04f4c0d")
-		(property "Reference" "#PWR06"
-			(at 152.4 106.68 0)
+		(uuid "ab83a51f-d8d4-4f00-959e-7e9554a39631")
+		(property "Reference" "#PWR062"
+			(at 67.31 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2969,7 +5957,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 152.4 105.41 0)
+			(at 69.85 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2979,7 +5967,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 152.4 100.33 0)
+			(at 67.31 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2990,7 +5978,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 152.4 100.33 0)
+			(at 67.31 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3001,7 +5989,85 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 152.4 100.33 0)
+			(at 67.31 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "808da2ab-6892-4da0-b557-efbd4d9234b3")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR062")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 81.28 104.14 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ad38366f-61be-4cad-8bd4-6f72e04f4c0d")
+		(property "Reference" "#PWR06"
+			(at 81.28 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 81.28 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 81.28 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 81.28 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 81.28 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3025,7 +6091,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_02x08_Odd_Even")
-		(at 129.54 88.9 90)
+		(at 218.44 91.44 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3035,7 +6101,7 @@
 		(dnp no)
 		(uuid "b1f1558a-5e9e-400f-94de-ba99f96c7e47")
 		(property "Reference" "J12"
-			(at 119.38 86.36 90)
+			(at 208.28 88.9 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3046,7 +6112,7 @@
 			)
 		)
 		(property "Value" "Conn_02x08_Odd_Even"
-			(at 140.97 87.63 90)
+			(at 229.87 90.17 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3057,7 +6123,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 129.54 88.9 0)
+			(at 218.44 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3068,7 +6134,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 129.54 88.9 0)
+			(at 218.44 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3079,7 +6145,7 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x08, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 129.54 88.9 0)
+			(at 218.44 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3148,7 +6214,8 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 167.64 100.33 0)
+		(at 67.31 52.07 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3156,10 +6223,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c7926e15-266f-4020-961e-bcf5ea997064")
-		(property "Reference" "#PWR09"
-			(at 167.64 106.68 0)
+		(uuid "b2dbee38-86d7-4ddd-9bf3-5fc5e312fe09")
+		(property "Reference" "#PWR063"
+			(at 67.31 58.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3170,7 +6236,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 167.64 105.41 0)
+			(at 69.85 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3180,7 +6246,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 167.64 100.33 0)
+			(at 67.31 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3191,7 +6257,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 167.64 100.33 0)
+			(at 67.31 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3202,7 +6268,243 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 167.64 100.33 0)
+			(at 67.31 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5b709e11-58dd-44ca-a6f8-70f970c3dfef")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR063")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 200.66 118.11 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b5152502-26c8-4394-ae59-2149bb9739a2")
+		(property "Reference" "#PWR015"
+			(at 200.66 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 200.66 123.19 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 200.66 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 200.66 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 200.66 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ea36eac4-0fcc-49a2-aaa3-e2f7afc77ddf")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 189.23 118.11 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c0f9f44e-9a99-4684-8578-8442e63edbd9")
+		(property "Reference" "#PWR016"
+			(at 189.23 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 189.23 123.19 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 189.23 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 189.23 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 189.23 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ddda4904-acc3-423a-aa0c-f384662e0816")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 96.52 104.14 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c7926e15-266f-4020-961e-bcf5ea997064")
+		(property "Reference" "#PWR09"
+			(at 96.52 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 96.52 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 96.52 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 96.52 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 96.52 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3219,6 +6521,715 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
 					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 132.08 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cfc24616-38d3-4451-9fa4-3f192c6d98ea")
+		(property "Reference" "#PWR065"
+			(at 68.58 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 71.12 134.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 68.58 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "35f9f61f-9205-4c12-ae0f-a81714144e71")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR065")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 146.05 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e76c0bc2-865c-4969-96a9-e70af6aa0a0f")
+		(property "Reference" "#PWR066"
+			(at 68.58 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 71.12 148.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 68.58 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "13da348c-3ea7-4383-94e0-4340fb5cce30")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "#PWR066")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 74.93 130.81 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "eef2d61a-24e4-4ad1-953d-fde1770054f0")
+		(property "Reference" "D17"
+			(at 70.612 125.222 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 74.93 139.7 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 67.31 144.018 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 59.69 246.634 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 64.77 157.734 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 69.596 149.606 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 69.596 161.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 57.15 239.776 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 62.23 148.082 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 77.978 136.652 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "65c95043-2994-45d2-adb2-ca363eb2d4d1")
+		)
+		(pin "1"
+			(uuid "73d02837-42d9-443e-a359-a522e50d4f97")
+		)
+		(pin "3"
+			(uuid "2ef496f3-4eec-4728-8d8e-ef86ae78f285")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 73.66 50.8 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f1ed116f-33c9-4d8d-9bca-3b12199a34f8")
+		(property "Reference" "D15"
+			(at 69.342 45.212 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 73.66 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 66.04 64.008 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 58.42 166.624 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 63.5 77.724 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 68.326 69.596 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 68.326 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 55.88 159.766 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 60.96 68.072 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 76.708 56.642 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "dff9bd79-b3e2-4112-b815-42a86df4df2d")
+		)
+		(pin "1"
+			(uuid "2fbd9332-71d7-4901-a15b-c6f998d2ec92")
+		)
+		(pin "3"
+			(uuid "1b2c4b59-90bc-4c74-8cbf-46de65584ddf")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 242.57 90.17 90)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f75be2ec-553b-46cf-9ef1-878c367bddb9")
+		(property "Reference" "D12"
+			(at 239.776 84.074 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 242.57 99.06 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 250.19 103.378 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 257.81 205.994 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 252.73 117.094 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 247.904 108.966 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 247.904 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 260.35 199.136 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 255.27 107.442 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 245.364 96.266 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "62e7bf51-c62f-4a2a-b038-e9130174a7ee")
+		)
+		(pin "1"
+			(uuid "92adbafa-8987-4594-830e-f34f9f3d062f")
+		)
+		(pin "3"
+			(uuid "3d7f8b6f-163b-48e4-9329-b1343deb7bb7")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:High_speed_TVS_array")
+		(at 74.93 116.84 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f8754c10-efcb-42f1-865a-f53a145fb621")
+		(property "Reference" "D16"
+			(at 70.612 111.252 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TECH REPUBLIC ESD5302F"
+			(at 74.93 125.73 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 67.31 130.048 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2841442.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 59.69 232.664 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESD DIODE 5VWM 14VC SOT-23"
+			(at 64.77 143.764 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TECH PUBLIC"
+			(at 69.596 135.636 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "ESD5302F"
+			(at 69.596 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C2841442.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdeVF1VT1JfUDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 57.15 225.806 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C2841442"
+			(at 62.23 134.112 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 77.978 122.682 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "2700792b-0435-48aa-93a2-d17b0df10b6c")
+		)
+		(pin "1"
+			(uuid "4914bdea-c973-4705-b683-ba7cc3a9e2ee")
+		)
+		(pin "3"
+			(uuid "a344fe6d-6330-4444-8dfb-5edd04b51ceb")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D16")
 					(unit 1)
 				)
 			)

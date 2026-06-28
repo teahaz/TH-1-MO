@@ -7151,7 +7151,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 129.54 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8740,7 +8740,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 101.6 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
