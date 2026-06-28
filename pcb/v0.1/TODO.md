@@ -20,15 +20,17 @@
 - [x] Pinout nrf
 - [x] Pinout pi
 - [x] Display connector needs traces from gpio page
-- [ ] ESD protection
-- [ ] Remove unused pins
-- [ ] Add NRF test points where bridging is not testable
+- [x] ESD protection
+- [x] Remove unused pins
+- [ ] Add test points for checking shorts on the NRF
+- [ ] Add test points for checking general stuff with the fixture
 - [ ] Full checkup
     - do we have all high speed lines
     - low speed?
     - every subsystem looks ok
     - power lines look ok
     - everyone has the correct power
+    - Double check unused pins
 
 
 # DAC notes
