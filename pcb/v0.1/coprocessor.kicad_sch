@@ -6323,8 +6323,8 @@
 		)
 		(uuid "ffb72ab5-3bda-47f5-bdf2-3d2defdc993b")
 	)
-	(hierarchical_label "GP0.16{slash}INPUT"
-		(shape input)
+	(hierarchical_label "GP0.16"
+		(shape bidirectional)
 		(at 72.39 111.76 180)
 		(effects
 			(font
@@ -6378,8 +6378,8 @@
 		)
 		(uuid "23de925e-7f3f-41b2-b214-17564ef3f362")
 	)
-	(hierarchical_label "GP0.20{slash}INPUT"
-		(shape input)
+	(hierarchical_label "GP0.20"
+		(shape bidirectional)
 		(at 72.39 96.52 180)
 		(effects
 			(font
@@ -6389,8 +6389,8 @@
 		)
 		(uuid "2bbe9820-63c3-447b-b9e5-ee6c44dc7e16")
 	)
-	(hierarchical_label "GP0.19{slash}INPUT"
-		(shape input)
+	(hierarchical_label "GP0.19"
+		(shape bidirectional)
 		(at 72.39 101.6 180)
 		(effects
 			(font
@@ -6400,8 +6400,8 @@
 		)
 		(uuid "2ff3ffad-0020-49a7-93c9-436397e8b44f")
 	)
-	(hierarchical_label "GP0.13{slash}INPUT"
-		(shape input)
+	(hierarchical_label "GP0.13"
+		(shape bidirectional)
 		(at 72.39 114.3 180)
 		(effects
 			(font
@@ -6411,8 +6411,8 @@
 		)
 		(uuid "34d2adf5-87f6-43fe-82de-4f45f2951dd6")
 	)
-	(hierarchical_label "GP0.15{slash}INPUT"
-		(shape input)
+	(hierarchical_label "GP0.15"
+		(shape bidirectional)
 		(at 72.39 109.22 180)
 		(effects
 			(font
@@ -6510,8 +6510,8 @@
 		)
 		(uuid "97bf1cdb-b654-42a4-8316-8f9c32db7978")
 	)
-	(hierarchical_label "GP0.21{slash}INPUT"
-		(shape input)
+	(hierarchical_label "GP0.21"
+		(shape bidirectional)
 		(at 72.39 99.06 180)
 		(effects
 			(font
@@ -6565,8 +6565,8 @@
 		)
 		(uuid "cca8495a-5aad-479b-ac79-01383b2d8fca")
 	)
-	(hierarchical_label "GP0.17{slash}INPUT"
-		(shape input)
+	(hierarchical_label "GP0.17"
+		(shape bidirectional)
 		(at 72.39 104.14 180)
 		(effects
 			(font
@@ -6620,8 +6620,8 @@
 		)
 		(uuid "f41d3b51-ac36-48b1-9962-1d78decbadc3")
 	)
-	(hierarchical_label "GP0.14{slash}INPUT"
-		(shape input)
+	(hierarchical_label "GP0.14"
+		(shape bidirectional)
 		(at 72.39 116.84 180)
 		(effects
 			(font

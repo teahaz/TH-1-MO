@@ -896,200 +896,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "TH-1-CC:R_470Ω"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "R"
-				(at 2.032 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "470Ω"
-				(at 0 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-				(at -1.778 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "YAGEO"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mfr. Part No." "RC0603FR-07470RL"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part no." "C114669"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Stock" "NO!"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "R res resistor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "R_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "R_470Ω_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "R_470Ω_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "TH-1-CC:TVS_DIODE_4V"
 			(pin_numbers
 				(hide yes)
@@ -1670,16 +1476,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "8 input only pins.\nNeeded for the logic analyser\nand perhaps useful for other\nstuff too."
-		(exclude_from_sim no)
-		(at 156.718 90.17 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "4157805d-1e46-4a3a-9228-8af2484b263d")
-	)
 	(junction
 		(at 198.12 104.14)
 		(diameter 0)
@@ -1874,7 +1670,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 99.06) (xy 166.37 99.06)
+			(xy 172.72 99.06) (xy 186.69 99.06)
 		)
 		(stroke
 			(width 0)
@@ -1994,16 +1790,6 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 76.2) (xy 191.77 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "20afc913-6f45-49ef-aad0-711b144dc145")
-	)
-	(wire
-		(pts
 			(xy 68.58 130.81) (xy 69.85 130.81)
 		)
 		(stroke
@@ -2031,16 +1817,6 @@
 			(type default)
 		)
 		(uuid "2eb4d704-f687-4353-828d-bf828b42f05d")
-	)
-	(wire
-		(pts
-			(xy 173.99 73.66) (xy 186.69 73.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "319bdb29-0d94-4053-bf31-9bb577284a08")
 	)
 	(wire
 		(pts
@@ -2074,7 +1850,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 73.66) (xy 166.37 73.66)
+			(xy 172.72 73.66) (xy 186.69 73.66)
 		)
 		(stroke
 			(width 0)
@@ -2114,7 +1890,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 81.28) (xy 166.37 81.28)
+			(xy 172.72 81.28) (xy 203.2 81.28)
 		)
 		(stroke
 			(width 0)
@@ -2154,7 +1930,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 76.2) (xy 166.37 76.2)
+			(xy 172.72 76.2) (xy 191.77 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2164,7 +1940,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 104.14) (xy 166.37 104.14)
+			(xy 172.72 104.14) (xy 198.12 104.14)
 		)
 		(stroke
 			(width 0)
@@ -2324,16 +2100,6 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 78.74) (xy 198.12 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5b052438-6e77-443c-b795-c1a561631d78")
-	)
-	(wire
-		(pts
 			(xy 248.92 90.17) (xy 247.65 90.17)
 		)
 		(stroke
@@ -2374,16 +2140,6 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 101.6) (xy 191.77 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "649cdd29-e9f9-4a14-978d-7bc49f8172b3")
-	)
-	(wire
-		(pts
 			(xy 191.77 76.2) (xy 191.77 82.55)
 		)
 		(stroke
@@ -2411,16 +2167,6 @@
 			(type default)
 		)
 		(uuid "6be32a79-4839-4a8c-983b-c56b3bcad2a4")
-	)
-	(wire
-		(pts
-			(xy 173.99 81.28) (xy 203.2 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6d10e9d6-66e8-4e85-94cb-446c47a81f51")
 	)
 	(wire
 		(pts
@@ -2594,16 +2340,6 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 104.14) (xy 198.12 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9921b690-cec8-438e-a74a-19e08cdc0739")
-	)
-	(wire
-		(pts
 			(xy 219.71 62.23) (xy 220.98 62.23)
 		)
 		(stroke
@@ -2614,7 +2350,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 78.74) (xy 166.37 78.74)
+			(xy 172.72 78.74) (xy 198.12 78.74)
 		)
 		(stroke
 			(width 0)
@@ -2704,16 +2440,6 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 106.68) (xy 203.2 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b12d96dd-a061-499c-bb79-62af6b92798c")
-	)
-	(wire
-		(pts
 			(xy 248.92 91.44) (xy 248.92 90.17)
 		)
 		(stroke
@@ -2724,7 +2450,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 101.6) (xy 166.37 101.6)
+			(xy 172.72 101.6) (xy 191.77 101.6)
 		)
 		(stroke
 			(width 0)
@@ -2974,7 +2700,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 106.68) (xy 166.37 106.68)
+			(xy 172.72 106.68) (xy 203.2 106.68)
 		)
 		(stroke
 			(width 0)
@@ -3104,16 +2830,6 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 99.06) (xy 186.69 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fcbf56bb-ce9f-4745-9f3a-e1e80a9b9a49")
-	)
-	(wire
-		(pts
 			(xy 220.98 54.61) (xy 220.98 62.23)
 		)
 		(stroke
@@ -3133,9 +2849,9 @@
 		)
 		(uuid "07f0afc4-2a49-4136-9ff1-4465704a5af1")
 	)
-	(hierarchical_label "GP0.20{slash}INPUT"
-		(shape output)
-		(at 165.1 73.66 180)
+	(hierarchical_label "GP0.20"
+		(shape bidirectional)
+		(at 172.72 73.66 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3166,9 +2882,9 @@
 		)
 		(uuid "123e8369-a621-46b5-84dc-cebccaef5753")
 	)
-	(hierarchical_label "GP0.13{slash}INPUT"
-		(shape output)
-		(at 165.1 104.14 180)
+	(hierarchical_label "GP0.13"
+		(shape bidirectional)
+		(at 172.72 104.14 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3199,9 +2915,9 @@
 		)
 		(uuid "2b548b6a-de6a-4187-aecc-67d26efc807b")
 	)
-	(hierarchical_label "GP0.14{slash}INPUT"
-		(shape output)
-		(at 165.1 106.68 180)
+	(hierarchical_label "GP0.14"
+		(shape bidirectional)
+		(at 172.72 106.68 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3210,9 +2926,9 @@
 		)
 		(uuid "30493981-0e3b-4b54-bbf5-fb11580ddef9")
 	)
-	(hierarchical_label "GP0.16{slash}INPUT"
-		(shape output)
-		(at 165.1 101.6 180)
+	(hierarchical_label "GP0.16"
+		(shape bidirectional)
+		(at 172.72 101.6 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3287,9 +3003,9 @@
 		)
 		(uuid "668314f1-d48a-4e01-afa5-78f8acbd6e82")
 	)
-	(hierarchical_label "GP0.17{slash}INPUT"
-		(shape output)
-		(at 165.1 81.28 180)
+	(hierarchical_label "GP0.17"
+		(shape bidirectional)
+		(at 172.72 81.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3320,9 +3036,9 @@
 		)
 		(uuid "9182ad1c-afab-4de6-91eb-cdf4957acfd6")
 	)
-	(hierarchical_label "GP0.15{slash}INPUT"
-		(shape output)
-		(at 165.1 99.06 180)
+	(hierarchical_label "GP0.15"
+		(shape bidirectional)
+		(at 172.72 99.06 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3331,9 +3047,9 @@
 		)
 		(uuid "97400ae3-08b5-4de8-89ea-52bb21e73829")
 	)
-	(hierarchical_label "GP0.19{slash}INPUT"
-		(shape output)
-		(at 165.1 78.74 180)
+	(hierarchical_label "GP0.19"
+		(shape bidirectional)
+		(at 172.72 78.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3342,9 +3058,9 @@
 		)
 		(uuid "a536dd95-0290-4b3c-a1a9-63d005444acd")
 	)
-	(hierarchical_label "GP0.21{slash}INPUT"
-		(shape output)
-		(at 165.1 76.2 180)
+	(hierarchical_label "GP0.21"
+		(shape bidirectional)
+		(at 172.72 76.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3440,140 +3156,6 @@
 			(justify right)
 		)
 		(uuid "ffb770cd-c5ab-4349-87f7-feb713c9cb19")
-	)
-	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 170.18 99.06 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "03084d6d-360b-4e6c-a70e-b64b400e20a6")
-		(property "Reference" "R27"
-			(at 166.37 97.028 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "470Ω"
-			(at 170.18 99.06 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 170.18 100.838 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 170.18 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 170.18 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at 170.18 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 170.18 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 170.18 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 170.18 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 174.752 100.33 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "9b84fb09-0a96-417c-b67d-41943430232f")
-		)
-		(pin "2"
-			(uuid "ec4db1f3-e151-4ab2-9cb3-59132f591364")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "R27")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -4003,140 +3585,6 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 170.18 104.14 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "154f2482-db8f-4447-81b1-80d3bb2fa837")
-		(property "Reference" "R29"
-			(at 166.37 102.108 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "470Ω"
-			(at 170.18 104.14 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 170.18 105.918 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 170.18 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 170.18 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at 170.18 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 170.18 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 170.18 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 170.18 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 174.752 105.41 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "54ff6596-138d-471f-aa72-f4e95d048ad8")
-		)
-		(pin "2"
-			(uuid "41c96fa4-249e-4311-9645-e817e2484dbd")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "R29")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 189.23 92.71 0)
 		(mirror y)
@@ -4347,141 +3795,6 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
 					(reference "D18")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 170.18 73.66 90)
-		(mirror x)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "3180fb35-a2a0-41fb-973f-87637e955ac1")
-		(property "Reference" "R26"
-			(at 166.37 75.692 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "470Ω"
-			(at 170.18 73.66 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 170.18 71.882 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 170.18 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 170.18 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at 170.18 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 170.18 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 170.18 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 170.18 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 174.752 74.93 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "dc54cfdc-d734-4327-827a-85a697d20180")
-		)
-		(pin "2"
-			(uuid "c232846e-6c38-4361-ab6b-83268d6f8283")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "R26")
 					(unit 1)
 				)
 			)
@@ -4781,140 +4094,6 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 170.18 101.6 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "55cef791-56aa-40e6-ad68-d45971a47858")
-		(property "Reference" "R28"
-			(at 166.37 99.568 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "470Ω"
-			(at 170.18 101.6 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 170.18 103.378 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 170.18 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 170.18 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at 170.18 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 170.18 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 170.18 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 170.18 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 174.752 102.87 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "2b866607-c94f-4808-a166-16ce621151cf")
-		)
-		(pin "2"
-			(uuid "fe37cd89-20d4-49ae-91b7-b6b7ee5f6781")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "R28")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "TH-1-CC:High_speed_TVS_array")
 		(at 200.66 87.63 0)
 		(unit 1)
@@ -5047,141 +4226,6 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
 					(reference "D9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 170.18 78.74 90)
-		(mirror x)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "61584756-d886-432c-bb1b-561dd92cf624")
-		(property "Reference" "R24"
-			(at 166.37 80.772 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "470Ω"
-			(at 170.18 78.74 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 170.18 76.962 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 170.18 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 170.18 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at 170.18 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 170.18 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 170.18 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 170.18 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 174.752 80.01 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "78bd6fe1-c798-49c3-b12a-ee9d58932bda")
-		)
-		(pin "2"
-			(uuid "106790ee-50ac-4db9-a2d7-5c7fe515807a")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "R24")
 					(unit 1)
 				)
 			)
@@ -5836,275 +4880,6 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 170.18 81.28 90)
-		(mirror x)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "73d25323-1cce-4795-820b-ce99ed955e3e")
-		(property "Reference" "R2"
-			(at 166.37 83.312 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "470Ω"
-			(at 170.18 81.28 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 170.18 79.502 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 170.18 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 170.18 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at 170.18 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 170.18 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 170.18 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 170.18 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 174.752 82.55 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "bb116ad5-1bb6-4c5a-bfb6-68a25bf1c9ba")
-		)
-		(pin "2"
-			(uuid "5b814902-173e-4063-8e12-47c88ca2cee0")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "R2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 170.18 106.68 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "76053e18-2ebe-45e4-a37b-b37fec4cf349")
-		(property "Reference" "R30"
-			(at 166.37 104.648 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "470Ω"
-			(at 170.18 106.68 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 170.18 108.458 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 170.18 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 170.18 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at 170.18 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 170.18 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 170.18 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 170.18 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 174.752 107.95 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c55eea06-163e-4043-b4cd-cc97ba845dee")
-		)
-		(pin "2"
-			(uuid "10fa8f75-643e-4a16-b063-ace045a54964")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "R30")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 107.95 83.82 0)
 		(unit 1)
@@ -6177,141 +4952,6 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
 					(reference "#PWR067")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-1-CC:R_470Ω")
-		(at 170.18 76.2 90)
-		(mirror x)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "926cd47b-f388-4975-9f32-a8012cb1e9fd")
-		(property "Reference" "R25"
-			(at 166.37 78.232 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "470Ω"
-			(at 170.18 76.2 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 170.18 74.422 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C114669.pdf"
-			(at 170.18 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "100mW 470Ω 75V Thick Film Resistor ±100ppm/℃ ±1% 0603 Chip Resistor - Surface Mount RoHS"
-			(at 170.18 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at 170.18 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "RC0603FR-07470RL"
-			(at 170.18 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114669.html?s_z=n_470%2520ohm%2520resistor%2520SMD%25200608"
-			(at 170.18 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C114669"
-			(at 170.18 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 174.752 77.47 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "91cbaaca-6d45-4d2c-9969-f01955cddb19")
-		)
-		(pin "2"
-			(uuid "a28ee5cb-401e-427b-8439-1fa90c31a948")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "R25")
 					(unit 1)
 				)
 			)
