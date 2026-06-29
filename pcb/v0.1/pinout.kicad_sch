@@ -1322,7 +1322,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "TH-1-CC:TVS_DIODE_7.1VC"
+		(symbol "TH-1-CC:TVS_DIODE_5.5v"
 			(pin_numbers
 				(hide yes)
 			)
@@ -1345,7 +1345,7 @@
 					)
 				)
 			)
-			(property "Value" "TVS_DIODE_7.1VC"
+			(property "Value" "TVS_DIODE_5.5v"
 				(at 0 -2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1464,7 +1464,7 @@
 					)
 				)
 			)
-			(symbol "TVS_DIODE_7.1VC_0_1"
+			(symbol "TVS_DIODE_5.5v_0_1"
 				(polyline
 					(pts
 						(xy -2.54 -1.27) (xy 0 0) (xy -2.54 1.27) (xy -2.54 -1.27)
@@ -1514,7 +1514,7 @@
 					)
 				)
 			)
-			(symbol "TVS_DIODE_7.1VC_1_1"
+			(symbol "TVS_DIODE_5.5v_1_1"
 				(pin passive line
 					(at -3.81 0 0)
 					(length 2.54)
@@ -1717,6 +1717,12 @@
 		(uuid "35e5e7a0-b87f-407e-9ac5-b7644e82cda4")
 	)
 	(junction
+		(at 99.06 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "542c1a79-45bc-4d91-ae3f-beb34c8221d3")
+	)
+	(junction
 		(at 203.2 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1837,16 +1843,14 @@
 		(uuid "ec6ba1fd-dbaf-4ac4-a8df-b4d5b8d3777c")
 	)
 	(junction
-		(at 99.06 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f2b5e693-85e7-423f-813a-e8b06e515004")
-	)
-	(junction
 		(at 198.12 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f41c66e8-24fd-4fe2-8a3c-548d689ef501")
+	)
+	(no_connect
+		(at 80.01 147.32)
+		(uuid "d977592f-3db0-4775-b92e-7bf7ea6d3184")
 	)
 	(wire
 		(pts
@@ -2220,16 +2224,6 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 82.55) (xy 99.06 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "47b0819d-2fab-415d-ace4-9f0662f4e0c1")
-	)
-	(wire
-		(pts
 			(xy 226.06 76.2) (xy 226.06 82.55)
 		)
 		(stroke
@@ -2257,6 +2251,16 @@
 			(type default)
 		)
 		(uuid "4de40c91-04e9-4f1b-b196-86ed3ef91b8e")
+	)
+	(wire
+		(pts
+			(xy 99.06 82.55) (xy 99.06 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5137c6e2-ac30-45bc-b4f4-a847313affa0")
 	)
 	(wire
 		(pts
@@ -6530,140 +6534,6 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:TVS_DIODE_7.1VC")
-		(at 102.87 82.55 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "97603b50-6b7e-4d48-b952-8c3b6b080b18")
-		(property "Reference" "D19"
-			(at 101.6 79.756 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TVS_DIODE_7.1VC"
-			(at 102.87 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-882"
-			(at 102.87 87.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C553450.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdYVVNVQFFWVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
-			(at 102.87 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "TVS DIODE 5.5VWM 7.1VC DFN1006-2(SOD-882)"
-			(at 102.87 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Nexperia"
-			(at 102.87 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part no." "PTVS5V5D1BLYL"
-			(at 102.87 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor DigiKey" "https://www.lcsc.com/product-detail/C553450.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdYVVNVQFFWVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
-			(at 102.87 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C553450"
-			(at 102.87 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 105.156 85.344 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "dc23038b-25df-47ae-9f6f-41b67eaa6b47")
-		)
-		(pin "1"
-			(uuid "5bf6564b-3790-493c-973c-1a307721b2c2")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
-					(reference "D19")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 68.58 118.11 0)
 		(mirror y)
@@ -7801,6 +7671,139 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
 					(reference "#PWR065")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:TVS_DIODE_5.5v")
+		(at 102.87 82.55 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e1eb4acc-1439-4704-bda8-8b4c34e83672")
+		(property "Reference" "D19"
+			(at 103.378 79.756 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TVS_DIODE_5.5v"
+			(at 113.03 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-882"
+			(at 102.87 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C553450.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdYVVNVQFFWVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 102.87 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "TVS DIODE 5.5VWM 7.1VC DFN1006-2(SOD-882)"
+			(at 102.87 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Nexperia"
+			(at 102.87 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "PTVS5V5D1BLYL"
+			(at 102.87 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor DigiKey" "https://www.lcsc.com/product-detail/C553450.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdYVVNVQFFWVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 102.87 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C553450"
+			(at 102.87 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 104.14 85.852 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "10c35a39-0447-4d8c-8528-443295c8a0b5")
+		)
+		(pin "2"
+			(uuid "26b4f387-3a3a-493e-b153-93d188358bea")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/d35668cc-0b48-4b2a-bc9a-46d15e4baf9a"
+					(reference "D19")
 					(unit 1)
 				)
 			)

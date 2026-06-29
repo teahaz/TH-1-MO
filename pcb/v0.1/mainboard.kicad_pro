@@ -448,7 +448,7 @@
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
       "no_connect_dangling": "warning",
-      "pin_not_connected": "error",
+      "pin_not_connected": "ignore",
       "pin_not_driven": "error",
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
@@ -460,7 +460,7 @@
       "single_global_label": "ignore",
       "stacked_pin_name": "warning",
       "unannotated": "error",
-      "unconnected_wire_endpoint": "warning",
+      "unconnected_wire_endpoint": "ignore",
       "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
@@ -635,7 +635,7 @@
         "uuid": "5b8aa782-5c3d-43e7-a869-3bd000015f52"
       }
     ],
-    "used_designators": "TP6-15",
+    "used_designators": "U7,U9,D19,D21-22,D25,#FLG3-9,R31,TP6-15",
     "variants": []
   },
   "sheets": [

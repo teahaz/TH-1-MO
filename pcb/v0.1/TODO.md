@@ -22,8 +22,7 @@
 - [x] Display connector needs traces from gpio page
 - [x] ESD protection
 - [x] Remove unused pins
-- [ ] Add test points for checking shorts on the NRF
-- [ ] Add test points for checking general stuff with the fixture
+- [x] Add test points for checking general stuff with the fixture
 - [ ] Full checkup
     - do we have all high speed lines
     - low speed?

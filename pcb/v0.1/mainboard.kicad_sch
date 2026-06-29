@@ -1751,7 +1751,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "TH-1-CC:TVS_DIODE_7.1VC"
+		(symbol "TH-1-CC:TVS_DIODE_5.5v"
 			(pin_numbers
 				(hide yes)
 			)
@@ -1774,7 +1774,7 @@
 					)
 				)
 			)
-			(property "Value" "TVS_DIODE_7.1VC"
+			(property "Value" "TVS_DIODE_5.5v"
 				(at 0 -2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1893,7 +1893,7 @@
 					)
 				)
 			)
-			(symbol "TVS_DIODE_7.1VC_0_1"
+			(symbol "TVS_DIODE_5.5v_0_1"
 				(polyline
 					(pts
 						(xy -2.54 -1.27) (xy 0 0) (xy -2.54 1.27) (xy -2.54 -1.27)
@@ -1943,7 +1943,7 @@
 					)
 				)
 			)
-			(symbol "TVS_DIODE_7.1VC_1_1"
+			(symbol "TVS_DIODE_5.5v_1_1"
 				(pin passive line
 					(at -3.81 0 0)
 					(length 2.54)
@@ -3367,12 +3367,6 @@
 		(uuid "517380ad-efa0-46aa-94c2-a7ea1fd3cdd5")
 	)
 	(junction
-		(at 64.77 156.21)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "56f44ba6-fad9-44ca-b7dc-c38ef74a62ee")
-	)
-	(junction
 		(at 154.94 22.86)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3433,6 +3427,12 @@
 		(uuid "ae650d77-4f8e-4c09-8fd4-088d94433cce")
 	)
 	(junction
+		(at 53.34 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b1bd2355-8994-4497-9c55-fcbeb0693256")
+	)
+	(junction
 		(at 38.1 160.02)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3454,7 +3454,7 @@
 		(at 83.82 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "d2775129-2bee-4995-934b-7d16160d241c")
+		(uuid "e045a266-ee03-4999-8a50-a77051bd8adc")
 	)
 	(junction
 		(at 281.94 111.76)
@@ -3734,7 +3734,7 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 38.1) (xy 74.93 38.1)
+			(xy 49.53 38.1) (xy 53.34 38.1)
 		)
 		(stroke
 			(width 0)
@@ -4074,7 +4074,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 154.94) (xy 64.77 156.21)
+			(xy 64.77 154.94) (xy 64.77 160.02)
 		)
 		(stroke
 			(width 0)
@@ -4141,6 +4141,16 @@
 			(type default)
 		)
 		(uuid "8e93e3c3-fbab-4232-9560-658fdc786d66")
+	)
+	(wire
+		(pts
+			(xy 53.34 38.1) (xy 74.93 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f2b165a-253f-426b-a01c-09e1fc74457e")
 	)
 	(wire
 		(pts
@@ -4691,16 +4701,6 @@
 			(type default)
 		)
 		(uuid "fb059e78-202b-4faf-a035-61a2b15b2564")
-	)
-	(wire
-		(pts
-			(xy 64.77 156.21) (xy 64.77 160.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fd1c0615-d6f7-46e8-b5fa-bde2887a112c")
 	)
 	(label "+5v"
 		(at 266.7 15.24 0)
@@ -6047,6 +6047,217 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 53.34 38.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4904b73b-ede6-4d6b-82cd-f6a78324c467")
+		(property "Reference" "#FLG03"
+			(at 53.34 36.195 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 53.34 33.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 53.34 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 53.34 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 53.34 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7c49bf0b-9b03-40b5-b4b8-6f64d4e98e7d")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52"
+					(reference "#FLG03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:TVS_DIODE_5.5v")
+		(at 87.63 38.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4f8866d1-f703-4c24-a0cf-d189c429d85c")
+		(property "Reference" "D22"
+			(at 87.63 33.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TVS_DIODE_5.5v"
+			(at 87.63 35.306 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-882"
+			(at 87.63 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C553450.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdYVVNVQFFWVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 87.63 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "TVS DIODE 5.5VWM 7.1VC DFN1006-2(SOD-882)"
+			(at 87.63 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Nexperia"
+			(at 87.63 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "PTVS5V5D1BLYL"
+			(at 87.63 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor DigiKey" "https://www.lcsc.com/product-detail/C553450.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdYVVNVQFFWVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
+			(at 87.63 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C553450"
+			(at 87.63 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "NO!"
+			(at 89.916 41.402 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a5b89a96-ef77-4496-bbe1-67c741085266")
+		)
+		(pin "2"
+			(uuid "7eeed68c-8db9-40a7-a5f0-bef3b335a15f")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52"
+					(reference "D22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "TH-1-CC:C_10uf")
 		(at 64.77 163.83 0)
 		(unit 1)
@@ -6942,140 +7153,6 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:TVS_DIODE_7.1VC")
-		(at 87.63 38.1 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b414be3e-c149-4626-bb89-bdce0022efd0")
-		(property "Reference" "D22"
-			(at 86.36 35.306 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TVS_DIODE_7.1VC"
-			(at 87.63 31.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-882"
-			(at 87.63 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C553450.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdYVVNVQFFWVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
-			(at 87.63 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "TVS DIODE 5.5VWM 7.1VC DFN1006-2(SOD-882)"
-			(at 87.63 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Nexperia"
-			(at 87.63 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part no." "PTVS5V5D1BLYL"
-			(at 87.63 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor DigiKey" "https://www.lcsc.com/product-detail/C553450.html?lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVdYVVNVQFFWVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRR1NADxALGw%3D%3D"
-			(at 87.63 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C553450"
-			(at 87.63 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "NO!"
-			(at 89.916 40.894 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "58b2496c-e953-4d92-b6b8-0db3c9bf1dc5")
-		)
-		(pin "1"
-			(uuid "7ab46a2d-d523-4ec6-8ec2-516ce8ee1031")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52"
-					(reference "D22")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 92.71 39.37 0)
 		(unit 1)
@@ -7515,85 +7592,6 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 64.77 156.21 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "fe9ac140-df2b-4d15-b730-37e268881b14")
-		(property "Reference" "#FLG03"
-			(at 66.675 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 68.58 156.2099 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 64.77 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 64.77 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 64.77 156.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "10216cda-2eba-4e61-a334-29e29a4c5499")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52"
-					(reference "#FLG03")
-					(unit 1)
-				)
-			)
-		)
-	)
 	(sheet
 		(at 125.73 27.94)
 		(size 57.15 100.33)
@@ -7630,16 +7628,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
-			)
-		)
-		(pin "+3v3_PI" output
-			(at 154.94 27.94 90)
-			(uuid "b0b2ec8a-1c74-41ef-aa06-7da4d16fc7e2")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 			)
 		)
 		(pin "+3v3_LDO" input
@@ -7940,6 +7928,16 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+		(pin "+3v3_PI" input
+			(at 154.94 27.94 90)
+			(uuid "3d2599c2-84cc-43b5-a330-3748f8a82b48")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
