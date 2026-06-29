@@ -9313,6 +9313,16 @@
 	)
 	(wire
 		(pts
+			(xy 341.63 106.68) (xy 353.06 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ab45334-2d7a-425c-85ab-ef144dad1b0a")
+	)
+	(wire
+		(pts
 			(xy 347.98 203.2) (xy 356.87 203.2)
 		)
 		(stroke
@@ -9940,16 +9950,6 @@
 			(type default)
 		)
 		(uuid "ba6a71c7-d7a1-4d46-aae0-9f2021ddcf77")
-	)
-	(wire
-		(pts
-			(xy 353.06 106.68) (xy 344.17 106.68)
-		)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(uuid "bde08752-ece9-4246-8a8d-7c57e4e24c35")
 	)
 	(wire
 		(pts
@@ -15411,6 +15411,85 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
 					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 341.63 106.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c09c54b4-3f38-482f-b273-9894a0868a18")
+		(property "Reference" "TP6"
+			(at 340.36 103.124 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 339.09 102.1081 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 346.71 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 346.71 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 341.63 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f7848d89-886a-474b-9b17-5424f3180aaa")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
+					(reference "TP6")
 					(unit 1)
 				)
 			)

@@ -635,7 +635,7 @@
         "uuid": "5b8aa782-5c3d-43e7-a869-3bd000015f52"
       }
     ],
-    "used_designators": "D2-24,#PWR10-11,#PWR13-17,#PWR55-72,U2-3",
+    "used_designators": "TP6-15",
     "variants": []
   },
   "sheets": [
