@@ -23,7 +23,7 @@
 - [x] ESD protection
 - [x] Remove unused pins
 - [x] Add test points for checking general stuff with the fixture
-- [ ] Full checkup
+- [x] Full checkup
     - do we have all high speed lines
     - low speed?
     - every subsystem looks ok
