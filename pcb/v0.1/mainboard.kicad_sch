@@ -2014,7 +2014,7 @@
 					(justify right)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Connector_USB:USB_C_Receptacle_Molex_105450-0101"
 				(at 3.81 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4956,7 +4956,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 80.01 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -5286,7 +5286,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_USB:USB_C_Receptacle_Molex_105450-0101"
 			(at 38.1 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -5490,7 +5490,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
 			(at 25.4 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -6417,7 +6417,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 34.29 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -7019,7 +7019,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 77.47 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -7264,7 +7264,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 82.55 154.94 0)
 			(hide yes)
 			(show_name no)

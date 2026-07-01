@@ -302,7 +302,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "TH-1-CC_footprints:STX-3000"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7568,7 +7568,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "TH-1-CC_footprints:SW_Push_4.5x4.5"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -11544,7 +11544,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TH-1-CC_footprints:STX-3000"
 			(at 394.97 204.47 0)
 			(hide yes)
 			(show_name no)
@@ -12998,7 +12998,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
 			(at 215.9 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -14022,7 +14022,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
 			(at 123.19 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -15111,7 +15111,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TH-1-CC_footprints:SW_Push_4.5x4.5"
 			(at 393.7 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -15632,7 +15632,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 346.71 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -15711,7 +15711,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 355.6 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -15787,7 +15787,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "CM5IO:Raspberry-Pi-5-Compute-Module"
 			(at 314.96 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -16857,7 +16857,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 341.63 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -17895,7 +17895,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 344.17 113.03 0)
 			(hide yes)
 			(show_name no)
@@ -18185,7 +18185,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "CM5IO:SDCARD_MOLEX_503398-1892"
 			(at 429.26 63.5 0)
 			(hide yes)
 			(show_name no)

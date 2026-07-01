@@ -4475,7 +4475,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6933,7 +6933,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 62.23 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -7012,7 +7012,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 63.5 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -7810,7 +7810,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_THT:LED_D5.0mm"
 			(at 251.46 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -8106,7 +8106,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
 			(at 228.6 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -8473,7 +8473,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
 			(at 214.63 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -8553,7 +8553,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
 			(at 245.11 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -8635,7 +8635,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 209.55 21.59 0)
 			(hide yes)
 			(show_name no)
@@ -8718,7 +8718,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
 			(at 91.44 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -8937,7 +8937,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 128.27 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -9852,7 +9852,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
 			(at 228.6 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -9932,7 +9932,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
 			(at 245.11 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -10141,7 +10141,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 63.5 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -10220,7 +10220,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 101.6 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -10299,7 +10299,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 53.34 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -10578,7 +10578,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
 			(at 99.06 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -10879,187 +10879,187 @@
 			)
 		)
 		(pin "39"
-			(uuid "689b9f04-22b2-490f-bf29-a084fa2ccf7f")
+			(uuid "689b9f04-22b2-490f-bf29-a084fa2ccf80")
 		)
 		(pin "22"
-			(uuid "811ece9b-bbb2-439a-9cf9-c3c5446f0542")
+			(uuid "811ece9b-bbb2-439a-9cf9-c3c5446f0543")
 		)
 		(pin "23"
-			(uuid "2bf0e1dd-0bbe-438a-96b5-6db921ccf29c")
+			(uuid "2bf0e1dd-0bbe-438a-96b5-6db921ccf29d")
 		)
 		(pin "24"
-			(uuid "012ad0d2-3eb8-4f09-94b2-c7d22ce061da")
+			(uuid "012ad0d2-3eb8-4f09-94b2-c7d22ce061db")
 		)
 		(pin "32"
-			(uuid "39ef99c7-1a31-40fc-9b99-686afcc8ab5b")
+			(uuid "39ef99c7-1a31-40fc-9b99-686afcc8ab5c")
 		)
 		(pin "21"
-			(uuid "bc7408f7-559a-42e4-b73d-0a41fa0b0c6e")
+			(uuid "bc7408f7-559a-42e4-b73d-0a41fa0b0c6f")
 		)
 		(pin "34"
-			(uuid "57d5a9c3-28d2-4f74-a8fa-ff02d8130dba")
+			(uuid "57d5a9c3-28d2-4f74-a8fa-ff02d8130dbb")
 		)
 		(pin "41"
-			(uuid "db84f639-d8d3-4ee1-9077-fd3f23155691")
+			(uuid "db84f639-d8d3-4ee1-9077-fd3f23155692")
 		)
 		(pin "54"
-			(uuid "0378000c-cb7e-4ebc-a828-7aa46d3b7846")
+			(uuid "0378000c-cb7e-4ebc-a828-7aa46d3b7847")
 		)
 		(pin "42"
-			(uuid "a8f52840-1950-41d0-ba2e-7f991365491f")
+			(uuid "a8f52840-1950-41d0-ba2e-7f9913654920")
 		)
 		(pin "33"
-			(uuid "6a15c87f-58a4-49a4-bdfc-7adab009ef7f")
+			(uuid "6a15c87f-58a4-49a4-bdfc-7adab009ef80")
 		)
 		(pin "25"
-			(uuid "bdb82d49-5b49-4f18-bee2-a8fcd0409a4f")
+			(uuid "bdb82d49-5b49-4f18-bee2-a8fcd0409a50")
 		)
 		(pin "30"
-			(uuid "6b2d3d93-2f98-4307-a5c1-b1f6a33e4a66")
+			(uuid "6b2d3d93-2f98-4307-a5c1-b1f6a33e4a67")
 		)
 		(pin "48"
-			(uuid "9ec0e52f-311d-40e5-bccb-884fd436be03")
+			(uuid "9ec0e52f-311d-40e5-bccb-884fd436be04")
 		)
 		(pin "1"
-			(uuid "fbe493e6-3c70-4e72-aa76-1e01420687a8")
+			(uuid "fbe493e6-3c70-4e72-aa76-1e01420687a9")
 		)
 		(pin "20"
-			(uuid "7d5290d7-413d-490d-a7bc-c0ef65ef2879")
+			(uuid "7d5290d7-413d-490d-a7bc-c0ef65ef287a")
 		)
 		(pin "38"
-			(uuid "fe9f58ee-7ff1-4804-aa20-fce107f58893")
+			(uuid "fe9f58ee-7ff1-4804-aa20-fce107f58894")
 		)
 		(pin "46"
-			(uuid "76ea20de-1979-4b05-a11a-cca13524ceb1")
+			(uuid "76ea20de-1979-4b05-a11a-cca13524ceb2")
 		)
 		(pin "59"
-			(uuid "e45f1faf-e35c-4505-a374-7450ed734cc8")
+			(uuid "e45f1faf-e35c-4505-a374-7450ed734cc9")
 		)
 		(pin "43"
-			(uuid "b1724fcb-5b76-4094-ad69-397a6683fbd8")
+			(uuid "b1724fcb-5b76-4094-ad69-397a6683fbd9")
 		)
 		(pin "45"
-			(uuid "389af927-508d-454e-8a0e-cb2a93d67ae5")
+			(uuid "389af927-508d-454e-8a0e-cb2a93d67ae6")
 		)
 		(pin "53"
-			(uuid "e19e3e32-5b70-439a-bfb3-238c9177e3de")
+			(uuid "e19e3e32-5b70-439a-bfb3-238c9177e3df")
 		)
 		(pin "29"
-			(uuid "4e3fd8f9-ff5d-4661-a484-9305d9eb3eb3")
+			(uuid "4e3fd8f9-ff5d-4661-a484-9305d9eb3eb4")
 		)
 		(pin "27"
-			(uuid "917a98cc-9e87-4a25-8eba-ee65b6308d86")
+			(uuid "917a98cc-9e87-4a25-8eba-ee65b6308d87")
 		)
 		(pin "50"
-			(uuid "3e7963f1-5f92-456e-af32-2ee35e25d901")
+			(uuid "3e7963f1-5f92-456e-af32-2ee35e25d902")
 		)
 		(pin "37"
-			(uuid "7ffa1b1d-95f3-44fe-9a8f-0d08863e632e")
+			(uuid "7ffa1b1d-95f3-44fe-9a8f-0d08863e632f")
 		)
 		(pin "61"
-			(uuid "5af4d8b4-7790-4435-a3ea-59142175bf61")
+			(uuid "5af4d8b4-7790-4435-a3ea-59142175bf62")
 		)
 		(pin "44"
-			(uuid "9db72254-1815-400a-bb34-a69344b6e9dd")
+			(uuid "9db72254-1815-400a-bb34-a69344b6e9de")
 		)
 		(pin "52"
-			(uuid "81c73508-88ee-4bbf-ad1d-5ebc7607e0d6")
+			(uuid "81c73508-88ee-4bbf-ad1d-5ebc7607e0d7")
 		)
 		(pin "56"
-			(uuid "dcbecd89-515f-4830-87d6-666fc16ca5bc")
+			(uuid "dcbecd89-515f-4830-87d6-666fc16ca5bd")
 		)
 		(pin "60"
-			(uuid "ccb598ea-7178-4255-84ee-2fdd5c86b6e7")
+			(uuid "ccb598ea-7178-4255-84ee-2fdd5c86b6e8")
 		)
 		(pin "49"
-			(uuid "a9ac4ce2-dc61-4ff3-8f0c-021fac7ed040")
+			(uuid "a9ac4ce2-dc61-4ff3-8f0c-021fac7ed041")
 		)
 		(pin "2"
-			(uuid "9e6ba247-ecb5-4d21-8220-5bbe0b2deb75")
+			(uuid "9e6ba247-ecb5-4d21-8220-5bbe0b2deb76")
 		)
 		(pin "35"
-			(uuid "4a9f8308-1324-4cd8-a2ee-91a415eee4d9")
+			(uuid "4a9f8308-1324-4cd8-a2ee-91a415eee4da")
 		)
 		(pin "40"
-			(uuid "6bf29c7b-bbbd-480c-8875-97849355aa9f")
+			(uuid "6bf29c7b-bbbd-480c-8875-97849355aaa0")
 		)
 		(pin "28"
-			(uuid "bf105101-f5e3-4412-9c4c-4afd9059d054")
+			(uuid "bf105101-f5e3-4412-9c4c-4afd9059d055")
 		)
 		(pin "15"
-			(uuid "7e93bcb5-9963-4411-9d84-f91d75241447")
+			(uuid "7e93bcb5-9963-4411-9d84-f91d75241448")
 		)
 		(pin "36"
-			(uuid "0f35b15a-675d-4651-ac4a-2a1d1d9d291f")
+			(uuid "0f35b15a-675d-4651-ac4a-2a1d1d9d2920")
 		)
 		(pin "57"
-			(uuid "ea8bfc27-2ac3-4837-bd8c-742123f841ec")
+			(uuid "ea8bfc27-2ac3-4837-bd8c-742123f841ed")
 		)
 		(pin "31"
-			(uuid "bb995721-9b4f-4307-847f-945568603854")
+			(uuid "bb995721-9b4f-4307-847f-945568603855")
 		)
 		(pin "51"
-			(uuid "48c2574c-f419-49a7-bd1e-50116b261c45")
+			(uuid "48c2574c-f419-49a7-bd1e-50116b261c46")
 		)
 		(pin "47"
-			(uuid "999caa52-399c-4cdc-bd7f-c5c5b792fc28")
+			(uuid "999caa52-399c-4cdc-bd7f-c5c5b792fc29")
 		)
 		(pin "55"
-			(uuid "c7ee73f5-607c-4de9-847c-4c8551737496")
+			(uuid "c7ee73f5-607c-4de9-847c-4c8551737497")
 		)
 		(pin "58"
-			(uuid "3285b552-b8b2-42d4-aef3-dfc17036e64d")
+			(uuid "3285b552-b8b2-42d4-aef3-dfc17036e64e")
 		)
 		(pin "12"
-			(uuid "6623f6ba-04ce-4cdc-bd95-d17d794edc1c")
+			(uuid "6623f6ba-04ce-4cdc-bd95-d17d794edc1d")
 		)
 		(pin "11"
-			(uuid "dd2b3c05-1417-4d06-97be-4453269f11ad")
+			(uuid "dd2b3c05-1417-4d06-97be-4453269f11ae")
 		)
 		(pin "10"
-			(uuid "72d4c3d7-eab0-4a35-9e50-678c674f3cfc")
+			(uuid "72d4c3d7-eab0-4a35-9e50-678c674f3cfd")
 		)
 		(pin "9"
-			(uuid "f69c10d6-ff17-4ed8-a164-32f512466469")
+			(uuid "f69c10d6-ff17-4ed8-a164-32f51246646a")
 		)
 		(pin "8"
-			(uuid "2284aac2-4ea1-4856-b681-009af30d5f3b")
+			(uuid "2284aac2-4ea1-4856-b681-009af30d5f3c")
 		)
 		(pin "7"
-			(uuid "c0692fcd-18e4-405a-899f-23e1e9f60e51")
+			(uuid "c0692fcd-18e4-405a-899f-23e1e9f60e52")
 		)
 		(pin "6"
-			(uuid "bbe83077-26b4-4dac-9d56-526e9ac9341e")
+			(uuid "bbe83077-26b4-4dac-9d56-526e9ac9341f")
 		)
 		(pin "5"
-			(uuid "f1db3f70-6d8e-4ca0-a3e8-1567cae95e31")
+			(uuid "f1db3f70-6d8e-4ca0-a3e8-1567cae95e32")
 		)
 		(pin "4"
-			(uuid "68ddaffc-fb58-42ef-8b9f-827eb83b9783")
+			(uuid "68ddaffc-fb58-42ef-8b9f-827eb83b9784")
 		)
 		(pin "3"
-			(uuid "b87315a4-dd91-4c4c-9413-9d1875f358c0")
+			(uuid "b87315a4-dd91-4c4c-9413-9d1875f358c1")
 		)
 		(pin "13"
-			(uuid "58a30104-a252-4a4f-957f-fcfc4469b9b7")
+			(uuid "58a30104-a252-4a4f-957f-fcfc4469b9b8")
 		)
 		(pin "26"
-			(uuid "a5ddd068-8b26-42d7-875c-f7d39379de99")
+			(uuid "a5ddd068-8b26-42d7-875c-f7d39379de9a")
 		)
 		(pin "19"
-			(uuid "fc3c7376-4848-43e4-b06c-0f4510b142b9")
+			(uuid "fc3c7376-4848-43e4-b06c-0f4510b142ba")
 		)
 		(pin "18"
-			(uuid "e5be7c1c-c454-4308-8407-35acad89880f")
+			(uuid "e5be7c1c-c454-4308-8407-35acad898810")
 		)
 		(pin "17"
-			(uuid "1263d2e8-5d36-4405-a3e8-2c2edbfabe58")
+			(uuid "1263d2e8-5d36-4405-a3e8-2c2edbfabe59")
 		)
 		(pin "16"
-			(uuid "90a4eb72-fbc4-440c-9726-41081ed7b4a4")
+			(uuid "90a4eb72-fbc4-440c-9726-41081ed7b4a5")
 		)
 		(pin "14"
-			(uuid "9eb0ecb5-012e-4ed1-b401-61634a099638")
+			(uuid "9eb0ecb5-012e-4ed1-b401-61634a099639")
 		)
 		(instances
 			(project "mainboard"
@@ -11180,7 +11180,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
 			(at 229.87 38.1 0)
 			(hide yes)
 			(show_name no)
