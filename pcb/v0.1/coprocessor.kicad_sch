@@ -5265,6 +5265,16 @@
 	)
 	(wire
 		(pts
+			(xy 91.44 34.29) (xy 91.44 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "263ee10b-c69f-4095-9c90-3ae9893c2c19")
+	)
+	(wire
+		(pts
 			(xy 49.53 41.91) (xy 54.61 41.91)
 		)
 		(stroke
@@ -5682,6 +5692,16 @@
 			(type default)
 		)
 		(uuid "8b16a047-d757-4b70-8e2a-95577135328e")
+	)
+	(wire
+		(pts
+			(xy 88.9 34.29) (xy 88.9 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8ba54272-189c-466b-a575-de7bc4572caf")
 	)
 	(wire
 		(pts
@@ -8688,7 +8708,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
-		(at 91.44 30.48 270)
+		(at 91.44 29.21 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8698,7 +8718,7 @@
 		(dnp no)
 		(uuid "780a7ac5-f68b-48cb-afd7-24c908f2ff5d")
 		(property "Reference" "J10"
-			(at 93.218 30.48 0)
+			(at 93.218 29.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8708,7 +8728,7 @@
 			)
 		)
 		(property "Value" "Conn_01x02_Pin"
-			(at 86.106 31.242 0)
+			(at 86.106 29.972 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8719,7 +8739,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
-			(at 91.44 30.48 0)
+			(at 91.44 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8730,7 +8750,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 30.48 0)
+			(at 91.44 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8741,7 +8761,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 91.44 30.48 0)
+			(at 91.44 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
