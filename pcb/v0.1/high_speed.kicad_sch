@@ -164,7 +164,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "CM5IO:Hirose_FH12-22S-0.5SH_1x22-1MP_P0.50mm_Horizontal"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -16695,7 +16695,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "CM5IO:Hirose_FH12-22S-0.5SH_1x22-1MP_P0.50mm_Horizontal"
 			(at 140.97 190.5 0)
 			(hide yes)
 			(show_name no)
