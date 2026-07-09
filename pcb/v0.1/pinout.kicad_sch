@@ -1513,6 +1513,12 @@
 		(uuid "35e5e7a0-b87f-407e-9ac5-b7644e82cda4")
 	)
 	(junction
+		(at 220.98 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4bb200fc-ffdd-41f1-acf8-d3928d358277")
+	)
+	(junction
 		(at 99.06 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1609,12 +1615,6 @@
 		(uuid "b3eedae7-8a8a-486b-8a74-7639fb544ac9")
 	)
 	(junction
-		(at 223.52 67.31)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bf1b7639-3609-4a3b-ac46-314c5f35bfb1")
-	)
-	(junction
 		(at 220.98 113.03)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1627,10 +1627,10 @@
 		(uuid "d7439aac-e829-416a-b6f2-0a0a99085ddf")
 	)
 	(junction
-		(at 220.98 62.23)
+		(at 223.52 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "dcac9df5-411f-4378-8250-7e14391288e9")
+		(uuid "db98feb1-0e58-435c-b8b7-bcbf11a24d18")
 	)
 	(junction
 		(at 226.06 82.55)
@@ -1710,16 +1710,6 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 67.31) (xy 223.52 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "11d75439-b575-4094-9df3-c21b20e31f6a")
-	)
-	(wire
-		(pts
 			(xy 226.06 99.06) (xy 226.06 102.87)
 		)
 		(stroke
@@ -1747,6 +1737,16 @@
 			(type default)
 		)
 		(uuid "16d95cad-dc0d-4b80-ac75-fecafb1dbcb0")
+	)
+	(wire
+		(pts
+			(xy 219.71 62.23) (xy 223.52 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19ab2856-47ee-41d6-aee4-13b2f0d9694b")
 	)
 	(wire
 		(pts
@@ -2210,16 +2210,6 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 67.31) (xy 223.52 83.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "737f4693-f32e-4148-9db6-754ee686d4d8")
-	)
-	(wire
-		(pts
 			(xy 237.49 99.06) (xy 226.06 99.06)
 		)
 		(stroke
@@ -2310,16 +2300,6 @@
 	)
 	(wire
 		(pts
-			(xy 220.98 62.23) (xy 220.98 83.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8b51837c-50b7-4738-9092-892cc54e086b")
-	)
-	(wire
-		(pts
 			(xy 213.36 78.74) (xy 213.36 83.82)
 		)
 		(stroke
@@ -2337,16 +2317,6 @@
 			(type default)
 		)
 		(uuid "917899b4-8af4-4eda-9adf-887af6574755")
-	)
-	(wire
-		(pts
-			(xy 219.71 62.23) (xy 220.98 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9bfc7ad8-a07f-4ea8-989a-4ba68b03065d")
 	)
 	(wire
 		(pts
@@ -2400,7 +2370,7 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 54.61) (xy 223.52 67.31)
+			(xy 223.52 54.61) (xy 223.52 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2507,6 +2477,16 @@
 			(type default)
 		)
 		(uuid "bb3e5fcb-b150-4452-a247-dc132b6412e0")
+	)
+	(wire
+		(pts
+			(xy 220.98 67.31) (xy 220.98 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf050bbf-e648-41f6-8eec-9153dba72105")
 	)
 	(wire
 		(pts
@@ -2690,6 +2670,16 @@
 	)
 	(wire
 		(pts
+			(xy 219.71 67.31) (xy 220.98 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5a4639b-7207-4a53-8446-5a604760f039")
+	)
+	(wire
+		(pts
 			(xy 67.31 52.07) (xy 67.31 50.8)
 		)
 		(stroke
@@ -2790,6 +2780,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 62.23) (xy 223.52 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed2f94ed-8b76-4bff-ab6b-86d97c4387ce")
+	)
+	(wire
+		(pts
 			(xy 86.36 119.38) (xy 86.36 152.4)
 		)
 		(stroke
@@ -2830,7 +2830,7 @@
 	)
 	(wire
 		(pts
-			(xy 220.98 54.61) (xy 220.98 62.23)
+			(xy 220.98 54.61) (xy 220.98 67.31)
 		)
 		(stroke
 			(width 0)
@@ -5670,7 +5670,8 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_02x08_Odd_Even")
-		(at 218.44 91.44 90)
+		(at 220.98 91.44 270)
+		(mirror x)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5680,7 +5681,7 @@
 		(dnp no)
 		(uuid "b1f1558a-5e9e-400f-94de-ba99f96c7e47")
 		(property "Reference" "J12"
-			(at 208.28 88.9 90)
+			(at 231.14 88.9 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5691,7 +5692,7 @@
 			)
 		)
 		(property "Value" "Conn_02x08_Odd_Even"
-			(at 229.87 90.17 90)
+			(at 209.55 90.17 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5702,7 +5703,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical"
-			(at 218.44 91.44 0)
+			(at 220.98 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5713,7 +5714,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 218.44 91.44 0)
+			(at 220.98 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5724,7 +5725,7 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x08, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 218.44 91.44 0)
+			(at 220.98 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
