@@ -538,11 +538,21 @@
         "wire_width": 6
       },
       {
+        "diff_pair_gap": 0.1999,
+        "diff_pair_width": 0.1191,
+        "name": "MIPI_100R",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.1191,
+        "tuning_profile": ""
+      },
+      {
         "diff_pair_gap": 0.1501,
         "diff_pair_width": 0.1356,
         "name": "USB_SS",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.1356,
         "tuning_profile": ""
@@ -561,6 +571,14 @@
       {
         "netclass": "USB_SS",
         "pattern": "*USB*_N"
+      },
+      {
+        "netclass": "MIPI_100R",
+        "pattern": "*DPHY*_N"
+      },
+      {
+        "netclass": "MIPI_100R",
+        "pattern": "*DPHY*_P"
       }
     ]
   },
