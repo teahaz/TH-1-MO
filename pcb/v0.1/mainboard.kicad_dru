@@ -4,7 +4,7 @@
    (constraint clearance (min 0.45mm)))
 
 (rule "USB_SS_breakout_relaxed"
-   (condition "A.NetClass == 'USB_SS' && A.Type == 'Track' && B.NetClass != 'USB_SS' && (A.intersectsCourtyard('J4') || A.intersectsCourtyard('J7') || A.intersectsCourtyard('U2'))")
+   (condition "A.NetClass == 'USB_SS' && A.Type == 'Track' && B.NetClass != 'USB_SS' && (A.intersectsCourtyard('J4') || A.intersectsCourtyard('J5') || A.intersectsCourtyard('J7') || A.intersectsCourtyard('U3') ||A.intersectsCourtyard('U2'))")
    (constraint clearance (min 0.15mm)))
 
 

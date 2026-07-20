@@ -7572,7 +7572,7 @@
 					(justify right)
 				)
 			)
-			(property "Footprint" "Connector_USB:USB_C_Receptacle_Molex_105450-0101"
+			(property "Footprint" "TH-1-CC_footprints:USB4056-03-A"
 				(at 3.81 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7583,7 +7583,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://www.molex.com/pdm_docs/ps/PS-105448-001.pdf"
+			(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
 				(at 3.81 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7594,7 +7594,7 @@
 					)
 				)
 			)
-			(property "Description" "USB Full-Featured Type-C Receptacle connector"
+			(property "Description" "USB Type-c 24pin 5A 48V"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7605,7 +7605,7 @@
 					)
 				)
 			)
-			(property "Manufacturer" "MOLEX"
+			(property "Manufacturer" "GCT"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7616,7 +7616,7 @@
 					)
 				)
 			)
-			(property "Mfr. Part no" "1054500101"
+			(property "Mfr. Part no" "USB4056-03-A"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7627,7 +7627,7 @@
 					)
 				)
 			)
-			(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/molex/1054500101/5843890"
+			(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038?utm_source=oemsecrets&utm_medium=aggregator&utm_campaign=buynow"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7638,7 +7638,7 @@
 					)
 				)
 			)
-			(property "Digikey Part no" "WM12856TR-ND"
+			(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -8720,12 +8720,6 @@
 		(uuid "04663c5b-c19b-4fd1-8b42-e935289b0f12")
 	)
 	(junction
-		(at 255.27 66.04)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0a18d70c-4492-404b-89fa-b1f779d1e677")
-	)
-	(junction
 		(at 135.89 182.88)
 		(diameter 1.016)
 		(color 0 0 0 0)
@@ -8768,22 +8762,10 @@
 		(uuid "20050d0b-2c87-426e-a93e-ceb5edb01a2c")
 	)
 	(junction
-		(at 257.81 68.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "23074ffa-5745-4a7f-a091-5dd160038369")
-	)
-	(junction
 		(at 97.79 66.04)
 		(diameter 1.016)
 		(color 0 0 0 0)
 		(uuid "2387db7e-decc-4814-92e5-0c5d72e7c1e4")
-	)
-	(junction
-		(at 250.19 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "26b8fbf6-6876-4f54-9755-e40f845b89d6")
 	)
 	(junction
 		(at 255.27 118.11)
@@ -8820,6 +8802,12 @@
 		(diameter 1.016)
 		(color 0 0 0 0)
 		(uuid "38ed5200-f976-4bc0-b0b1-35e202f713c2")
+	)
+	(junction
+		(at 176.53 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3ff182a3-b29f-4051-8bd1-18db3bfd1914")
 	)
 	(junction
 		(at 31.75 127)
@@ -8894,6 +8882,12 @@
 		(uuid "66cef682-4613-489f-b32b-81d0b4ce9bb9")
 	)
 	(junction
+		(at 255.27 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6b0b2097-e74f-4d5c-854a-afdb26ad1e26")
+	)
+	(junction
 		(at 97.79 73.66)
 		(diameter 1.016)
 		(color 0 0 0 0)
@@ -8924,10 +8918,10 @@
 		(uuid "8273cf15-c524-40c6-b62c-a3542f13f643")
 	)
 	(junction
-		(at 179.07 66.04)
+		(at 181.61 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "85f0fdbd-528b-4b4f-9408-031dd3d20760")
+		(uuid "853b065b-0b73-4e17-bc76-851a6cc71fb0")
 	)
 	(junction
 		(at 177.8 30.48)
@@ -8940,6 +8934,12 @@
 		(diameter 1.016)
 		(color 0 0 0 0)
 		(uuid "8c9bdf5d-9e1b-4870-aa25-8d3bc0df822f")
+	)
+	(junction
+		(at 250.19 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "93ee49c2-8515-4e42-8549-4dfc6d2308ed")
 	)
 	(junction
 		(at 97.79 142.24)
@@ -8960,16 +8960,16 @@
 		(uuid "a35dcc5f-a950-443c-a3ec-8dc3caf1eb3b")
 	)
 	(junction
+		(at 179.07 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "aad69de0-a389-4872-8e19-2f4fea40290c")
+	)
+	(junction
 		(at 151.13 182.88)
 		(diameter 1.016)
 		(color 0 0 0 0)
 		(uuid "ad1ba542-c588-4ee3-ae08-5caa564d1b6a")
-	)
-	(junction
-		(at 252.73 60.96)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "aedfe032-ee19-4918-8f8c-a2ebef2ea013")
 	)
 	(junction
 		(at 226.06 99.06)
@@ -8984,16 +8984,10 @@
 		(uuid "b9c71297-afb3-46a5-a113-bacaf8bf58ec")
 	)
 	(junction
-		(at 184.15 58.42)
+		(at 252.73 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c647fb25-3f38-40e1-a3f6-9197770e2ca0")
-	)
-	(junction
-		(at 181.61 60.96)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c8d14672-2863-4e61-a074-e55b75a5bd31")
+		(uuid "c51b4e3c-1d6c-4e91-8174-4565b1781237")
 	)
 	(junction
 		(at 97.79 96.52)
@@ -9018,6 +9012,12 @@
 		(diameter 1.016)
 		(color 0 0 0 0)
 		(uuid "ddfc6b48-a618-4b0c-9e56-968a3a1c8fc9")
+	)
+	(junction
+		(at 257.81 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e035e44c-8801-40bb-ad20-4a6eaee2aeee")
 	)
 	(junction
 		(at 31.75 50.8)
@@ -9050,12 +9050,6 @@
 		(uuid "ef8cd32d-ccf6-464f-b380-1206e9424155")
 	)
 	(junction
-		(at 176.53 68.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "efa02ac6-df5e-42df-aaf6-2da86bcdab0d")
-	)
-	(junction
 		(at 187.96 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9066,6 +9060,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f6cab4fd-3edd-4189-8d7f-a3330411b9f6")
+	)
+	(junction
+		(at 184.15 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f790995c-6414-45ec-9831-31b531de061b")
 	)
 	(no_connect
 		(at 189.23 83.82)
@@ -9327,6 +9327,16 @@
 	)
 	(wire
 		(pts
+			(xy 184.15 58.42) (xy 189.23 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01ed3730-9967-4a6f-b145-89c9c7f255fa")
+	)
+	(wire
+		(pts
 			(xy 31.75 50.8) (xy 31.75 58.42)
 		)
 		(stroke
@@ -9397,7 +9407,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 68.58) (xy 189.23 68.58)
+			(xy 161.29 68.58) (xy 179.07 68.58)
 		)
 		(stroke
 			(width 0)
@@ -9417,6 +9427,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 71.12) (xy 181.61 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0bf736cb-028f-4883-a649-19040f3e97b2")
+	)
+	(wire
+		(pts
 			(xy 217.17 125.73) (xy 217.17 127)
 		)
 		(stroke
@@ -9424,6 +9444,16 @@
 			(type default)
 		)
 		(uuid "0cfa2f73-590b-46b3-84d3-29c10a71e6e6")
+	)
+	(wire
+		(pts
+			(xy 252.73 68.58) (xy 252.73 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e196c8c-4323-42ba-bec6-9ffa126fc036")
 	)
 	(wire
 		(pts
@@ -9487,6 +9517,16 @@
 	)
 	(wire
 		(pts
+			(xy 255.27 60.96) (xy 255.27 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "175da77a-15a4-43b0-b85c-3f34c1fd6066")
+	)
+	(wire
+		(pts
 			(xy 180.34 91.44) (xy 180.34 92.71)
 		)
 		(stroke
@@ -9547,13 +9587,13 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 68.58) (xy 176.53 71.12)
+			(xy 179.07 68.58) (xy 179.07 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2192fa8f-d3b5-4318-b46c-10435c681915")
+		(uuid "2439655b-6699-4551-8546-65f540e39419")
 	)
 	(wire
 		(pts
@@ -9594,16 +9634,6 @@
 			(type default)
 		)
 		(uuid "27c233c8-148e-41f8-b9cb-f2d352249b81")
-	)
-	(wire
-		(pts
-			(xy 179.07 66.04) (xy 179.07 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "27ee40d7-9059-488b-8415-9cfbb2851857")
 	)
 	(wire
 		(pts
@@ -9697,6 +9727,16 @@
 	)
 	(wire
 		(pts
+			(xy 250.19 66.04) (xy 271.78 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "323b2a17-360d-42fa-ad2f-27d463b1062f")
+	)
+	(wire
+		(pts
 			(xy 245.11 33.02) (xy 250.19 33.02)
 		)
 		(stroke
@@ -9727,13 +9767,23 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 66.04) (xy 189.23 66.04)
+			(xy 161.29 66.04) (xy 176.53 66.04)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "3956e2dc-4f4c-44b4-9f70-5a03fc17658a")
+	)
+	(wire
+		(pts
+			(xy 161.29 58.42) (xy 184.15 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b1f10e7-48e2-4750-988f-59c7e7c0f963")
 	)
 	(wire
 		(pts
@@ -9764,16 +9814,6 @@
 			(type solid)
 		)
 		(uuid "3e0d561b-8cee-4d22-8710-39ad009cde2b")
-	)
-	(wire
-		(pts
-			(xy 252.73 60.96) (xy 252.73 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3f581d54-3b60-4e82-ae4b-96fbf23189ba")
 	)
 	(wire
 		(pts
@@ -9817,13 +9857,13 @@
 	)
 	(wire
 		(pts
-			(xy 250.19 58.42) (xy 250.19 71.12)
+			(xy 257.81 58.42) (xy 257.81 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4a33f883-6332-458c-b1b1-ed0e99381d44")
+		(uuid "4c4c7be4-194b-42fa-bbe9-e7a216ddfde5")
 	)
 	(wire
 		(pts
@@ -9864,16 +9904,6 @@
 			(type default)
 		)
 		(uuid "53a6b927-1e5d-4162-be34-e406012b4449")
-	)
-	(wire
-		(pts
-			(xy 255.27 66.04) (xy 271.78 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "544cc1cc-b45b-4ceb-8b5d-b8287f4b12ee")
 	)
 	(wire
 		(pts
@@ -10007,7 +10037,17 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 60.96) (xy 189.23 60.96)
+			(xy 179.07 68.58) (xy 189.23 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f07de2d-dd9d-46c5-9ace-43edc1b6ff34")
+	)
+	(wire
+		(pts
+			(xy 161.29 60.96) (xy 181.61 60.96)
 		)
 		(stroke
 			(width 0)
@@ -10027,16 +10067,6 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 58.42) (xy 184.15 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "606db7f7-a35b-43f4-ae6f-a598d9213e8d")
-	)
-	(wire
-		(pts
 			(xy 95.25 71.12) (xy 111.76 71.12)
 		)
 		(stroke
@@ -10047,16 +10077,6 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 58.42) (xy 250.19 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "67b6112c-b067-4560-b379-3c9921758a90")
-	)
-	(wire
-		(pts
 			(xy 95.25 53.34) (xy 111.76 53.34)
 		)
 		(stroke
@@ -10064,16 +10084,6 @@
 			(type solid)
 		)
 		(uuid "686b7313-5797-424d-99f6-8573655560ee")
-	)
-	(wire
-		(pts
-			(xy 181.61 60.96) (xy 181.61 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6895df7f-1255-42c4-90ab-e794b1a930e1")
 	)
 	(wire
 		(pts
@@ -10177,7 +10187,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 68.58) (xy 257.81 68.58)
+			(xy 245.11 68.58) (xy 252.73 68.58)
 		)
 		(stroke
 			(width 0)
@@ -10267,16 +10277,6 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 68.58) (xy 271.78 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "83e21b39-3e89-4825-8236-84be45fc1658")
-	)
-	(wire
-		(pts
 			(xy 31.75 142.24) (xy 31.75 149.86)
 		)
 		(stroke
@@ -10327,6 +10327,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 66.04) (xy 189.23 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8dd7bfc2-b7bc-4598-800d-9fb1108b6aa6")
+	)
+	(wire
+		(pts
 			(xy 128.27 182.88) (xy 120.65 182.88)
 		)
 		(stroke
@@ -10334,16 +10344,6 @@
 			(type solid)
 		)
 		(uuid "8eab910d-5ea1-44a9-b93f-16eed4870d46")
-	)
-	(wire
-		(pts
-			(xy 257.81 68.58) (xy 257.81 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "90d7f3a9-7937-47e7-9f30-3a9647e554c4")
 	)
 	(wire
 		(pts
@@ -10357,16 +10357,6 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 60.96) (xy 181.61 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "93880cb6-226e-4357-b92f-56225455daaf")
-	)
-	(wire
-		(pts
 			(xy 17.78 68.58) (xy 34.29 68.58)
 		)
 		(stroke
@@ -10374,16 +10364,6 @@
 			(type solid)
 		)
 		(uuid "94e35bfe-5cdc-4a30-8f79-ffbe1d4af9e9")
-	)
-	(wire
-		(pts
-			(xy 252.73 60.96) (xy 271.78 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "98453f87-bd5d-4fee-9a8c-f0cdc1ee7e39")
 	)
 	(wire
 		(pts
@@ -10424,6 +10404,26 @@
 			(type default)
 		)
 		(uuid "9ae8a71e-10c8-4a9f-920c-06d31c70c54c")
+	)
+	(wire
+		(pts
+			(xy 250.19 66.04) (xy 250.19 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b0094d3-02cc-40c6-9946-a6303739c051")
+	)
+	(wire
+		(pts
+			(xy 255.27 60.96) (xy 271.78 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c5a584e-c35f-4410-9abd-c107aef927da")
 	)
 	(wire
 		(pts
@@ -10497,6 +10497,16 @@
 	)
 	(wire
 		(pts
+			(xy 184.15 58.42) (xy 184.15 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5f4d4ff-0837-40bc-aaa5-f9a0633e1ec9")
+	)
+	(wire
+		(pts
 			(xy 175.26 45.72) (xy 189.23 45.72)
 		)
 		(stroke
@@ -10504,6 +10514,16 @@
 			(type default)
 		)
 		(uuid "a67afa36-54bc-41db-b1b7-190bd975a53f")
+	)
+	(wire
+		(pts
+			(xy 257.81 58.42) (xy 271.78 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a68609ef-4c74-4c97-9218-11be17487fb2")
 	)
 	(wire
 		(pts
@@ -10557,16 +10577,6 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 66.04) (xy 179.07 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ab65246f-f014-4143-9b5c-35f847e2d7f6")
-	)
-	(wire
-		(pts
 			(xy 228.6 121.92) (xy 233.68 121.92)
 		)
 		(stroke
@@ -10574,16 +10584,6 @@
 			(type default)
 		)
 		(uuid "ab72f831-295e-4c81-adec-12cce3edaa18")
-	)
-	(wire
-		(pts
-			(xy 184.15 58.42) (xy 189.23 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af186040-ccd6-48a0-85fc-d3c0caffbde4")
 	)
 	(wire
 		(pts
@@ -10717,16 +10717,6 @@
 	)
 	(wire
 		(pts
-			(xy 255.27 66.04) (xy 255.27 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c2718206-a512-4575-9b0e-0797399006d5")
-	)
-	(wire
-		(pts
 			(xy 97.79 50.8) (xy 97.79 43.18)
 		)
 		(stroke
@@ -10747,6 +10737,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 66.04) (xy 176.53 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c57a590c-f8c9-4fd6-b04f-a69d2214e7e2")
+	)
+	(wire
+		(pts
 			(xy 260.35 40.64) (xy 245.11 40.64)
 		)
 		(stroke
@@ -10754,16 +10754,6 @@
 			(type default)
 		)
 		(uuid "c66d1366-b365-499c-8a69-685e48e96818")
-	)
-	(wire
-		(pts
-			(xy 161.29 68.58) (xy 176.53 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c6bd67ab-e4cf-4181-9ea0-c10fee8cf739")
 	)
 	(wire
 		(pts
@@ -10857,7 +10847,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 66.04) (xy 255.27 66.04)
+			(xy 245.11 66.04) (xy 250.19 66.04)
 		)
 		(stroke
 			(width 0)
@@ -10867,7 +10857,7 @@
 	)
 	(wire
 		(pts
-			(xy 250.19 58.42) (xy 271.78 58.42)
+			(xy 245.11 58.42) (xy 257.81 58.42)
 		)
 		(stroke
 			(width 0)
@@ -10924,6 +10914,16 @@
 			(type solid)
 		)
 		(uuid "db187ad4-f067-4e80-8a2e-8bee9a875533")
+	)
+	(wire
+		(pts
+			(xy 252.73 68.58) (xy 271.78 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db409062-f03e-4e8e-a14c-7c73b845c269")
 	)
 	(wire
 		(pts
@@ -11067,6 +11067,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 60.96) (xy 189.23 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ebb6e672-8d83-449a-a40b-23ee4ccdab64")
+	)
+	(wire
+		(pts
 			(xy 176.53 115.57) (xy 185.42 115.57)
 		)
 		(stroke
@@ -11157,7 +11167,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 60.96) (xy 252.73 60.96)
+			(xy 245.11 60.96) (xy 255.27 60.96)
 		)
 		(stroke
 			(width 0)
@@ -11194,16 +11204,6 @@
 			(type solid)
 		)
 		(uuid "fc886c22-f02b-4748-a468-9b0d2f7c5529")
-	)
-	(wire
-		(pts
-			(xy 184.15 58.42) (xy 184.15 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fcdcfbc1-bf23-41fa-8a9d-45a0762b2a12")
 	)
 	(wire
 		(pts
@@ -11897,7 +11897,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_Molex_105450-0101"
+		(property "Footprint" "TH-1-CC_footprints:USB4056-03-A"
 			(at 200.66 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -11908,7 +11908,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/pdm_docs/ps/PS-105448-001.pdf"
+		(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
 			(at 200.66 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -11919,7 +11919,7 @@
 				)
 			)
 		)
-		(property "Description" "USB Full-Featured Type-C Receptacle connector"
+		(property "Description" "USB Type-c 24pin 5A 48V"
 			(at 204.47 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -11930,7 +11930,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "MOLEX"
+		(property "Manufacturer" "GCT"
 			(at 204.47 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -11941,7 +11941,7 @@
 				)
 			)
 		)
-		(property "Mfr. Part no" "1054500101"
+		(property "Mfr. Part no" "USB4056-03-A"
 			(at 204.47 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -11952,7 +11952,7 @@
 				)
 			)
 		)
-		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/molex/1054500101/5843890"
+		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038?utm_source=oemsecrets&utm_medium=aggregator&utm_campaign=buynow"
 			(at 204.47 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -11963,7 +11963,7 @@
 				)
 			)
 		)
-		(property "Digikey Part no" "WM12856TR-ND"
+		(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
 			(at 204.47 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -12835,8 +12835,7 @@
 	)
 	(symbol
 		(lib_id "TH-1-CC:Super_Speed_TVS_array")
-		(at 247.65 71.12 90)
-		(mirror x)
+		(at 260.35 71.12 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12846,7 +12845,7 @@
 		(dnp no)
 		(uuid "229b2abe-bb7b-40e0-89b0-ceccd862b7ac")
 		(property "Reference" "U3"
-			(at 248.412 71.374 90)
+			(at 259.588 71.374 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12857,7 +12856,7 @@
 			)
 		)
 		(property "Value" "Nexperia PUSB3FR4Z"
-			(at 277.622 91.694 90)
+			(at 230.378 91.694 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12869,7 +12868,7 @@
 			)
 		)
 		(property "Footprint" "Package_DFN_QFN:Diodes_UDFN-10_1x2.5mm_P0.5mm"
-			(at 247.65 71.12 0)
+			(at 260.35 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12880,7 +12879,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/C503418.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVRXVFBSRlRZVzsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D"
-			(at 266.954 195.072 0)
+			(at 241.046 195.072 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12891,7 +12890,7 @@
 			)
 		)
 		(property "Description" "TVS DIODE 3.3VWM 3VC DFN2510A-10"
-			(at 263.398 119.634 0)
+			(at 244.602 119.634 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12902,7 +12901,7 @@
 			)
 		)
 		(property "Manufacturer" "Nexperia"
-			(at 260.096 106.934 0)
+			(at 247.904 106.934 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12913,7 +12912,7 @@
 			)
 		)
 		(property "Mfr. Part no." "PUSB3FR4Z"
-			(at 260.35 118.364 0)
+			(at 247.65 118.364 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12924,7 +12923,7 @@
 			)
 		)
 		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C503418.html?s_z=n_q_usb%2520TVS&lcsc_vid=QAILXlUCRldfUlcDQgANV1IDE1JYXwJWRANcAwFRRgAxVlNeRVRXVFBSRlRZVzsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D"
-			(at 270.256 198.882 0)
+			(at 237.744 198.882 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12935,7 +12934,7 @@
 			)
 		)
 		(property "LCSC Part no." "C503418"
-			(at 254.762 106.172 0)
+			(at 253.238 106.172 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12946,7 +12945,7 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 252.222 104.14 0)
+			(at 255.778 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15378,7 +15377,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_Molex_105450-0101"
+		(property "Footprint" "TH-1-CC_footprints:USB4056-03-A"
 			(at 233.68 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -15389,7 +15388,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/pdm_docs/ps/PS-105448-001.pdf"
+		(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
 			(at 233.68 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -15400,7 +15399,7 @@
 				)
 			)
 		)
-		(property "Description" "USB Full-Featured Type-C Receptacle connector"
+		(property "Description" "USB Type-c 24pin 5A 48V"
 			(at 229.87 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -15411,7 +15410,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "MOLEX"
+		(property "Manufacturer" "GCT"
 			(at 229.87 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -15422,7 +15421,7 @@
 				)
 			)
 		)
-		(property "Mfr. Part no" "1054500101"
+		(property "Mfr. Part no" "USB4056-03-A"
 			(at 229.87 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -15433,7 +15432,7 @@
 				)
 			)
 		)
-		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/molex/1054500101/5843890"
+		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038?utm_source=oemsecrets&utm_medium=aggregator&utm_campaign=buynow"
 			(at 229.87 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -15444,7 +15443,7 @@
 				)
 			)
 		)
-		(property "Digikey Part no" "WM12856TR-ND"
+		(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
 			(at 229.87 58.42 0)
 			(hide yes)
 			(show_name no)

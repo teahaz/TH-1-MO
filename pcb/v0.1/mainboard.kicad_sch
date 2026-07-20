@@ -2014,7 +2014,7 @@
 					(justify right)
 				)
 			)
-			(property "Footprint" "Connector_USB:USB_C_Receptacle_Molex_105450-0101"
+			(property "Footprint" "TH-1-CC_footprints:USB4056-03-A"
 				(at 3.81 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2025,7 +2025,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://www.molex.com/pdm_docs/ps/PS-105448-001.pdf"
+			(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
 				(at 3.81 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2036,7 +2036,7 @@
 					)
 				)
 			)
-			(property "Description" "USB Full-Featured Type-C Receptacle connector"
+			(property "Description" "USB Type-c 24pin 5A 48V"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2047,7 +2047,7 @@
 					)
 				)
 			)
-			(property "Manufacturer" "MOLEX"
+			(property "Manufacturer" "GCT"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2058,7 +2058,7 @@
 					)
 				)
 			)
-			(property "Mfr. Part no" "1054500101"
+			(property "Mfr. Part no" "USB4056-03-A"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2069,7 +2069,7 @@
 					)
 				)
 			)
-			(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/molex/1054500101/5843890"
+			(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038?utm_source=oemsecrets&utm_medium=aggregator&utm_campaign=buynow"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2080,7 +2080,7 @@
 					)
 				)
 			)
-			(property "Digikey Part no" "WM12856TR-ND"
+			(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5286,7 +5286,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_Molex_105450-0101"
+		(property "Footprint" "TH-1-CC_footprints:USB4056-03-A"
 			(at 38.1 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -5297,7 +5297,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/pdm_docs/ps/PS-105448-001.pdf"
+		(property "Datasheet" "https://gct.co/files/specs/usb4056-spec.pdf"
 			(at 38.1 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -5308,7 +5308,7 @@
 				)
 			)
 		)
-		(property "Description" "USB Full-Featured Type-C Receptacle connector"
+		(property "Description" "USB Type-c 24pin 5A 48V"
 			(at 34.29 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -5319,7 +5319,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "MOLEX"
+		(property "Manufacturer" "GCT"
 			(at 34.29 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -5330,7 +5330,7 @@
 				)
 			)
 		)
-		(property "Mfr. Part no" "1054500101"
+		(property "Mfr. Part no" "USB4056-03-A"
 			(at 34.29 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -5341,7 +5341,7 @@
 				)
 			)
 		)
-		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/molex/1054500101/5843890"
+		(property "Distributor Digikey" "https://www.digikey.co.uk/en/products/detail/gct/USB4056-03-A/14638038?utm_source=oemsecrets&utm_medium=aggregator&utm_campaign=buynow"
 			(at 34.29 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -5352,7 +5352,7 @@
 				)
 			)
 		)
-		(property "Digikey Part no" "WM12856TR-ND"
+		(property "Digikey Part no" "2073-USB4056-03-ATR-ND"
 			(at 34.29 66.04 0)
 			(hide yes)
 			(show_name no)
