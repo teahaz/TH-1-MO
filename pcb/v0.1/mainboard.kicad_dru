@@ -10,9 +10,9 @@
 
 
 (rule "MIPI_track_clearance"
-   (condition "A.NetClass == 'MIPI_100R' && A.Type == 'Track'")
+   (condition "A.NetClass == 'MIPI_100R' && A.Type == 'Track' && B.NetClass != 'MIPI_100R'")
    (constraint clearance (min 0.4mm)))
 
 (rule "MIPI_breakout_relaxed"
-   (condition "A.NetClass == 'MIPI_100R' && A.Type == 'Track' && (A.intersectsCourtyard('J6') || A.intersectsCourtyard('J7'))")
+   (condition "A.NetClass == 'MIPI_100R' && A.Type == 'Track' && B.NetClass != 'MIPI_100R' && (A.intersectsCourtyard('J6') || A.intersectsCourtyard('J7'))")
    (constraint clearance (min 0.2mm)))
