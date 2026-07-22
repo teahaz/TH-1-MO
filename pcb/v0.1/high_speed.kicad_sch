@@ -11315,7 +11315,7 @@
 		)
 		(uuid "2745abb9-8a5d-45f9-9a07-04c875d4a907")
 	)
-	(label "fw_cc2_1"
+	(label "fw_cc2_0"
 		(at 184.15 40.64 0)
 		(effects
 			(font
@@ -11635,7 +11635,7 @@
 		)
 		(uuid "c8ab279a-51a2-4237-a3ff-7ab6ad0b1627")
 	)
-	(label "fw_cc1_1"
+	(label "fw_cc1_0"
 		(at 184.15 38.1 0)
 		(effects
 			(font
