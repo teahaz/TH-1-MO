@@ -8996,6 +8996,12 @@
 		(uuid "d3220953-9aa9-406a-a323-d044b6e33df6")
 	)
 	(junction
+		(at 173.99 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d465ae31-4f94-4c52-bcdb-e03e5f26977b")
+	)
+	(junction
 		(at 31.75 66.04)
 		(diameter 1.016)
 		(color 0 0 0 0)
@@ -9347,6 +9353,16 @@
 	)
 	(wire
 		(pts
+			(xy 173.99 30.48) (xy 177.8 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "04a67045-5600-4ea9-89a2-b31f5a788176")
+	)
+	(wire
+		(pts
 			(xy 31.75 73.66) (xy 34.29 73.66)
 		)
 		(stroke
@@ -9507,7 +9523,7 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 30.48) (xy 177.8 30.48)
+			(xy 171.45 30.48) (xy 173.99 30.48)
 		)
 		(stroke
 			(width 0)
@@ -11027,13 +11043,13 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 33.02) (xy 173.99 30.48)
+			(xy 173.99 38.1) (xy 173.99 40.64)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e8cb67f9-56df-417c-bfe0-18ff587424e7")
+		(uuid "e7f67b87-709a-4a54-b6f5-5d488638cf5d")
 	)
 	(wire
 		(pts
@@ -11044,6 +11060,16 @@
 			(type default)
 		)
 		(uuid "e8e810b9-bc04-4eec-aa34-64a3cb72b484")
+	)
+	(wire
+		(pts
+			(xy 173.99 40.64) (xy 189.23 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e959eb95-c902-47d2-93ce-656479870720")
 	)
 	(wire
 		(pts
@@ -11094,16 +11120,6 @@
 			(type solid)
 		)
 		(uuid "eeee1317-270a-407d-9c59-c35c6efb6d22")
-	)
-	(wire
-		(pts
-			(xy 173.99 40.64) (xy 189.23 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ef8d1273-9413-4fa7-8053-c09b84d32fd4")
 	)
 	(wire
 		(pts
@@ -12071,7 +12087,7 @@
 	)
 	(symbol
 		(lib_id "TH-1-CC:R_56k")
-		(at 173.99 36.83 0)
+		(at 173.99 34.29 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12081,7 +12097,7 @@
 		(dnp no)
 		(uuid "033f59f9-45b7-4cab-867e-5a2757350af6")
 		(property "Reference" "R21"
-			(at 169.418 34.798 0)
+			(at 169.418 33.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12092,7 +12108,7 @@
 			)
 		)
 		(property "Value" "56k"
-			(at 169.418 37.084 0)
+			(at 169.418 35.306 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12103,7 +12119,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 172.212 36.83 90)
+			(at 172.212 34.29 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12114,7 +12130,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/C114630.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=EwQKAlxRFgdXV1MCRARYXwJRRVZeV1dUEgJXBQFQQgQxVlNeRVFWVVdeT1RaUzsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktXRlhXSQwSGg0%3D"
-			(at 173.99 36.83 0)
+			(at 173.99 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12125,7 +12141,7 @@
 			)
 		)
 		(property "Description" "RES 56kΩ ±1% 100mW 0603"
-			(at 173.99 36.83 0)
+			(at 173.99 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12136,7 +12152,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 173.99 36.83 0)
+			(at 173.99 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12147,7 +12163,7 @@
 			)
 		)
 		(property "Mfr. Part No." "RC0603FR-0756KL"
-			(at 173.99 36.83 0)
+			(at 173.99 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12158,7 +12174,7 @@
 			)
 		)
 		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C114630.html?s_z=n_q_t_56k%25200603"
-			(at 173.99 36.83 0)
+			(at 173.99 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12169,7 +12185,7 @@
 			)
 		)
 		(property "LCSC Part no." "C114630"
-			(at 173.99 36.83 0)
+			(at 173.99 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12180,7 +12196,7 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 169.418 39.116 0)
+			(at 169.418 37.338 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16398,7 +16414,7 @@
 			)
 		)
 		(property "Stock" "NO!"
-			(at 168.402 32.766 0)
+			(at 167.132 33.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects

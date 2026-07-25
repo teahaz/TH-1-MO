@@ -4,10 +4,8 @@
    (constraint clearance (min 0.45mm)))
 
 (rule "USB_SS_breakout_relaxed"
-   (condition "A.NetClass == 'USB_SS' && A.Type == 'Track' && B.NetClass != 'USB_SS' && (A.intersectsCourtyard('J5') || A.intersectsCourtyard('J2') || A.intersectsCourtyard('J7') || A.intersectsCourtyard('U3') ||A.intersectsCourtyard('U2'))")
+   (condition "A.NetClass == 'USB_SS' && A.Type == 'Track' && B.NetClass != 'USB_SS' && B.Type != 'Zone' && (A.insideCourtyard('J5') || A.insideCourtyard('J4') || A.insideCourtyard('J2') || A.insideCourtyard('J7') || A.insideCourtyard('U3') || A.insideCourtyard('U2') || A.insideArea('AllowGND'))")
    (constraint clearance (min 0.15mm)))
-
-
 
 (rule "MIPI_track_clearance"
    (condition "A.NetClass == 'MIPI_100R' && A.Type == 'Track' && B.NetClass != 'MIPI_100R'")

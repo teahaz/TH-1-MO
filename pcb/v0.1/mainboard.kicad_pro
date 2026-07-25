@@ -40,8 +40,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 0.7,
-          "width": 0.2
+          "height": 1.0,
+          "width": 1.0
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -583,6 +583,10 @@
       {
         "netclass": "MIPI_100R",
         "pattern": "*DPHY*_P"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "GND"
       }
     ]
   },
@@ -714,7 +718,7 @@
         "uuid": "5b8aa782-5c3d-43e7-a869-3bd000015f52"
       }
     ],
-    "used_designators": "TP16-17,#PWR73,J11",
+    "used_designators": "H1-5,C5,R2,R11,TP16-17,#PWR73-79,J11",
     "variants": []
   },
   "sheets": [

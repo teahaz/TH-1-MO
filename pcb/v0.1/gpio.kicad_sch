@@ -7988,7 +7988,7 @@
 	)
 	(rectangle
 		(start 327.66 57.15)
-		(end 405.13 124.46)
+		(end 405.13 127)
 		(stroke
 			(width 0)
 			(type default)
@@ -8199,7 +8199,7 @@
 		(at 373.38 111.76)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3995a5ed-f7ba-48cd-bcf7-7769a9a099f9")
+		(uuid "401cb377-ee81-4263-aad2-140bdf720ec7")
 	)
 	(junction
 		(at 353.06 151.13)
@@ -8358,16 +8358,16 @@
 		(uuid "ccb4881a-0823-4c30-8dbc-261095ee538e")
 	)
 	(junction
-		(at 373.38 104.14)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d3f80502-6ef9-4bbe-ac1a-4dbed884564b")
-	)
-	(junction
 		(at 369.57 111.76)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d736c521-2769-41ad-bd9b-7c87c59b6283")
+	)
+	(junction
+		(at 373.38 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "db80e6ce-fe89-430e-b4bf-cbecb91e2cfb")
 	)
 	(junction
 		(at 375.92 204.47)
@@ -8398,6 +8398,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "eb160ffe-da18-4c13-9859-0ffb5043cd50")
+	)
+	(junction
+		(at 382.27 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ef0b553f-af4c-48f4-9900-d26bf26a5fdc")
 	)
 	(junction
 		(at 134.62 154.94)
@@ -8942,16 +8948,6 @@
 			(type default)
 		)
 		(uuid "300b66ac-7447-4f32-b628-b9e807b5a044")
-	)
-	(wire
-		(pts
-			(xy 373.38 111.76) (xy 393.7 111.76)
-		)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(uuid "31244f93-aa52-4a00-8422-a72e546d36c2")
 	)
 	(wire
 		(pts
@@ -9525,6 +9521,16 @@
 	)
 	(wire
 		(pts
+			(xy 373.38 111.76) (xy 373.38 124.46)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "72274cd5-2a3c-4da7-9ca9-fce695e7345f")
+	)
+	(wire
+		(pts
 			(xy 323.85 184.15) (xy 323.85 185.42)
 		)
 		(stroke
@@ -9905,7 +9911,7 @@
 	)
 	(wire
 		(pts
-			(xy 373.38 104.14) (xy 379.73 104.14)
+			(xy 373.38 104.14) (xy 382.27 104.14)
 		)
 		(stroke
 			(width 0)
@@ -10172,6 +10178,16 @@
 			(type default)
 		)
 		(uuid "c4762375-6015-4a8f-91d4-626cc82916ed")
+	)
+	(wire
+		(pts
+			(xy 382.27 104.14) (xy 387.35 104.14)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c4f82e07-87bf-4837-be15-c950dd0e76e6")
 	)
 	(wire
 		(pts
@@ -10944,12 +10960,12 @@
 		(uuid "e0e873fa-7055-41f1-ac9e-38aa45dd9ee0")
 	)
 	(label "SD_PWR_ON"
-		(at 382.27 111.76 0)
+		(at 373.38 114.3 270)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "ecde230e-fde4-443f-8bfc-d5b3748404c4")
 	)
@@ -11018,7 +11034,7 @@
 	)
 	(hierarchical_label "+3v3_PI"
 		(shape input)
-		(at 379.73 104.14 0)
+		(at 387.35 104.14 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11356,6 +11372,83 @@
 			(justify right)
 		)
 		(uuid "f4d4d61a-0da6-4192-a591-e5a76208f988")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 382.27 111.76 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "086f5793-c360-401f-9f50-de27400035e6")
+		(property "Reference" "#PWR074"
+			(at 382.27 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 382.397 116.1542 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 382.27 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 382.27 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 382.27 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "61492b99-d924-45ef-a285-6b0e80ede42b")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
+					(reference "#PWR074")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -14796,6 +14889,132 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
 					(reference "#PWR038")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TH-1-CC:C_10uf")
+		(at 382.27 107.95 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "98642380-7644-4e2d-8dbd-64df0de562b2")
+		(property "Reference" "C5"
+			(at 386.08 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uf"
+			(at 386.08 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 383.2352 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C95841.pdf"
+			(at 382.27 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized 10uF ±10% 16V Ceramic Capacitor X7R 0805"
+			(at 382.27 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 382.27 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfr. Part no." "CL21B106KOQNNNE"
+			(at 382.27 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Distributor LCSC" "https://www.lcsc.com/product-detail/C95841.html?s_z=n_C95841"
+			(at 382.27 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part no." "C95841"
+			(at 382.27 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a0cdc95b-6a0b-410f-b7fc-70bf4ec36a98")
+		)
+		(pin "2"
+			(uuid "d05f6fcb-07d6-4bc4-986b-5ac8fcb90a63")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/5721f8f0-0440-46b6-aeef-45d87b753dcc"
+					(reference "C5")
 					(unit 1)
 				)
 			)
