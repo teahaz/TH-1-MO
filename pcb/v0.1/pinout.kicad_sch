@@ -2961,7 +2961,7 @@
 	)
 	(hierarchical_label "GP03{slash}I2C1_SCL"
 		(shape bidirectional)
-		(at 88.9 44.45 90)
+		(at 93.98 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2983,12 +2983,12 @@
 	)
 	(hierarchical_label "GP11{slash}I2C1_SCL"
 		(shape bidirectional)
-		(at 93.98 152.4 270)
+		(at 86.36 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "65d10fdf-e9b1-4138-8ff8-3717a9537592")
 	)
@@ -3093,12 +3093,12 @@
 	)
 	(hierarchical_label "GP23{slash}I2S_DIN1"
 		(shape bidirectional)
-		(at 86.36 44.45 90)
+		(at 83.82 152.4 270)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "c4ef62da-032c-41a4-ae2b-2cd216292595")
 	)
@@ -3115,17 +3115,6 @@
 	)
 	(hierarchical_label "GP04{slash}CLK0{slash}U2_TX{slash}I2C2_SDA"
 		(shape bidirectional)
-		(at 83.82 152.4 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "dc962a71-77c4-4a24-ab2d-52d4192bd508")
-	)
-	(hierarchical_label "GP02{slash}I2C1_SDA"
-		(shape bidirectional)
 		(at 91.44 44.45 90)
 		(effects
 			(font
@@ -3133,11 +3122,22 @@
 			)
 			(justify left)
 		)
+		(uuid "dc962a71-77c4-4a24-ab2d-52d4192bd508")
+	)
+	(hierarchical_label "GP02{slash}I2C1_SDA"
+		(shape bidirectional)
+		(at 93.98 152.4 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
 		(uuid "e7b6dd50-2ea2-4b43-b300-7cc8eaf6ff8a")
 	)
 	(hierarchical_label "GP9"
 		(shape bidirectional)
-		(at 93.98 44.45 90)
+		(at 88.9 44.45 90)
 		(effects
 			(font
 				(size 1.27 1.27)
