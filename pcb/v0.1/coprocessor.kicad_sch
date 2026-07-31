@@ -4684,190 +4684,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "TH-1-CC:R_27Ω"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "R"
-				(at 2.032 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "27R"
-				(at 0 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-				(at -1.778 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C25190.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "27Ω ±1% 100mW 0603 Thick Film Resistor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "UNI-ROYAL"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mfr. Part No." "0603WAF270JT5E"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Distributor LCSC" "0603WAF270JT5E"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part no." "C25190"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "R res resistor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "R_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "R_27Ω_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "R_27Ω_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "TH-1-CC:VS1838B"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -5491,6 +5307,10 @@
 		(uuid "fdea0830-bd7a-4f95-801c-b22e7bae7cca")
 	)
 	(no_connect
+		(at 88.9 59.69)
+		(uuid "0f6d291b-256b-4236-9533-d8548c010940")
+	)
+	(no_connect
 		(at 123.19 110.49)
 		(uuid "187315bd-68a9-4651-993a-9703c9500129")
 	)
@@ -5501,6 +5321,10 @@
 	(no_connect
 		(at 123.19 90.17)
 		(uuid "1e914587-11ce-44a0-8806-6bd47d11d13f")
+	)
+	(no_connect
+		(at 91.44 59.69)
+		(uuid "2e071ca9-78bd-4e94-8f45-c956ddeca469")
 	)
 	(no_connect
 		(at 105.41 128.27)
@@ -5593,16 +5417,6 @@
 			(type default)
 		)
 		(uuid "0324579c-d34a-4e2b-8e8d-526aa9d37c5f")
-	)
-	(wire
-		(pts
-			(xy 123.19 67.31) (xy 125.73 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "03aefd41-b8df-4328-b658-a203cb5514e9")
 	)
 	(wire
 		(pts
@@ -5706,16 +5520,6 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 34.29) (xy 91.44 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "263ee10b-c69f-4095-9c90-3ae9893c2c19")
-	)
-	(wire
-		(pts
 			(xy 49.53 41.91) (xy 54.61 41.91)
 		)
 		(stroke
@@ -5733,6 +5537,16 @@
 			(type default)
 		)
 		(uuid "2f9b48ab-0bec-4cea-b60b-63ddcbe300ee")
+	)
+	(wire
+		(pts
+			(xy 123.19 67.31) (xy 125.73 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30159ff7-2542-48d6-a580-382699810421")
 	)
 	(wire
 		(pts
@@ -5823,16 +5637,6 @@
 			(type default)
 		)
 		(uuid "47001338-6a44-4d14-8707-761fe7979694")
-	)
-	(wire
-		(pts
-			(xy 88.9 43.18) (xy 88.9 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "49454047-0035-460c-a74d-23d4858a2acf")
 	)
 	(wire
 		(pts
@@ -6166,16 +5970,6 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 34.29) (xy 88.9 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8ba54272-189c-466b-a575-de7bc4572caf")
-	)
-	(wire
-		(pts
 			(xy 68.58 36.83) (xy 68.58 39.37)
 		)
 		(stroke
@@ -6453,16 +6247,6 @@
 			(type default)
 		)
 		(uuid "c1bfad1d-d0a9-466b-ba0b-437028e68b16")
-	)
-	(wire
-		(pts
-			(xy 91.44 43.18) (xy 91.44 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c2a2fc87-66fa-42b5-b763-6acd3c139b88")
 	)
 	(wire
 		(pts
@@ -6764,16 +6548,6 @@
 		)
 		(uuid "2db7bb42-d3a9-4f89-bafa-2eb7ebe8df6e")
 	)
-	(label "nRF_USB_N"
-		(at 88.9 57.15 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "2e9e30ed-bbe1-4ac9-b050-2964b60c5042")
-	)
 	(label "XL2"
 		(at 106.68 49.53 0)
 		(effects
@@ -6793,16 +6567,6 @@
 			(justify left bottom)
 		)
 		(uuid "4e603355-54f1-4295-be45-c91dcca4c5b9")
-	)
-	(label "nRF_USB_P"
-		(at 91.44 57.15 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7d15174f-d3d1-4000-8540-7e3ffc7d441f")
 	)
 	(label "IR_RX"
 		(at 68.58 91.44 0)
@@ -6888,7 +6652,7 @@
 	)
 	(hierarchical_label "U1_RX"
 		(shape output)
-		(at 72.39 81.28 180)
+		(at 72.39 83.82 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6976,7 +6740,7 @@
 	)
 	(hierarchical_label "U1_TX"
 		(shape input)
-		(at 72.39 83.82 180)
+		(at 72.39 81.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7097,7 +6861,7 @@
 	)
 	(hierarchical_label "MOD3"
 		(shape input)
-		(at 125.73 74.93 0)
+		(at 125.73 67.31 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7152,7 +6916,7 @@
 	)
 	(hierarchical_label "MOD0"
 		(shape input)
-		(at 125.73 67.31 0)
+		(at 125.73 74.93 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7979,132 +7743,6 @@
 		)
 	)
 	(symbol
-		(lib_id "TH-1-CC:R_27Ω")
-		(at 91.44 39.37 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "1ccf1a4b-cf4c-4895-9731-4c47ce792d54")
-		(property "Reference" "R14"
-			(at 93.98 38.0999 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "27R"
-			(at 93.98 40.6399 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 89.662 39.37 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C25190.pdf"
-			(at 91.44 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "27Ω ±1% 100mW 0603 Thick Film Resistor"
-			(at 91.44 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 91.44 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "0603WAF270JT5E"
-			(at 91.44 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "0603WAF270JT5E"
-			(at 91.44 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C25190"
-			(at 91.44 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "ecaea60a-b11d-49db-b0cd-885dd628c534")
-		)
-		(pin "1"
-			(uuid "34462482-2a03-41f7-a129-11d03e757a98")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "R14")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 229.87 45.72 270)
 		(unit 1)
@@ -8255,131 +7893,6 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
 					(reference "#PWR040")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TH-1-CC:R_27Ω")
-		(at 88.9 39.37 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp yes)
-		(uuid "32f95264-c454-451a-88ee-57034291f559")
-		(property "Reference" "R13"
-			(at 83.82 38.354 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "27R"
-			(at 83.058 40.64 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 87.122 39.37 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C25190.pdf"
-			(at 88.9 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "27Ω ±1% 100mW 0603 Thick Film Resistor"
-			(at 88.9 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 88.9 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Mfr. Part No." "0603WAF270JT5E"
-			(at 88.9 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Distributor LCSC" "0603WAF270JT5E"
-			(at 88.9 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part no." "C25190"
-			(at 88.9 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "7b4c5093-ddef-4fc2-9cff-9a1c78654272")
-		)
-		(pin "1"
-			(uuid "52c30a53-256b-4e4a-8c51-7436eb42f4f8")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -10579,85 +10092,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 91.44 34.29 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "a289292a-ee1e-49b2-90f1-a353374c3fbb")
-		(property "Reference" "TP17"
-			(at 91.44 29.718 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 93.98 32.258 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 96.52 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 96.52 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 91.44 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "b281e19a-6ec3-44f2-84db-4277f40ae39f")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "TP17")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 245.11 85.09 0)
 		(unit 1)
@@ -12194,85 +11628,6 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
 					(reference "R11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 88.9 34.29 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "fa5aac5c-c29d-4669-b061-219fea49563d")
-		(property "Reference" "TP16"
-			(at 88.9 29.718 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 91.44 32.258 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 93.98 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 93.98 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 88.9 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "b0713142-ff22-4ebc-ba6a-fac3d51c37c7")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
-					(reference "TP16")
 					(unit 1)
 				)
 			)

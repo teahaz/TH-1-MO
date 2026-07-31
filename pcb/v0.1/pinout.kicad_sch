@@ -2840,18 +2840,18 @@
 	)
 	(hierarchical_label "GP0.07"
 		(shape bidirectional)
-		(at 223.52 54.61 90)
+		(at 172.72 76.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "07f0afc4-2a49-4136-9ff1-4465704a5af1")
 	)
 	(hierarchical_label "GP0.20"
 		(shape bidirectional)
-		(at 172.72 73.66 180)
+		(at 226.06 102.87 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2862,12 +2862,12 @@
 	)
 	(hierarchical_label "GP0.06"
 		(shape bidirectional)
-		(at 220.98 54.61 90)
+		(at 172.72 101.6 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "0b01184d-50d5-466e-a200-959e5fa257e5")
 	)
@@ -2884,7 +2884,7 @@
 	)
 	(hierarchical_label "GP0.13"
 		(shape bidirectional)
-		(at 172.72 104.14 180)
+		(at 172.72 73.66 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2895,7 +2895,7 @@
 	)
 	(hierarchical_label "GP0.04{slash}A2"
 		(shape bidirectional)
-		(at 223.52 128.27 270)
+		(at 172.72 99.06 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2928,18 +2928,18 @@
 	)
 	(hierarchical_label "GP0.16"
 		(shape bidirectional)
-		(at 172.72 101.6 180)
+		(at 220.98 54.61 90)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "316c6609-4914-4aa2-b5c2-a5d0ad433ce7")
 	)
 	(hierarchical_label "GP0.26"
 		(shape bidirectional)
-		(at 220.98 128.27 270)
+		(at 172.72 81.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2950,7 +2950,7 @@
 	)
 	(hierarchical_label "GP0.05{slash}A3"
 		(shape bidirectional)
-		(at 226.06 102.87 270)
+		(at 172.72 104.14 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3005,7 +3005,7 @@
 	)
 	(hierarchical_label "GP0.17"
 		(shape bidirectional)
-		(at 172.72 81.28 180)
+		(at 223.52 128.27 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3038,7 +3038,7 @@
 	)
 	(hierarchical_label "GP0.15"
 		(shape bidirectional)
-		(at 172.72 99.06 180)
+		(at 220.98 128.27 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3049,27 +3049,16 @@
 	)
 	(hierarchical_label "GP0.19"
 		(shape bidirectional)
-		(at 172.72 78.74 180)
+		(at 223.52 54.61 90)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "a536dd95-0290-4b3c-a1a9-63d005444acd")
 	)
 	(hierarchical_label "GP0.21"
-		(shape bidirectional)
-		(at 172.72 76.2 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ad4ed1e8-9f26-474a-acf5-ab55d2abf788")
-	)
-	(hierarchical_label "GP0.08"
 		(shape bidirectional)
 		(at 226.06 76.2 90)
 		(effects
@@ -3077,6 +3066,17 @@
 				(size 1.27 1.27)
 			)
 			(justify left)
+		)
+		(uuid "ad4ed1e8-9f26-474a-acf5-ab55d2abf788")
+	)
+	(hierarchical_label "GP0.08"
+		(shape bidirectional)
+		(at 172.72 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
 		)
 		(uuid "b3001c5c-bddd-42ed-bf9c-9dc9ad2f9f03")
 	)

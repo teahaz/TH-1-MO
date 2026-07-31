@@ -3532,6 +3532,12 @@
 		(uuid "a6e095a4-1117-488c-b485-ea55f78d415a")
 	)
 	(junction
+		(at 228.6 22.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a7777b80-b97e-43b7-90f3-96489146f3d6")
+	)
+	(junction
 		(at 278.13 115.57)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3657,7 +3663,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 22.86) (xy 274.32 22.86)
+			(xy 154.94 22.86) (xy 228.6 22.86)
 		)
 		(stroke
 			(width 0)
@@ -3974,6 +3980,16 @@
 			(type default)
 		)
 		(uuid "53a99b17-e898-4031-bf04-343b3540fa45")
+	)
+	(wire
+		(pts
+			(xy 228.6 22.86) (xy 274.32 22.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "547882ce-a7fe-4939-b294-fe8c11697c34")
 	)
 	(wire
 		(pts
@@ -4544,6 +4560,16 @@
 			(type default)
 		)
 		(uuid "bdd278e5-97c0-4416-afa6-d3f0edf01f0e")
+	)
+	(wire
+		(pts
+			(xy 228.6 22.86) (xy 228.6 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2832023-3fc3-4b2e-adbb-d99bc44366ba")
 	)
 	(wire
 		(pts
@@ -9046,6 +9072,16 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+		(pin "+3v3_PI" input
+			(at 228.6 27.94 90)
+			(uuid "fd4490af-ef40-45d6-b20f-c5c562f7893d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
