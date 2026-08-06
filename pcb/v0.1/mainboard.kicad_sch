@@ -3460,12 +3460,6 @@
 		(uuid "167b1403-df8b-483d-9a84-60be8a9fad55")
 	)
 	(junction
-		(at 67.31 38.1)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1ae03974-bcf9-40bb-afb8-d4ab7ea8af3b")
-	)
-	(junction
 		(at 80.01 101.6)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4083,16 +4077,6 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 38.1) (xy 83.82 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "69095739-a651-4cb2-93fd-56cca161545e")
-	)
-	(wire
-		(pts
 			(xy 274.32 148.59) (xy 274.32 161.29)
 		)
 		(stroke
@@ -4303,7 +4287,7 @@
 	)
 	(wire
 		(pts
-			(xy 53.34 38.1) (xy 67.31 38.1)
+			(xy 53.34 38.1) (xy 83.82 38.1)
 		)
 		(stroke
 			(width 0)
@@ -5110,85 +5094,6 @@
 			(justify left bottom)
 		)
 		(uuid "e2667b8f-76c6-4c13-bbf4-d90a2e5f7682")
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 67.31 38.1 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "0a347d54-dbee-42cb-b6cf-4c3c82668df8")
-		(property "Reference" "TP7"
-			(at 66.04 34.544 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 64.77 33.5281 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 72.39 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 72.39 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 67.31 38.1 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "4f3febdb-acf0-4b64-9ae2-9b15ed180199")
-		)
-		(instances
-			(project "mainboard"
-				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52"
-					(reference "TP7")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(symbol
 		(lib_id "TH-1-CC:C_100nf")

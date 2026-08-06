@@ -5359,10 +5359,6 @@
 		(uuid "a52b639b-2bb0-46c2-8e59-3555b384123b")
 	)
 	(no_connect
-		(at 45.72 62.23)
-		(uuid "a8c3b1ff-f907-4455-99e9-5302e402b94a")
-	)
-	(no_connect
 		(at 100.33 128.27)
 		(uuid "ab536d02-59f6-4965-85b8-f23bd49384bb")
 	)
@@ -5827,6 +5823,16 @@
 			(type default)
 		)
 		(uuid "75336010-d8ea-43fd-839b-772b9ffcc426")
+	)
+	(wire
+		(pts
+			(xy 45.72 62.23) (xy 45.72 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7593bb1b-5a5b-41c6-abbd-12dd0aa3d68e")
 	)
 	(wire
 		(pts
@@ -10942,6 +10948,85 @@
 			(project "mainboard"
 				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
 					(reference "C29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 45.72 67.31 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e43e6339-51e8-4678-8c47-77e1ba86f201")
+		(property "Reference" "TP16"
+			(at 44.704 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 43.18 69.342 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 40.64 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 45.72 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "49402acd-3b4e-44a5-b635-d30aaedee784")
+		)
+		(instances
+			(project "mainboard"
+				(path "/5b8aa782-5c3d-43e7-a869-3bd000015f52/7870ee9f-55aa-45c7-9cfc-bb8c349d3c52"
+					(reference "TP16")
 					(unit 1)
 				)
 			)
