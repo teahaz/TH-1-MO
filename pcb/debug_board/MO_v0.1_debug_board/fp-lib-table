@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "TH-1-CC_footprints") (type "KiCad") (uri "/home/antone/Music/TEAHAZ/TH-1-KCL/TH-1-CC_footprints.pretty") (options "") (descr ""))
+)
