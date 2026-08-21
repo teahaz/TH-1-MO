@@ -40,8 +40,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 0.889,
-          "width": 0.3048
+          "height": 0.2,
+          "width": 0.28
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -76,7 +76,12 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "silk_edge_clearance|177500305|82861133|f4ee641b-f83c-4519-ae6f-ef2d7b2596c6|1a5b1563-1ed6-424f-8ce4-3ccea6380e2d",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -542,11 +547,26 @@
         "wire_width": 6
       },
       {
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "microvia_diameter": 0.0,
+        "microvia_drill": 0.1,
+        "name": "GND",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.2,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      },
+      {
         "diff_pair_gap": 0.1999,
         "diff_pair_width": 0.1191,
         "name": "MIPI_100R",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.1191,
         "tuning_profile": ""
@@ -556,7 +576,7 @@
         "diff_pair_width": 0.1356,
         "name": "USB_SS",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.1356,
         "tuning_profile": ""
@@ -585,7 +605,7 @@
         "pattern": "*DPHY*_P"
       },
       {
-        "netclass": "Default",
+        "netclass": "GND",
         "pattern": "GND"
       }
     ]
@@ -596,6 +616,7 @@
       "netlist": "",
       "plot": "",
       "specctra_dsn": "",
+      "step": "",
       "vrml": ""
     },
     "page_layout_descr_file": ""
