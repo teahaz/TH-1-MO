@@ -1,0 +1,75 @@
+/ {
+
+    chosen {
+        zephyr,console = &uart0;
+        zephyr,shell-uart = &uart0;
+    };
+
+    zephyr,user {
+        pin_gpios = <&gpio1 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 3  - P1.10 */
+                    <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 4  - P1.11 */
+                    <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 5  - P1.12 */
+                    <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 6  - P1.13 */
+                    <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 7  - P1.14 */
+                    <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 8  - P1.15 */
+                    <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 9  - P0.03 */
+                    <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 10 - P0.29 */
+                    <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 11 - P0.02 */
+                    <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 12 - P0.31 */
+                    <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 13 - P0.28 */
+                    <&gpio0 30 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 14 - P0.30 */
+                    <&gpio0 27 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 16 - P0.27 */
+                    <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 19 - P0.26 */
+                    <&gpio0 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 20 - P0.04 */
+                    <&gpio0 5  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 21 - P0.05 */
+                    <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 22 - P0.06 */
+                    <&gpio0 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 23 - P0.07 */
+                    <&gpio0 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 24 - P0.08 */
+                    <&gpio1 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 25 - P1.08 */
+                    <&gpio1 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 26 - P1.09 */
+                    <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 27 - P0.11 */
+                    <&gpio0 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 29 - P0.12 */
+                    <&gpio0 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 36 - P0.14 */
+                    <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 37 - P0.13 */
+                    <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 38 - P0.16 */
+                    <&gpio0 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 39 - P0.15 */
+                    <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 41 - P0.17 */
+                    <&gpio0 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 42 - P0.19 */
+                    <&gpio0 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 43 - P0.21 */
+                    <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 44 - P0.20 */
+                    <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 45 - P0.23 */
+                    <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 47 - P1.00 */
+                    <&gpio0 25 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 49 - P0.25 */
+                    <&gpio1 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 50 - P1.02 */
+                    <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 52 - P0.09 (NFC1) */
+                    <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 54 - P0.10 (NFC2) */
+                    <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 56 - P1.04 */
+                    <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 57 - P1.06 */
+                    <&gpio1 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 58 - P1.07 */
+                    <&gpio1 5  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 59 - P1.05 */
+                    <&gpio1 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* pin 60 - P1.03 */
+                    <&gpio1 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* pin 61 - P1.01 */
+    };
+};
+
+&uicr {
+    nfct-pins-as-gpios;
+};
+
+
+&pinctrl {
+    uart0_default: uart0_default {
+        group1 {
+            psels = <NRF_PSEL(UART_RX, 0, 24)>,
+                    <NRF_PSEL(UART_TX, 0, 22)>;
+        };
+    };
+};
+
+&uart0 {
+    status = "okay";
+    current-speed = <115200>;
+    pinctrl-0 = <&uart0_default>;
+    pinctrl-names = "default";
+    /delete-property/ pinctrl-1;
+};
