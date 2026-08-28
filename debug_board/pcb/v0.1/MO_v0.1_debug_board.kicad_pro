@@ -40,8 +40,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 1.0,
-          "width": 1.0
+          "height": 2.0,
+          "width": 2.0
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -62,8 +62,8 @@
           "hatch_thickness": 1.0,
           "min_clearance": 0.5,
           "min_island_area": 10.0,
-          "min_thickness": 1.0,
-          "pad_connection": 1,
+          "min_thickness": 0.5,
+          "pad_connection": 0,
           "remove_islands": 0,
           "thermal_relief_gap": 0.5,
           "thermal_relief_spoke_width": 1.0
@@ -77,14 +77,6 @@
         }
       ],
       "drc_exclusions": [
-        [
-          "items_not_allowed|182550000|65830000|8a54d525-1b1d-4fad-9b1d-8c83e54d88ab|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "items_not_allowed|201930000|65830000|0db36bf1-53f0-412a-95f2-8599a63649e8|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
         [
           "solder_mask_bridge|211305000|69160000|a650dfc0-5e18-4432-9f21-88e547e63eae|1bcd7343-8357-4f1f-b7b0-302b6807f3e6",
           ""
@@ -160,7 +152,7 @@
       "rules": {
         "max_error": 0.005,
         "min_clearance": 0.2,
-        "min_connection": 0.5,
+        "min_connection": 0.2,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.4,
@@ -224,6 +216,7 @@
       ],
       "track_widths": [
         0.0,
+        0.2,
         0.3,
         0.5
       ],
@@ -681,7 +674,7 @@
         "uuid": "448bce81-afb4-4b0d-97aa-ae0f1b45a278"
       }
     ],
-    "used_designators": "#PWR1-3,j1-17,A1-2,R1-16,TP1-16",
+    "used_designators": "J17,#PWR1-3,j1-17,A1-2,R1-16,TP1-16",
     "variants": []
   },
   "sheets": [
