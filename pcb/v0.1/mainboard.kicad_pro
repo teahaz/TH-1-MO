@@ -683,19 +683,139 @@
           "group_by": true,
           "label": "Footprint",
           "name": "Footprint",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Digikey Part no",
+          "name": "Digikey Part no",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Digikey Part no.",
+          "name": "Digikey Part no.",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Distributor DigiKey",
+          "name": "Distributor DigiKey",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Distributor Digikey",
+          "name": "Distributor Digikey",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Distributor Digkey",
+          "name": "Distributor Digkey",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Distributor LCSC",
+          "name": "Distributor LCSC",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Distributor Part no.",
+          "name": "Distributor Part no.",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "LCSC Part no",
+          "name": "LCSC Part no",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "LCSC Part no.",
+          "name": "LCSC Part no.",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer",
+          "name": "Manufacturer",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Mfr Part no.",
+          "name": "Mfr Part no.",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Mfr. Part No.",
+          "name": "Mfr. Part No.",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Mfr. Part no",
+          "name": "Mfr. Part no",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Mfr. Part no.",
+          "name": "Mfr. Part no.",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": true,
+          "label": "Stock",
+          "name": "Stock",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "DigiKey Part no.",
+          "name": "DigiKey Part no.",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
