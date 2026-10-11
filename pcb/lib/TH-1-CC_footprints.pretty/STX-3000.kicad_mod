@@ -1,0 +1,152 @@
+(footprint "STX-3000"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 3.2 5.55 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "44578c05-d0c6-4e29-9a39-e50864c4e1e2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "STX-3000"
+		(at 3.2 7.05 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "9ee20ff8-1200-4ea6-9556-62cd4531d51c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "07f40f09-b07c-4223-8ddf-433ccf37408c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d3fa723f-06b2-46d7-abb4-ce3f4d3ee8e9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start 6.35 0.05)
+		(end 0.05 14.05)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "2a5576f4-42b4-45f0-be22-462653dbf21b")
+	)
+	(fp_rect
+		(start 6.35 0.05)
+		(end 0.05 14.05)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "46cd09ba-6072-45db-8ed8-11f8fa18ec46")
+	)
+	(fp_line
+		(start 3.2 14.05)
+		(end 3.2 0.05)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "User.1")
+		(uuid "dd66d935-f521-478c-84e7-e9a9aa818a24")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 3.2 8.55 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "84955963-2606-4b1d-90c1-4eeb86a3b1b1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at 3.2 2.55)
+		(size 1 1)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(uuid "99bb8d5c-d7b1-48aa-85ab-24cbe195eeae")
+	)
+	(pad "" np_thru_hole circle
+		(at 3.2 10.05)
+		(size 1 1)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(uuid "bfa94692-96c1-4a4c-a489-0afcc86c98f4")
+	)
+	(pad "1" thru_hole rect
+		(at 4.7 5.85 270)
+		(size 1.5 1.2)
+		(drill oval 1.2 0.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "900e0a3b-3e49-415f-bd63-21a9da384a63")
+	)
+	(pad "2" thru_hole rect
+		(at 0.45 0.65 270)
+		(size 1.5 1.2)
+		(drill oval 1.2 0.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e4bf1663-a554-42a0-980d-f0c6171f9474")
+	)
+	(pad "3" thru_hole rect
+		(at 5.95 0.65 270)
+		(size 1.5 1.2)
+		(drill oval 1.2 0.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7d0711d3-87b7-4b4a-a21c-1b4bb4c0415e")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3D_models/STX-3000_rD3.IGS"
+		(offset
+			(xyz -0.4 -12.15 -0.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
+)

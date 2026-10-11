@@ -1,0 +1,68 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <nordic/nrf52840_qiaa.dtsi>
+#include <nordic/nrf52840_partition.dtsi>
+#include "mo-pinctrl.dtsi"
+#include <zephyr/dt-bindings/gpio/gpio.h>
+
+/ {
+	model = "teahaz TH-1/MO co processor";
+	compatible = "th-1,mo";
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+	};
+
+	zephyr,user {
+		ps-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+			   <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+			   <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+			   <&gpio1 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+			   <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* MOD4 - Pi power sense */
+
+		ir-rx-gpios = <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+		ir-tx-gpios = <&gpio0 23 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+	gpio-reserved-ranges = <0 2>, <18 1>, <24 1>;
+	gpio-line-names = "XL1", "XL2", "", "", "GP0.4", "GP0.5", "GP0.6", "GP0.7",
+			   "GP0.8", "", "", "", "", "GP0.13", "GP0.14", "GP0.15",
+			   "GP0.16", "GP0.17", "nRESET", "GP0.19", "GP0.20", "GP0.21",
+			   "IR_RX", "IR_TX", "U0_RX", "U1_RX", "GP0.26";
+};
+
+&gpio1 {
+	status = "okay";
+	gpio-reserved-ranges = <0 1>, <10 5>;
+};
+
+&uart0 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-1 = <&uart0_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+&uart1 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&uart1_default>;
+	pinctrl-1 = <&uart1_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+&uicr {
+	gpio-as-nreset;
+};
