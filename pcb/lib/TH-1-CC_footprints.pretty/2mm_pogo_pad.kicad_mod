@@ -1,0 +1,88 @@
+(footprint "2mm_pogo_pad"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 1.79 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "f3e25e51-1dfc-40ef-ad87-5d601e7fe67a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "2mm_pogo_pad"
+		(at 1.5 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "f70df976-81a8-4891-bfd6-ad3459926d92")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7161/54_Mill%20Max%20catalog.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f56ccaf4-bc0e-4487-91e2-7f9370000adc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "2mm SMD pad"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "70ff81a2-eeef-4353-a27c-7150649ed5e4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_text user "${REFERENCE}"
+		(at 1.43 3.93 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "cf7b370b-65a7-4238-bf1f-ef2438ae46a7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd circle
+		(at 1.2 0.95)
+		(size 2 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "33001032-c232-4398-b5b1-0968e7978b37")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3D_models/pogo_16x4.5_standard_stroke.step"
+		(offset
+			(xyz 0.3 -1.85 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)
