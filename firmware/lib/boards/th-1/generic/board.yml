@@ -1,0 +1,6 @@
+board:
+  name: generic
+  full_name: teahaz TH-1 generic nRF52840
+  vendor: th-1
+  socs:
+  - name: nrf52840

@@ -1,0 +1,20 @@
+identifier: generic/nrf52840
+name: teahaz TH-1 generic nRF52840
+type: mcu
+arch: arm
+ram: 256
+flash: 1024
+toolchain:
+  - zephyr
+  - gnuarmemb
+supported:
+  - adc
+  - bluetooth
+  - counter
+  - gpio
+  - i2c
+  - pwm
+  - serial
+  - spi
+  - watchdog
+vendor: th-1

@@ -1,0 +1,27 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <nordic/nrf52840_qiaa.dtsi>
+#include <nordic/nrf52840_partition.dtsi>
+
+/ {
+	model = "teahaz TH-1 generic nRF52840";
+	compatible = "th-1,generic";
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+	/* P0.00/XL1 and P0.01/XL2: 32.768 kHz crystal */
+	gpio-reserved-ranges = <0 2>;
+	gpio-line-names = "XL1", "XL2";
+};
+
+&gpio1 {
+	status = "okay";
+};
