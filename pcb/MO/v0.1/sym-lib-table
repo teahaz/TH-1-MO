@@ -1,0 +1,5 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "CM5IO") (type "KiCad") (uri "/home/antone/Music/TEAHAZ/TH-1-MO.git/cleanup/pcb/lib/vendor/CM5IO/CM5IO.kicad_sym") (options "") (descr ""))
+	(lib (name "TH-1-CC") (type "KiCad") (uri "/home/antone/Music/TEAHAZ/TH-1-MO.git/cleanup/pcb/lib/TH-1-CC.kicad_sym") (options "") (descr ""))
+)
