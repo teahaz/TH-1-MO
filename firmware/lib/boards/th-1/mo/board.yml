@@ -1,0 +1,11 @@
+board:
+  name: mo
+  full_name: teahaz TH-1/MO co processor
+  vendor: th-1
+  socs:
+  - name: nrf52840
+  revision:
+    format: major.minor.patch
+    default: "0.1.0"
+    revisions:
+    - name: "0.1.0"
