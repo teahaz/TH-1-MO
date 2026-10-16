@@ -2,3 +2,5 @@
 *.stl
 !p12/stl/
 !p12/stl/*.stl
+!p13/stl/
+!p13/stl/*.stl
