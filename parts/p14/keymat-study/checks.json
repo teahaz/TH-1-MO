@@ -1,0 +1,76 @@
+{
+  "source_sha256": "2c5018cb604539f488f7940a9939e357876d73541bd553e27f9a5caa00fab593",
+  "status": "CONCEPT ONLY \u2014 NOT FOR PRINTING",
+  "layout": {
+    "keys": 37,
+    "bottom_row_positions": [
+      1,
+      1,
+      1,
+      4,
+      1,
+      1,
+      1
+    ],
+    "pitch_mm": 8.653133980109008,
+    "bottom_centres_x_mm": [
+      -29.12710291049499,
+      -20.473968930384988,
+      -11.82083495027598,
+      9.81199999999951,
+      31.444834950275002,
+      40.097968930384994,
+      48.751102910495
+    ]
+  },
+  "assumptions_mm": {
+    "pcb_thickness": 1.6,
+    "switch_body": [
+      4,
+      4,
+      2
+    ],
+    "switch_button_height": 0.6,
+    "rest_gap": 0.15,
+    "web_thickness": 0.4
+  },
+  "unresolved": [
+    "TPU force and fatigue",
+    "frame fasteners",
+    "long-key guidance and insert retention",
+    "travel stops",
+    "routing and connector",
+    "assembly tolerances"
+  ],
+  "parts": {
+    "Case": {
+      "solids": 1,
+      "volume_mm3": 36797.68573736137
+    },
+    "PCB": {
+      "solids": 1,
+      "volume_mm3": 4871.68
+    },
+    "SwitchBodies": {
+      "solids": 37,
+      "volume_mm3": 1183.9999999999982
+    },
+    "SwitchActuators": {
+      "solids": 37,
+      "volume_mm3": 69.74335690969336
+    },
+    "LongKeyInsert": {
+      "solids": 1,
+      "volume_mm3": 96.56052588627846
+    },
+    "TPUKeymat": {
+      "solids": 1,
+      "volume_mm3": 4172.270145319398
+    },
+    "RetainingFrame": {
+      "solids": 1,
+      "volume_mm3": 1930.6206589020412
+    }
+  },
+  "checks": "Valid shapes; deep BOP; no pairwise overlap at rest; unchanged rail region"
+}
