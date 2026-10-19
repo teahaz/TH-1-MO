@@ -2,3 +2,13 @@
 *.stl
 !p12/stl/
 !p12/stl/*.stl
+!p13/stl/
+!p13/stl/*.stl
+!p14/stl/
+!p14/stl/*.stl
+!p15/stl/
+!p15/stl/*.stl
+!p16/stl/
+!p16/stl/*.stl
+!p17/stl/
+!p17/stl/*.stl
