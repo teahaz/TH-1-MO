@@ -1,0 +1,857 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=25mm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{nosep,leftmargin=*,itemsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\renewcommand{\arraystretch}{1.25}
+\setcounter{secnumdepth}{3}
+
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{18pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+
+% Column types for tabularx tables.
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+% Spec conventions.
+\newcommand{\tbd}{\textbf{TBD}}
+\newcommand{\sref}[1]{\S\ref{#1}}
+\newcommand{\hex}[1]{\texttt{#1}}
+\newcommand{\I}{I\textsuperscript{2}C}
+
+\title{TH-1 Bus Replay Protocol Specification}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-2.5em}
+
+The TH-1 bus replay protocol connects a bus capture and replay device to a host
+computer. The device attaches to a bus under test, such as \I{}, samples its lines and
+streams every level change to the host, where the traffic is decoded, inspected and
+replayed. This document specifies how captures are encoded and streamed, how the host
+configures the device, and how transports carry both.
+
+\bigskip
+
+\noindent\textbf{Status:} draft
+
+\medskip
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Version} & \textbf{Date} & \textbf{Changes} \\
+\midrule
+1.0 & 2026-10-19 & First version. \\
+\bottomrule
+\end{tabularx}
+
+\newpage
+\tableofcontents
+
+%--------------------------------------------------------------------
+\section{Scope}\label{sec:scope}
+
+In scope:
+\begin{itemize}
+  \item The channel model, and how logical channels map onto data channels.
+  \item The time model, records and heartbeats on the device $\to$ host data path.
+  \item Loss detection and reporting.
+  \item Control messages: hello, registers, configuration, loss report, capture
+        lifecycle.
+  \item Transports: the contract every transport must meet, and the bindings this
+        document defines.
+\end{itemize}
+
+Out of scope:
+\begin{itemize}
+  \item The device's internal design (sampling method, buffer implementation).
+  \item The host interface and its data model.
+  \item Protocol decoding (\I{} or otherwise). Decode is a host-side step over the raw
+        pin states this protocol delivers.
+\end{itemize}
+
+%--------------------------------------------------------------------
+\section{Terminology}\label{sec:terms}
+
+\begin{tabularx}{\linewidth}{@{}l L@{}}
+\toprule
+\textbf{Term} & \textbf{Meaning} \\
+\midrule
+Device & The capture/replay hardware attached to the bus under test. \\
+Host & The PC running the analyser interface. \\
+Logical channel & One device pin, with a channel number fixed by the device, enabled in the configuration. The unit the protocol reasons about. \\
+Data channel & A transport-provided byte stream that carries pin states. \\
+Control channel & The single transport-provided message channel for everything that is not pin state. \\
+Tick & One sample period. Global, shared by all logical channels. \\
+Record & A level change on one logical channel (\sref{sec:record}). \\
+Heartbeat & A periodic entry, not a record, that marks the same instant on every logical channel (\sref{sec:heartbeat}). \\
+Gap & The number of ticks between a record and its reference point (\sref{sec:gap}). \\
+Register & A device setting with an ID, written by the host (\sref{sec:registers}). \\
+Grid point & A tick at which a heartbeat is due: every $C$ ticks from the start of the capture (\sref{sec:emission}). \\
+Position & A tick on the capture timeline, as grid count and offset (\sref{sec:position}). \\
+Entry & A record or a heartbeat on a data channel. \\
+Binding & The part of a transport that carries one data channel, or the control channel, over one medium (\sref{sec:transports}). \\
+Untrusted span & A span of a data channel the host cannot trust after transport loss (\sref{sec:transportloss}). \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+
+\begin{tabularx}{\linewidth}{@{}l L@{}}
+\toprule
+\textbf{Symbol} & \textbf{Meaning} \\
+\midrule
+$N$ & The number of channels the device has (\sref{sec:hello}). \\
+$n$ & The number of enabled logical channels (\sref{sec:registers}). \\
+$D$ & The number of data channels (\sref{sec:channels}). \\
+$C$ & The heartbeat interval in ticks (\sref{sec:interval}). \\
+$W$ & The width of a record in bytes, per data channel (\sref{sec:record}). \\
+$t$ & The width of a record's tag in bits, per data channel (\sref{sec:record}). \\
+\bottomrule
+\end{tabularx}
+
+%--------------------------------------------------------------------
+\section{Design principles}\label{sec:principles}
+
+\begin{enumerate}
+  \item \textbf{Streamed.} Captures flow to the host while the capture runs, not as a
+        buffer download after it stops.
+  \item \textbf{Lightweight.} Minimal bytes on the wire and minimal device-side work.
+        The host may spend processing freely.
+  \item \textbf{Separate control channel.} Everything that is not pin state goes on it.
+  \item \textbf{Data channels carry only pin states}, in either direction.
+  \item \textbf{Transport agnostic.} The core works over any transport that meets the
+        contract (\sref{sec:contract}).
+  \item \textbf{Bus-protocol agnostic.} Nothing in the protocol may assume the channel
+        count, clock rate or traffic density of a particular bus protocol.
+  \item \textbf{Fixed sample rate}, set in the configuration and constant for a
+        capture.
+  \item \textbf{Encoded.} Captures are per-channel change records, not raw fixed-rate
+        samples.
+  \item \textbf{Buffered.} The device has one buffer and one tick counter. Capture may
+        outrun the transport; the backlog drains while the bus is idle.
+\end{enumerate}
+
+%--------------------------------------------------------------------
+\section{Channel model}\label{sec:channels}
+
+The protocol defines \textbf{one control channel and $D$ data channels}. Every
+transport must provide both. How it does so, and the value of $D$, belong to the
+transport (\sref{sec:transports}).
+
+\subsection{Control channel}\label{sec:control}
+
+\begin{itemize}
+  \item Two-way, low rate.
+  \item Message-framed and integrity-checked by its control binding
+        (\sref{sec:controlbindings}): a message arrives whole and intact, or not at
+        all.
+  \item Delivery is not guaranteed.
+  \item Device $\to$ host: hello (\sref{sec:hello}), configuration replies
+        (\sref{sec:config}), loss reports (\sref{sec:lossreport}).
+  \item Host $\to$ device: configuration (\sref{sec:config}).
+  \item Messages: \sref{sec:messages}.
+\end{itemize}
+
+\subsection{Data channels}\label{sec:data}
+
+\begin{itemize}
+  \item Each data channel is an ordered byte stream in each direction.
+  \item They carry pin states and nothing else.
+    \begin{itemize}
+      \item Device $\to$ host: records (\sref{sec:time}) and heartbeats
+            (\sref{sec:heartbeat}).
+      \item Host $\to$ device: replay (\sref{sec:replay}).
+    \end{itemize}
+  \item The core protocol adds no escapes or framing to a data channel: entries follow
+        one another directly. Any framing a transport needs belongs to that transport.
+  \item $D$ is set by the transport and must not limit how many logical channels exist.
+  \item The protocol sets no maximum number of logical channels. The limit is the
+        device's.
+  \item Which logical channels each data channel carries is set by the mapping
+        (\sref{sec:mapping}).
+\end{itemize}
+
+\subsection{Mapping}\label{sec:mapping}
+
+This defines the device $\to$ host direction. The host $\to$ device direction is
+\tbd{} (\sref{sec:replay}).
+
+\begin{itemize}
+  \item The transport numbers its data channels $0 \ldots D-1$. The hello carries $D$
+        (\sref{sec:hello}).
+  \item The logical channels, in ascending channel number, are split into $D$
+        contiguous blocks, one per data channel, in data channel order. A record
+        carries its index within the block (\sref{sec:record}).
+  \item The split register (\sref{sec:registers}) sets where the blocks split. Empty,
+        its default, means automatic: the blocks are $\lfloor n/D \rfloor$ channels,
+        and the first $n \bmod D$ blocks have one more.
+  \item Otherwise, a channel in the split set starts a new block. It need not be
+        enabled: the split is by channel number.
+  \item A block may be empty, for example with fewer than $D-1$ channels in the split
+        set, or none enabled between two of them. Its data channel then carries no
+        records, only heartbeats (\sref{sec:emission}).
+\end{itemize}
+
+For example, with channels 0, 1, 2, 3, 4, 6 and 7 enabled and $D = 3$:
+
+\begin{tabularx}{\linewidth}{@{}l l l L@{}}
+\toprule
+\textbf{Split} & \textbf{Data channel 0} & \textbf{Data channel 1} & \textbf{Data channel 2} \\
+\midrule
+empty & 0, 1, 2 & 3, 4 & 6, 7 \\
+\{2, 6\} & 0, 1 & 2, 3, 4 & 6, 7 \\
+\{6\} & 0, 1, 2, 3, 4 & 6, 7 & none \\
+\bottomrule
+\end{tabularx}
+
+\subsection{Contract}\label{sec:contract}
+
+Across its data channels, a transport must guarantee:
+\begin{itemize}
+  \item On each data channel, records and heartbeats arrive in the order the device
+        wrote them.
+  \item Every heartbeat arrives intact on every device $\to$ host data channel
+        (\sref{sec:emission}), or the transport detects that it did not
+        (\sref{sec:transportloss}).
+\end{itemize}
+
+Records carry no integrity guarantee.
+
+Ordering \emph{between} logical channels carried on different data channels is not
+guaranteed. The host aligns them using heartbeats (\sref{sec:hostuse}).
+
+A transport must also give the host a way to reset the device (\sref{sec:lifecycle}).
+
+%--------------------------------------------------------------------
+\section{Time and records}\label{sec:time}
+
+\subsection{Tick}\label{sec:tick}
+
+One tick is one sample period. The sample rate is fixed by the configuration for the
+whole capture. There is one tick counter on the device, shared by all logical channels.
+
+The device samples every tick. It does not start a capture at a sample rate it cannot
+sustain (\sref{sec:config}).
+
+\subsection{Record}\label{sec:record}
+
+A record is emitted for every sampled level change on a logical channel. Nothing is
+filtered. Logically it is:
+
+\begin{center}
+\texttt{\{ channel, new level, gap \}}
+\end{center}
+
+On the wire it is one value of $W$ bytes, low byte first:
+
+\begin{itemize}
+  \item $v = +\mathrm{gap}$ for new level 1, $v = -\mathrm{gap}$ for new level 0.
+  \item $z = (v \ll 1) \oplus (v \gg 31)$, with an arithmetic shift (ZigZag). Bit 0 of
+        $z$ is 1 for level 0, and 0 for level 1.
+  \item \textbf{Tag.} The record's channel is identified by its index within the
+        data channel's block (\sref{sec:mapping}), counted from 0 in ascending channel
+        number, in $t = \lceil \log_2 b \rceil$ bits, where $b$ is the block size. A
+        data channel carrying one logical channel or none has $t = 0$: no tag.
+  \item The value is $(z \ll t) \mid \mathrm{index}$.
+  \item $W$ is the smallest number of bytes that holds $(2C + 1) \times 2^t - 1$. Every
+        record on a data channel is $W$ bytes.
+\end{itemize}
+
+$W$ and $t$ are per data channel. Both sides derive them from the configuration.
+
+\subsection{Gap}\label{sec:gap}
+
+A record's gap is the number of ticks since the more recent of:
+\begin{itemize}
+  \item the previous record on the same logical channel, or
+  \item the most recent heartbeat written before it (\sref{sec:heartbeat}).
+\end{itemize}
+
+A heartbeat resets the gap reference of every logical channel at once. A gap is at
+least 1.
+
+A record that was dropped (\sref{sec:devicebehaviour}) was never written and resets
+nothing.
+
+A gap never exceeds $C$ (\sref{sec:pending}).
+
+%--------------------------------------------------------------------
+\section{Heartbeat}\label{sec:heartbeat}
+
+A periodic marker of the same instant on every logical channel. It re-anchors the
+timeline so that alignment between channels and recovery from errors do not depend on
+summed gaps alone.
+
+\subsection{Content}\label{sec:hbcontent}
+
+\begin{itemize}
+  \item A heartbeat is one entry for all logical channels, not a record. It is marked
+        by a value of 0. No record has that value, since a record's $z$ is at least 1
+        (\sref{sec:record}, \sref{sec:gap}).
+  \item It carries the level of every logical channel as a bitmask, one bit per
+        logical channel. A heartbeat is therefore a keyframe for all channels in one
+        write.
+  \item The bitmask holds each channel's level at the end of the heartbeat's tick,
+        including any change on that tick.
+  \item It carries a grid index: the number of its grid point, counted from the start
+        of the capture, mod 256.
+\end{itemize}
+
+On the wire:
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+Marker & $W$ bytes (\sref{sec:record}) & all zero, with no tag \\
+Grid index & 1 byte & grid index \\
+Bitmask & $\lceil n/8 \rceil$ bytes & the $i$-th logical channel in ascending channel number, counted from 0, is bit $(i \bmod 8)$ of byte $\lfloor i/8 \rfloor$. Unused bits are 0. \\
+\bottomrule
+\end{tabularx}
+
+A heartbeat is $W + 1 + \lceil n/8 \rceil$ bytes, with the $W$ of the data channel it
+is on. It is fixed for the capture.
+
+\subsection{Emission}\label{sec:emission}
+
+\begin{itemize}
+  \item A capture begins with a heartbeat.
+  \item A heartbeat marks tick 0 at its grid point, even if written later
+        (\sref{sec:pending}), and resets every gap reference (\sref{sec:gap}).
+  \item A heartbeat is due at every grid point.
+  \item Within a tick, records are written before the heartbeat.
+  \item Heartbeats are global: the device writes one for all logical channels. It goes
+        on every device $\to$ host data channel, with that data channel's $W$, so each
+        stream can anchor itself.
+\end{itemize}
+
+\subsection{Interval}\label{sec:interval}
+
+$C$ is set by the configuration (\sref{sec:registers}), within the range the device
+lists in its hello (\sref{sec:hello}). The protocol fixes no default or range.
+
+\subsection{Pending heartbeat}\label{sec:pending}
+
+A heartbeat is never skipped.
+
+\begin{itemize}
+  \item If the buffer has no room for a heartbeat at its grid point, it is pending. The
+        device keeps its grid index and the levels at the grid point.
+  \item A pending heartbeat is written as soon as there is room, before any record.
+        Records that arrive meanwhile and do not fit after it are dropped
+        (\sref{sec:devicebehaviour}). Records are never held back.
+  \item The device does not start a capture with a $C$ shorter than the time needed to
+        send one heartbeat on every data channel (\sref{sec:config}). While a
+        heartbeat is pending nothing else is written and the buffer drains, so it is
+        always written before the next grid point.
+  \item A transport that stops draining is outside the protocol.
+\end{itemize}
+
+Every record therefore follows the heartbeat of the grid point before it, and a gap
+never exceeds $C$.
+
+\subsection{Position}\label{sec:position}
+
+A position is a tick on the capture timeline, sent where a message needs to name one
+(\sref{sec:lossreportmsg}).
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+Grid count & 4 bytes & the number of the grid point at or before the tick, counted from the start of the capture \\
+Offset & 4 bytes & ticks since that grid point, $0 \ldots C-1$ \\
+\bottomrule
+\end{tabularx}
+
+\begin{itemize}
+  \item The tick is grid count $\times\, C\, +$ offset.
+  \item The grid count is mod $2^{32}$. The host unwraps it against the grid points it
+        has seen.
+  \item A heartbeat's grid index is its grid count mod 256 (\sref{sec:hbcontent}).
+  \item A position names a tick, not an epoch. A tick that is a grid point always has
+        offset 0, even for a record on that tick whose gap counts from the previous
+        heartbeat (\sref{sec:emission}).
+\end{itemize}
+
+\subsection{Host use}\label{sec:hostuse}
+
+\begin{itemize}
+  \item \textbf{Alignment.} Heartbeats with the same grid index mark the same instant
+        on every data channel. The host aligns data channels on that.
+  \item \textbf{Known extent.} A logical channel's timeline is known up to its latest
+        record or heartbeat. A quiet channel is therefore known to within one interval
+        $C$.
+  \item \textbf{Epoch length.} The time between two heartbeats received on a data
+        channel is their grid index difference (mod 256) $\times\, C$ ticks. This holds
+        across heartbeats lost in transport, and is exact unless 256 or more intervals
+        pass between two received heartbeats.
+\end{itemize}
+
+%--------------------------------------------------------------------
+\section{Loss}\label{sec:loss}
+
+Loss is never repaired. There are two kinds:
+\begin{itemize}
+  \item \textbf{Device loss.} The buffer fills when capture outruns the transport. The
+        device detects the loss itself and reports it on the control channel
+        (\sref{sec:devicebehaviour}--\sref{sec:hostbehaviour}).
+  \item \textbf{Transport loss.} Bytes lost or corrupted on a data channel between
+        device and host (\sref{sec:transportloss}).
+\end{itemize}
+
+\subsection{Device behaviour}\label{sec:devicebehaviour}
+
+\begin{itemize}
+  \item A record is written only if the buffer has room for it ($W$ bytes,
+        \sref{sec:record}). Otherwise it is dropped whole, never partly written, and
+        is counted (\sref{sec:lossreport}).
+  \item While a heartbeat is pending, a record is written only after it, and only if
+        both fit (\sref{sec:pending}).
+  \item Nothing is sent on the data path. Gaps after a drop stay correct
+        (\sref{sec:gap}).
+\end{itemize}
+
+\subsection{Loss report}\label{sec:lossreport}
+
+A report says which channels lost records and how many (the counters), and when (the
+loss start and end).
+
+The device keeps a \textbf{lost-records} counter for each logical channel: the number
+of records on that channel dropped for lack of buffer room. Each counter:
+\begin{itemize}
+  \item is an unsigned 32-bit integer,
+  \item only increases, and wraps at $2^{32}$,
+  \item is never cleared except by a device reset (\sref{sec:lifecycle}).
+\end{itemize}
+
+Drops are grouped into losses, and the device reports each loss on the control channel
+(\sref{sec:lossreportmsg}):
+\begin{itemize}
+  \item \textbf{Start.} A loss starts when a record is dropped while no loss is open.
+        The position (\sref{sec:position}) of that drop is the loss start.
+  \item \textbf{End.} The position of the latest drop in the loss is the loss end. The
+        loss is over when the next entry, a record or a heartbeat, is written.
+        Heartbeats are never skipped (\sref{sec:pending}), so a loss is over within
+        one interval of the buffer having room, even on an idle bus.
+  \item \textbf{Report.} When a loss is over, a report is due. It carries the loss
+        start, the loss end and every counter's value at that point. The device sends
+        it when the control channel can take it.
+  \item \textbf{Merging.} If the previous report has not been sent when a loss is
+        over, the loss is merged into it: the report keeps its loss start and takes
+        the new loss end and counters. At most one report waits at a time.
+  \item \textbf{Sequence.} Each report carries a sequence number. It is 0 for the
+        first report after a boot and goes up by one for each report sent.
+\end{itemize}
+
+\subsection{Host behaviour}\label{sec:hostbehaviour}
+
+\begin{itemize}
+  \item \textbf{Loss report.} Report an overrun. For each logical channel whose counter
+        rose, mark possible lost transitions from the loss start to the loss end.
+        Records inside that range are kept. Other channels are not marked. Do not
+        repair or guess lost transitions.
+  \item \textbf{Counters.} The host keeps the last value of each counter and takes the
+        unsigned difference, so a wrap reads correctly. After a reset it starts again
+        from 0.
+  \item \textbf{Sequence skip.} A report was lost. The counter differences are still
+        exact. For each channel whose counter rose, mark from the loss end of the
+        previous report received to the loss end of this one, or from the start of the
+        capture if none was received since the reset.
+  \item \textbf{Merged range.} A merged report's range can include records that were
+        written. It may mark more than was lost, never less.
+  \item \textbf{Repeated level.} After a dropped record, the next record on that
+        channel may carry the channel's previous level. The host accepts it.
+\end{itemize}
+
+\subsection{Transport loss}\label{sec:transportloss}
+
+The transport must detect loss or corruption of heartbeats (\sref{sec:contract}). It
+may also detect it for records.
+
+\begin{itemize}
+  \item When the transport detects loss or corruption on a data channel, the host marks
+        an \textbf{untrusted span} on every logical channel carried on that data
+        channel, from the last point the transport confirmed good to the point the loss
+        was detected.
+  \item Levels and gaps are trusted again from the next heartbeat the transport
+        confirms good.
+  \item Heartbeats lost inside the span are accounted for by the grid index
+        (\sref{sec:hostuse}).
+\end{itemize}
+
+%--------------------------------------------------------------------
+\section{Control messages}\label{sec:messages}
+
+Every control message has the same shape. The transport delivers it whole
+(\sref{sec:control}), so its length is known.
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+Type & 1 byte & which message \\
+Body & rest of the message & depends on the type \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Type} & \textbf{Direction} & \textbf{Message} \\
+\midrule
+\hex{0x01} & device $\to$ host & hello (\sref{sec:hello}) \\
+\hex{0x02} & host $\to$ device & configuration (\sref{sec:config}) \\
+\hex{0x03} & device $\to$ host & configuration reply (\sref{sec:config}) \\
+\hex{0x04} & device $\to$ host & loss report (\sref{sec:lossreportmsg}) \\
+\bottomrule
+\end{tabularx}
+
+\begin{itemize}
+  \item Integers are unsigned and sent low byte first.
+  \item \textbf{str}: a 1-byte length, then that many ASCII bytes, with no
+        terminator. It may be empty.
+  \item \textbf{bytes}: a 1-byte length, then that many raw bytes.
+  \item A receiver ignores a message of a type it does not know.
+\end{itemize}
+
+\subsection{Hello}\label{sec:hello}
+
+Sent by the device on every boot (power-on or reset), device $\to$ host. It tells the
+host the device is ready.
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+Type & 1 byte & \hex{0x01} \\
+Version major & 1 byte & major part of this document's version (change history above). The host refuses one it does not know. \\
+Version minor & 1 byte & minor part of this document's version. The host accepts a newer one. \\
+Model & str & device model \\
+Firmware & str & firmware version \\
+Unique ID & bytes & an ID unique to this unit \\
+Buffer size & 4 bytes & capture buffer size in bytes \\
+Channel count & 2 bytes & $N$ \\
+Data channel count & 1 byte & $D$ (\sref{sec:mapping}) \\
+Channel names & $N \times$ str & one per channel, in channel number order \\
+Register count & 1 byte & number of register entries \\
+Registers & per entry & one entry per register (\sref{sec:registers}), below \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+
+Register entry:
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+ID & 1 byte & register ID \\
+Type & 1 byte & type code \\
+Flags & 1 byte & bit 0: writable. Other bits are 0. \\
+Name & str & short name \\
+Unit & str & unit; may be empty \\
+Allowed values & kind and data & the register's allowed values (\sref{sec:registers}) \\
+Current value & per the type & after a boot, the default \\
+\bottomrule
+\end{tabularx}
+
+There is no query message. To read the device's state, the host resets it and reads the
+hello.
+
+\subsection{Registers}\label{sec:registers}
+
+Every setting is a register with a 1-byte ID. IDs \hex{0x00}--\hex{0x7F} are
+reserved for the core, which defines the registers below with fixed IDs, the same on
+every device. IDs \hex{0x80}--\hex{0xFF} are for registers a device or transport adds;
+the host learns them from the hello.
+
+\begin{tabularx}{\linewidth}{@{}l l l l l L@{}}
+\toprule
+\textbf{ID} & \textbf{Register} & \textbf{Type} & \textbf{Unit} & \textbf{Default} & \textbf{Allowed values} \\
+\midrule
+\hex{0x00} & capture & bool & none & off & list: on. Only while off (\sref{sec:lifecycle}) \\
+\hex{0x01} & sample rate & u32 & Hz & device & device, as a range, list or divider \\
+\hex{0x02} & $C$ & u32 & ticks & device & device, as a range, minimum at least 1 \\
+\hex{0x03} & enabled channels & channel set & none & device & any \\
+\hex{0x04} & split & channel set & none & empty & any \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+
+\begin{tabularx}{\linewidth}{@{}l l l L@{}}
+\toprule
+\textbf{Code} & \textbf{Type} & \textbf{Size} & \textbf{Encoding} \\
+\midrule
+\hex{0x00} & bool & 1 byte & \hex{00} off, \hex{01} on \\
+\hex{0x01} & u32 & 4 bytes & unsigned, low byte first \\
+\hex{0x02} & channel set & $\lceil N/8 \rceil$ bytes & Channel $i$ is bit $(i \bmod 8)$ of byte $\lfloor i/8 \rfloor$; 1 means in the set. Unused bits are 0. \\
+\bottomrule
+\end{tabularx}
+
+Other type codes are reserved.
+
+Allowed values, as the hello lists them (\sref{sec:hello}), start with a kind byte.
+Values are in the register's type.
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Kind} & \textbf{Meaning} & \textbf{Followed by} \\
+\midrule
+\hex{0x00} & any value of the type & nothing \\
+\hex{0x01} & range, inclusive & min, max \\
+\hex{0x02} & list & count (u16), then the values \\
+\hex{0x03} & divider & base, min divisor, max divisor (each u32) \\
+\bottomrule
+\end{tabularx}
+
+\begin{itemize}
+  \item \textbf{Divider.} The allowed values are base $\div\, d$ for every whole $d$ from
+        min to max divisor for which the result is whole. The min divisor is at least
+        1. For u32 registers only.
+  \item \textbf{Sample rate.} The device accepts only rates it can produce exactly; it
+        does not round.
+  \item \textbf{Channel sets.} A bit for a channel the device does not have is
+        rejected.
+  \item \textbf{Enabled channels.} At least one channel must be enabled to start a
+        capture (\sref{sec:config}).
+\end{itemize}
+
+\subsection{Configuration}\label{sec:config}
+
+The host writes one register per configuration message, and sends the next only after
+the reply to the last.
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+Type & 1 byte & \hex{0x02} \\
+Register ID & 1 byte & the register (\sref{sec:registers}) \\
+Value & per the register's type & the new value \\
+\bottomrule
+\end{tabularx}
+
+The device replies accepted, or rejected with a reason:
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+Type & 1 byte & \hex{0x03} \\
+Register ID & 1 byte & the register written \\
+Status & 1 byte & \hex{0x00} accepted, otherwise a reason code \\
+Message & str & text from the device; may be empty \\
+Value & per the type, rest of the message & the register's value after the write: the new value if accepted, the unchanged value if rejected, empty if the register is unknown \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+
+\begin{tabularx}{\linewidth}{@{}l L@{}}
+\toprule
+\textbf{Code} & \textbf{Reason} \\
+\midrule
+\hex{0x01} & unknown register \\
+\hex{0x02} & register not writable \\
+\hex{0x03} & wrong value length for the type, or message too short \\
+\hex{0x04} & value not in the allowed values \\
+\hex{0x05} & capture already started \\
+\hex{0x06} & start: sample rate not sustainable \\
+\hex{0x07} & start: $C$ too short to send one heartbeat on every data channel \\
+\hex{0x08} & start: no channel enabled \\
+\hex{0x09} & start: split set holds more than $D-1$ channels \\
+\hex{0x80}--\hex{0xFF} & device-specific; the message explains it \\
+\bottomrule
+\end{tabularx}
+
+A start rejection (\hex{0x06}--\hex{0x09}) is a reply to the capture register,
+\hex{0x00}.
+
+\begin{itemize}
+  \item Each write is checked on its own: the register exists and is writable, the
+        value has the right type and is within its allowed values, and capture has not
+        started. If a check fails, the write is rejected and nothing changes.
+  \item If no reply arrives (\sref{sec:control}), the host may send the same write
+        again. Every write can be repeated safely: a repeated start after one that
+        succeeded is answered \hex{0x05}, which means capture is on.
+  \item Combined limits are checked when capture is started: the sample rate must be
+        one the device can sustain (\sref{sec:tick}), $C$ must be long enough to send
+        one heartbeat on every data channel (\sref{sec:pending}), at least one channel
+        must be enabled, and the split set may hold at most $D-1$ channels
+        (\sref{sec:mapping}). If they fail, the start is rejected and capture stays
+        off. Before start, registers may be written in any order.
+\end{itemize}
+
+\subsection{Loss report}\label{sec:lossreportmsg}
+
+Sent by the device after a loss (\sref{sec:lossreport}).
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+Type & 1 byte & \hex{0x04} \\
+Sequence & 4 bytes & report sequence number \\
+Loss start & 8 bytes & position (\sref{sec:position}) of the first drop \\
+Loss end & 8 bytes & position of the latest drop \\
+Lost records & $n \times 4$ bytes & one counter per logical channel, in ascending channel number \\
+\bottomrule
+\end{tabularx}
+
+\subsection{Capture lifecycle}\label{sec:lifecycle}
+
+\begin{itemize}
+  \item There are no triggers.
+  \item Capture starts when the host sets the capture register (\sref{sec:registers}) to
+        on. This is one-way: it cannot be set back to off.
+  \item On an accepted start, the device sends the reply before it writes the first
+        heartbeat.
+  \item Once capture has started, the device rejects every configuration message.
+  \item Capture stops when the host resets the device. This is outside the protocol:
+        buffered data is discarded, and the device returns to its power-on state with
+        capture off and must be configured again.
+\end{itemize}
+
+\subsection{Replay}\label{sec:replay}
+
+Replay travels host $\to$ device on the data channels. Its format is \tbd{}.
+
+%--------------------------------------------------------------------
+\section{Transports}\label{sec:transports}
+
+A transport is made of \textbf{bindings}. A data binding carries one data channel over
+one medium. A control binding carries the control channel over one medium. A device
+combines one control binding with $D$ data channels, each on a data binding, and a way
+to reset the device (\sref{sec:contract}).
+
+\begin{itemize}
+  \item Bindings combine freely. The combination is not announced: the host knows it
+        before the hello.
+  \item A binding setting the host must change is a device register
+        (\hex{0x80}--\hex{0xFF}, \sref{sec:registers}).
+  \item Everything else (pins, rates, modes, endpoints) is implementation.
+\end{itemize}
+
+\subsection{Data bindings}\label{sec:databindings}
+
+A data binding defines:
+\begin{itemize}
+  \item how the data channel's bytes are carried, in order (\sref{sec:contract});
+  \item how loss or corruption of a heartbeat is detected (\sref{sec:contract},
+        \sref{sec:transportloss}).
+\end{itemize}
+
+\subsubsection{Serial (UART)}\label{sec:serial}
+
+\begin{itemize}
+  \item One UART is one data channel. The device's TX carries device $\to$ host; its
+        RX carries host $\to$ device (\sref{sec:replay}).
+  \item A \textbf{check byte} follows every heartbeat on device $\to$ host. It is a
+        CRC-8 over every byte sent since the previous check byte, up to and including
+        this heartbeat; for the first heartbeat, from the start of the capture.
+  \item CRC-8: polynomial \hex{0x07}, initial value \hex{0xFF}, MSB first, no
+        reflection, no final XOR. Reset after each check byte.
+  \item A mismatch marks an untrusted span (\sref{sec:transportloss}) from the
+        previous good check byte to this one.
+  \item The stream has no other resynchronisation aid. After a mismatch the host finds
+        the next heartbeat itself; how is host implementation.
+  \item A heartbeat on serial is $W + 1 + \lceil n/8 \rceil + 1$ bytes, counting its
+        check byte. The start check on $C$ (\sref{sec:pending}) counts it too.
+\end{itemize}
+
+\subsection{Control bindings}\label{sec:controlbindings}
+
+A control binding defines:
+\begin{itemize}
+  \item how a message arrives whole, with its length known (\sref{sec:control},
+        \sref{sec:messages});
+  \item how integrity is checked (\sref{sec:control});
+  \item how the device sends a message unprompted (hello, loss report);
+  \item the maximum message length.
+\end{itemize}
+
+\subsubsection{SPI}\label{sec:spi}
+
+\begin{itemize}
+  \item SCLK, MOSI, MISO and CS are normal SPI: the host is master, the device is
+        slave.
+  \item \textbf{IRQ} is driven by the device, active low, and pulled up by the host,
+        so an unpowered or reset device reads as nothing waiting. The device asserts
+        it while it has a message to send, and the host then runs a transaction.
+  \item The host may start a transaction at any time to send its own message. It does
+        not poll.
+\end{itemize}
+
+A transaction runs from CS low to CS high. Both lines carry the same layout at once:
+MOSI the host's message, MISO the device's.
+
+\begin{tabularx}{\linewidth}{@{}l l L@{}}
+\toprule
+\textbf{Field} & \textbf{Size} & \textbf{Contents} \\
+\midrule
+Length & 2 bytes & length $L$ of this side's message, low byte first; 0 for no message \\
+Message & $L$ bytes & the control message (\sref{sec:messages}) \\
+Check & 2 bytes & CRC-16 over Length and Message; absent when $L = 0$ \\
+\bottomrule
+\end{tabularx}
+
+\begin{itemize}
+  \item The host reads the device's Length first and clocks until both sides'
+        messages and checks are through, padding its own side with \hex{00}.
+  \item A device Length of \hex{0xFFFF} means the device was not ready. Nothing moved
+        in either direction, and the host retries.
+  \item One message per side per transaction. IRQ stays asserted while more are
+        queued.
+  \item The maximum message length is \hex{0xFFFE} bytes.
+  \item CRC-16: polynomial \hex{0x1021}, initial value \hex{0xFFFF}
+        (CRC-16/CCITT-FALSE). A receiver discards a message whose check fails.
+  \item A message is sent once its transaction ends. There are no acknowledgements
+        (\sref{sec:control}).
+\end{itemize}
+
+%--------------------------------------------------------------------
+\section{Open items}\label{sec:open}
+
+\subsection*{Replay}
+
+\begin{tabularx}{\linewidth}{@{}r L l@{}}
+\toprule
+\textbf{\#} & \textbf{Item} & \textbf{Section} \\
+\midrule
+8 & Replay & \sref{sec:replay} \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Transports}
+
+\begin{tabularx}{\linewidth}{@{}r L l@{}}
+\toprule
+\textbf{\#} & \textbf{Item} & \textbf{Section} \\
+\midrule
+11 & USB data and control bindings & \sref{sec:transports} \\
+12 & Serial control binding & \sref{sec:transports} \\
+\bottomrule
+\end{tabularx}
+
+\end{document}
