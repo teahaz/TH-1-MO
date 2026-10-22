@@ -28,6 +28,9 @@
 #define C_MIN 1
 #define C_MAX ((1UL << 27) - 1)
 
+// IRQ line to the Pi, driven by the control side and by the capture loop.
+#define IRQ_PIN 26 // P0.26
+
 #define CAPTURE_ERR_LAPPED 1
 #define CAPTURE_ERR_HEARTBEAT_LATE 2
 
@@ -43,7 +46,6 @@ struct capture_config {
 extern const uint8_t channel_pins[CHANNEL_COUNT];
 
 
-uint32_t capture_enabled_count(const struct capture_config *cfg);
 uint32_t capture_record_width(const struct capture_config *cfg);
 uint32_t capture_heartbeat_size(const struct capture_config *cfg);
 void capture_prepare(const struct capture_config *cfg);

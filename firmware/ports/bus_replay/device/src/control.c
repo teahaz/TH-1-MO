@@ -5,11 +5,10 @@
  * is spec 9.2.1: Length (2 bytes), message, CRC-16/CCITT-FALSE. IRQ is P0.26, driven low
  * while a message waits and released otherwise; the Pi's pull-up holds it high.
  *
- * The END_ACQUIRE short hands the semaphore back to the CPU as a transaction ends, so a
- * transaction started before the buffers are ready reads Length 0xFFFF. ACQUIRED can show
- * before END, and a refused transaction still fires the short, so neither event says a
- * transaction happened. Instead the CPU must own the semaphore (SEMSTAT), and rx_buf
- * starts each release with Length 0xFFFF, which no host sends.
+ * The END_ACQUIRE short hands the semaphore back to the CPU after each transaction.
+ * Neither ACQUIRED nor END proves a transaction happened (a refused one fires the short
+ * too), so a transaction counts only when the CPU owns the semaphore (SEMSTAT) and rx_buf
+ * no longer starts with Length 0xFFFF, which no host sends.
  */
 
 #include <stdbool.h>
@@ -40,7 +39,6 @@ LOG_MODULE_REGISTER(CONTROL, LOG_LEVEL_INF);
 #define SPI_MOSI_PIN (32 + 11) // P1.11, MOD1
 #define SPI_MISO_PIN (32 + 12) // P1.12, MOD2
 #define SPI_CSN_PIN (32 + 10) // P1.10, MOD3
-#define IRQ_PIN 26 // P0.26
 
 #define MSG_MAX 512
 #define FRAME_MAX (MSG_MAX + 4)
@@ -116,7 +114,7 @@ static void put_u16(struct writer *w, uint16_t v);
 static void put_u32(struct writer *w, uint32_t v);
 static void put_str(struct writer *w, const char *s);
 static struct message *queue_tail_slot(void);
-static bool queue_push(void);
+static void queue_push(void);
 static uint16_t crc16(const uint8_t *data, uint32_t len);
 
 
@@ -153,11 +151,7 @@ void control_init(void)
 }
 
 
-/*
- * One polling pass. Returns true once capture was accepted and the reply has been
- * clocked out, so the capture may begin (spec 8.6: the reply comes before the first
- * heartbeat).
- */
+// One polling pass. True once capture was accepted and its reply clocked out (spec 8.6).
 bool control_service(void)
 {
     if (!NRF_SPIS1->EVENTS_ACQUIRED) {
@@ -394,7 +388,7 @@ static uint8_t start_check(const char **text)
         return STATUS_SPLIT;
     }
 
-    // Every rate the register accepts runs at a whole number of cycles per tick.
+    // The register already rejects these rates; this is the spec's start check.
     if (CPU_HZ / config.sample_rate < MIN_DIVISOR) {
         return STATUS_RATE;
     }
@@ -443,10 +437,10 @@ static void tx_prepare(void)
     const struct message *m = &queue[queue_tail % QUEUE_SIZE];
     uint16_t crc = 0;
 
+    NRF_SPIS1->TXD.PTR = (uint32_t)tx_buf;
     if (queue_head == queue_tail) {
         sys_put_le16(0, tx_buf);
         tx_len = 0;
-        NRF_SPIS1->TXD.PTR = (uint32_t)tx_buf;
         NRF_SPIS1->TXD.MAXCNT = 2;
         return;
     }
@@ -456,7 +450,6 @@ static void tx_prepare(void)
     crc = crc16(tx_buf, m->len + 2);
     sys_put_le16(crc, &tx_buf[m->len + 2]);
     tx_len = m->len + 4;
-    NRF_SPIS1->TXD.PTR = (uint32_t)tx_buf;
     NRF_SPIS1->TXD.MAXCNT = tx_len;
 }
 
@@ -565,7 +558,7 @@ static void put_str(struct writer *w, const char *s)
 }
 
 
-// The next free queue slot, or NULL when the queue is full.
+// The next free queue slot, or NULL when the queue is full. queue_push() then adds it.
 static struct message *queue_tail_slot(void)
 {
     if (queue_head - queue_tail >= QUEUE_SIZE) {
@@ -576,14 +569,9 @@ static struct message *queue_tail_slot(void)
 }
 
 
-static bool queue_push(void)
+static void queue_push(void)
 {
-    if (queue_head - queue_tail >= QUEUE_SIZE) {
-        return false;
-    }
     queue_head++;
-
-    return true;
 }
 
 

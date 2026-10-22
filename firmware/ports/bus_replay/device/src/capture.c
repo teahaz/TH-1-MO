@@ -1,24 +1,11 @@
 /*
- * The capture loop (device/README.md, Structure to Debugging).
+ * Capture setup and the capture loop's C steps (device/README.md, Structure to
+ * Debugging). The loop itself and its common steps are in capture_loop.S.
  *
- * Every tick: spin on the DWT cycle counter until the deadline, store P0->IN in the raw
- * ring, then run one step. Every HK_EVERY-th tick the step is housekeeping (UART DMA,
- * SPIS, debug counters); the others are cleanup (scan, records, heartbeats, drops, loss
- * bookkeeping). Each step is a few loads and stores, or one or two peripheral register
- * accesses, so the sampler never misses a tick.
- *
- * Scanning idle samples, by far the most common step, runs inline in the loop. Every
- * other step is a small function of its own, called through a table, so the compiler
- * optimises each one separately and the loop itself stays small.
- *
- * The loop's hottest values are pinned to r4 to r11 for this file (global register
- * variables), so the loop and the steps share them without loads or stores. Entering
- * the loop goes through a trampoline that saves and restores those registers for the
- * caller.
- *
- * The loop and the steps are linked into RAM (__ramfunc) and run through the Code RAM
- * alias. They call nothing directly, since calls are PC-relative and would miss from the
- * alias; the step tables hold alias addresses.
+ * Each step is a few loads and stores, or one or two peripheral accesses, so the sampler
+ * never misses a tick. The steps share r4 to r11 with the loop as global register
+ * variables. They run from RAM through the Code RAM alias, so they call nothing directly
+ * (calls are PC-relative); the step tables hold alias addresses.
  */
 
 #include <stdbool.h>
@@ -42,7 +29,6 @@
 #include "capture_loop.h"
 
 
-#define RAW_MASK (RAW_SIZE - 1)
 // Checked every housekeeping round (well under 256 ticks); lag grows one per tick.
 #define RAW_LAP_LIMIT (RAW_SIZE - 256)
 #define OUT_MASK (OUT_SIZE - 1)
@@ -50,8 +36,9 @@
 #define LAG_DEFAULT 1024
 
 #define CAP_RX_SIZE 64
-#define REPORT_MAX (1 + 4 + 8 + 8 + 4 * CHANNEL_COUNT)
-#define REPORT_FRAME_MAX (REPORT_MAX + 4)
+// Loss report: type, sequence, start and end positions, a lost count per channel.
+#define REPORT_LEN(n) (1 + 4 + 8 + 8 + 4 * (n))
+#define REPORT_FRAME_MAX (REPORT_LEN(CHANNEL_COUNT) + 4)
 #define MSG_LOSS_REPORT 0x04
 #define IRQ_PIN 26 // P0.26
 
@@ -76,19 +63,20 @@ enum hk {
     HK_SPIS_LOAD,
     HK_SPIS_RELEASE,
     HK_DEBUG,
+    HK_COUNT,
 };
 
-// Read by the Pi over SWD while the loop runs; lag_max may be written to force drops.
 struct capture;
 typedef void (*loop_fn)(struct capture *s);
+typedef void (*step_fn)(void);
 
+// Read by the Pi over SWD while the loop runs; lag_max may be written to force drops.
 struct debug_counters {
     uint32_t magic;
     uint32_t ticks;
     uint32_t max_late;
     uint32_t max_lag;
     uint32_t lag_max;
-    uint32_t records;
     uint32_t heartbeats;
     uint32_t drop_room;
     uint32_t drop_lag;
@@ -103,8 +91,6 @@ struct debug_counters {
     uint32_t step_count[64];
 #endif
 };
-
-typedef void (*step_fn)(void);
 
 // Loop state outside the registers, addressed from c.
 struct capture {
@@ -125,7 +111,6 @@ struct capture {
     uint32_t heartbeat_seq;
     uint32_t heartbeat_tick;
     uint32_t gap;
-    uint32_t bit;
     uint32_t heartbeat_pending;
     uint32_t loss_open;
     uint8_t *out;
@@ -168,13 +153,11 @@ struct capture {
     uint32_t grid;
     uint32_t heartbeat_data;
 
-    // Output ring: wr bytes written, rd freed (the start of the transfer in flight),
-    // crc_pos covered by the running CRC-8 so far.
+    // The UART transfer in flight, and the next one's length.
     uint32_t inflight;
     uint32_t next_len;
 
-    // Loss bookkeeping. The open loss's first and latest drops are ticks (loss_start,
-    // loss_end, above); the drop counters are bit-sliced (slices, above).
+    // Lost records per channel, flushed from the bit-sliced counters.
     uint32_t lost[CHANNEL_COUNT];
     uint32_t flush_i;
     bool flush_snap;
@@ -224,7 +207,6 @@ CAP_FIELD(tag_bits, CAP_TAG_BITS);
 CAP_FIELD(heartbeat_seq, CAP_HB_SEQ);
 CAP_FIELD(heartbeat_tick, CAP_HB_TICK);
 CAP_FIELD(gap, CAP_GAP);
-CAP_FIELD(bit, CAP_BIT);
 CAP_FIELD(heartbeat_pending, CAP_HB_PENDING);
 CAP_FIELD(loss_open, CAP_LOSS_OPEN);
 CAP_FIELD(out, CAP_OUT);
@@ -245,7 +227,6 @@ CAP_FIELD(ref_seq, CAP_REF_SEQ);
 CAP_FIELD(ref_tick, CAP_REF_TICK);
 CAP_FIELD(steps, CAP_STEPS);
 CAP_FIELD(hk_steps, CAP_HK_STEPS);
-BUILD_ASSERT(HK_DEBUG < HK_COUNT);
 BUILD_ASSERT(OUT_SIZE == BIT(OUT_BITS));
 #ifdef CAPTURE_PROFILE
 BUILD_ASSERT(offsetof(struct debug_counters, step_max) == DBG_STEP_MAX);
@@ -255,12 +236,7 @@ BUILD_ASSERT(ST_COUNT <= 32);
 #endif
 
 
-/*
- * Shared with the assembly loop, which owns them. c: the loop state. deadline: the next
- * tick's deadline. step: the next cleanup step. tick_cycles: CPU cycles per tick.
- * idx: the tick count. pos: the sample being scanned. due: samples left before the next
- * grid-point sample. prev: the previous scanned sample, masked.
- */
+// Owned by the assembly loop; capture_loop.S describes them.
 register struct capture *c __asm__("r4");
 register uint32_t deadline __asm__("r5");
 register uint32_t step __asm__("r6");
@@ -271,6 +247,8 @@ register uint32_t due __asm__("r10");
 register uint32_t prev __asm__("r11");
 
 
+static uint32_t enabled_count(const struct capture_config *cfg);
+static uint32_t tag_bits_for(uint32_t n);
 static uint32_t uart_cap_for(const struct capture_config *cfg);
 static void tables_build(struct capture *s, uint16_t enabled);
 static void steps_build(struct capture *s);
@@ -325,18 +303,10 @@ static uint8_t cap_rx_buf[CAP_RX_SIZE] __aligned(4) __attribute__((section("RAM8
 struct debug_counters debug_counters __attribute__((section("RAM7")));
 
 
-uint32_t capture_enabled_count(const struct capture_config *cfg)
-{
-    return POPCOUNT(cfg->enabled);
-}
-
-
 // W: the smallest number of bytes that holds (2C + 1) * 2^t - 1 (spec 5.2).
 uint32_t capture_record_width(const struct capture_config *cfg)
 {
-    uint32_t n = capture_enabled_count(cfg);
-    uint32_t t = n > 1 ? LOG2CEIL(n) : 0;
-    uint64_t max = ((uint64_t)2 * cfg->c + 1) * BIT64(t) - 1;
+    uint64_t max = ((uint64_t)2 * cfg->c + 1) * BIT64(tag_bits_for(enabled_count(cfg))) - 1;
     uint32_t width = 1;
 
     while (width < 8 && max >= BIT64(8 * width)) {
@@ -350,23 +320,24 @@ uint32_t capture_record_width(const struct capture_config *cfg)
 // A serial heartbeat: W + 1 + ceil(n / 8) bytes plus its check byte (spec 9.1.1).
 uint32_t capture_heartbeat_size(const struct capture_config *cfg)
 {
-    return capture_record_width(cfg) + 1 + DIV_ROUND_UP(capture_enabled_count(cfg), 8) + 1;
+    return capture_record_width(cfg) + 1 + DIV_ROUND_UP(enabled_count(cfg), 8) + 1;
 }
 
 
 void capture_prepare(const struct capture_config *cfg)
 {
     struct capture *s = &state;
-    uint32_t n = capture_enabled_count(cfg);
+    uint32_t n = enabled_count(cfg);
 
     memset(s, 0, sizeof(*s));
     s->tick_cycles = CPU_HZ / cfg->sample_rate;
     s->c = cfg->c;
     s->width = capture_record_width(cfg);
-    s->tag_bits = n > 1 ? LOG2CEIL(n) : 0;
+    s->tag_bits = tag_bits_for(n);
     s->enabled_count = n;
-    s->heartbeat_len = s->width + 1 + DIV_ROUND_UP(n, 8);
-    s->report_len = 1 + 4 + 8 + 8 + 4 * n;
+    // The heartbeat entry, without its check byte.
+    s->heartbeat_len = capture_heartbeat_size(cfg) - 1;
+    s->report_len = REPORT_LEN(n);
     s->uart_cap = uart_cap_for(cfg);
     // The assembly writes a record as one 32-bit store (capture_loop.S, ST_ENCODE).
     s->room_limit = OUT_SIZE - 4;
@@ -399,6 +370,19 @@ int capture_run(uint32_t *ticks)
     *ticks = debug_counters.ticks;
 
     return state.error;
+}
+
+
+static uint32_t enabled_count(const struct capture_config *cfg)
+{
+    return POPCOUNT(cfg->enabled);
+}
+
+
+// Bits of the channel tag below a record's value (spec 5.2).
+static uint32_t tag_bits_for(uint32_t n)
+{
+    return n > 1 ? LOG2CEIL(n) : 0;
 }
 
 
@@ -696,16 +680,6 @@ STEP st_heartbeat_pack(void)
 }
 
 
-// A record written by the assembly path ended an open loss (spec 7.2).
-STEP st_loss_end(void)
-{
-    c->loss_open = 0;
-    c->flush_i = 0;
-    c->flush_snap = true;
-    step = ST_FLUSH;
-}
-
-
 STEP st_heartbeat_try(void)
 {
     if (ROOM() > c->heartbeat_len) {
@@ -713,6 +687,16 @@ STEP st_heartbeat_try(void)
     } else {
         step = ST_SCAN_DROP;
     }
+}
+
+
+// A record written by the assembly path ended an open loss (spec 7.2).
+STEP st_loss_end(void)
+{
+    c->loss_open = 0;
+    c->flush_i = 0;
+    c->flush_snap = true;
+    step = ST_FLUSH;
 }
 
 

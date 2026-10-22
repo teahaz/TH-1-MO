@@ -1,6 +1,6 @@
 /*
- * The capture loop (device/README.md, Structure). Every tick: spin on the DWT cycle
- * counter until the deadline, store P0->IN in the raw ring, then run one step.
+ * The capture loop. Every tick: spin on the DWT cycle counter until the deadline, store
+ * P0->IN in the raw ring, then run one step.
  *
  * - Every HK_MASK + 1-th tick runs the housekeeping step c->hk_steps[c->hk].
  * - Otherwise the cleanup step runs. The common ones are here, inline:
@@ -73,7 +73,7 @@ tick:
     subs    r0, r0, r5
     bmi     1b
 
-    // Sample: raw[idx & RAW_MASK] = P0->IN. r0 is how late it was taken.
+    // Sample: raw[idx % RAW_SIZE] = P0->IN. r0 is how late it was taken.
     mov     r2, #P0_BASE
     ldr     r2, [r2, #P0_IN]
     ldr     r3, [r4, #CAP_RAW]

@@ -31,8 +31,6 @@
 #define ST_STOP 18
 #define ST_COUNT 19
 
-#define HK_COUNT 16
-
 #define RAW_BITS 12
 #define RAW_SIZE (1 << RAW_BITS)
 #define OUT_BITS 17
@@ -57,22 +55,21 @@
 #define CAP_HB_SEQ 52
 #define CAP_HB_TICK 56
 #define CAP_GAP 60
-#define CAP_BIT 64
-#define CAP_HB_PENDING 68
-#define CAP_LOSS_OPEN 72
-#define CAP_OUT 76
-#define CAP_CRC8 80
-#define CAP_LAG_MAX 84
-#define CAP_AFTER_FLUSH 88
-#define CAP_AFTER_CRC 92
-#define CAP_SLICE_ADDS 96
-#define CAP_LOSS_START 100
-#define CAP_LOSS_END 104
-#define CAP_DROP_LAG 108
-#define CAP_DROP_ROOM 112
-#define CAP_HB_LEN 116
-#define CAP_MAX_LATE 120
-#define CAP_SLICES 124
+#define CAP_HB_PENDING 64
+#define CAP_LOSS_OPEN 68
+#define CAP_OUT 72
+#define CAP_CRC8 76
+#define CAP_LAG_MAX 80
+#define CAP_AFTER_FLUSH 84
+#define CAP_AFTER_CRC 88
+#define CAP_SLICE_ADDS 92
+#define CAP_LOSS_START 96
+#define CAP_LOSS_END 100
+#define CAP_DROP_LAG 104
+#define CAP_DROP_ROOM 108
+#define CAP_HB_LEN 112
+#define CAP_MAX_LATE 116
+#define CAP_SLICES 120
 #define SLICES 8
 #define SLICE_FLUSH_AT 128
 #define CAP_TAG (CAP_SLICES + 4 * SLICES)
@@ -82,7 +79,7 @@
 #define CAP_HK_STEPS (CAP_STEPS + 4 * ST_COUNT)
 
 // struct debug_counters, profile tables (CAPTURE_PROFILE builds).
-#define DBG_STEP_MAX 48
+#define DBG_STEP_MAX 44
 #define DBG_STEP_SUM (DBG_STEP_MAX + 4 * 64)
 #define DBG_STEP_COUNT (DBG_STEP_SUM + 4 * 64)
 

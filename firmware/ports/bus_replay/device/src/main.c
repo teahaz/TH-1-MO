@@ -47,7 +47,6 @@ static void selftest_start(void);
 int main(void)
 {
     const struct capture_config *cfg = NULL;
-    unsigned int key = 0;
     uint32_t ticks = 0;
     int err = 0;
 
@@ -75,17 +74,15 @@ int main(void)
     LOG_INF("Capture starting: rate %u Hz, C %u, channels 0x%04x, W %u", cfg->sample_rate,
             cfg->c, cfg->enabled, capture_record_width(cfg));
 
-    // From here only fatal errors are logged, synchronously, with interrupts off.
+    // From here only fatal errors are logged, synchronously, with interrupts off until
+    // the host's reset.
     LOG_PANIC();
-    key = irq_lock();
+    (void)irq_lock();
     err = capture_run(&ticks);
     LOG_ERR("Capture stopped at tick %u! (err: %d)", ticks, err);
 
     for (;;) {
     }
-    irq_unlock(key);
-
-    return err;
 }
 
 
