@@ -1,5 +1,5 @@
 /*
- * Control channel before capture: the SPI control binding (spec 9.2.1) on SPIS1, the
+ * Control channel before capture: the SPI control binding (spec, SPI) on SPIS1, the
  * hello, and configuration messages.
  */
 

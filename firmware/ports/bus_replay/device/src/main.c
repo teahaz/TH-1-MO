@@ -1,6 +1,6 @@
 /*
  * Bus replay capture device: boot, configuration over the SPI control binding, then the
- * capture loop until reset (device/README.md).
+ * capture loop until reset.
  */
 
 #include <errno.h>
@@ -39,9 +39,6 @@ static int hfxo_start(void);
 static void channels_configure(void);
 static void data_uart_configure(void);
 static void dwt_start(void);
-#ifdef CAPTURE_SELFTEST
-static void selftest_start(void);
-#endif
 
 
 int main(void)
@@ -68,9 +65,6 @@ int main(void)
 
     cfg = control_config();
     capture_prepare(cfg);
-#ifdef CAPTURE_SELFTEST
-    selftest_start();
-#endif
     LOG_INF("Capture starting: rate %u Hz, C %u, channels 0x%04x, W %u", cfg->sample_rate,
             cfg->c, cfg->enabled, capture_record_width(cfg));
 
@@ -113,11 +107,14 @@ static int hfxo_start(void)
 }
 
 
-// Channel pins: inputs, input buffer connected, no pull.
+/*
+ * Sense pins: inputs, input buffer connected, no pull. Replay pins keep their reset state
+ * (input buffer disconnected, not driven).
+ */
 static void channels_configure(void)
 {
-    for (size_t i = 0; i < ARRAY_SIZE(channel_pins); i++) {
-        NRF_P0->PIN_CNF[channel_pins[i]] =
+    for (size_t i = 0; i < ARRAY_SIZE(channels); i++) {
+        NRF_P0->PIN_CNF[channels[i].sense] =
             (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos) |
             (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) |
             (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos);
@@ -151,59 +148,3 @@ static void dwt_start(void)
     DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 }
 
-
-#ifdef CAPTURE_SELFTEST
-/*
- * Test traffic without a DUT: TIMER2 and TIMER3 toggle P0.20 (ch0, every 5 us) and P0.21
- * (ch1, every 13 us) through PPI and GPIOTE, with no CPU work. Both pins are J12 pins
- * with nothing wired; this build drives them as outputs.
- */
-static void selftest_start(void)
-{
-    NRF_GPIOTE->CONFIG[0] = (GPIOTE_CONFIG_MODE_Task << GPIOTE_CONFIG_MODE_Pos) |
-                            (20 << GPIOTE_CONFIG_PSEL_Pos) |
-                            (GPIOTE_CONFIG_POLARITY_Toggle << GPIOTE_CONFIG_POLARITY_Pos);
-    NRF_GPIOTE->CONFIG[1] = (GPIOTE_CONFIG_MODE_Task << GPIOTE_CONFIG_MODE_Pos) |
-                            (21 << GPIOTE_CONFIG_PSEL_Pos) |
-                            (GPIOTE_CONFIG_POLARITY_Toggle << GPIOTE_CONFIG_POLARITY_Pos);
-
-    NRF_TIMER2->MODE = TIMER_MODE_MODE_Timer;
-    NRF_TIMER2->BITMODE = TIMER_BITMODE_BITMODE_32Bit;
-    NRF_TIMER2->PRESCALER = 0;
-    NRF_TIMER2->CC[0] = 16 * 5;
-    NRF_TIMER2->SHORTS = TIMER_SHORTS_COMPARE0_CLEAR_Msk;
-    NRF_TIMER3->MODE = TIMER_MODE_MODE_Timer;
-    NRF_TIMER3->BITMODE = TIMER_BITMODE_BITMODE_32Bit;
-    NRF_TIMER3->PRESCALER = 0;
-    NRF_TIMER3->CC[0] = 16 * 13;
-    NRF_TIMER3->SHORTS = TIMER_SHORTS_COMPARE0_CLEAR_Msk;
-
-    NRF_PPI->CH[0].EEP = (uint32_t)&NRF_TIMER2->EVENTS_COMPARE[0];
-    NRF_PPI->CH[0].TEP = (uint32_t)&NRF_GPIOTE->TASKS_OUT[0];
-    NRF_PPI->CH[1].EEP = (uint32_t)&NRF_TIMER3->EVENTS_COMPARE[0];
-    NRF_PPI->CH[1].TEP = (uint32_t)&NRF_GPIOTE->TASKS_OUT[1];
-    NRF_PPI->CHENSET = BIT(0) | BIT(1);
-
-#ifdef CAPTURE_SELFTEST_BURST
-    // Bursts, like bus transactions: TIMER4 enables channels 0 and 1 (PPI group 0)
-    // for 1 ms out of every 10 ms.
-    NRF_PPI->CHG[0] = BIT(0) | BIT(1);
-    NRF_TIMER4->MODE = TIMER_MODE_MODE_Timer;
-    NRF_TIMER4->BITMODE = TIMER_BITMODE_BITMODE_32Bit;
-    NRF_TIMER4->PRESCALER = 4; // 1 MHz
-    NRF_TIMER4->CC[0] = 1000;
-    NRF_TIMER4->CC[1] = 10000;
-    NRF_TIMER4->SHORTS = TIMER_SHORTS_COMPARE1_CLEAR_Msk;
-    NRF_PPI->CH[2].EEP = (uint32_t)&NRF_TIMER4->EVENTS_COMPARE[0];
-    NRF_PPI->CH[2].TEP = (uint32_t)&NRF_PPI->TASKS_CHG[0].DIS;
-    NRF_PPI->CH[3].EEP = (uint32_t)&NRF_TIMER4->EVENTS_COMPARE[1];
-    NRF_PPI->CH[3].TEP = (uint32_t)&NRF_PPI->TASKS_CHG[0].EN;
-    NRF_PPI->CHENSET = BIT(2) | BIT(3);
-    NRF_TIMER4->TASKS_START = 1;
-#endif
-
-    NRF_TIMER2->TASKS_START = 1;
-    NRF_TIMER3->TASKS_START = 1;
-    LOG_INF("Self-test traffic on P0.20 and P0.21");
-}
-#endif

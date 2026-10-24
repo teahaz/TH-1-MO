@@ -2,16 +2,9 @@
  * The capture loop. Every tick: spin on the DWT cycle counter until the deadline, store
  * P0->IN in the raw ring, then run one step.
  *
- * - Every HK_MASK + 1-th tick runs the housekeeping step c->hk_steps[c->hk].
- * - Otherwise the cleanup step runs. The common ones are here, inline:
- *   ST_SCAN       up to SCAN_MAX samples; with nothing to scan, a spare CRC pass
- *   ST_RECORD     drop check, the changed pin, its gap and the record's value; or the
- *                 sample's drop, which switches to ST_SCAN_DROP
- *   ST_ENCODE     the record into the output ring, and the next step
- *   ST_CRC        the running CRC-8 over the bytes written since it last ran
- *   ST_SCAN_DROP  while records cannot be written (cleanup lagging, no room, or a
- *                 heartbeat pending): scan, dropping each changed sample
- *   The rest are C functions in capture.c, c->steps[step].
+ * Every HK_MASK + 1-th tick runs the housekeeping step c->hk_steps[c->hk]; the others run
+ * the cleanup step. ST_SCAN to ST_SCAN_DROP are inline below, the rest are C functions in
+ * capture.c (c->steps[step]).
  *
  * The C steps share r4 to r11 with this loop as global register variables
  * (capture.c):
@@ -147,7 +140,7 @@ not_scan:
     .align  1
 
 st_record:
-    // ST_RECORD: one drop check per record (README, Dropping records).
+    // ST_RECORD: drop when cleanup lags or the output ring is full, else encode.
     ldr     r0, [r4, #CAP_CHANGED]
     sub     r1, r8, r9
     ldr     r2, [r4, #CAP_LAG_MAX]
@@ -313,7 +306,7 @@ scan_drop_none:
     b       pass_end
 
 scan_drop_change:
-    // Levels at a grid point go in its heartbeat (spec 6.1), as for a record.
+    // Levels at a grid point go in its heartbeat (spec, Heartbeat), as for a record.
     str     r2, [r4, #CAP_CUR]
     eor     r0, r2, r11
     mov     r11, r2
@@ -345,7 +338,7 @@ encode_done:
     add     r9, r9, #1
     movs    r0, #ST_SCAN
 encode_next:
-    // Writing an entry ends an open loss (spec 7.2): ST_LOSS_END, then r0.
+    // Writing an entry ends an open loss (spec, Loss report): ST_LOSS_END, then r0.
     ldr     r1, [r4, #CAP_LOSS_OPEN]
     cbnz    r1, encode_loss
     mov     r6, r0

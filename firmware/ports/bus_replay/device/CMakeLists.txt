@@ -14,11 +14,3 @@ target_sources(app PRIVATE
 if(CAPTURE_PROFILE)
     target_compile_definitions(app PRIVATE CAPTURE_PROFILE)
 endif()
-
-if(CAPTURE_SELFTEST)
-    target_compile_definitions(app PRIVATE CAPTURE_SELFTEST)
-endif()
-
-if(CAPTURE_SELFTEST_BURST)
-    target_compile_definitions(app PRIVATE CAPTURE_SELFTEST_BURST)
-endif()

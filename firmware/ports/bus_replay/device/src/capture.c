@@ -1,6 +1,6 @@
 /*
- * Capture setup and the capture loop's C steps (device/README.md, Structure to
- * Debugging). The loop itself and its common steps are in capture_loop.S.
+ * Capture setup and the capture loop's C steps. The loop itself and its common steps are
+ * in capture_loop.S.
  *
  * Each step is a few loads and stores, or one or two peripheral accesses, so the sampler
  * never misses a tick. The steps share r4 to r11 with the loop as global register
@@ -33,6 +33,8 @@
 #define RAW_LAP_LIMIT (RAW_SIZE - 256)
 #define OUT_MASK (OUT_SIZE - 1)
 #define UART_CAP 256
+// Records are dropped while cleanup is this far behind: dropping is cheaper than encoding,
+// so cleanup catches up before the raw ring wraps.
 #define LAG_DEFAULT 1024
 
 #define CAP_RX_SIZE 64
@@ -40,7 +42,6 @@
 #define REPORT_LEN(n) (1 + 4 + 8 + 8 + 4 * (n))
 #define REPORT_FRAME_MAX (REPORT_LEN(CHANNEL_COUNT) + 4)
 #define MSG_LOSS_REPORT 0x04
-#define IRQ_PIN 26 // P0.26
 
 #define SRAM_BASE 0x20000000UL
 #define CODE_RAM_BASE 0x00800000UL
@@ -290,7 +291,15 @@ static void hk_spis_release(void);
 static void hk_debug(void);
 
 
-const uint8_t channel_pins[CHANNEL_COUNT] = {20, 21, 17, 19, 15, 16, 14, 13, 5, 7, 6, 8, 4};
+// Cable CH1 to CH6, J12 columns 1 to 6: sense on the bottom row, replay on the top.
+const struct channel channels[CHANNEL_COUNT] = {
+    {.sense = 21, .replay = 20, .name = "CH1"},
+    {.sense = 19, .replay = 17, .name = "CH2"},
+    {.sense = 16, .replay = 15, .name = "CH3"},
+    {.sense = 13, .replay = 14, .name = "CH4"},
+    {.sense = 7, .replay = 5, .name = "CH5"},
+    {.sense = 8, .replay = 6, .name = "CH6"},
+};
 
 static uint32_t raw_ring[RAW_SIZE] __attribute__((section("LOOPRAM")));
 static struct capture state __attribute__((section("LOOPRAM")));
@@ -303,7 +312,7 @@ static uint8_t cap_rx_buf[CAP_RX_SIZE] __aligned(4) __attribute__((section("RAM8
 struct debug_counters debug_counters __attribute__((section("RAM7")));
 
 
-// W: the smallest number of bytes that holds (2C + 1) * 2^t - 1 (spec 5.2).
+// W: the smallest number of bytes that holds (2C + 1) * 2^t - 1 (spec, Record).
 uint32_t capture_record_width(const struct capture_config *cfg)
 {
     uint64_t max = ((uint64_t)2 * cfg->c + 1) * BIT64(tag_bits_for(enabled_count(cfg))) - 1;
@@ -317,7 +326,7 @@ uint32_t capture_record_width(const struct capture_config *cfg)
 }
 
 
-// A serial heartbeat: W + 1 + ceil(n / 8) bytes plus its check byte (spec 9.1.1).
+// A serial heartbeat: W + 1 + ceil(n / 8) bytes plus its check byte (spec, Serial).
 uint32_t capture_heartbeat_size(const struct capture_config *cfg)
 {
     return capture_record_width(cfg) + 1 + DIV_ROUND_UP(enabled_count(cfg), 8) + 1;
@@ -379,7 +388,7 @@ static uint32_t enabled_count(const struct capture_config *cfg)
 }
 
 
-// Bits of the channel tag below a record's value (spec 5.2).
+// Bits of the channel tag below a record's value (spec, Record).
 static uint32_t tag_bits_for(uint32_t n)
 {
     return n > 1 ? LOG2CEIL(n) : 0;
@@ -407,7 +416,7 @@ static void tables_build(struct capture *s, uint16_t enabled)
 
     for (uint32_t ch = 0; ch < CHANNEL_COUNT; ch++) {
         if (enabled & BIT(ch)) {
-            s->mask |= BIT(channel_pins[ch]);
+            s->mask |= BIT(channels[ch].sense);
         }
     }
 
@@ -416,8 +425,8 @@ static void tables_build(struct capture *s, uint16_t enabled)
         if (!(enabled & BIT(ch))) {
             continue;
         }
-        s->tag[channel_pins[ch]] = (uint8_t)i;
-        s->enabled_bits[i] = channel_pins[ch];
+        s->tag[channels[ch].sense] = (uint8_t)i;
+        s->enabled_bits[i] = channels[ch].sense;
         i++;
     }
 
@@ -523,7 +532,7 @@ static __attribute__((naked)) void capture_enter(struct capture *s, loop_fn loop
 
 /*
  * Starts writing an entry: len bytes of value, then second_len bytes of second. Writing
- * an entry ends an open loss (spec 7.2): the drop counters are then flushed and handed
+ * an entry ends an open loss (spec, Loss report): the drop counters are then flushed and handed
  * to housekeeping before going on.
  */
 #define WRITE_START(v, len, v2, len2, check, next)                                     \
@@ -579,14 +588,14 @@ STEP st_first(void)
 }
 
 
-// A pending heartbeat that fits now goes before anything else (spec 6.4).
+// A pending heartbeat that fits now goes before anything else (spec, Pending heartbeat).
 STEP st_heartbeat_now(void)
 {
     HEARTBEAT_START(ST_SCAN);
 }
 
 
-// A pending heartbeat that fits now goes before the record (spec 6.4).
+// A pending heartbeat that fits now goes before the record (spec, Pending heartbeat).
 STEP st_record_slow(void)
 {
     HEARTBEAT_START(ST_RECORD);
@@ -667,7 +676,7 @@ STEP st_heartbeat(void)
 }
 
 
-// The grid index and the levels at the grid point (spec 6.1).
+// The grid index and the levels at the grid point (spec, Heartbeat).
 STEP st_heartbeat_pack(void)
 {
     uint32_t s = c->cur;
@@ -690,7 +699,7 @@ STEP st_heartbeat_try(void)
 }
 
 
-// A record written by the assembly path ended an open loss (spec 7.2).
+// A record written by the assembly path ended an open loss (spec, Loss report).
 STEP st_loss_end(void)
 {
     c->loss_open = 0;
@@ -748,7 +757,7 @@ STEP st_snap(void)
         return;
     }
 
-    // Positions: grid points are every C ticks from tick 0 (spec 6.5).
+    // Positions: grid points are every C ticks from tick 0 (spec, Position).
     if (!c->next_valid) {
         c->next_start_grid = c->loss_start / c->c;
         c->next_start_off = c->loss_start % c->c;
@@ -935,7 +944,7 @@ STEP hk_spis_load(void)
 }
 
 
-// Host messages are ignored during capture (README, Deviations).
+// Host messages are not answered during capture; the spec rejects them with 0x05.
 STEP hk_spis_release(void)
 {
     if (c->loaded_len) {
@@ -954,7 +963,7 @@ STEP hk_debug(void)
 {
     uint32_t v = 0;
 
-    // The sampler must not lap cleanup in the raw ring (README, Raw ring).
+    // Once the sampler laps cleanup, unscanned samples are overwritten: fatal.
     if (idx - pos > RAW_LAP_LIMIT) {
         FATAL(CAPTURE_ERR_LAPPED);
         return;

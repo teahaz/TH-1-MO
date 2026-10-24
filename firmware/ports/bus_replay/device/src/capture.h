@@ -9,8 +9,8 @@
 #include <stdint.h>
 
 
-// Channels 0 to 12 are J12 pins 3 to 15, all on P0 (device/README.md).
-#define CHANNEL_COUNT 13
+// Channels 0 to 5 are the cable's CH1 to CH6, all on P0 so one read samples them all.
+#define CHANNEL_COUNT 6
 #define DATA_CHANNEL_COUNT 1
 
 // Ticks are paced in CPU cycles: sample rate = CPU_HZ / divisor.
@@ -42,8 +42,15 @@ struct capture_config {
     uint16_t split;
 };
 
+// One cable channel: the wire pair in one J12 column.
+struct channel {
+    uint8_t sense; // P0 pin, bottom row
+    uint8_t replay; // P0 pin, top row, not driven
+    const char *name;
+};
 
-extern const uint8_t channel_pins[CHANNEL_COUNT];
+
+extern const struct channel channels[CHANNEL_COUNT];
 
 
 uint32_t capture_record_width(const struct capture_config *cfg);

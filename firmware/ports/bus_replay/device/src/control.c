@@ -2,7 +2,7 @@
  * Control channel before capture.
  *
  * SPIS1 on the MOD lines (SCK P1.13, MOSI P1.11, MISO P1.12, CSN P1.10), polled. Framing
- * is spec 9.2.1: Length (2 bytes), message, CRC-16/CCITT-FALSE. IRQ is P0.26, driven low
+ * is the spec's SPI binding: Length (2 bytes), message, CRC-16/CCITT-FALSE. IRQ is P0.26, driven low
  * while a message waits and released otherwise; the Pi's pull-up holds it high.
  *
  * The END_ACQUIRE short hands the semaphore back to the CPU after each transaction.
@@ -86,7 +86,7 @@ LOG_MODULE_REGISTER(CONTROL, LOG_LEVEL_INF);
 
 #define DEFAULT_SAMPLE_RATE 500000
 #define DEFAULT_C 1000
-#define DEFAULT_ENABLED 0x000F
+#define DEFAULT_ENABLED 0x0F // CH1 to CH4
 
 
 struct message {
@@ -107,6 +107,8 @@ static void config_handle(const uint8_t *msg, uint32_t len);
 static uint8_t config_write(uint8_t reg, const uint8_t *value, uint32_t len, const char **text);
 static uint8_t start_check(const char **text);
 static uint32_t reg_value_put(uint8_t reg, uint8_t *out);
+static uint32_t channel_set_get(const uint8_t *in);
+static void channel_set_put(uint32_t v, uint8_t *out);
 static void tx_prepare(void);
 static void hello_queue(void);
 static void put_u8(struct writer *w, uint8_t v);
@@ -134,12 +136,6 @@ static struct capture_config config = {
 };
 static bool capture_on;
 
-// Silkscreen names, in channel order.
-static const char *const channel_names[CHANNEL_COUNT] = {
-    "GP0.20", "GP0.21", "GP0.17", "GP0.19", "GP0.15", "GP0.16", "GP0.14",
-    "GP0.13", "GP0.05", "GP0.07", "GP0.06", "GP0.08", "GP0.04",
-};
-
 
 void control_init(void)
 {
@@ -151,7 +147,7 @@ void control_init(void)
 }
 
 
-// One polling pass. True once capture was accepted and its reply clocked out (spec 8.6).
+// One polling pass. True once capture was accepted and its reply clocked out (spec, Capture lifecycle).
 bool control_service(void)
 {
     if (!NRF_SPIS1->EVENTS_ACQUIRED) {
@@ -262,7 +258,7 @@ static void rx_handle(uint32_t amount)
         return;
     }
 
-    // A receiver ignores a message of a type it does not know (spec 8).
+    // A receiver ignores a message of a type it does not know (spec, Control messages).
     if (rx_buf[2] == MSG_CONFIG) {
         config_handle(&rx_buf[2], len);
     }
@@ -358,7 +354,7 @@ static uint8_t config_write(uint8_t reg, const uint8_t *value, uint32_t len, con
         if (len != CHANNEL_SET_SIZE) {
             return STATUS_LENGTH;
         }
-        v = sys_get_le16(value);
+        v = channel_set_get(value);
         if (v & ~CHANNEL_SET_MASK) {
             *text = "no such channel";
             return STATUS_NOT_ALLOWED;
@@ -376,7 +372,7 @@ static uint8_t config_write(uint8_t reg, const uint8_t *value, uint32_t len, con
 }
 
 
-// Combined limits, checked on start (spec 8.5).
+// Combined limits, checked on start (spec, Configuration).
 static uint8_t start_check(const char **text)
 {
     uint64_t send_time = 0;
@@ -420,13 +416,34 @@ static uint32_t reg_value_put(uint8_t reg, uint8_t *out)
         sys_put_le32(config.c, out);
         return 4;
     case REG_ENABLED:
-        sys_put_le16(config.enabled, out);
+        channel_set_put(config.enabled, out);
         return CHANNEL_SET_SIZE;
     case REG_SPLIT:
-        sys_put_le16(config.split, out);
+        channel_set_put(config.split, out);
         return CHANNEL_SET_SIZE;
     default:
         return 0;
+    }
+}
+
+
+// A channel set: ceil(N / 8) bytes, channel i in bit i % 8 of byte i / 8 (spec, Registers).
+static uint32_t channel_set_get(const uint8_t *in)
+{
+    uint32_t v = 0;
+
+    for (uint32_t i = 0; i < CHANNEL_SET_SIZE; i++) {
+        v |= (uint32_t)in[i] << (8 * i);
+    }
+
+    return v;
+}
+
+
+static void channel_set_put(uint32_t v, uint8_t *out)
+{
+    for (uint32_t i = 0; i < CHANNEL_SET_SIZE; i++) {
+        out[i] = (uint8_t)(v >> (8 * i));
     }
 }
 
@@ -470,8 +487,8 @@ static void hello_queue(void)
     put_u32(&w, OUT_SIZE);
     put_u16(&w, CHANNEL_COUNT);
     put_u8(&w, DATA_CHANNEL_COUNT);
-    for (size_t i = 0; i < ARRAY_SIZE(channel_names); i++) {
-        put_str(&w, channel_names[i]);
+    for (size_t i = 0; i < ARRAY_SIZE(channels); i++) {
+        put_str(&w, channels[i].name);
     }
     put_u8(&w, REG_COUNT);
 
