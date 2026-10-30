@@ -94,9 +94,9 @@ const struct codec_kind i2c_segment = {
 };
 
 static const struct codec_param params[] = {
-    {"scl", "channel of the clock line (required)"},
-    {"sda", "channel of the data line (required)"},
-    {NULL, NULL},
+    {"scl", "channel of the clock line (required)", CODEC_PARAM_LINE, CODEC_PARAM_REQUIRED, NULL},
+    {"sda", "channel of the data line (required)", CODEC_PARAM_LINE, CODEC_PARAM_REQUIRED, NULL},
+    {NULL, NULL, 0, 0, NULL},
 };
 
 const struct codec_decoder i2c_decoder = {

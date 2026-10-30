@@ -78,8 +78,10 @@
 
 // The arguments every chip takes (CHIP_COMMON_PARAMS), before its own.
 #define CHIP_COMMON_PARAMS                                                                    \
-    {"addr", "its 7-bit I2C address, for example 0x44 (required)"},                           \
-    {"on", "label of the i2c decoder it reads (default the last one given)"}
+    {"addr", "its 7-bit I2C address, for example 0x44 (required)", CODEC_PARAM_UINT,           \
+     CODEC_PARAM_REQUIRED, NULL},                                                            \
+    {"on", "label of the i2c decoder it reads (default the last one given)", CODEC_PARAM_TEXT, \
+     0, NULL}
 
 // The decoder callbacks every chip uses (codec.h, struct codec_decoder).
 #define CHIP_DECODER_OPS .input = "i2c", .create = chip_create, .destroy = chip_destroy,     \

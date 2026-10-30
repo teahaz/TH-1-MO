@@ -123,9 +123,11 @@ static const struct chip chip = {
 
 static const struct codec_param params[] = {
     CHIP_COMMON_PARAMS,
-    {"shunt", "shunt resistor in ohms, for current and power in A and W"},
-    {"cal", "calibration register, when the capture does not show it being set"},
-    {NULL, NULL},
+    {"shunt", "shunt resistor in ohms, for current and power in A and W", CODEC_PARAM_REAL, 0,
+     NULL},
+    {"cal", "calibration register, when the capture does not show it being set",
+     CODEC_PARAM_UINT, 0, NULL},
+    {NULL, NULL, 0, 0, NULL},
 };
 
 const struct codec_decoder ina219_decoder = {

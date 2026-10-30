@@ -81,6 +81,8 @@ static void test_i2c_loss(void);
 static void test_uart(void);
 static void test_uart_split(void);
 static void test_uart_framing(void);
+static void test_uart_flow(void);
+static void test_params(void);
 static void test_activity(void);
 static void test_stacking(void);
 static void test_output(void);
@@ -100,6 +102,8 @@ int main(void)
     test_uart();
     test_uart_split();
     test_uart_framing();
+    test_uart_flow();
+    test_params();
     test_activity();
     test_stacking();
     test_output();
@@ -999,6 +1003,93 @@ static void test_args(void)
     CHECK(d && !strcmp(d->name, "bus"));
     CHECK(codec_count(c) == 3);
     codec_free(c);
+}
+
+
+/*
+ * cts= and rts= are taken as lines (checked like tx and rx, not decoded yet): the same
+ * items as without them; a line given twice, or not captured, is refused.
+ */
+static void test_uart_flow(void)
+{
+    struct sim s;
+    struct got g = {0};
+    struct codec *c = NULL;
+    char error[CODEC_ERROR_LEN];
+    const struct codec_item *b = NULL;
+
+    sim_init(&s);
+    uart_byte(&s, TX, 'o', false);
+    uart_byte(&s, TX, 'k', false);
+    c = session(&s, "uart", "tx=2,cts=0,rts=1,baud=100000", 0);
+    run(&s, c, &g, true);
+    b = only(&g);
+    if (b) {
+        CHECK(b->values[UART_BYTES].u == 2);
+        CHECK(b->word_count == 2 && b->words[0].value == 'o' && b->words[1].value == 'k');
+    }
+    got_free(&g);
+    codec_free(c);
+
+    CHECK(codec_new(&c, &s.info, 0) == 0);
+    if (!c) {
+        return;
+    }
+    CHECK(codec_add(c, codec_find("uart"), "tx=2,cts=2,baud=100000", NULL, NULL, error,
+                    sizeof(error)) < 0);
+    CHECK(codec_add(c, codec_find("uart"), "tx=2,rx=3,rts=3,baud=100000", NULL, NULL, error,
+                    sizeof(error)) < 0);
+    CHECK(codec_add(c, codec_find("uart"), "tx=2,cts=0,rts=0,baud=100000", NULL, NULL, error,
+                    sizeof(error)) < 0);
+    CHECK(codec_add(c, codec_find("uart"), "tx=2,cts=9,baud=100000", NULL, NULL, error,
+                    sizeof(error)) < 0);
+    CHECK(codec_add(c, codec_find("uart"), "rx=3,rts=1,baud=100000", NULL, NULL, error,
+                    sizeof(error)) == 0);
+    codec_free(c);
+}
+
+
+/*
+ * Every decoder's arguments say what they take, so UIs can build forms from them: the
+ * lines of i2c and uart, uart's required baud and defaults.
+ */
+static void test_params(void)
+{
+    const struct codec_decoder *i2c = codec_find("i2c");
+    const struct codec_decoder *uart = codec_find("uart");
+    unsigned int lines = 0;
+
+    for (unsigned int i = 0; codec_decoders[i]; i++) {
+        const struct codec_param *p = codec_decoders[i]->params;
+
+        for (unsigned int k = 0; p && p[k].name; k++) {
+            CHECK(p[k].type <= CODEC_PARAM_REAL);
+            CHECK(p[k].help != NULL);
+        }
+    }
+    CHECK(i2c && uart);
+    if (!i2c || !uart) {
+        return;
+    }
+    for (unsigned int k = 0; i2c->params[k].name; k++) {
+        CHECK(i2c->params[k].type == CODEC_PARAM_LINE);
+        CHECK(i2c->params[k].flags & CODEC_PARAM_REQUIRED);
+    }
+    for (unsigned int k = 0; uart->params[k].name; k++) {
+        const struct codec_param *p = &uart->params[k];
+
+        if (p->type == CODEC_PARAM_LINE) {
+            lines++;
+            CHECK(!(p->flags & CODEC_PARAM_REQUIRED));
+        }
+        if (!strcmp(p->name, "baud")) {
+            CHECK(p->type == CODEC_PARAM_UINT && (p->flags & CODEC_PARAM_REQUIRED));
+        }
+        if (!strcmp(p->name, "bits")) {
+            CHECK(p->def && !strcmp(p->def, "8"));
+        }
+    }
+    CHECK(lines == 4);
 }
 
 

@@ -96,7 +96,7 @@ static const struct chip chip = {
 
 static const struct codec_param params[] = {
     CHIP_COMMON_PARAMS,
-    {NULL, NULL},
+    {NULL, NULL, 0, 0, NULL},
 };
 
 const struct codec_decoder sht3x_decoder = {

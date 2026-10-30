@@ -52,10 +52,13 @@ const struct codec_kind activity_packet = {
 };
 
 static const struct codec_param params[] = {
-    {"lines", "channels to watch, joined by +, for example 0+1+3 (default all captured)"},
-    {"gap", "seconds with no change on any of them that end a packet (default 300e-6)"},
-    {"max", "longest packet in seconds; a longer one is cut (default no limit)"},
-    {NULL, NULL},
+    {"lines", "channels to watch, joined by +, for example 0+1+3 (default all captured)",
+     CODEC_PARAM_TEXT, 0, NULL},
+    {"gap", "seconds with no change on any of them that end a packet (default 300e-6)",
+     CODEC_PARAM_REAL, 0, "300e-6"},
+    {"max", "longest packet in seconds; a longer one is cut (default no limit)",
+     CODEC_PARAM_REAL, 0, NULL},
+    {NULL, NULL, 0, 0, NULL},
 };
 
 const struct codec_decoder activity_decoder = {

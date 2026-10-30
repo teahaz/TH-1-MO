@@ -40,9 +40,25 @@ struct codec_args {
     char **value;
 };
 
+// What a decoder argument takes: a channel (a line it reads), a number, or text.
+#define CODEC_PARAM_TEXT 0
+#define CODEC_PARAM_LINE 1
+#define CODEC_PARAM_UINT 2
+#define CODEC_PARAM_REAL 3
+
+// Argument flags: the decoder can't run without it.
+#define CODEC_PARAM_REQUIRED 0x01
+
+/*
+ * A decoder argument, as UIs and help list it. def is the value the decoder takes when it
+ * is left out, as text (NULL: none, or no fixed one).
+ */
 struct codec_param {
     const char *name;
     const char *help;
+    uint8_t type;
+    uint8_t flags;
+    const char *def;
 };
 
 /*

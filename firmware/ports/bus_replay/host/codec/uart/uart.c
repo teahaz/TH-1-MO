@@ -45,8 +45,14 @@ struct byte {
  * bit is a bit time in ticks. burst is the open burst; last its last byte's end, errors its
  * framing errors.
  */
+/*
+ * cts and rts: the flow control lines, -1 if not given. They are taken and checked, so a
+ * UI's assignment of them is the decoder's, but not decoded yet.
+ */
 struct uart {
     struct line line[2];
+    int cts;
+    int rts;
     unsigned int bits;
     double bit;
     double gap;
@@ -98,12 +104,19 @@ const struct codec_kind uart_burst = {
 };
 
 static const struct codec_param params[] = {
-    {"tx", "channel of one direction, shown with > (tx, rx or both)"},
-    {"rx", "channel of the other direction, shown with <"},
-    {"baud", "bits per second, for example 115200 (required; at most half the sample rate)"},
-    {"bits", "data bits per byte, 5 to 9 (default 8); always no parity, 1 stop bit"},
-    {"gap", "idle time, in byte times, that ends a burst (default 10)"},
-    {NULL, NULL},
+    {"tx", "channel of one direction, shown with > (tx, rx or both)", CODEC_PARAM_LINE, 0, NULL},
+    {"rx", "channel of the other direction, shown with <", CODEC_PARAM_LINE, 0, NULL},
+    {"cts", "channel of the clear-to-send line (optional; taken, not decoded yet)",
+     CODEC_PARAM_LINE, 0, NULL},
+    {"rts", "channel of the request-to-send line (optional; taken, not decoded yet)",
+     CODEC_PARAM_LINE, 0, NULL},
+    {"baud", "bits per second, for example 115200 (required; at most half the sample rate)",
+     CODEC_PARAM_UINT, CODEC_PARAM_REQUIRED, NULL},
+    {"bits", "data bits per byte, 5 to 9 (default 8); always no parity, 1 stop bit",
+     CODEC_PARAM_UINT, 0, "8"},
+    {"gap", "idle time, in byte times, that ends a burst (default 10)", CODEC_PARAM_REAL, 0,
+     "10"},
+    {NULL, NULL, 0, 0, NULL},
 };
 
 static const struct codec_export exports[] = {
@@ -132,12 +145,16 @@ static int create(struct codec_dec *d, const struct codec_args *args, char *erro
     struct uart *s = NULL;
     int tx = -1;
     int rx = -1;
+    int cts = -1;
+    int rts = -1;
     uint64_t baud = 0;
     uint64_t bits = 0;
     double gap = 0;
     int err = codec_arg_channel(d, args, "tx", false, &tx, error, size);
 
     err = err ? err : codec_arg_channel(d, args, "rx", false, &rx, error, size);
+    err = err ? err : codec_arg_channel(d, args, "cts", false, &cts, error, size);
+    err = err ? err : codec_arg_channel(d, args, "rts", false, &rts, error, size);
     err = err ? err : codec_arg_uint(args, "baud", 0, &baud, error, size);
     err = err ? err : codec_arg_uint(args, "bits", 8, &bits, error, size);
     err = err ? err : codec_arg_real(args, "gap", UART_GAP, &gap, error, size);
@@ -148,8 +165,9 @@ static int create(struct codec_dec *d, const struct codec_args *args, char *erro
         snprintf(error, size, "uart: give tx=, rx= or both");
         return -EINVAL;
     }
-    if (tx >= 0 && tx == rx) {
-        snprintf(error, size, "uart: tx and rx must be different channels");
+    if ((tx >= 0 && (tx == rx || tx == cts || tx == rts)) || (rx >= 0 && (rx == cts || rx == rts))
+        || (cts >= 0 && cts == rts)) {
+        snprintf(error, size, "uart: tx, rx, cts and rts must be different channels");
         return -EINVAL;
     }
     if (baud == 0 || baud * 2 > info->rate) {
@@ -167,6 +185,8 @@ static int create(struct codec_dec *d, const struct codec_args *args, char *erro
         return -ENOMEM;
     }
     d->state = s;
+    s->cts = cts;
+    s->rts = rts;
     s->bits = (unsigned int)bits;
     s->bit = (double)info->rate / (double)baud;
     s->gap = gap * (s->bits + 2) * s->bit;
