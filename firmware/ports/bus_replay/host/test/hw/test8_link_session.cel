@@ -1,0 +1,102 @@
+-- The UI's session through a link, on the bench (test8_link_session.sh): joins or starts a
+-- capture of the bench's channels, decodes I2C and packets for SECONDS, and prints what it
+-- got, one "key value" per line (scripted mode shows 24 rows: keep it short). The bench's
+-- channels come from the environment.
+require("cli").create({})
+
+function main(cli)
+    local env = {
+        SOCK = os.getenv("LINK_SOCK") or "",
+        SECS = os.getenv("SECONDS_RUN") or "10",
+        SCL = os.getenv("BENCH_SCL") or "0",
+        SDA = os.getenv("BENCH_SDA") or "1",
+        CHANNELS = os.getenv("BENCH_CHANNELS") or "0,1,2,3",
+        RATE = os.getenv("BENCH_RATE") or "500000",
+        C = os.getenv("BENCH_C") or "1000",
+        SHT = (os.getenv("BENCH_SHT3X") or "sht3x@0x44"):match("@(0x%x+)") or "0x44",
+    }
+    local page = [[
+        <meta poll-rate=100>
+            <define>
+                <scope>
+                    br = require("bus_replay")
+                    step = 0
+                </scope>
+            </define>
+        </meta>
+        <tower styles={ width=FILL, height=FILL, frame="" }>
+            <text #out styles={ width=FILL }>starting
+                <scope>
+                    local function wait(cond, secs)
+                        local until_ = os.time() + secs
+                        while not cond() and os.time() < until_ do end
+                        return cond()
+                    end
+
+                    table.insert(poll, function()
+                        local channels = {}
+                        for ch in ("@@CHANNELS@@"):gmatch("%d+") do channels[#channels + 1] = tonumber(ch) end
+                        local lines = {}
+                        local function put(k, v) lines[#lines + 1] = k .. " " .. tostring(v) end
+
+                        local id = br.open{backend="remote", path="@@SOCK@@"}
+                        wait(function() return br.status().done >= id end, 10)
+                        put("open", br.status().ok and "ok" or br.status().error)
+                        br.decoder_add("i2c", "scl=@@SCL@@,sda=@@SDA@@,name=bus")
+                        br.decoder_add("sht3x", "addr=@@SHT@@", "bus")
+                        id = br.decoder_add("activity", "name=packets", nil, 0.05)
+                        wait(function() return br.status().done >= id end, 5)
+                        id = br.start{rate=@@RATE@@, c=@@C@@, channels=channels}
+                        wait(function() return br.status().done >= id end, 10)
+                        local st = br.status()
+                        put("start", st.ok and "ok" or st.error)
+                        wait(function() return false end, @@SECS@@)
+                        id = br.stop()
+                        wait(function() return br.status().done >= id end, 10)
+                        st = br.status()
+                        wait(function() local s = br.status() return s.store and s.decoded >= s.store.watermark end, 10)
+                        st = br.status()
+                        put("state", st.state)
+                        put("records", st.capture.records)
+                        put("crc", st.capture.crc)
+                        put("gaps", st.capture.gaps)
+                        put("losses", st.capture.losses)
+                        put("watermark", st.store.watermark)
+                        local cols = br.span(channels, 0, st.store.watermark + 1, 1)
+                        for k, ch in ipairs(channels) do put("ch" .. ch, cols[k].changes[1]) end
+                        local items = br.items("bus", 0, st.store.watermark, 100000, 1)
+                        local sht, at_sht = 0, 0
+                        local addrs = {}
+                        for _, it in ipairs(items) do
+                            if it.fields.addr == @@SHT@@ then at_sht = at_sht + 1 end
+                            addrs[it.fields.addr or -1] = (addrs[it.fields.addr or -1] or 0) + 1
+                            for _, c in ipairs(it.children) do
+                                if c.kind == "sht3x" then sht = sht + 1 end
+                            end
+                        end
+                        put("i2c", #items)
+                        put("sht3x", sht)
+                        put("i2c_at_sht3x", at_sht)
+                        local list = {}
+                        for a, n in pairs(addrs) do list[#list + 1] = string.format("0x%02x:%d", a, n) end
+                        table.sort(list)
+                        put("i2c_addresses", table.concat(list, ","))
+                        put("packets", #br.items("packets", 0, st.store.watermark, 100000))
+                        for _, d in ipairs(br.decoders()) do
+                            put("decoder_" .. d.label, d.error or "ok")
+                        end
+                        br.close()
+                        content = table.concat(lines, "\n")
+                        return UNSUBSCRIBE
+                    end)
+                </scope>
+            </text>
+        </tower>
+    ]]
+
+    return {
+        ["/"] = function()
+            return app((page:gsub("@@([%u_]+)@@", env)))
+        end,
+    }
+end

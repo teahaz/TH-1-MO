@@ -1,0 +1,3267 @@
+require("cli").create({
+    socket = {
+        default = "",
+        help = "The link's socket (bus-replay ui passes it).",
+    },
+    dummy = {
+        default = "no",
+        help = "Whether the link runs the dummy device (yes or no).",
+    },
+})
+
+-- Bands made for the page; the device's hello says how many are real, the rest stay hidden.
+local CHANNELS_MAX = 8
+-- The decoder popup's rows and action buttons, made for the page.
+local SHEET_ROWS = 12
+local SHEET_ACTS = 4
+
+function main(cli)
+    local bands = {}
+    for ch = 0, CHANNELS_MAX - 1 do
+        bands[#bands + 1] = string.format('<channel ch=%d/>', ch)
+    end
+    -- The popup's rows (a label and a value each) and its action buttons; it shows as many as
+    -- the page it is on needs.
+    local rows, acts = {}, {}
+    for i = 1, SHEET_ROWS do
+        rows[#rows + 1] = string.format([=[
+                        <row #sh-row-%d hidden styles={ width=FILL, height=1, frame="", gap=1 }>
+                            <zml #sh-label-%d styles={ width=SHEET_LABEL_W, height=1 }/>
+                            <button #sh-val-%d qs=false>Value
+                                <scope>
+                                    table.insert(init, function() sheet_widget(w, "sh:r%d", focus, strike) end)
+                                </scope>
+                            </button>
+                            <zml #sh-note-%d styles={ width=FILL, height=1 }/>
+                        </row>]=], i, i, i, i, i)
+    end
+    for i = 1, SHEET_ACTS do
+        acts[#acts + 1] = string.format([=[
+                            <button #sh-act-%d hidden qs=false>Action
+                                <scope>
+                                    table.insert(init, function() sheet_widget(w, "sh:a%d", focus, strike) end)
+                                </scope>
+                            </button>]=], i, i)
+    end
+    local subs = {
+        SOCKET = cli.socket,
+        SHEET_ROWS = table.concat(rows, "\n"),
+        SHEET_ACTS = table.concat(acts, "\n"),
+        SHEET_ROWS_N = tostring(SHEET_ROWS),
+        SHEET_ACTS_N = tostring(SHEET_ACTS),
+        DUMMY = cli.dummy == "yes" and "true" or "false",
+        CHANNELS_MAX = tostring(CHANNELS_MAX),
+        BANDS = table.concat(bands, "\n"),
+    }
+
+    local page = [[
+        <meta poll-rate=100>
+            <define>
+                <scope>
+                    THEME, PRIMARY, ACCENT = create_theme("red")
+                    br = require("bus_replay")
+
+                    SOCKET = "@@SOCKET@@"
+                    DUMMY = @@DUMMY@@
+                    CHANNELS_MAX = @@CHANNELS_MAX@@
+
+                    LABEL_W = 8
+                    LANE_ROWS_MAX = 4
+                    -- The settings column, with its divider.
+                    CELL_W = 16
+
+                    --[=[
+                    Colour roles, by the theme's 60/30/10 (vendor/CEL-b1/README.md,
+                    Principles 4):
+                     - gray, most of it: the light frames of the settings and the controls, the
+                       rules, labels, settings, the stats, and a line with nothing happening;
+                     - PRIMARY: the content panel's heavy frame, the waveforms that move, the
+                       capture's REC, the theme's selection;
+                     - ACCENT, only what has to stand out: the cursor, the trigger point, the
+                       hold left, a paused view.
+                    Values that matter are TEXT or BRIGHT, neutral. ERROR is CEL's own.
+                    ]=]
+                    GRAY = THEME.plain.frame_style
+                    FAINT = GRAY .. " dim"
+                    TEXT = "white"
+                    BRIGHT = "b-white"
+                    -- Column backgrounds, as dark tints the theme has none of: the cursor's
+                    -- (the accent's) and a loss's (an error's).
+                    BG_CURSOR = "@#003a3a"
+                    BG_LOSS = "@#3a0000"
+                    -- The content panel (the ruler and the lanes) is a heavy frame in PRIMARY;
+                    -- the settings column and the controls are light gray frames joined into it.
+                    EDGE_CONTENT = { "┃", "", "┃", "", "", "", "", "" }
+                    EDGE_CELL = { "", "", "│", "", "", "", "", "" }
+                    -- The data UART's limit, for the link's use.
+                    LINK_BYTES_S = 100000
+
+                    -- Packets: activity on any line, ended by PACKET_GAP_S idle on all of
+                    -- them (libcodec's activity decoder, held PACKET_HOLD_S for late losses).
+                    PACKET_GAP_S = 300e-6
+                    PACKET_HOLD_S = 0.05
+                    PACKETS_MAX = 500
+                    HOLDS = { 0.5, 1, 2, 5 }
+                    -- Trigger scale: two changes on one line at least MIN_EDGE_COLS columns
+                    -- apart, by the packet's short gaps (GAP_PERCENTILE, so one glitch does not
+                    -- decide).
+                    MIN_EDGE_COLS = 3
+                    GAP_PERCENTILE = 0.1
+                    -- Zooming in stops at a tick over 8 columns: past that it only gets wider.
+                    MIN_Z = 1 / 8
+                    -- Roll mode: ticks per column.
+                    ZOOMS = { 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000,
+                              20000, 50000, 100000, 200000, 500000 }
+                    RETRY_S = 2
+
+                    -- Shared state lives in tables: a write to a bare name in a widget scope
+                    -- would make a widget-local variable.
+                    -- link: getting to a running capture (phase, the command waited on, the
+                    -- last error, whether a capture is wanted). cap: the capture shown (its
+                    -- view's gen, info, hello, the channels it has). st: this poll's status.
+                    link = { phase = "open", cmd = nil, error = nil, retry = 0, want = true,
+                             stopping = false, packets = false }
+                    cap = { gen = -1, info = nil, dev = nil, captured = {}, rate = 500000 }
+                    st = nil
+                    ev = { seq = 0, last = nil }
+
+                    -- channels: per band, its channel, name, whether the device has it, the
+                    -- capture has it, the user shows it, and its activity makes packets.
+                    channels = {}
+                    for ch = 0, CHANNELS_MAX - 1 do
+                        channels[ch + 1] = { ch = ch, name = "CH" .. (ch + 1), real = false,
+                                             captured = false, enabled = true, trig = true }
+                    end
+
+                    -- The view. trigger: the packet on show (shown), until when it stays
+                    -- (until_), the zoom against the automatic scale (tzoom). roll: ticks per
+                    -- column (zoom_i). paused: holds still, at R in roll mode. cursor: a
+                    -- tick, or nil.
+                    view = { trigger = true, paused = false, hold_i = 2, tzoom = 1,
+                             zoom_i = 8, R = 0, cursor = nil, shown = nil, until_ = 0 }
+
+                    -- Packets as they came: { id, start, stop, records, gap }, oldest first.
+                    pk = { list = {} }
+
+                    -- This frame: its column edges and the columns of every lane (by
+                    -- channel), with what the ruler and the cells need to know.
+                    frame = { edges = nil, cols = 0, lanes = {}, a = 0, z = 1, full_a = 0,
+                              full_b = 0, auto_z = 0, kind = "none" }
+
+                    -- Widgets that draw from the frame, by channel; the frame's cost.
+                    ui = { lanes = {}, cells = {}, bands = {}, toggles = {}, trigs = {}, roles = {}, trig_set = {} }
+                    perf = { ms = 0, max = 0, rate = 0, last_records = 0, last_t = 0 }
+
+                    -------------------------------------------------------------------
+                    -- Formatting
+
+                    function fmt_count(v)
+                        local s = tostring(math.floor(v))
+                        return s:reverse():gsub("(%d%d%d)", "%1 "):reverse():gsub("^ ", "")
+                    end
+
+                    function fmt_bytes(v)
+                        if v >= 1e6 then return string.format("%.1f MB", v / 1e6) end
+                        if v >= 1e3 then return string.format("%.1f kB", v / 1e3) end
+                        return string.format("%d B", v)
+                    end
+
+                    -- A count with k or M, three digits.
+                    function fmt_si(v)
+                        if v >= 1e6 then return string.format("%.3gM", v / 1e6) end
+                        if v >= 1e3 then return string.format("%.3gk", v / 1e3) end
+                        return string.format("%d", math.floor(v + 0.5))
+                    end
+
+                    function fmt_rate(r)
+                        if r >= 1e6 then return string.format("%.3g MHz", r / 1e6) end
+                        if r >= 1e3 then return string.format("%.3g kHz", r / 1e3) end
+                        return string.format("%.3g Hz", r)
+                    end
+
+                    -- A span, three significant digits at most.
+                    function fmt_time(s)
+                        local a = math.abs(s)
+                        local function g(v, unit)
+                            local t = string.format("%.3g", v)
+                            if t:find("e") then t = string.format("%.0f", v) end
+                            return t .. unit
+                        end
+                        if a == 0 then return "0" end
+                        if a < 1e-6 then return g(s * 1e9, "ns") end
+                        if a < 1e-3 then return g(s * 1e6, "µs") end
+                        if a < 1 then return g(s * 1e3, "ms") end
+                        if a < 60 then return g(s, "s") end
+                        return string.format("%dm%02ds", math.floor(a / 60), math.floor(a % 60))
+                    end
+
+                    -- An absolute time on the capture, to the microsecond.
+                    function fmt_abs(s)
+                        if s < 1 then return string.format("%.3fms", s * 1e3) end
+                        return string.format("%.6fs", s)
+                    end
+
+                    function fmt_clock(s)
+                        return string.format("%02d:%02d", math.floor(s / 60), math.floor(s % 60))
+                    end
+
+                    function pad_to(s, n)
+                        return s .. string.rep(" ", math.max(0, n - utf8.len(s)))
+                    end
+
+                    -- s cut to n columns, ending in an ellipsis.
+                    function cut(s, n)
+                        if utf8.len(s) <= n then return s end
+                        return s:sub(1, utf8.offset(s, n) - 1) .. "…"
+                    end
+
+                    -- One row of cells, with a style per cell ("" for none), as ZML.
+                    function zml_row(cs, style_of)
+                        local out, run, cur = {}, {}, nil
+                        local function flush()
+                            if #run == 0 then return end
+                            if cur ~= "" then
+                                out[#out + 1] = "[" .. cur .. "]" .. table.concat(run) .. "[/]"
+                            else
+                                out[#out + 1] = table.concat(run)
+                            end
+                        end
+                        for x, g in ipairs(cs) do
+                            local s = style_of(x)
+                            if s ~= cur then
+                                flush()
+                                run, cur = {}, s
+                            end
+                            run[#run + 1] = g
+                        end
+                        flush()
+                        return table.concat(out)
+                    end
+
+                    -- The smallest step of 1, 2 or 5 times a power of ten that is at least v.
+                    function nice_step(v)
+                        local p = 10 ^ math.floor(math.log(math.max(v, 1e-9), 10))
+                        for _, m in ipairs({ 1, 2, 5, 10 }) do
+                            if m * p >= v then return m * p end
+                        end
+                        return 10 * p
+                    end
+
+                    -- The columns ZML text takes, its tags left out.
+                    function zlen(s)
+                        -- (\93 is the closing bracket: two in a row would end the page.)
+                        return utf8.len((s:gsub("%[[^\93]*%]", "")))
+                    end
+
+                    --[=[
+                    s cut to n columns, its tags kept and the ones left open closed. A zml
+                    widget is never narrower than its text, so a line one column too long
+                    would widen it for good.
+                    ]=]
+                    function zcut(s, n)
+                        if zlen(s) <= n then return s end
+                        local out, used, open, i = {}, 0, 0, 1
+                        while i <= #s and used < n do
+                            local c = s:sub(i, i)
+                            if c == "[" then
+                                local j = s:find("\93", i, true) or #s
+                                local tag = s:sub(i, j)
+                                open = open + (tag == "[/]" and -1 or 1)
+                                out[#out + 1] = tag
+                                i = j + 1
+                            else
+                                local j = utf8.offset(s, 2, i) or (#s + 1)
+                                out[#out + 1] = s:sub(i, j - 1)
+                                used = used + 1
+                                i = j
+                            end
+                        end
+                        return table.concat(out) .. string.rep("[/]", math.max(0, open))
+                    end
+
+                    --[=[
+                    Parts of a line ({text, rank}), as many as fit in width, the lowest ranks
+                    first, shown in their own order and joined by sep.
+                    ]=]
+                    function fit_parts(parts, width, sep)
+                        sep = sep or "  "
+                        local order, keep, used = {}, {}, 0
+                        for i in ipairs(parts) do order[i] = i end
+                        table.sort(order, function(a, b) return parts[a][2] < parts[b][2] end)
+                        for _, i in ipairs(order) do
+                            local n = zlen(parts[i][1]) + (used > 0 and #sep or 0)
+                            if used + n <= width then
+                                keep[i], used = true, used + n
+                            end
+                        end
+                        local out = {}
+                        for i, p in ipairs(parts) do
+                            if keep[i] then out[#out + 1] = p[1] end
+                        end
+                        return table.concat(out, sep)
+                    end
+
+                    -------------------------------------------------------------------
+                    -- The capture: the link, the device's hello, starting and stopping
+
+                    -- A new view (a new hello or capture): its channels, names, packets.
+                    function view_new(gen)
+                        cap.gen = gen
+                        cap.dev = br.device()
+                        cap.info = br.capture()
+                        cap.rate = (cap.info and cap.info.rate) or (cap.dev and cap.dev.rate) or 500000
+                        cap.captured = {}
+                        pk.list = {}
+                        view.shown, view.cursor, view.tzoom, view.paused = nil, nil, 1, false
+                        dv.cache, dv.sel, dv.detail = {}, nil, false
+
+                        local names = (cap.info and cap.info.names) or (cap.dev and cap.dev.names) or {}
+                        local count = cap.dev and cap.dev.channels or 0
+                        if cap.info then
+                            for _, ch in ipairs(cap.info.channels) do cap.captured[ch] = true end
+                        end
+                        for _, c in ipairs(channels) do
+                            c.real = c.ch < count
+                            c.captured = cap.captured[c.ch] == true
+                            if names[c.ch] and names[c.ch] ~= "" then c.name = names[c.ch] end
+                        end
+                        bands_update()
+                        -- Until someone moves it, the focus starts on the first lane.
+                        if not nav.moved then
+                            for _, c in ipairs(channels) do
+                                if c.real then
+                                    nav_focus("lane:" .. c.ch)
+                                    break
+                                end
+                            end
+                        end
+                    end
+
+                    -- The lines the view draws, in channel order.
+                    function shown_channels()
+                        local out = {}
+                        for _, c in ipairs(channels) do
+                            if band_open(c) then out[#out + 1] = c.ch end
+                        end
+                        return out
+                    end
+
+                    function command(id, what)
+                        link.cmd, link.what = id, what
+                    end
+
+                    --[=[
+                    Getting to a running capture, one step per poll: open the link (which
+                    joins a capture it already runs), add the packets group, start with the
+                    device's values. A link that goes is opened again every RETRY_S; a
+                    capture that ends without being asked to says why and waits for Start.
+                    ]=]
+                    function link_step()
+                        local now = br.clock()
+
+                        if link.cmd then
+                            if st.done < link.cmd then return end
+                            local what = link.what
+                            link.cmd = nil
+                            if not st.ok then
+                                link.error = st.error or (what .. " failed")
+                                if what == "open" then
+                                    link.phase, link.retry = "wait", now + RETRY_S
+                                elseif what == "start" then
+                                    link.want = false
+                                end
+                                return
+                            end
+                            if what ~= "decoder" then link.error = nil end
+                        end
+
+                        if link.phase == "wait" then
+                            if now >= link.retry then link.phase = "open" end
+                            return
+                        end
+                        if link.phase == "open" then
+                            command(br.open{ backend = "remote", path = SOCKET ~= "" and SOCKET or nil }, "open")
+                            link.phase = "opened"
+                            return
+                        end
+
+                        -- The packets group: it stays for every capture of the session, and
+                        -- is made again when the trigger's lines change.
+                        if not link.packets or link.regroup then
+                            packets_group()
+                            return
+                        end
+
+                        if st.state == "closed" then
+                            link.error = link.error or "link lost"
+                            link.phase, link.retry = "wait", now + RETRY_S
+                            return
+                        end
+                        if st.busy then return end
+                        if st.state == "ready" and link.want then
+                            command(br.start(start_config()), "start")
+                        elseif st.state == "ended" and link.want then
+                            if link.stopping then
+                                link.stopping = false
+                            else
+                                -- Ended without being asked: say why, and open the link again
+                                -- (it may come back); the capture starts again with it.
+                                link.error = st.error or (st.backend == "remote" and "link closed") or "capture ended"
+                                link.phase, link.retry = "wait", now + RETRY_S
+                            end
+                        end
+                    end
+
+                    --[=[
+                    The packets group over the lines marked to trigger (all of them: no
+                    lines= at all). Its items start again, so the packets do too. None
+                    marked: no group, and the trigger waits.
+                    ]=]
+                    function packets_group()
+                        local lines, all = {}, true
+                        for _, c in ipairs(channels) do
+                            if c.real and c.captured then
+                                if c.trig then lines[#lines + 1] = tostring(c.ch) else all = false end
+                            end
+                        end
+                        if link.packets then br.decoder_remove("packets") end
+                        link.packets, link.regroup = false, false
+                        pk.list, view.shown = {}, nil
+                        if #lines == 0 and cap.info then return end
+                        local args = "gap=" .. PACKET_GAP_S .. ",name=packets"
+                        if not all and #lines > 0 then args = args .. ",lines=" .. table.concat(lines, "+") end
+                        link.packets = true
+                        local id = br.decoder_add("activity", args, nil, PACKET_HOLD_S)
+                        command(id, "decoder")
+                        -- Until it is in, br.last still gives the old group's packets.
+                        pk.pending = id
+                    end
+
+                    function channel_trig(ch, on)
+                        channels[ch + 1].trig = on
+                        link.regroup = true
+                    end
+
+                    -------------------------------------------------------------------
+                    -- Decoders
+
+                    --[=[
+                    The decoders set up, each { proto, label, args }: its protocol, its
+                    label (i2c1: the protocol and the lowest number free, so a label comes
+                    back after a remove), and its arguments by name, lines as channel
+                    numbers. A channel has at most one role, a line of one decoder. The
+                    channel's role dropdown and the decoder's form are two views of the same
+                    args. A decoder runs in the session (as its label) once it is complete:
+                    every required argument set and at least one line; until then it is
+                    incomplete, set up but not run.
+                    ]=]
+                    decs = { list = {}, status = {}, items = {}, protos = nil }
+                    -- Protocols libcodec has that the UI does not offer: activity is the
+                    -- trigger's own.
+                    HIDDEN_PROTOCOLS = { activity = true }
+                    TITLES = { i2c = "I2C", uart = "UART" }
+                    -- Values to pick from for number arguments, and the first one a new
+                    -- decoder takes for a required one with no default.
+                    PRESETS = {
+                        baud = { 9600, 19200, 38400, 57600, 115200, 230400, 460800, 921600 },
+                        bits = { 5, 6, 7, 8, 9 },
+                        gap = { 2, 5, 10, 20, 50 },
+                    }
+                    FIRST = { baud = 115200 }
+
+                    function protocols()
+                        if not decs.protos then
+                            decs.protos = {}
+                            for _, p in ipairs(br.protocols() or {}) do
+                                if not HIDDEN_PROTOCOLS[p.name] then decs.protos[#decs.protos + 1] = p end
+                            end
+                        end
+                        return decs.protos
+                    end
+
+                    function proto_def(name)
+                        for _, p in ipairs(protocols()) do
+                            if p.name == name then return p end
+                        end
+                        return nil
+                    end
+
+                    function proto_title(name)
+                        return TITLES[name] or name:upper()
+                    end
+
+                    function next_label(proto)
+                        local n = 1
+                        while dec_find(proto .. n) do n = n + 1 end
+                        return proto .. n
+                    end
+
+                    function dec_find(label)
+                        for _, d in ipairs(decs.list) do
+                            if d.label == label then return d end
+                        end
+                        return nil
+                    end
+
+                    function dec_lines(d)
+                        local out = {}
+                        for _, p in ipairs(proto_def(d.proto).params) do
+                            if p.type == "line" then out[#out + 1] = p.name end
+                        end
+                        return out
+                    end
+
+                    -- The decoder and line a channel is, or nil.
+                    function role_of(ch)
+                        for _, d in ipairs(decs.list) do
+                            for _, name in ipairs(dec_lines(d)) do
+                                if d.args[name] == ch then return d, name end
+                            end
+                        end
+                        return nil
+                    end
+
+                    function role_text(ch)
+                        local d, name = role_of(ch)
+                        return d and (d.label .. " " .. name:upper()) or nil
+                    end
+
+                    -- The dropdown's text: the role, or nothing, and its mark.
+                    function role_button_text(ch)
+                        return pad_to(cut(role_text(ch) or "", CELL_W - 7), CELL_W - 7) .. " ▾"
+                    end
+
+                    function dec_complete(d)
+                        local lines = 0
+                        for _, p in ipairs(proto_def(d.proto).params) do
+                            local v = d.args[p.name]
+                            if p.required and v == nil then return false end
+                            if p.type == "line" and v ~= nil then lines = lines + 1 end
+                        end
+                        return lines > 0
+                    end
+
+                    function dec_args(d)
+                        local out = { "name=" .. d.label }
+                        for _, p in ipairs(proto_def(d.proto).params) do
+                            if d.args[p.name] ~= nil then out[#out + 1] = p.name .. "=" .. tostring(d.args[p.name]) end
+                        end
+                        return table.concat(out, ",")
+                    end
+
+                    -- The session runs the decoder as it now is: added again, or removed
+                    -- while incomplete.
+                    function dec_sync(d)
+                        if d.running then
+                            br.decoder_remove(d.label)
+                            d.running = false
+                        end
+                        if dec_complete(d) and not d.removed then
+                            br.decoder_add(d.proto, dec_args(d))
+                            d.running = true
+                            -- Its items start again: the pane reads them anew.
+                            d.gen = (d.gen or 0) + 1
+                        end
+                    end
+
+                    --[=[
+                    ch becomes line name of d (d nil: no role). The channel's role before
+                    goes, and so does the channel d had for that line; each decoder that
+                    changes runs again.
+                    ]=]
+                    function role_assign(ch, d, name)
+                        local changed = {}
+                        local od, oname = role_of(ch)
+                        if od then
+                            od.args[oname] = nil
+                            changed[od] = true
+                        end
+                        if d then
+                            d.args[name] = ch
+                            changed[d] = true
+                        end
+                        for c in pairs(changed) do dec_sync(c) end
+                    end
+
+                    function dec_remove(d)
+                        d.removed = true
+                        dec_sync(d)
+                        for i, x in ipairs(decs.list) do
+                            if x == d then table.remove(decs.list, i) end
+                        end
+                        dv.cache[d.label] = nil
+                        if dv.tab == d.label then
+                            if dv.detail then dv_detail_close() end
+                            dv.tab, dv.sel = nil, nil
+                        end
+                    end
+
+                    -- How a decoder stands: running (with its items), incomplete, or
+                    -- stopped with an error.
+                    function dec_state(d)
+                        local st_ = decs.status[d.label]
+                        if not d.running then return "[" .. FAINT .. "]incomplete[/]" end
+                        if st_ and st_.error then return "[" .. ERROR .. "]" .. cut(st_.error, 30) .. "[/]" end
+                        return "[" .. GRAY .. "]newest #" .. (decs.items[d.label] or 0) .. "[/]"
+                    end
+
+                    -- The session's view of the decoders, each poll: errors, and the newest
+                    -- item's id (it goes up as the decoder decodes).
+                    function decs_read()
+                        if #decs.list == 0 then return end
+                        decs.status = {}
+                        for _, d in ipairs(br.decoders() or {}) do decs.status[d.label] = d end
+                        for _, d in ipairs(decs.list) do
+                            local last = d.running and br.last(d.label, 1)
+                            decs.items[d.label] = last and last[1] and last[1].id or 0
+                        end
+                    end
+
+                    -------------------------------------------------------------------
+                    -- The decoder popup
+
+                    --[=[
+                    The popup takes the lanes' place in the content frame while it is open,
+                    a page at a time: the decoders and the protocols to add (menu), a
+                    decoder's arguments (form), or values to pick from (pick: a line, a
+                    number, or a channel's role from its dropdown). Its rows and buttons are
+                    made with the page and shown as a page needs them. Esc goes back a
+                    page, and from the first one closes it, the focus going back to what
+                    opened it.
+                    ]=]
+                    SHEET_LABEL_W = 12
+                    sheet = { open = false, page = nil, from = nil, draft = nil, form = nil }
+                    ui.sh = {}
+
+                    -- A row's value or an action button: no QuickStrike key, and its strike
+                    -- does what the page says.
+                    function sheet_widget(w, id, focus_, strike_)
+                        ui.sh[id] = w
+                        nav_widget(w, id, focus_)
+                        table.insert(strike_, function() sheet_strike(id) end)
+                    end
+
+                    function sheet_strike(id)
+                        local kind, i = id:match("^sh:(%a)(%d+)$")
+                        local item = sheet.page and (kind == "r" and sheet.page.rows or sheet.page.acts)[tonumber(i)]
+                        if item and item.act then item.act() end
+                    end
+
+                    --[=[
+                    Shows a page: { title, rows = { {label, value, note, act}, ... }, acts =
+                    { {text, act}, ... }, esc, focus (a row's or an action's id) }.
+                    ]=]
+                    function sheet_show(page)
+                        if not sheet.open then sheet.from = nav.focus end
+                        sheet.open, sheet.page = true, page
+                        sh_title.content = " [" .. BRIGHT .. " bold]" .. page.title .. "[/]"
+                        for i = 1, @@SHEET_ROWS_N@@ do
+                            local r = page.rows[i]
+                            local row = _ENV["sh_row_" .. i]
+                            row.w.hidden = r == nil
+                            if r then
+                                _ENV["sh_label_" .. i].content = " " .. (r.label or "")
+                                _ENV["sh_val_" .. i].content = r.value or ""
+                                _ENV["sh_note_" .. i].content = r.note or ""
+                            end
+                        end
+                        for i = 1, @@SHEET_ACTS_N@@ do
+                            local a = page.acts[i]
+                            _ENV["sh_act_" .. i].w.hidden = a == nil
+                            if a then _ENV["sh_act_" .. i].content = a.text end
+                        end
+                        popup_size(page)
+                        for _, w in ipairs({ bg_top, bg_mid, bg_bottom }) do w.w.hidden = false end
+                        bands_filler.w.hidden = true
+                        bands_update()
+                        bg_draw()
+                        nav_focus(page.focus or (page.rows[1] and "sh:r1") or "sh:a1")
+                    end
+
+                    function sheet_close()
+                        sheet.open, sheet.page = false, nil
+                        for _, w in ipairs({ bg_top, bg_mid, bg_bottom }) do w.w.hidden = true end
+                        bands_filler.w.hidden = false
+                        bands_update()
+                        nav_untrap()
+                        nav_focus(nav.w[sheet.from or ""] and sheet.from or "btn:dec")
+                    end
+
+                    --[=[
+                    The popup is a box set into the lanes: the bands area is drawn as text
+                    while it is open, dimmed, and cut around the box into the rows above
+                    (bg_top), the row of the box's height (bg_left, the box, bg_right) and the
+                    rows below (bg_bottom). All four come from one grid of the bands area,
+                    made from the frame's single br.columns query, so the lanes run on
+                    through the cut. bg: the box's place and size, which the slices' styles
+                    read.
+                    ]=]
+                    bg = { top = 0, left = 0, pw = 40, ph = 10, w = 0, h = 0 }
+                    DIM_TEXT = "#3c3c3c"
+                    DIM_LINE = "#5c5c5c"
+                    DIM_EDGE = PRIMARY .. " dim"
+
+                    -- The box's size from its page: as wide as its widest row, title or
+                    -- actions, as tall as its rows, capped to the bands area.
+                    function popup_size(page)
+                        local W = math.max(40, lay.width or 80)
+                        local width = zlen(page.title) + 2
+                        for _, r in ipairs(page.rows) do
+                            width = math.max(width, SHEET_LABEL_W + 1 + utf8.len(r.value or "") + 4 + 1 + zlen(r.note or ""))
+                        end
+                        local acts = 1
+                        for _, a in ipairs(page.acts) do acts = acts + utf8.len(a.text) + 5 end
+                        width = math.max(width, acts, 30)
+                        bg.pw = math.min(W - 2, width + 3)
+                        -- The bands' whole height: the decoder pane makes way (dv_update).
+                        local room = dv.total_h > 0 and dv.total_h or lay.height or 20
+                        bg.want = math.min(math.max(6, room), #page.rows + 6)
+                        bg.ph = bg.want
+                        -- A note that does not fit is cut, so no row is wider than the box.
+                        for i, r in ipairs(page.rows) do
+                            local room = bg.pw - 2 - SHEET_LABEL_W - 1 - (utf8.len(r.value or "") + 4) - 2
+                            _ENV["sh_note_" .. i].content = zcut(r.note or "", math.max(0, room))
+                        end
+                    end
+
+                    -- The bands area as text, w by h cells: rows of { glyphs, styles }.
+                    function bg_grid(W, H)
+                        local D = W - CELL_W
+                        local cols = D - 2 - LABEL_W
+                        local grid = {}
+                        local function row()
+                            local cs, st_ = {}, {}
+                            for x = 1, W do cs[x], st_[x] = " ", DIM_TEXT end
+                            cs[1], st_[1] = "┃", DIM_EDGE
+                            cs[D], st_[D] = "┃", DIM_EDGE
+                            cs[W] = "│"
+                            grid[#grid + 1] = { cs, st_ }
+                            return cs, st_
+                        end
+                        local function put(cs, st_, x, text, style)
+                            local k = 0
+                            for _, cp in utf8.codes(text) do
+                                if x + k < D or (x + k > D and x + k < W) then
+                                    -- A bracket would start a ZML style: escaped, one cell still.
+                                    local g = utf8.char(cp)
+                                    cs[x + k], st_[x + k] = g == "[" and "\\[" or g, style or DIM_TEXT
+                                end
+                                k = k + 1
+                            end
+                        end
+                        for _, c in ipairs(channels) do
+                            if c.real and #grid < H then
+                                if sep_height(c.ch) == 1 then
+                                    local cs, st_ = row()
+                                    for x = 2, W - 1 do cs[x] = "─" end
+                                    cs[1], cs[D], cs[W] = "┠", "╂", "┤"
+                                end
+                                local n = lane_height(c.ch)
+                                local l = band_open(c) and frame.lanes[c.ch]
+                                local glyphs = l and lane_build(l, cols, n, nil)
+                                for r = 1, n do
+                                    local cs, st_ = row()
+                                    if not band_open(c) then
+                                        put(cs, st_, 2, pad_to(cut(c.name, 4), 5) .. c.ch .. (c.captured and "" or "  not captured"))
+                                    elseif n == 1 then
+                                        put(cs, st_, 2, pad_to(cut(c.name, 4), 5) .. c.ch)
+                                    elseif r == 1 then
+                                        put(cs, st_, 2, cut(c.name, LABEL_W - 1))
+                                    elseif r == 2 then
+                                        put(cs, st_, 2, tostring(c.ch))
+                                    end
+                                    if glyphs then
+                                        for x = 1, cols do
+                                            local g = glyphs[r][x]
+                                            if g ~= " " then cs[1 + LABEL_W + x], st_[1 + LABEL_W + x] = g, DIM_LINE end
+                                        end
+                                    end
+                                    -- The settings cell, as text: its toggles and dropdown.
+                                    local cell = ({
+                                        "[ " .. (c.enabled and "●" or "○") .. " " .. c.ch .. " Enabled ]",
+                                        lay.rows >= 2 and c.captured and ("[ " .. role_button_text(c.ch) .. " ]") or nil,
+                                        lay.rows >= 3 and c.captured and ("[ " .. (c.trig and "●" or "○") .. " Trigger   ]") or nil,
+                                    })[r]
+                                    if not c.captured and r == 1 then cell = "off" end
+                                    if cell then put(cs, st_, D + 1, cell) end
+                                end
+                            end
+                        end
+                        while #grid < H do row() end
+                        return grid
+                    end
+
+                    -- Draws the slices around the box, for this frame.
+                    function bg_draw()
+                        local W, H = lay.width or 0, lay.height or 0
+                        if not sheet.open or W < CELL_W + 20 or H < 4 then return end
+                        -- From the height the page wants: the bands' height can still be
+                        -- growing (the decoder pane making way).
+                        bg.ph = math.min(bg.want or bg.ph, H)
+                        bg.pw = math.min(bg.pw, W - 2)
+                        bg.top = math.max(0, (H - bg.ph) // 2)
+                        bg.left = math.max(1, (W - bg.pw) // 2)
+                        local grid = bg_grid(W, H)
+                        local function line(r, a, b)
+                            local cs, st_ = grid[r][1], grid[r][2]
+                            local part = {}
+                            for x = a, b do part[#part + 1] = cs[x] end
+                            return zml_row(part, function(x) return st_[a + x - 1] end)
+                        end
+                        local top, left, right, bottom = {}, {}, {}, {}
+                        for r = 1, bg.top do top[#top + 1] = line(r, 1, W) end
+                        for r = bg.top + 1, bg.top + bg.ph do
+                            left[#left + 1] = line(r, 1, bg.left)
+                            right[#right + 1] = line(r, bg.left + bg.pw + 1, W)
+                        end
+                        for r = bg.top + bg.ph + 1, H do bottom[#bottom + 1] = line(r, 1, W) end
+                        bg_top.content = table.concat(top, "\n")
+                        bg_left.content = table.concat(left, "\n")
+                        bg_right.content = table.concat(right, "\n")
+                        bg_bottom.content = table.concat(bottom, "\n")
+                    end
+
+                    -- A line drawn faint, its own styles gone: what is behind the popup.
+                    function zdim(s, style)
+                        local out = {}
+                        for line_ in (s .. "\n"):gmatch("(.-)\n") do
+                            out[#out + 1] = "[" .. (style or DIM_TEXT) .. "]" .. line_:gsub("%[[^\93]*%]", "") .. "[/]"
+                        end
+                        return table.concat(out, "\n")
+                    end
+
+                    -- The value of an argument, as a form shows it.
+                    function arg_text(p, v)
+                        if v == nil then return "—" end
+                        if p.type == "line" then
+                            local c = channels[v + 1]
+                            return (c and c.name or "CH") .. " " .. v
+                        end
+                        return tostring(v)
+                    end
+
+                    -- The menu: the decoders set up, each opening its form, then the
+                    -- protocols to add one of.
+                    function view_menu()
+                        local rows = {}
+                        for _, d in ipairs(decs.list) do
+                            local lines = {}
+                            for _, name in ipairs(dec_lines(d)) do
+                                if d.args[name] then lines[#lines + 1] = name:upper() .. " " .. d.args[name] end
+                            end
+                            rows[#rows + 1] = { label = "[" .. BRIGHT .. "]" .. d.label .. "[/]", value = proto_title(d.proto),
+                                note = "[" .. GRAY .. "]" .. table.concat(lines, " ") .. "[/]  " .. dec_state(d),
+                                act = function() view_form(d, d.proto) end }
+                        end
+                        for _, p in ipairs(protocols()) do
+                            rows[#rows + 1] = { label = #rows == #decs.list and ("[" .. GRAY .. "]ADD[/]") or "",
+                                value = "+ " .. proto_title(p.name),
+                                note = "[" .. FAINT .. "]" .. cut(p.summary or "", 40) .. "[/]",
+                                act = function() view_form(nil, p.name) end }
+                        end
+                        sheet_show({ title = "DECODERS", rows = rows, acts = { { text = "Close", act = sheet_close } },
+                                     esc = sheet_close })
+                    end
+
+                    --[=[
+                    A decoder's form, new (d nil) or set up: a row per argument, lines and
+                    numbers picked from lists; Add or Save, Remove, Cancel. The form edits a
+                    draft; Add and Save make it the decoder's, taking its lines from any role
+                    they had.
+                    ]=]
+                    function view_form(d, proto, keep, focus_)
+                        local def = proto_def(proto)
+                        if not keep then
+                            sheet.form = { d = d, proto = proto }
+                            sheet.draft = {}
+                            for _, p in ipairs(def.params) do
+                                if d then
+                                    sheet.draft[p.name] = d.args[p.name]
+                                elseif p.required and p.type ~= "line" and FIRST[p.name] then
+                                    sheet.draft[p.name] = FIRST[p.name]
+                                end
+                            end
+                        end
+                        local label = d and d.label or next_label(proto)
+                        local rows = {}
+                        for _, p in ipairs(def.params) do
+                            local v = sheet.draft[p.name]
+                            local note
+                            if p.required and v == nil then
+                                note = "[" .. ERROR .. "]required[/]"
+                            elseif not p.required then
+                                note = "[" .. FAINT .. "]optional[/]"
+                            elseif p.default then
+                                note = "[" .. FAINT .. "]default " .. p.default .. "[/]"
+                            end
+                            if not p.required and p.default and v == nil then
+                                note = "[" .. FAINT .. "]default " .. p.default .. "[/]"
+                            end
+                            rows[#rows + 1] = { label = (p.required and "[" .. TEXT .. "]" or "[" .. GRAY .. "]") .. p.name:upper() .. "[/]",
+                                value = arg_text(p, v), note = note, act = function() view_pick(p) end }
+                        end
+                        local acts
+                        if d then
+                            acts = { { text = "Save", act = form_commit }, { text = "Remove", act = function()
+                                dec_remove(d)
+                                view_menu()
+                            end }, { text = "Cancel", act = view_menu } }
+                        else
+                            acts = { { text = "Add", act = form_commit }, { text = "Cancel", act = view_menu } }
+                        end
+                        sheet_show({ title = proto_title(proto) .. "  [" .. GRAY .. "]" .. label .. "[/]", rows = rows,
+                                     acts = acts, esc = view_menu, focus = focus_ })
+                    end
+
+                    function form_commit()
+                        local f = sheet.form
+                        local d = f.d
+                        if not d then
+                            d = { proto = f.proto, label = next_label(f.proto), args = {} }
+                            decs.list[#decs.list + 1] = d
+                        end
+                        local lines = {}
+                        for _, p in ipairs(proto_def(d.proto).params) do
+                            if p.type == "line" then
+                                lines[p.name] = true
+                            else
+                                d.args[p.name] = sheet.draft[p.name]
+                            end
+                        end
+                        -- Lines through role_assign, so a channel keeps one role.
+                        for name in pairs(lines) do d.args[name] = nil end
+                        for name in pairs(lines) do
+                            local ch = sheet.draft[name]
+                            if ch ~= nil then
+                                local od, oname = role_of(ch)
+                                if od and od ~= d then
+                                    od.args[oname] = nil
+                                    dec_sync(od)
+                                end
+                                d.args[name] = ch
+                            end
+                        end
+                        dec_sync(d)
+                        sheet_close()
+                        -- A decoder added opens its tab.
+                        if not f.d then dv_open(d) end
+                    end
+
+                    -- Picking an argument's value: a captured channel, or a number.
+                    function view_pick(p)
+                        local rows = {}
+                        local cur = sheet.draft[p.name]
+                        local function pick(v)
+                            return function()
+                                sheet.draft[p.name] = v
+                                local i = 1
+                                for k, q in ipairs(proto_def(sheet.form.proto).params) do
+                                    if q.name == p.name then i = k end
+                                end
+                                view_form(sheet.form.d, sheet.form.proto, true, "sh:r" .. i)
+                            end
+                        end
+                        local function mark(v) return v == cur and ("[" .. BRIGHT .. "]●[/]") or "" end
+                        if p.type == "line" then
+                            if not p.required then
+                                rows[#rows + 1] = { label = mark(nil), value = "—", note = "[" .. FAINT .. "]none[/]", act = pick(nil) }
+                            end
+                            for _, c in ipairs(channels) do
+                                if c.real and c.captured then
+                                    local other = role_text(c.ch)
+                                    local od = role_of(c.ch)
+                                    if od and sheet.form.d == od then other = nil end
+                                    for name, v in pairs(sheet.draft) do
+                                        if v == c.ch and name ~= p.name and proto_def(sheet.form.proto) then
+                                            for _, q in ipairs(proto_def(sheet.form.proto).params) do
+                                                if q.name == name and q.type == "line" then other = "this " .. name:upper() end
+                                            end
+                                        end
+                                    end
+                                    rows[#rows + 1] = { label = mark(c.ch), value = c.name .. " " .. c.ch,
+                                        note = other and ("[" .. GRAY .. "]now " .. other .. "[/]") or "", act = pick(c.ch) }
+                                end
+                            end
+                        else
+                            local list = PRESETS[p.name] or {}
+                            local found = false
+                            for _, v in ipairs(list) do
+                                found = found or v == cur
+                                rows[#rows + 1] = { label = mark(v), value = tostring(v), act = pick(v) }
+                            end
+                            if cur ~= nil and not found then
+                                table.insert(rows, 1, { label = mark(cur), value = tostring(cur), act = pick(cur) })
+                            end
+                            if not p.required then
+                                rows[#rows + 1] = { label = mark(nil), value = "default",
+                                    note = "[" .. FAINT .. "]" .. (p.default or "") .. "[/]", act = pick(nil) }
+                            end
+                        end
+                        local focus_
+                        for i, r in ipairs(rows) do
+                            if r.label ~= "" then focus_ = "sh:r" .. i end
+                        end
+                        sheet_show({ title = p.name:upper() .. "  [" .. GRAY .. "]" .. (sheet.form.d and sheet.form.d.label
+                                or next_label(sheet.form.proto)) .. "[/]", rows = rows, acts = { { text = "Back", act = function()
+                                view_form(sheet.form.d, sheet.form.proto, true)
+                            end } }, esc = function() view_form(sheet.form.d, sheet.form.proto, true) end, focus = focus_ })
+                    end
+
+                    -- A channel's dropdown: no role, or a line of a decoder that has it free,
+                    -- or adding a decoder; and the channel's Trigger, which the settings cell
+                    -- has no room for at two rows.
+                    function view_role(ch)
+                        local c = channels[ch + 1]
+                        local cd, cname = role_of(ch)
+                        local rows = {}
+                        local focus_ = "sh:r1"
+                        local function mark(on) return on and ("[" .. BRIGHT .. "]●[/]") or "" end
+                        rows[1] = { label = mark(cd == nil), value = "—", note = "[" .. FAINT .. "]none[/]", act = function()
+                            role_assign(ch, nil)
+                            sheet_close()
+                        end }
+                        for _, d in ipairs(decs.list) do
+                            for _, name in ipairs(dec_lines(d)) do
+                                local holder = d.args[name]
+                                if holder == nil or holder == ch then
+                                    local here = d == cd and name == cname
+                                    rows[#rows + 1] = { label = mark(here), value = d.label .. " " .. name:upper(),
+                                        note = d.running and "" or "[" .. FAINT .. "]incomplete[/]", act = function()
+                                            role_assign(ch, d, name)
+                                            sheet_close()
+                                        end }
+                                    if here then focus_ = "sh:r" .. #rows end
+                                end
+                            end
+                        end
+                        rows[#rows + 1] = { label = "", value = "+ Add decoder", act = view_menu }
+                        rows[#rows + 1] = { label = "", value = (c.trig and "● " or "○ ") .. "Trigger",
+                            note = "[" .. FAINT .. "]its activity makes packets[/]", act = function()
+                                c.trig = not c.trig
+                                channel_trig(ch, c.trig)
+                                if ui.trig_set[ch] then ui.trig_set[ch](c.trig) end
+                                view_role(ch)
+                            end }
+                        sheet_show({ title = c.name .. " " .. ch .. "  [" .. GRAY .. "]ROLE[/]", rows = rows,
+                                     acts = { { text = "Close", act = sheet_close } }, esc = sheet_close, focus = focus_ })
+                    end
+
+                    -------------------------------------------------------------------
+                    -- The decoder pane
+
+                    --[=[
+                    Under the bands once there is a decoder: a tab per decoder set in the
+                    content frame's bottom edge (the strip), and the open one's view below.
+                    I2C: its transactions as a list, Wireshark style, the selected one's
+                    details beside it (Enter), which also shows it in the lanes, paused.
+                    UART: TX on the left, RX on the right, the newest bytes as text or a hex
+                    dump. An incomplete decoder's tab is faint and its view says what it
+                    lacks. A paused view reads only what started before the pause, so the
+                    pane holds still with the lanes. dv: the open tab (a label), the I2C selection (an item
+                    id; nil follows the newest) and its first row in view, whether the
+                    details are open, which view shows (kind), and per decoder what has
+                    been read (cache).
+                    ]=]
+                    dv = { tab = nil, sel = nil, top = 1, detail = false, kind = "none", cache = {},
+                           inner = 0, h = 0, bands_h = 0, total_h = 0 }
+                    ui.dv = {}
+                    DV_ROWS_MAX = 2000
+                    DV_BYTES_MAX = 16384
+                    -- A decoder catching up is read in up to DV_READS spans a poll, of at most
+                    -- DV_READ_MAX items each.
+                    DV_READ_MAX = 1000
+                    DV_READS = 5
+                    -- The selected row away from the list, and with its details open.
+                    SEL_IDLE = "@#303030 " .. BRIGHT
+                    SEL_OPEN = "@" .. ACCENT .. " black bold"
+                    I2C_FLAGS = {
+                        nak_addr = "address not acknowledged",
+                        nak_data = "data not acknowledged",
+                        cut_byte = "byte cut short by a START or STOP",
+                        incomplete = "no STOP",
+                        loss = "records lost inside it",
+                    }
+
+                    function dv_on()
+                        return #decs.list > 0
+                    end
+
+                    -- The decoder whose tab is open: dv.tab, or the first one.
+                    function dv_dec()
+                        local d = dv.tab and dec_find(dv.tab)
+                        if not d then
+                            d = decs.list[1]
+                            dv.tab, dv.sel = d and d.label, nil
+                        end
+                        return d
+                    end
+
+                    -- What takes the focus in the open view: the list, the Hex toggle, or
+                    -- the strip itself.
+                    function dv_body()
+                        return (dv.kind == "i2c" and "dv:list") or (dv.kind == "uart" and "dv:hex") or "tabs"
+                    end
+
+                    function dv_ok(id)
+                        return (id == "tabs" and dv_on()) or (id == "dv:list" and dv.kind == "i2c")
+                            or (id == "dv:hex" and dv.kind == "uart")
+                    end
+
+                    function dv_open(d)
+                        if dv.detail then dv_detail_close() end
+                        dv.tab, dv.sel, dv.top = d.label, nil, 1
+                        dv_update()
+                        if (nav.focus or ""):find("^dv:") then nav_focus(dv_body()) end
+                    end
+
+                    function dv_tab_step(k)
+                        local cur, n = dv_dec(), #decs.list
+                        for i, d in ipairs(decs.list) do
+                            if d == cur then return dv_open(decs.list[(i - 1 + k) % n + 1]) end
+                        end
+                    end
+
+                    function has_flag(flags, name)
+                        for _, f in ipairs(flags or {}) do
+                            if f == name then return true end
+                        end
+                        return false
+                    end
+
+                    -- The newest n of list, in place.
+                    function keep_last(list, n)
+                        local drop = #list - n
+                        if drop <= 0 then return end
+                        table.move(list, drop + 1, #list, 1)
+                        for i = #list, n + 1, -1 do list[i] = nil end
+                    end
+
+                    --[=[
+                    What has been read of d's items: I2C rows (items with their segments),
+                    UART bytes by side ({ v, err }, with the count ever read and the errors),
+                    and from: the start of the newest item read, where the next read starts.
+                    An item overlapping from comes again, so the ids of those are kept
+                    (seen, id to stop). A decoder run again starts over (its gen).
+                    ]=]
+                    function dv_cache(d)
+                        local c = dv.cache[d.label]
+                        if not c or c.gen ~= d.gen or c.proto ~= d.proto then
+                            c = { gen = d.gen, proto = d.proto, rows = {}, from = nil, seen = {},
+                                  tx = {}, rx = {}, n = { tx = 0, rx = 0 }, errs = { tx = 0, rx = 0 } }
+                            dv.cache[d.label] = c
+                            if dv.tab == d.label then
+                                dv.sel, dv.top = nil, 1
+                                if dv.detail then dv_detail_close() end
+                            end
+                        end
+                        return c
+                    end
+
+                    function dv_take(c, it)
+                        if c.proto ~= "uart" then
+                            c.rows[#c.rows + 1] = it
+                            if #c.rows > DV_ROWS_MAX + 200 then keep_last(c.rows, DV_ROWS_MAX) end
+                            return
+                        end
+                        local side = (it.words[1] and it.words[1].lane) or (it.fields.dir == "RX" and "rx" or "tx")
+                        local list = c[side]
+                        for _, wd in ipairs(it.words) do
+                            local err = has_flag(wd.flags, "error")
+                            list[#list + 1] = { v = wd.value, err = err }
+                            c.n[side] = c.n[side] + 1
+                            if err then c.errs[side] = c.errs[side] + 1 end
+                        end
+                        if #list > DV_BYTES_MAX + 1024 then keep_last(list, DV_BYTES_MAX) end
+                    end
+
+                    --[=[
+                    The newest n items of d starting at or before tick bound. Live (no
+                    bound), br.last; paused, spans back from the pause, twice as long each
+                    time until they hold n or reach the capture's start.
+                    ]=]
+                    function dv_seed(d, n, bound)
+                        if bound == math.maxinteger then return br.last(d.label, n, 1) end
+                        local span = math.max(1, cap.rate // 10)
+                        while true do
+                            local a = math.max(0, bound - span)
+                            local items = br.items(d.label, a, bound, 4 * n, 1)
+                            if not items or #items >= n or a == 0 or #items >= 4 * n then
+                                if items then keep_last(items, n) end
+                                return items
+                            end
+                            span = span * 2
+                        end
+                    end
+
+                    --[=[
+                    New items of every running decoder, each poll: the newest ones first
+                    (dv_seed), then spans on from the newest read, as many as a decoder
+                    catching up needs. A paused view reads only what started before the
+                    pause, so a decoder added while paused still shows what it has.
+                    ]=]
+                    function dv_read()
+                        local bound = view.paused and math.max(0, view.R - 1) or math.maxinteger
+                        for _, d in ipairs(decs.list) do
+                            if d.running then
+                                local c = dv_cache(d)
+                                for _ = 1, DV_READS do
+                                    local items
+                                    if c.from then
+                                        if c.from > bound then break end
+                                        items = br.items(d.label, c.from, bound, DV_READ_MAX, 1)
+                                    else
+                                        items = dv_seed(d, d.proto == "uart" and 256 or DV_ROWS_MAX, bound)
+                                    end
+                                    if not items or #items == 0 then break end
+                                    local from = c.from or 0
+                                    for _, it in ipairs(items) do
+                                        if not c.seen[it.id] then
+                                            dv_take(c, it)
+                                            c.seen[it.id] = it.stop
+                                        end
+                                        from = math.max(from, it.start)
+                                    end
+                                    c.from = from
+                                    for id, stop in pairs(c.seen) do
+                                        if stop < from then c.seen[id] = nil end
+                                    end
+                                    if #items < DV_READ_MAX then break end
+                                end
+                            end
+                        end
+                    end
+
+                    function dv_row_index(c, id)
+                        for i = #c.rows, 1, -1 do
+                            if c.rows[i].id == id then return i end
+                        end
+                        return nil
+                    end
+
+                    -- Shows a transaction in the lanes, paused: in trigger mode as the packet
+                    -- on show, in roll mode zoomed to fit, the cursor at its start.
+                    function dv_show(it)
+                        if not view.paused then pause(true) end
+                        if view.trigger then
+                            view.shown = { id = -1, start = it.start, stop = it.stop, item = dv.tab .. " #" .. it.id }
+                            view.cursor, view.win_a = nil, nil
+                        else
+                            local cols = math.max(1, frame.cols)
+                            local span = it.stop - it.start + 1
+                            local i = 1
+                            while i < #ZOOMS and ZOOMS[i] * cols < span * 1.25 do i = i + 1 end
+                            view.zoom_i = i
+                            local wm = (st and st.store) and st.store.watermark or 0
+                            view.R = math.min(wm + 1, it.stop + 1 + (ZOOMS[i] * cols - span) // 2)
+                            view.cursor = it.start
+                        end
+                    end
+
+                    -- The details close, and the view goes live again.
+                    function dv_detail_close()
+                        dv.detail = false
+                        if view.shown and view.shown.item then view.shown = nil end
+                        if view.paused then pause(false) end
+                    end
+
+                    -- The I2C list's keys, with the focus on it: select, open the details,
+                    -- and back out (the details, then the selection). Up from the first row
+                    -- goes to the strip, down from the last to the controls: true then.
+                    DV_LIST_KEYS = { up = true, down = true, pgup = true, pgdn = true, home = true,
+                                     ["end"] = true, ["return"] = true, space = true, esc = true }
+
+                    function dv_list_key(key)
+                        local c = dv_cache(dv_dec())
+                        local rows, n = c.rows, #c.rows
+                        if key == "esc" then
+                            if dv.detail then
+                                dv_detail_close()
+                            elseif dv.sel then
+                                dv.sel = nil
+                            else
+                                KEYS["esc"]()
+                            end
+                            return
+                        end
+                        local i = dv.sel and dv_row_index(c, dv.sel)
+                        if key == "up" and (n == 0 or i == 1) then
+                            nav_focus("tabs")
+                            return true
+                        end
+                        if key == "down" and (n == 0 or i == n) then
+                            nav_focus(CONTROLS[1])
+                            return true
+                        end
+                        if n == 0 then return end
+                        local page = math.max(1, dv.h - 2)
+                        if key == "return" or key == "space" then
+                            i = i or n
+                            dv.sel = rows[i].id
+                            if dv.detail then
+                                dv_detail_close()
+                            else
+                                dv.detail = true
+                                dv_show(rows[i])
+                            end
+                            return
+                        end
+                        -- With none selected, up takes the newest row and down the top one
+                        -- in view: the list is entered from below or from the strip.
+                        if key == "up" then
+                            i = i and i - 1 or n
+                        elseif key == "down" then
+                            i = i and i + 1 or math.min(n, dv.top)
+                        elseif key == "pgup" then
+                            i = math.max(1, (i or n) - page)
+                        elseif key == "pgdn" then
+                            i = math.min(n, (i or n) + page)
+                        elseif key == "home" then
+                            i = 1
+                        else
+                            i = n
+                        end
+                        dv.sel = rows[i].id
+                        if dv.detail then dv_show(rows[i]) end
+                    end
+
+                    -- The list keeps the focus: CEL would take an arrow to the widget beside it.
+                    function dv_list_input(key)
+                        if not dv_list_key(key) then nav_focus("dv:list") end
+                    end
+
+                    -- Which view shows, and the widgets drawn for it. While the popup is open
+                    -- the pane makes way for it (the strip stays), so the popup has the
+                    -- bands' whole height.
+                    function dv_update()
+                        local d = dv_on() and dv_dec()
+                        local status = d and decs.status[d.label]
+                        local kind = "none"
+                        if d and not sheet.open then
+                            kind = "msg"
+                            if d.running and not (status and status.error) and (d.proto == "i2c" or d.proto == "uart") then
+                                kind = d.proto
+                            end
+                        end
+                        if kind ~= dv.kind then
+                            dv.kind = kind
+                            decode_area.w.hidden = kind == "none"
+                            dv_rule.w.hidden = kind == "none"
+                            dv_msg.w.hidden = kind ~= "msg"
+                            dv_i2c.w.hidden = kind ~= "i2c"
+                            dv_uart.w.hidden = kind ~= "uart"
+                            if kind ~= "i2c" and dv.detail and not sheet.open then dv_detail_close() end
+                            redraw_soon()
+                        end
+                        if dv_detail.w.hidden == dv.detail then
+                            dv_detail.w.hidden = not dv.detail
+                            redraw_soon()
+                        end
+                        if kind == "uart" and dv_hex.active ~= (d.hex == true) then
+                            dv_hex.active = d.hex == true
+                            dv_hex.render()
+                        end
+                        for _, f in pairs(ui.dv) do f() end
+                    end
+
+                    --[=[
+                    The strip: the content frame's bottom edge (┡━┺─┤) with the tabs set in
+                    it, the open one bright (the theme's selection with the focus on the
+                    strip), one stopped with an error in ERROR, an incomplete one faint.
+                    ]=]
+                    function dv_strip(width)
+                        if not dv_on() then return hline(width, "joint") end
+                        if width < CELL_W + 8 then return "" end
+                        local D = width - CELL_W
+                        local p_ = sheet.open and DIM_EDGE or PRIMARY
+                        local open = dv_dec()
+                        local out, used = { "[" .. p_ .. "]┡━[/]" }, 2
+                        for i, d in ipairs(decs.list) do
+                            local sep = i > 1 and "━┯━" or ""
+                            local text = " " .. d.label .. " "
+                            local n = utf8.len(sep) + utf8.len(text)
+                            if used + n > D - 2 then
+                                out[#out + 1] = "[" .. p_ .. "]━[/][" .. GRAY .. "]…[/]"
+                                used = used + 2
+                                break
+                            end
+                            local status = decs.status[d.label]
+                            local style = GRAY
+                            if sheet.open then
+                                style = DIM_TEXT
+                            elseif d == open then
+                                style = nav.focus == "tabs" and THEME.input.selected.style or (BRIGHT .. " bold")
+                            elseif not d.running then
+                                style = FAINT
+                            elseif status and status.error then
+                                style = ERROR
+                            end
+                            out[#out + 1] = "[" .. p_ .. "]" .. sep .. "[/][" .. style .. "]" .. text .. "[/]"
+                            used = used + n
+                        end
+                        out[#out + 1] = "[" .. p_ .. "]" .. string.rep("━", math.max(0, D - 1 - used)) .. "┺[/]"
+                        out[#out + 1] = "[" .. (sheet.open and DIM_TEXT or GRAY) .. "]" .. string.rep("─", CELL_W - 1) .. "┤[/]"
+                        return table.concat(out)
+                    end
+
+                    -- An incomplete decoder's view: what it lacks; or why it stopped.
+                    function dv_msg_text(width)
+                        local d = dv_dec()
+                        if not d then return "" end
+                        local status = decs.status[d.label]
+                        local name = "[" .. BRIGHT .. " bold]" .. d.label .. "[/] "
+                        if d.running and status and status.error then
+                            return zcut(" " .. name .. "[" .. ERROR .. "]stopped: " .. status.error .. "[/]", width)
+                        end
+                        local missing, lines, line_names = {}, 0, {}
+                        for _, p in ipairs(proto_def(d.proto).params) do
+                            if p.required and d.args[p.name] == nil then missing[#missing + 1] = p.name:upper() end
+                            if p.type == "line" then
+                                line_names[#line_names + 1] = p.name:upper()
+                                if d.args[p.name] ~= nil then lines = lines + 1 end
+                            end
+                        end
+                        if #missing == 0 and lines == 0 then missing[1] = table.concat(line_names, " or ") end
+                        return zcut(" " .. name .. "[" .. GRAY .. "]is incomplete:[/] [" .. TEXT .. "]"
+                            .. table.concat(missing, ", ") .. "[/] [" .. GRAY .. "]not set.[/]", width) .. "\n"
+                            .. zcut(" [" .. FAINT .. "]Set it from a channel's ▾, or from Add decoder.[/]", width)
+                    end
+
+                    function i2c_data(it)
+                        if not it.data then
+                            it.data = {}
+                            for _, wd in ipairs(it.words) do
+                                if not has_flag(wd.flags, "break") then it.data[#it.data + 1] = wd.value end
+                            end
+                        end
+                        return it.data
+                    end
+
+                    function hex_bytes(bytes, n)
+                        local out = {}
+                        for i = 1, math.min(#bytes, n // 3 + 1) do out[i] = string.format("%02x", bytes[i]) end
+                        local s = table.concat(out, " ")
+                        if #s > n then s = s:sub(1, math.max(0, n - 1)) .. "…" end
+                        return s
+                    end
+
+                    --[=[
+                    The list's columns, as many as fit in width, the lowest ranks first;
+                    DATA takes what is left (at least its w). The newest row at the bottom;
+                    the view follows it until a row is selected, then keeps the selection in
+                    view.
+                    ]=]
+                    I2C_COLS = {
+                        { key = "no", head = "NO", w = 6, rank = 1, right = true },
+                        { key = "time", head = "TIME", w = 11, rank = 4 },
+                        { key = "delta", head = "DELTA", w = 9, rank = 6 },
+                        { key = "addr", head = "ADDRESS", w = 7, rank = 1 },
+                        { key = "dir", head = "DIR", w = 5, rank = 2 },
+                        { key = "len", head = "LEN", w = 3, rank = 3, right = true },
+                        { key = "data", head = "DATA", w = 8, rank = 5, fill = true },
+                        { key = "status", head = "STATUS", w = 8, rank = 1 },
+                    }
+
+                    function dv_list_text(width, height)
+                        local d = dv_dec()
+                        local c = dv_cache(d)
+                        local rows, n = c.rows, #c.rows
+                        local shown = math.max(1, height - 1)
+                        local focus = nav.focus == "dv:list"
+                        local rate = cap.rate
+                        width = width - 1
+
+                        local order, keep, used = {}, {}, 0
+                        for i in ipairs(I2C_COLS) do order[i] = i end
+                        table.sort(order, function(a, b) return I2C_COLS[a].rank < I2C_COLS[b].rank end)
+                        for _, i in ipairs(order) do
+                            local col = I2C_COLS[i]
+                            if used + col.w + 1 <= width then keep[i], used = true, used + col.w + 1 end
+                        end
+                        local fill = math.max(0, width - used)
+                        local function line(vals)
+                            local out = {}
+                            for i, col in ipairs(I2C_COLS) do
+                                if keep[i] then
+                                    local w_ = col.w + (col.fill and fill or 0)
+                                    local v = cut(vals[col.key] or "", w_)
+                                    out[#out + 1] = col.right and (string.rep(" ", w_ - utf8.len(v)) .. v) or pad_to(v, w_)
+                                end
+                            end
+                            return " " .. table.concat(out, " ")
+                        end
+
+                        local si = dv.sel and dv_row_index(c, dv.sel)
+                        if dv.sel and not si then dv.sel = nil end
+                        if si then
+                            if si < dv.top then dv.top = si end
+                            if si > dv.top + shown - 1 then dv.top = si - shown + 1 end
+                        else
+                            dv.top = n - shown + 1
+                        end
+                        dv.top = math.max(1, math.min(dv.top, n - shown + 1))
+
+                        local heads = {}
+                        for _, col in ipairs(I2C_COLS) do heads[col.key] = col.head end
+                        local head_style = (focus and not dv.sel) and THEME.input.selected.style or GRAY
+                        local lines = { "[" .. head_style .. "]" .. pad_to(line(heads), width + 1) .. "[/]" }
+                        for i = dv.top, math.min(n, dv.top + shown - 1) do
+                            local it = rows[i]
+                            local f = it.fields
+                            local prev = rows[i - 1]
+                            local text = line({
+                                no = tostring(it.id),
+                                time = fmt_abs(it.start / rate),
+                                delta = prev and ("+" .. fmt_time((it.start - prev.start) / rate)) or "",
+                                addr = f.addr and string.format("0x%02x", f.addr) or "—",
+                                dir = f.dir or "",
+                                len = tostring(f.len or 0),
+                                data = hex_bytes(i2c_data(it), 3 * 64),
+                                status = f.status or "",
+                            })
+                            local style = f.status == "ACK" and "" or ERROR
+                            if it.id == dv.sel then
+                                style = (dv.detail and SEL_OPEN) or (focus and THEME.input.selected.style) or SEL_IDLE
+                                text = pad_to(text, width + 1)
+                            end
+                            text = text:gsub("%[", "\\[")
+                            lines[#lines + 1] = style ~= "" and ("[" .. style .. "]" .. text .. "[/]") or text
+                        end
+                        if n == 0 then
+                            lines[2] = " [" .. FAINT .. "]nothing decoded yet[/]"
+                        end
+                        return table.concat(lines, "\n")
+                    end
+
+                    --[=[
+                    The selected transaction: a line per condition (S, Sr, P, with times
+                    from its start), each segment's address byte with its ACK, and its data
+                    (ACKed bright, NAKed in ERROR, the NAK that ends a read faint); what went
+                    wrong; then every byte as hex and ASCII.
+                    ]=]
+                    function dv_detail_text(width, height)
+                        local c = dv_cache(dv_dec())
+                        local it = dv.sel and c.rows[dv_row_index(c, dv.sel) or 0]
+                        if not it then return "" end
+                        local rate = cap.rate
+                        local function g(s) return "[" .. GRAY .. "]" .. s .. "[/]" end
+                        local function rel(t) return g("+" .. fmt_time((t - it.start) / rate)) end
+                        local lines = {}
+                        local function tag(t, text) lines[#lines + 1] = "[" .. PRIMARY .. "]" .. pad_to(t, 3) .. "[/]" .. text end
+                        local status = it.fields.status or "?"
+                        lines[1] = "[" .. BRIGHT .. " bold]" .. dv.tab .. " #" .. it.id .. "[/]  " .. g("AT") .. " "
+                            .. fmt_abs(it.start / rate) .. "  " .. g("LEN") .. " " .. fmt_time((it.stop - it.start + 1) / rate)
+                            .. "  [" .. (status == "ACK" and TEXT or (ERROR .. " bold")) .. "]" .. status .. "[/]"
+
+                        -- Segments: a word marked break (an address byte) starts one.
+                        local segs = {}
+                        for _, wd in ipairs(it.words) do
+                            if has_flag(wd.flags, "break") or #segs == 0 then
+                                segs[#segs + 1] = { addr = has_flag(wd.flags, "break") and wd or nil, data = {} }
+                            end
+                            if segs[#segs].addr ~= wd then table.insert(segs[#segs].data, wd) end
+                        end
+                        local per = math.max(1, (width - 3) // 3)
+                        for k, sg in ipairs(segs) do
+                            local child = it.children[k]
+                            local t0 = (child and child.start) or (sg.addr and sg.addr.start) or it.start
+                            tag(k == 1 and "S" or "Sr", rel(t0))
+                            local read = false
+                            if sg.addr then
+                                local a = sg.addr.value
+                                read = a & 1 == 1
+                                tag(read and "R" or "W", string.format("[%s]0x%02x[/] %s  %s", BRIGHT, a >> 1,
+                                    g(read and "read " or "write"),
+                                    has_flag(sg.addr.flags, "nak") and ("[" .. ERROR .. " bold]NAK[/]") or g("ACK")))
+                            end
+                            local row = {}
+                            for i, wd in ipairs(sg.data) do
+                                local style = BRIGHT
+                                if has_flag(wd.flags, "nak") then
+                                    style = (read and i == #sg.data) and FAINT or (ERROR .. " bold")
+                                end
+                                row[#row + 1] = "[" .. style .. "]" .. string.format("%02x", wd.value) .. "[/]"
+                                if #row == per or i == #sg.data then
+                                    tag("", table.concat(row, " "))
+                                    row = {}
+                                end
+                            end
+                        end
+                        for _, f in ipairs(it.flags) do
+                            tag("!", "[" .. ERROR .. "]" .. (I2C_FLAGS[f] or f) .. "[/]")
+                        end
+                        if not has_flag(it.flags, "incomplete") then tag("P", rel(it.stop)) end
+
+                        -- Every byte on the wire, addresses too: offset, hex, ASCII.
+                        local wire = {}
+                        for _, wd in ipairs(it.words) do wire[#wire + 1] = wd.value end
+                        local bper = math.max(4, math.min(16, (width - 6) // 4))
+                        lines[#lines + 1] = ""
+                        lines[#lines + 1] = g("BYTES")
+                        for off = 0, #wire - 1, bper do
+                            local hex, txt = {}, {}
+                            for i = off + 1, math.min(#wire, off + bper) do
+                                hex[#hex + 1] = string.format("%02x", wire[i])
+                                txt[#txt + 1] = (wire[i] >= 0x20 and wire[i] < 0x7f) and string.char(wire[i]):gsub("%[", "\\[") or "."
+                            end
+                            lines[#lines + 1] = g(string.format("%04x", off)) .. "  " .. pad_to(table.concat(hex, " "), bper * 3)
+                                .. g(table.concat(txt))
+                        end
+                        if #lines > height then
+                            for i = #lines, height, -1 do lines[i] = nil end
+                            lines[height] = "[" .. FAINT .. "]…[/]"
+                        end
+                        for i, l in ipairs(lines) do lines[i] = zcut(l, width) end
+                        return table.concat(lines, "\n")
+                    end
+
+                    -- The UART view's top row: each side's line and what it has had.
+                    function dv_uart_head(width)
+                        local d = dv_dec()
+                        local c = dv_cache(d)
+                        local half = dv.inner // 2
+                        local function side(name, key, w_)
+                            local ch = d.args[key]
+                            local s = " [" .. TEXT .. " bold]" .. name .. "[/] "
+                            if ch == nil then
+                                s = s .. "[" .. FAINT .. "]no line[/]"
+                            else
+                                local cname = channels[ch + 1] and channels[ch + 1].name or "CH"
+                                s = s .. "[" .. GRAY .. "]" .. cname .. " " .. ch .. "  " .. fmt_count(c.n[key]) .. " B[/]"
+                                if c.errs[key] > 0 then s = s .. "  [" .. ERROR .. "]" .. c.errs[key] .. " err[/]" end
+                            end
+                            s = zcut(s, w_)
+                            return s .. string.rep(" ", math.max(0, w_ - zlen(s)))
+                        end
+                        return side("TX", "tx", half) .. "[" .. GRAY .. "]│[/]" .. side("RX", "rx", width - half - 1)
+                    end
+
+                    -- One side's bytes for width by height: text (line feeds break lines,
+                    -- a carriage return is dropped, anything not printable a box), or a hex
+                    -- dump of the newest rows. A framing error is in ERROR.
+                    function dv_uart_text(key, width, height)
+                        local d = dv_dec()
+                        if d.args[key] == nil then
+                            return " [" .. FAINT .. "]give a channel the " .. key:upper() .. " role (▾)[/]"
+                        end
+                        local c = dv_cache(d)
+                        local list = c[key]
+                        width = width - 1
+                        if width < 8 or height < 1 then return "" end
+                        if #list == 0 then return " [" .. FAINT .. "]nothing yet[/]" end
+                        local lines = {}
+                        if d.hex then
+                            local per = math.max(4, math.min(16, (width - 8) // 4))
+                            local total = c.n[key]
+                            local first = total - #list
+                            local last_row = ((total - 1) // per) * per
+                            local from = math.max((first + per - 1) // per * per, last_row - (height - 1) * per)
+                            for off = from, last_row, per do
+                                local hex, txt = {}, {}
+                                for o = off, math.min(total - 1, off + per - 1) do
+                                    local b = list[o - first + 1]
+                                    local style = b.err and ERROR or TEXT
+                                    hex[#hex + 1] = "[" .. style .. "]" .. string.format("%02x", b.v) .. "[/]"
+                                    local printable = b.v >= 0x20 and b.v < 0x7f
+                                    txt[#txt + 1] = "[" .. (b.err and ERROR or (printable and GRAY or FAINT)) .. "]"
+                                        .. (printable and (string.char(b.v):gsub("%[", "\\[")) or ".") .. "[/]"
+                                end
+                                lines[#lines + 1] = " [" .. FAINT .. "]" .. string.format("%06x", off) .. "[/]  "
+                                    .. table.concat(hex, " ") .. string.rep(" ", (per - #hex) * 3 + 1) .. table.concat(txt)
+                            end
+                            return table.concat(lines, "\n")
+                        end
+                        local cs, ss = {}, {}
+                        local function flush()
+                            lines[#lines + 1] = " " .. zml_row(cs, function(x) return ss[x] end)
+                            cs, ss = {}, {}
+                        end
+                        for i = math.max(1, #list - width * height + 1), #list do
+                            local b = list[i]
+                            if b.v == 10 and not b.err then
+                                flush()
+                            elseif not (b.v == 13 and not b.err) then
+                                local printable = b.v >= 0x20 and b.v < 0x7f
+                                cs[#cs + 1] = printable and (b.v == 0x5b and "\\[" or string.char(b.v)) or "□"
+                                ss[#ss + 1] = b.err and (ERROR .. " bold") or (printable and TEXT or FAINT)
+                                if #cs == width then flush() end
+                            end
+                        end
+                        flush()
+                        keep_last(lines, height)
+                        return table.concat(lines, "\n")
+                    end
+
+                    -- Every channel the device has, at its rate and C.
+                    function start_config()
+                        local dev = br.device()
+                        local chans = {}
+                        for ch = 0, (dev and dev.channels or 0) - 1 do chans[#chans + 1] = ch end
+                        return #chans > 0 and { channels = chans } or {}
+                    end
+
+                    function capture_toggle()
+                        if st and st.state == "running" then
+                            link.want, link.stopping = false, true
+                            command(br.stop(), "stop")
+                        else
+                            link.want, link.error, link.stopping = true, nil, false
+                            if st and st.state == "ended" and not st.busy then
+                                command(br.start(start_config()), "start")
+                            end
+                        end
+                    end
+
+                    -- A packets group that stopped: why, once a second.
+                    function group_check(now)
+                        if now < (pk.checked or 0) + 1 then return end
+                        pk.checked = now
+                        for _, d in ipairs(br.decoders() or {}) do
+                            if d.label == "packets" and d.error then link.error = "trigger: " .. d.error end
+                        end
+                    end
+
+                    -- Where the capture stands, short: for the mode cell.
+                    SPIN = { "◜", "◝", "◞", "◟" }
+                    spin = { i = 0 }
+
+                    function state_text()
+                        spin.i = spin.i % #SPIN + 1
+                        local function g(s) return "[" .. GRAY .. "]" .. s .. "[/]" end
+                        if not st then return g("◌ START") end
+                        local t = fmt_clock(math.max(0, (st.capture and st.capture.now) or 0) / cap.rate)
+                        if st.state == "running" then
+                            return "[" .. PRIMARY .. " bold]● REC[/]  [" .. TEXT .. "]" .. t .. "[/]"
+                        elseif link.error then
+                            return "[" .. ERROR .. " bold]✕ " .. ((link.phase == "opened" and st.state == "ended") and "ENDED" or "NO LINK") .. "[/]"
+                        elseif link.phase ~= "opened" or st.busy or st.state == "closed" then
+                            return g(SPIN[spin.i] .. " LINK")
+                        elseif st.state == "ended" then
+                            return g("■ STOP  " .. t)
+                        end
+                        return g("○ IDLE")
+                    end
+
+                    -- The newest event's text, for when a capture ends on its own.
+                    function events_read()
+                        for _, e in ipairs(br.events(ev.seq) or {}) do
+                            ev.seq, ev.last = e.seq, e.text
+                        end
+                    end
+
+                    -------------------------------------------------------------------
+                    -- Packets and the trigger
+
+                    -- New packets, unless the view is paused: its list stays as it was, so
+                    -- stepping through it holds still.
+                    function packets_read()
+                        if view.paused and not pk.pending then return end
+                        if pk.pending then
+                            if st.done < pk.pending then return end
+                            pk.pending, pk.list, view.shown = nil, {}, nil
+                        end
+                        local list = pk.list
+                        local last_id = list[#list] and list[#list].id or -1
+                        for _, it in ipairs(br.last("packets", 32) or {}) do
+                            if it.id > last_id then
+                                list[#list + 1] = { id = it.id, start = it.start, stop = it.stop,
+                                                    records = it.fields.records or 0 }
+                            end
+                        end
+                        while #list > PACKETS_MAX and list[1] ~= view.shown do
+                            table.remove(list, 1)
+                        end
+                    end
+
+                    -- Live: the newest packet, once the one shown has been up for the hold.
+                    function trigger_update(now)
+                        if view.paused or not view.trigger then return end
+                        local newest = pk.list[#pk.list]
+                        if newest and (not view.shown or (newest.id > view.shown.id and now >= view.until_)) then
+                            view.shown = newest
+                            view.until_ = now + HOLDS[view.hold_i]
+                            view.cursor, view.win_a = nil, nil
+                        end
+                    end
+
+                    -- The packet's short gaps between changes on one line, in ticks (the
+                    -- GAP_PERCENTILE one over the lines that trigger), worked out once per
+                    -- packet.
+                    function packet_gap(p)
+                        if p.gap ~= nil then return p.gap or nil end
+                        local gaps = {}
+                        for _, ch in ipairs(shown_channels()) do
+                            if channels[ch + 1].trig then
+                                local r = br.records(ch, p.start, p.stop, 4096)
+                                local t = r and r.ticks or {}
+                                for i = 2, #t do gaps[#gaps + 1] = t[i] - t[i - 1] end
+                            end
+                        end
+                        if #gaps == 0 then
+                            p.gap = false
+                            return nil
+                        end
+                        table.sort(gaps)
+                        p.gap = gaps[math.max(1, math.ceil(#gaps * GAP_PERCENTILE))]
+                        return p.gap
+                    end
+
+                    function packet_index(p)
+                        for i = #pk.list, 1, -1 do
+                            if pk.list[i] == p then return i end
+                        end
+                        return nil
+                    end
+
+                    function packet_step(d)
+                        local i = view.shown and packet_index(view.shown)
+                        local p = i and pk.list[i + d]
+                        if p then view.shown, view.cursor, view.win_a = p, nil, nil end
+                    end
+
+                    -------------------------------------------------------------------
+                    -- The frame: which ticks each column covers, and every lane's columns
+
+                    --[=[
+                    Trigger: the packet on show across the width, padded a little. The
+                    scale puts two changes on one line MIN_EDGE_COLS apart by the packet's
+                    short gaps, or fits the packet if that is finer; a packet too long for
+                    the width shows from its start, the window following the cursor.
+                    ]=]
+                    function frame_trigger(cols)
+                        local p = view.shown
+                        if not p then
+                            frame.kind = "armed"
+                            return nil
+                        end
+                        local rate = cap.rate
+                        local pad = math.max(4, (p.stop - p.start + 1) // 30)
+                        local full_a, full_b = p.start - pad, p.stop + 1 + pad
+                        -- A short packet (a lone edge of a slow line) is shown with what is
+                        -- around it: at least two packet gaps wide.
+                        local min_span = 2 * PACKET_GAP_S * rate
+                        if full_b - full_a < min_span then
+                            local mid = (p.start + p.stop) / 2
+                            full_a, full_b = math.floor(mid - min_span / 2), math.ceil(mid + min_span / 2)
+                        end
+                        full_a = math.max(0, full_a)
+                        local fit_z = (full_b - full_a) / cols
+                        local gap = packet_gap(p)
+                        local auto_z = gap and math.min(fit_z, gap / MIN_EDGE_COLS) or fit_z
+                        -- tzoom 0: zoomed all the way out, every packet fitted.
+                        local z = view.tzoom == 0 and fit_z or math.min(fit_z, math.max(MIN_Z, auto_z / view.tzoom))
+                        local span = z * cols
+                        -- Paused, the window stays where it was (win_a) and scrolls only to keep
+                        -- the cursor in it. Otherwise: around the cursor, all of the packet, or
+                        -- from just before its first edge.
+                        local function clamp(a_) return math.max(full_a, math.min(full_b - span, a_)) end
+                        local a
+                        if view.win_a then
+                            a = clamp(view.win_a)
+                        elseif view.cursor then
+                            a = clamp(view.cursor - span / 2)
+                        elseif span >= full_b - full_a then
+                            a = clamp(full_a)
+                        else
+                            a = clamp(p.start - 2 * z)
+                        end
+                        if view.cursor and view.cursor < a then
+                            a = clamp(view.cursor - span * 0.75)
+                        elseif view.cursor and view.cursor >= a + span then
+                            a = clamp(view.cursor - span * 0.25)
+                        end
+                        view.win_a = view.paused and a or nil
+
+                        frame.kind, frame.a, frame.z = "trigger", a, z
+                        frame.full_a, frame.full_b, frame.auto_z = full_a, full_b, auto_z
+                        local edges = {}
+                        for x = 1, cols + 1 do edges[x] = math.max(0, math.floor(a + (x - 1) * z + 0.5)) end
+                        return edges
+                    end
+
+                    -- Roll: the newest ticks at the right, ZOOMS[zoom_i] ticks a column.
+                    function frame_roll(cols, wm)
+                        if wm < 0 then
+                            frame.kind = "armed"
+                            return nil
+                        end
+                        local z = ZOOMS[view.zoom_i]
+                        local R = view.paused and view.R or wm + 1
+                        frame.kind, frame.a, frame.z = "roll", R - z * cols, z
+                        -- Columns before the capture's first tick are not held: empty.
+                        local edges = {}
+                        frame.from_x = 1
+                        for x = 1, cols + 1 do
+                            local t = R - (cols + 1 - x) * z
+                            if t < 0 then frame.from_x = x + 1 end
+                            edges[x] = math.max(0, t)
+                        end
+                        return edges
+                    end
+
+                    -- The column holding tick t (the first one, zoomed past a tick a
+                    -- column), or nil.
+                    function col_of(t)
+                        local e = frame.edges
+                        if not e or not t or t < e[1] or t >= e[#e] then return nil end
+                        local lo, hi = 1, #e - 1
+                        while lo < hi do
+                            local mid = (lo + hi + 1) // 2
+                            if e[mid] <= t then lo = mid else hi = mid - 1 end
+                        end
+                        while lo > 1 and e[lo - 1] == e[lo] do lo = lo - 1 end
+                        return lo
+                    end
+
+                    -- Every lane of the frame in one br.columns call.
+                    function frame_build()
+                        local cols = frame.cols
+                        local wm = (st and st.store) and st.store.watermark or -1
+                        frame.edges, frame.lanes, frame.from_x = nil, {}, 1
+                        if cols < 8 or not cap.info then
+                            frame.kind = "none"
+                            return
+                        end
+                        local edges
+                        if view.trigger then edges = frame_trigger(cols) else edges = frame_roll(cols, wm) end
+                        local chans = shown_channels()
+                        if not edges or #chans == 0 then return end
+
+                        local res = br.columns(chans, edges)
+                        if not res then return end
+                        frame.edges = edges
+                        for k, ch in ipairs(chans) do frame.lanes[ch] = res[k] end
+                    end
+
+                    -------------------------------------------------------------------
+                    -- Drawing a lane
+
+                    --[=[
+                    One lane, rows_n rows of cols columns, from its columns (first, last,
+                    changes, flags). High on the top row and low on the bottom one, an edge a
+                    vertical between them; a column with several edges joins both lines
+                    (┳┻), a little dimmer. Unknown is faint and dashed on both lines; a column
+                    not held is empty, and a loss shades the column. One row has no room for
+                    that: ▔ and ▁, │ for edges.
+
+                    The waveform is the content: a line that moves in the view is PRIMARY, one
+                    with nothing happening on it gray. The heavy PRIMARY frame already marks the
+                    content panel, so the red inside it is where something happens. The trigger point's column carries a faint accent mark (┊) where
+                    the lane is empty.
+                    ]=]
+                    function lane_rows(l, cols, rows_n, cc)
+                        local rows, style, trig_x = lane_build(l, cols, rows_n, cc)
+                        local out = {}
+                        for r = 1, rows_n do
+                            local mark = trig_x and rows[r][trig_x] == " " and rows_n > 1
+                            if mark then rows[r][trig_x] = "┊" end
+                            out[r] = zml_row(rows[r], function(x)
+                                if mark and x == trig_x then
+                                    return ACCENT .. " dim" .. (x == cc and (" " .. BG_CURSOR) or "")
+                                end
+                                return style[x]
+                            end)
+                        end
+                        return out
+                    end
+
+                    -- A lane's cells: rows of glyphs, a style per column, and the trigger
+                    -- point's column (or nil).
+                    function lane_build(l, cols, rows_n, cc)
+                        local rows, style = {}, {}
+                        for r = 1, rows_n do rows[r] = {} end
+                        local moves = false
+                        for x = 1, cols do moves = moves or l.changes[x] > 0 end
+                        local line = moves and PRIMARY or GRAY
+                        local busy = PRIMARY .. " dim"
+                        local trig_x = frame.kind == "trigger" and view.shown and col_of(view.shown.start) or nil
+
+                        for x = 1, cols do
+                            local f, v, n, fl = l.first[x], l.last[x], l.changes[x], l.flags[x]
+                            local bg = (x == cc and BG_CURSOR) or ((fl & 1) ~= 0 and BG_LOSS) or nil
+                            local s = line
+                            for r = 1, rows_n do rows[r][x] = " " end
+
+                            if x < frame.from_x or ((fl & 4) ~= 0 and n == 0) then
+                                s = ""
+                            elseif n == 0 and (v < 0 or (fl & 2) ~= 0) then
+                                s = FAINT
+                                if rows_n == 1 then
+                                    rows[1][x] = "┈"
+                                else
+                                    rows[1][x], rows[rows_n][x] = "╌", "╌"
+                                end
+                            elseif rows_n == 1 then
+                                rows[1][x] = n > 0 and "│" or (v == 1 and "▔" or "▁")
+                                if n >= 2 then s = busy end
+                            elseif n == 0 then
+                                rows[v == 1 and 1 or rows_n][x] = "━"
+                            else
+                                for r = 2, rows_n - 1 do rows[r][x] = "┃" end
+                                if n >= 2 or f < 0 or v < 0 then
+                                    rows[1][x], rows[rows_n][x] = "┳", "┻"
+                                    s = busy
+                                elseif v == 1 then
+                                    rows[1][x], rows[rows_n][x] = "┏", "┛"
+                                else
+                                    rows[1][x], rows[rows_n][x] = "┓", "┗"
+                                end
+                            end
+                            if bg then s = s ~= "" and (s .. " " .. bg) or bg end
+                            style[x] = s
+                        end
+                        return rows, style, trig_x
+                    end
+
+                    -- Before the first frame (armed): a gray line at the level the store has
+                    -- now.
+                    function lane_idle(ch, cols, rows_n)
+                        local wm = (st and st.store) and st.store.watermark or -1
+                        local lvl = wm >= 0 and br.level(ch, wm) or nil
+                        local out = {}
+                        if lvl == nil or cols < 1 then return out end
+                        if lvl < 0 then
+                            local line = "[" .. FAINT .. "]" .. string.rep(rows_n == 1 and "┈" or "╌", cols) .. "[/]"
+                            out[1] = line
+                            if rows_n > 1 then out[rows_n] = line end
+                        elseif rows_n == 1 then
+                            out[1] = "[" .. GRAY .. "]" .. string.rep(lvl == 1 and "▔" or "▁", cols) .. "[/]"
+                        else
+                            out[lvl == 1 and 1 or rows_n] = "[" .. GRAY .. "]" .. string.rep("━", cols) .. "[/]"
+                        end
+                        return out
+                    end
+
+                    -------------------------------------------------------------------
+                    -- Layout: how tall the lanes are
+
+                    --[=[
+                    From the height the bands get: up to LANE_ROWS_MAX rows per lane shown,
+                    one row for a band collapsed (hidden, or not in the capture), and a
+                    separator between bands. When the separators would cost the lanes
+                    their second row, they go. A change shows on the next frame
+                    (redraw_soon()).
+                    ]=]
+                    lay = { height = 0, rows = 1, sep = true }
+
+                    function band_open(c)
+                        return c.real and c.captured and c.enabled
+                    end
+
+                    function lanes_fit()
+                        local on, off, n = 0, 0, 0
+                        for _, c in ipairs(channels) do
+                            if c.real then
+                                n = n + 1
+                                if band_open(c) then on = on + 1 else off = off + 1 end
+                            end
+                        end
+                        local free = lay.height - off
+                        local with = (free - math.max(0, n - 1)) // math.max(1, on)
+                        local without = free // math.max(1, on)
+                        lay.sep = with >= 1 and with >= math.min(2, without)
+                        lay.rows = math.max(1, math.min(LANE_ROWS_MAX, lay.sep and with or without))
+                        -- The settings cell's rows, as the lane has room: Enabled, then the
+                        -- channel's role, then Trigger.
+                        for ch, w in pairs(ui.roles) do
+                            w.hidden = not (band_open(channels[ch + 1]) and lay.rows >= 2)
+                        end
+                        for ch, t in pairs(ui.trigs) do
+                            t.hidden = not (band_open(channels[ch + 1]) and lay.rows >= 3)
+                        end
+                    end
+
+                    function lane_height(ch)
+                        return band_open(channels[ch + 1]) and lay.rows or 1
+                    end
+
+                    -- A band's separator, above it: none above the first, under the ruler.
+                    function sep_height(ch)
+                        return (lay.sep and ch > 0) and 1 or 0
+                    end
+
+                    -- The device's channels get a band; the rest hide.
+                    function bands_update()
+                        for ch, b in pairs(ui.bands) do b.hidden = sheet.open or not channels[ch + 1].real end
+                        for ch, t in pairs(ui.toggles) do t.hidden = not channels[ch + 1].captured end
+                        lanes_fit()
+                        redraw_soon()
+                    end
+
+                    -- Layout runs as a frame is drawn, so what it changes shows on the next
+                    -- frame: a poll asks for one.
+                    function redraw_soon()
+                        table.insert(poll, function() return UNSUBSCRIBE end)
+                    end
+
+                    --[=[
+                    A horizontal line across the screen, width wide, as ZML, where the heavy
+                    content frame (PRIMARY) meets the light gray ones: the top (┏━┲─┐), a
+                    separator between bands (┠─╂─┤, its rule faint), and the content's bottom
+                    over the controls (┡━┺─┤). D is the content frame's right edge, where the
+                    settings column joins it.
+                    ]=]
+                    LINES = {
+                        top = { "┏", "━", "┲", "─", "┐" },
+                        sep = { "┠", "─", "╂", "─", "┤" },
+                        joint = { "┡", "━", "┺", "─", "┤" },
+                    }
+
+                    function hline(width, kind)
+                        local g = LINES[kind]
+                        local d = width - CELL_W
+                        local cs = {}
+                        if width < CELL_W + 2 then return "" end
+                        for x = 1, width do
+                            cs[x] = (x == 1 and g[1]) or (x < d and g[2]) or (x == d and g[3])
+                                or (x < width and g[4]) or g[5]
+                        end
+                        return zml_row(cs, function(x)
+                            local p_ = sheet.open and DIM_EDGE or PRIMARY
+                            local g_ = sheet.open and DIM_TEXT or GRAY
+                            if x == 1 or x == d then return p_ end
+                            if x < d then return kind == "sep" and FAINT or p_ end
+                            if x < width and kind == "sep" then return FAINT end
+                            return g_
+                        end)
+                    end
+
+                    -- The controls' frame's bottom edge, with the capture's counters set in it.
+                    function foot_line(width)
+                        if width < CELL_W + 8 then return "" end
+                        local text = stats_text(width - 6)
+                        return "[" .. GRAY .. "]└─[/] " .. text .. " [" .. GRAY .. "]"
+                            .. string.rep("─", math.max(0, width - 5 - zlen(text))) .. "┘[/]"
+                    end
+
+                    -- The capture's counters, for width columns; anything gone wrong in ERROR.
+                    function stats_text(width)
+                        local function g(t) return "[" .. GRAY .. "]" .. t .. "[/]" end
+                        if not st or not cap.info then
+                            return fit_parts({ { link.error and ("[" .. ERROR .. "]" .. link.error .. "[/]") or g("no capture"), 1 } }, width)
+                        end
+                        local c = st.capture
+                        local elapsed = math.max(0, c.now or 0) / cap.rate
+                        local use = elapsed > 0 and c.bytes / elapsed / LINK_BYTES_S or 0
+                        local function v(n, bad) return "[" .. ((bad and n > 0) and (ERROR .. " bold") or TEXT) .. "]" .. n .. "[/]" end
+                        local parts = {
+                            { g("REC") .. " [" .. TEXT .. "]" .. fmt_count(c.records) .. "[/] " .. g("· " .. fmt_si(perf.rate) .. "/s"), 1 },
+                            { g("LINK") .. " [" .. (use > 0.9 and (ERROR .. " bold") or TEXT) .. "]" .. math.floor(use * 100 + 0.5) .. "%[/]", 4 },
+                            { g("CRC") .. " " .. v(c.crc, true), 2 },
+                            { g("MISMATCH") .. " " .. v(c.mismatches, true) .. g("/" .. c.excused), 3 },
+                            { g("LOSS") .. " " .. v(c.losses, true), 2 },
+                        }
+                        for _, d in ipairs(decs.list) do
+                            local n = d.running and (decs.items[d.label] or 0) or nil
+                            parts[#parts + 1] = { "[" .. TEXT .. "]" .. d.label .. "[/] "
+                                .. (n and g("#" .. n) or ("[" .. FAINT .. "]…[/]")), 2.5 }
+                        end
+                        if (c.overflow or 0) > 0 then
+                            parts[#parts + 1] = { g("OVERFLOW") .. " [" .. ERROR .. " bold]" .. fmt_bytes(c.overflow) .. "[/]", 2 }
+                        end
+                        if link.error then table.insert(parts, 1, { "[" .. ERROR .. " bold]" .. link.error .. "[/]", 0 }) end
+                        local dev = cap.dev
+                        parts[#parts + 1] = { g(fmt_rate(cap.info.rate) .. " C" .. cap.info.c .. " "
+                            .. #cap.info.channels .. "/" .. (dev and dev.channels or "?") .. "ch"), 6 }
+                        if dev then
+                            parts[#parts + 1] = { "[" .. FAINT .. "]" .. (DUMMY and "dummy" or (dev.model .. " " .. dev.firmware)) .. "[/]", 8 }
+                        end
+                        parts[#parts + 1] = { string.format("[%s]%.1fms[/]", FAINT, perf.ms), 9 }
+                        return fit_parts(parts, width)
+                    end
+
+                    function channel_enable(ch, on)
+                        channels[ch + 1].enabled = on
+                        lanes_fit()
+                        redraw_soon()
+                    end
+
+                    -------------------------------------------------------------------
+                    -- Keys and controls
+
+                    function pause(on)
+                        view.paused = on
+                        if on then
+                            local wm = (st and st.store) and st.store.watermark or -1
+                            view.R = math.max(0, wm) + 1
+                        else
+                            view.cursor = nil
+                            -- Live again: the details shown in the lanes close.
+                            if dv.detail then dv_detail_close() end
+                        end
+                    end
+
+                    -- Moving the cursor pauses the view. In trigger mode it runs through the
+                    -- packet, the zoomed window following it; in roll mode the view pans by
+                    -- half at an edge.
+                    function cursor_move(d)
+                        if not frame.edges then return end
+                        if not view.paused then pause(true) end
+                        local cols = frame.cols
+                        local step = math.max(1, frame.z)
+                        if view.trigger then
+                            local cur = view.cursor or (frame.a + frame.z * (cols - 1))
+                            view.cursor = math.floor(math.max(frame.full_a,
+                                math.min(frame.full_b - 1, cur + d * step)))
+                            return
+                        end
+                        local cur = math.max(0, math.floor((view.cursor or (view.R - 1)) + d * step))
+                        local half = math.floor(frame.z * cols / 2)
+                        if cur < view.R - frame.z * cols then
+                            view.R = math.max(math.floor(frame.z * cols), view.R - half)
+                        elseif cur >= view.R then
+                            local wm = (st and st.store) and st.store.watermark or 0
+                            view.R = math.min(wm + 1, view.R + half)
+                        end
+                        view.cursor = math.min(cur, view.R - 1)
+                    end
+
+                    function cursor_home(to_end)
+                        if not frame.edges then return end
+                        if not view.paused then pause(true) end
+                        if view.trigger and view.shown then
+                            view.cursor = to_end and view.shown.stop or view.shown.start
+                        else
+                            view.cursor = to_end and (view.R - 1) or math.max(0, math.floor(frame.a))
+                        end
+                    end
+
+                    -- Zooming keeps the cursor (or the window's middle) in view.
+                    function zoom(d)
+                        view.win_a = nil
+                        if view.trigger then
+                            -- Against the automatic scale; out stops at the whole packet, and
+                            -- stays there (0) for the packets after it.
+                            -- The zoom is taken as what it shows now, between the whole packet
+                            -- (least) and a tick over 8 columns (most), so each step shows:
+                            -- one left over from another packet does not swallow a press.
+                            local least, most = 1, 64
+                            if frame.auto_z > 0 and frame.cols > 0 then
+                                least = frame.auto_z / ((frame.full_b - frame.full_a) / frame.cols)
+                                most = math.max(least, frame.auto_z / MIN_Z)
+                            end
+                            local now = view.tzoom == 0 and least or math.max(least, math.min(most, view.tzoom))
+                            if d < 0 then
+                                view.tzoom = math.min(most, now * 2)
+                            else
+                                view.tzoom = now / 2 <= least and 0 or now / 2
+                            end
+                            return
+                        end
+                        view.zoom_i = math.max(1, math.min(#ZOOMS, view.zoom_i + d))
+                        if view.cursor and view.paused then
+                            view.R = view.cursor + ZOOMS[view.zoom_i] * frame.cols // 2
+                        end
+                    end
+
+                    function trigger_set(on)
+                        view.trigger, view.cursor = on, nil
+                        trigger_btn.active = on
+                        trigger_btn.render()
+                    end
+
+                    function hold_cycle()
+                        view.hold_i = view.hold_i % #HOLDS + 1
+                        hold_btn.content = string.format("Hold %gs", HOLDS[view.hold_i])
+                    end
+
+                    -- The view's keys, wherever the selection is.
+                    KEYS = {
+                        ["pgup"] = function() cursor_move(-frame.cols) end,
+                        ["pgdn"] = function() cursor_move(frame.cols) end,
+                        ["home"] = function() cursor_home(false) end,
+                        ["end"] = function() cursor_home(true) end,
+                        ["+"] = function() zoom(-1) end,
+                        ["c-n"] = function() zoom(-1) end,
+                        ["c-o"] = function() zoom(1) end,
+                        ["="] = function() zoom(-1) end,
+                        ["-"] = function() zoom(1) end,
+                        ["p"] = function() pause(not view.paused) end,
+                        -- Esc backs out one step: the lane's cursor, the pause, the zoom.
+                        ["esc"] = function()
+                            if dv.detail then
+                                dv_detail_close()
+                            elseif view.cursor or nav.engaged then
+                                view.cursor, nav.engaged = nil, false
+                            elseif view.paused then
+                                pause(false)
+                            else
+                                view.tzoom = 1
+                            end
+                        end,
+                        [","] = function()
+                            if not view.trigger then return end
+                            if not view.paused then pause(true) end
+                            packet_step(-1)
+                        end,
+                        ["."] = function()
+                            if not view.trigger then return end
+                            if not view.paused then pause(true) end
+                            packet_step(1)
+                        end,
+                        ["t"] = function() trigger_set(not view.trigger) end,
+                    }
+
+                    -------------------------------------------------------------------
+                    -- Moving between widgets
+
+                    --[=[
+                    Arrow keys move by where things are on the screen: a lane, its settings
+                    cell to the right of it, the bands above and below, the controls along the
+                    bottom. The focus is CEL's own selection, drawn by CEL, and Enter and the
+                    QuickStrike keys are CEL's own too. CEL moves the selection only up and
+                    down, one widget at a time, so for an arrow the page's handler works out
+                    where to go and nav_focus() gets CEL there: every other widget stops taking
+                    the selection, so CEL's next frame can only select the target, and that
+                    frame's layout gives them back (nav_settle()).
+
+                    Ids: "lane:CH", "en:CH" and "tr:CH" for a band's toggles, "btn:NAME" for
+                    the controls. Enter or Space on a lane drives the cursor from it (engaged):
+                    left and right move the cursor until Esc.
+                    ]=]
+                    nav = { focus = nil, engaged = false, keep = false, w = {}, off = nil, trapped = {} }
+                    CONTROLS = { "btn:start", "btn:dec", "btn:trigger", "btn:hold", "btn:zout", "btn:zin", "btn:pause" }
+
+                    -- A widget that takes the selection: its focus is the focus.
+                    function nav_widget(w, id, focus_)
+                        nav.w[id] = w
+                        table.insert(focus_, function()
+                            if nav.focus ~= id and not nav.keep then nav.engaged = false end
+                            nav.focus = id
+                        end)
+                    end
+
+                    -- After CEL has selected the target: everything takes the selection again.
+                    --[=[
+                    While the popup is open, the widgets behind it stay off (nav.trapped), so
+                    the focus stays in the popup and their QuickStrike keys don't reach them.
+                    ]=]
+                    function nav_settle()
+                        for _, item in ipairs(nav.off or {}) do
+                            if sheet.open and not item.id:find("^sh:") then
+                                nav.trapped[#nav.trapped + 1] = item.w
+                            else
+                                item.w.has_selection = true
+                            end
+                        end
+                        nav.off, nav.keep = nil, false
+                    end
+
+                    function nav_untrap()
+                        for _, w in ipairs(nav.trapped) do w.has_selection = true end
+                        nav.trapped = {}
+                    end
+
+                    -- Moves CEL's selection to id on the next frame; keep: an engaged lane
+                    -- stays engaged on the lane it moves to.
+                    function nav_focus(id, keep)
+                        nav_settle()
+                        if not nav.w[id] then return end
+                        nav.off, nav.keep = {}, keep or false
+                        for other, w in pairs(nav.w) do
+                            if other ~= id and w.has_selection then
+                                w.has_selection = false
+                                nav.off[#nav.off + 1] = { id = other, w = w }
+                            end
+                        end
+                    end
+
+                    function nav_shown(id)
+                        local w = nav.w[id]
+                        return w and not w.hidden
+                    end
+
+                    -- The bands on screen, and the settings column's items, in order.
+                    function nav_lanes()
+                        local out = {}
+                        for _, c in ipairs(channels) do
+                            if c.real then out[#out + 1] = c.ch end
+                        end
+                        return out
+                    end
+
+                    function nav_cells()
+                        local out = {}
+                        for _, ch in ipairs(nav_lanes()) do
+                            for _, id in ipairs({ "en:" .. ch, "role:" .. ch, "tr:" .. ch }) do
+                                if nav_shown(id) then out[#out + 1] = { id = id, ch = ch } end
+                            end
+                        end
+                        return out
+                    end
+
+                    local function index_of(list, f)
+                        for i, v in ipairs(list) do
+                            if f(v) then return i end
+                        end
+                        return nil
+                    end
+
+                    -- In the popup: its rows top to bottom, then its actions left to right.
+                    function sheet_move(dir)
+                        local rows, acts = {}, {}
+                        for i = 1, #sheet.page.rows do rows[#rows + 1] = "sh:r" .. i end
+                        for i = 1, #sheet.page.acts do acts[#acts + 1] = "sh:a" .. i end
+                        local f = nav.focus or ""
+                        local ri = index_of(rows, function(v) return v == f end)
+                        local ai = index_of(acts, function(v) return v == f end)
+                        local target
+                        if ri then
+                            if dir == "up" then target = rows[ri - 1]
+                            elseif dir == "down" then target = rows[ri + 1] or acts[1] end
+                        elseif ai then
+                            if dir == "left" then target = acts[ai - 1]
+                            elseif dir == "right" then target = acts[ai + 1]
+                            elseif dir == "up" then target = rows[#rows] end
+                        else
+                            target = rows[1] or acts[1]
+                        end
+                        nav_focus(target or f)
+                    end
+
+                    function nav_move(dir)
+                        if sheet.open then return sheet_move(dir) end
+                        local lanes, cells = nav_lanes(), nav_cells()
+                        local f = nav.focus
+                        local target
+                        local pane = f == "tabs" or (f or ""):find("^dv:") ~= nil
+                        if not f or (pane and not dv_ok(f)) or not (pane or f:find("^lane:") or nav_shown(f)) then
+                            nav_focus(lanes[1] and ("lane:" .. lanes[1]) or CONTROLS[1])
+                            return
+                        end
+                        -- Below the bands, the decoder pane: its strip, then its view.
+                        local below = dv_on() and "tabs" or nil
+                        local kind, rest = f:match("^(%a+):(.*)$")
+                        if f == "tabs" then
+                            if dir == "left" or dir == "right" then
+                                dv_tab_step(dir == "left" and -1 or 1)
+                                target = "tabs"
+                            elseif dir == "up" then
+                                target = lanes[#lanes] and ("lane:" .. lanes[#lanes])
+                            elseif dir == "down" then
+                                target = dv_body() ~= "tabs" and dv_body() or CONTROLS[1]
+                            end
+                        elseif kind == "dv" then
+                            if dir == "up" then
+                                target = "tabs"
+                            elseif dir == "down" then
+                                target = CONTROLS[1]
+                            end
+                        elseif kind == "lane" then
+                            local ch = tonumber(rest)
+                            local i = index_of(lanes, function(v) return v == ch end) or 1
+                            if dir == "right" then
+                                local k = index_of(cells, function(v) return v.ch == ch end)
+                                if k then target = cells[k].id end
+                            elseif dir == "up" and lanes[i - 1] then
+                                target = "lane:" .. lanes[i - 1]
+                            elseif dir == "down" then
+                                target = lanes[i + 1] and ("lane:" .. lanes[i + 1]) or below or CONTROLS[1]
+                            end
+                        elseif kind == "en" or kind == "tr" or kind == "role" then
+                            local k = index_of(cells, function(v) return v.id == f end) or 1
+                            if dir == "left" then
+                                target = "lane:" .. cells[k].ch
+                            elseif dir == "up" and cells[k - 1] then
+                                target = cells[k - 1].id
+                            elseif dir == "down" then
+                                target = cells[k + 1] and cells[k + 1].id or below or CONTROLS[#CONTROLS]
+                            end
+                        elseif kind == "btn" then
+                            local k = index_of(CONTROLS, function(v) return v == f end) or 1
+                            if dir == "left" and CONTROLS[k - 1] then
+                                target = CONTROLS[k - 1]
+                            elseif dir == "right" and CONTROLS[k + 1] then
+                                target = CONTROLS[k + 1]
+                            elseif dir == "up" then
+                                -- To what is above it: the decoder pane's view, or the last
+                                -- band's lane, or its settings.
+                                if below then
+                                    target = dv_body()
+                                elseif k > #CONTROLS // 2 and cells[#cells] then
+                                    target = cells[#cells].id
+                                elseif lanes[#lanes] then
+                                    target = "lane:" .. lanes[#lanes]
+                                end
+                            end
+                        end
+                        -- Nowhere to go: stay, or CEL would take the next one in its order.
+                        nav_focus(target or f, nav.engaged and target ~= nil and target:find("^lane:") ~= nil)
+                    end
+
+                    -- Enter or Space on a lane: it takes the cursor (or gives it back).
+                    function lane_activate()
+                        if nav.engaged then
+                            nav.engaged, view.cursor = false, nil
+                        elseif frame.edges then
+                            nav.engaged = true
+                            if not view.paused then pause(true) end
+                            view.cursor = view.cursor or math.floor(frame.a + frame.z * frame.cols / 2)
+                        end
+                    end
+
+                    ARROWS = { up = true, down = true, left = true, right = true }
+
+                    --[=[
+                    Every key, first. Enter and Space on a lane drive the cursor from it; Space
+                    on a button or toggle strikes it, as CEL's Enter does. The arrows move the
+                    cursor on an engaged lane, else the focus; then the view's own keys.
+                    QuickStrike and Enter elsewhere are left to CEL.
+                    ]=]
+                    table.insert(input, function(key)
+                        local f = nav.focus or ""
+                        local lane = f:find("^lane:") ~= nil
+                        if (key == "return" or key == "space") and lane then
+                            lane_activate()
+                        elseif (key == "tab" or key == "s-tab") and dv_on() and not sheet.open then
+                            dv_tab_step(key == "tab" and 1 or -1)
+                        elseif f == "dv:list" and DV_LIST_KEYS[key] and not sheet.open then
+                            dv_list_input(key)
+                        elseif f == "tabs" and (key == "return" or key == "space") then
+                            nav_focus(dv_body())
+                        elseif key == "space" then
+                            if nav.w[f] then nav.w[f].strike() end
+                        elseif nav.engaged and (key == "left" or key == "right") then
+                            cursor_move(key == "left" and -1 or 1)
+                        elseif nav.engaged and (key == "s-left" or key == "s-right") then
+                            cursor_move(key == "s-left" and -8 or 8)
+                        elseif key == "esc" and sheet.open then
+                            sheet.page.esc()
+                        elseif ARROWS[key] then
+                            nav.moved = true
+                            nav_move(key)
+                        elseif KEYS[key] then
+                            KEYS[key]()
+                        else
+                            return
+                        end
+                        frame_build()
+                        draw_all()
+                    end)
+
+                    -------------------------------------------------------------------
+                    -- The poll: status, the capture's progress, the frame, and drawing
+
+                    function draw_all()
+                        if sheet.open then bg_draw() end
+                        dv_update()
+                        for _, f in pairs(ui.lanes) do f() end
+                        for _, f in pairs(ui.cells) do f() end
+                        if ruler then ruler.draw() end
+                        if mode_cell then mode_cell.draw() end
+                    end
+
+                    table.insert(poll, function()
+                        local t0 = br.clock()
+                        st = br.status()
+                        link_step()
+                        events_read()
+                        if st.gen ~= cap.gen and st.gen > 0 then view_new(st.gen) end
+                        if cap.info then
+                            packets_read()
+                            trigger_update(t0)
+                            group_check(t0)
+                            decs_read()
+                            dv_read()
+                        end
+                        frame_build()
+                        draw_all()
+
+                        -- Records a second, smoothed; and what the frame cost.
+                        local recs = st.capture and st.capture.records or 0
+                        if perf.last_t > 0 and t0 > perf.last_t then
+                            local r = math.max(0, recs - perf.last_records) / (t0 - perf.last_t)
+                            perf.rate = perf.rate * 0.8 + r * 0.2
+                        end
+                        perf.last_records, perf.last_t = recs, t0
+                        local ms = (br.clock() - t0) * 1000
+                        perf.ms = perf.ms > 0 and perf.ms * 0.9 + ms * 0.1 or ms
+                        perf.max = math.max(perf.max, ms)
+                    end)
+                </scope>
+
+                <channel from="tower" *ch styles={ width=FILL, height=SHRINK, frame="", gap=0 }>
+                    <zml styles={ width=FILL, height=sep_height(tmpl.ch) }>
+                        <scope>
+                            last_width = 0
+                            table.insert(init, function()
+                                -- The band's own widget, to hide channels the device has not.
+                                ui.bands[tmpl.ch] = tmpl.w
+                                tmpl.w.hidden = not channels[tmpl.ch + 1].real
+                            end)
+                            table.insert(layout, function()
+                                if w.width ~= last_width then
+                                    last_width = w.width
+                                    content = hline(w.width, "sep")
+                                    redraw_soon()
+                                end
+                            end)
+                        </scope>
+                    </zml>
+
+                    <row styles={ width=FILL, height=lane_height(tmpl.ch), frame="", gap=0 }>
+                        <zml styles={ width=FILL, height=lane_height(tmpl.ch), frame=EDGE_CONTENT, frame_style=PRIMARY }>
+                            <scope>
+                                -- The label and the lane, from the frame; a collapsed band is its
+                                -- label alone. Sizes come from layout; the poll draws.
+                                width, height = 0, 0
+                                -- Its own key handlers, none: without them CEL's call for the
+                                -- selected widget's keys would reach the page's, a second time.
+                                input = {}
+
+                                table.insert(init, function()
+                                    ui.lanes[tmpl.ch] = draw
+                                    -- The lane takes the selection too, as a leaf: it is where the
+                                    -- cursor is driven from.
+                                    w.has_selection = true
+                                    w.has_cursor = false
+                                    nav_widget(w, "lane:" .. tmpl.ch, focus)
+                                end)
+
+                                table.insert(layout, function()
+                                    -- Inside the content frame's two sides.
+                                    if w.width - 2 ~= width or w.height ~= height then
+                                        width, height = w.width - 2, w.height
+                                        frame.cols = math.max(0, width - LABEL_W)
+                                        draw()
+                                        redraw_soon()
+                                    end
+                                end)
+
+                                --[=[
+                                The label: the name, lit while the line is high (at the cursor,
+                                or the view's end), and the channel's number below it. With the
+                                focus on the lane, the name takes the theme's selection; with the
+                                cursor driven from it, the accent.
+                                ]=]
+                                function head(c, r, rows_n, lvl)
+                                    local id = "lane:" .. c.ch
+                                    local name = lvl == 1 and (BRIGHT .. " bold") or TEXT
+                                    if nav.focus == id then
+                                        name = nav.engaged and ("@" .. ACCENT .. " black bold") or THEME.input.selected.style
+                                    end
+                                    if rows_n == 1 then
+                                        return "[" .. name .. "]" .. pad_to(cut(c.name, 4), 5) .. "[/][" .. GRAY .. "]"
+                                            .. pad_to(tostring(c.ch), LABEL_W - 5) .. "[/]"
+                                    elseif r == 1 then
+                                        return "[" .. name .. "]" .. pad_to(cut(c.name, LABEL_W - 1), LABEL_W - 1) .. "[/] "
+                                    elseif r == 2 then
+                                        return "[" .. GRAY .. "]" .. pad_to(tostring(c.ch), LABEL_W) .. "[/]"
+                                    end
+                                    return string.rep(" ", LABEL_W)
+                                end
+
+                                function draw()
+                                    local c = channels[tmpl.ch + 1]
+                                    local cols = width - LABEL_W
+                                    local rows_n = math.max(1, height)
+                                    if cols < 8 or not c.real then
+                                        content = ""
+                                        return
+                                    end
+                                    if not band_open(c) then
+                                        local name = nav.focus == "lane:" .. c.ch and THEME.input.selected.style or GRAY
+                                        content = "[" .. name .. "]" .. pad_to(cut(c.name, 4), 5) .. "[/][" .. GRAY .. "]"
+                                            .. pad_to(tostring(c.ch), LABEL_W - 5)
+                                            .. (c.captured and "" or ("[" .. FAINT .. "]not captured[/]")) .. "[/]"
+                                        return
+                                    end
+
+                                    local l = frame.lanes[c.ch]
+                                    local cc = col_of(view.cursor)
+                                    local rows = l and lane_rows(l, cols, rows_n, cc) or lane_idle(c.ch, cols, rows_n)
+                                    local lvl = l and l.last[cc or #l.last] or nil
+                                    local lines = {}
+                                    for r = 1, rows_n do
+                                        lines[r] = head(c, r, rows_n, lvl) .. (rows[r] or "")
+                                    end
+                                    content = table.concat(lines, "\n")
+                                end
+                            </scope>
+                        </zml>
+
+                        <tower styles={
+                            width = CELL_W,
+                            height = lane_height(tmpl.ch),
+                            frame = EDGE_CELL,
+                            frame_style = GRAY,
+                            gap = 0,
+                        }>
+                            <toggle active=true styles={ width=FILL, align_x=START }>Enabled
+                                <scope>
+                                    -- Channels 0 to 9 take their digit as QuickStrike key; it
+                                    -- leads the text, so the underline lands on it.
+                                    content = tmpl.ch .. " Enabled"
+                                    qs = tmpl.ch < 10 and tostring(tmpl.ch) or ""
+                                    table.insert(init, function()
+                                        ui.toggles[tmpl.ch] = w
+                                        w.hidden = true
+                                        nav_widget(w, "en:" .. tmpl.ch, focus)
+                                    end)
+                                    table.insert(strike, function() channel_enable(tmpl.ch, active) end)
+                                </scope>
+                            </toggle>
+                            <button qs=false styles={ width=FILL, align_x=START }>Role
+                                <scope>
+                                    -- The channel's role in a decoder ("i2c1 SDA"), empty if
+                                    -- none; Enter opens the roles it could take.
+                                    table.insert(init, function()
+                                        ui.roles[tmpl.ch] = w
+                                        w.hidden = true
+                                        nav_widget(w, "role:" .. tmpl.ch, focus)
+                                    end)
+                                    table.insert(poll, function() content = role_button_text(tmpl.ch) end)
+                                    table.insert(strike, function() view_role(tmpl.ch) end)
+                                </scope>
+                            </button>
+                            <toggle active=true qs=false styles={ width=FILL, align_x=START }>Trigger
+                                <scope>
+                                    -- Whether this line's activity makes packets: off for a clock
+                                    -- that would make every edge one.
+                                    -- No QuickStrike key: the channels' own digits and the
+                                    -- controls' letters are taken.
+                                    table.insert(init, function()
+                                        ui.trigs[tmpl.ch] = w
+                                        w.hidden = true
+                                        nav_widget(w, "tr:" .. tmpl.ch, focus)
+                                        ui.trig_set[tmpl.ch] = function(on)
+                                            active = on
+                                            render()
+                                        end
+                                    end)
+                                    table.insert(strike, function() channel_trig(tmpl.ch, active) end)
+                                </scope>
+                            </toggle>
+                            <zml styles={ width=FILL, height=FILL }>
+                                <scope>
+                                    -- Below the toggles, room permitting: the level at the cursor
+                                    -- (or the view's end) with the edges in view, then their
+                                    -- rough rate.
+                                    table.insert(init, function() ui.cells[tmpl.ch] = draw end)
+
+                                    function draw()
+                                        local c = channels[tmpl.ch + 1]
+                                        local l = frame.lanes[c.ch]
+                                        if not c.real then
+                                            content = ""
+                                            return
+                                        elseif not c.captured then
+                                            content = cap.info and ("[" .. FAINT .. "] off[/]") or ""
+                                            return
+                                        elseif not band_open(c) or not l then
+                                            content = ""
+                                            return
+                                        end
+                                        local cols = #l.last
+                                        local v = l.last[col_of(view.cursor) or cols]
+                                        local n, first, last = 0, nil, nil
+                                        for i = 1, cols do
+                                            if l.changes[i] > 0 then
+                                                n = n + l.changes[i]
+                                                first = first or i
+                                                last = i
+                                            end
+                                        end
+                                        local lv = (v == 1 and ("[" .. BRIGHT .. "]▲ HIGH[/]"))
+                                            or (v == 0 and ("[" .. GRAY .. "]▼ LOW [/]"))
+                                            or ("[" .. FAINT .. "]? ----[/]")
+                                        local lines = { " " .. lv .. "[" .. GRAY .. "]"
+                                            .. string.format("%6s", n > 9999 and "9999+" or tostring(n)) .. "↕[/]" }
+                                        if n >= 4 and last > first then
+                                            local dt = (frame.edges[last + 1] - frame.edges[first]) / cap.rate
+                                            lines[2] = "[" .. GRAY .. "] ≈ " .. fmt_rate((n - 1) / 2 / dt) .. "[/]"
+                                        end
+                                        content = table.concat(lines, "\n")
+                                    end
+                                </scope>
+                            </zml>
+                        </tower>
+                    </row>
+                </channel>
+            </define>
+        </meta>
+
+        <tower styles={ width=FILL, height=FILL, frame="", gap=0 }>
+            <header title="TH-1 / BUS REPLAY"/>
+
+            <tower styles={ width=FILL, height=FILL, frame="", gap=0, style="@black" }>
+                <zml styles={ width=FILL, height=1 }>
+                    <scope>
+                        last_width = 0
+                        table.insert(layout, function()
+                            if w.width .. tostring(sheet.open) ~= last_width then
+                                last_width = w.width .. tostring(sheet.open)
+                                content = hline(w.width, "top")
+                                redraw_soon()
+                            end
+                        end)
+                    </scope>
+                </zml>
+
+                <row styles={ width=FILL, height=2, frame="", gap=0 }>
+                    <zml #ruler styles={ width=FILL, height=2, frame=EDGE_CONTENT, frame_style=sheet.open and DIM_EDGE or PRIMARY }>
+                        <scope>
+                            --[=[
+                            Above the lanes: what is on show, then a time ruler. Trigger: the
+                            packet's number, time, length, records, the part in view, the hold
+                            left as a bar (paused: where it is among the packets); the ruler
+                            counts from the packet's start, the trigger point, in the accent.
+                            Roll: where the view ends and its span; the ruler counts back from
+                            its end. Ticks at a 1-2-5 step, at least 10 columns apart.
+                            ]=]
+                            width = 0
+                            ARM = { "◐", "◓", "◑", "◒" }
+                            arm_i = 1
+
+                            table.insert(layout, function()
+                                -- Every frame: CEL has made its selection by now.
+                                if nav.off then nav_settle() end
+                                if w.width - 2 ~= width then
+                                    width = w.width - 2
+                                    frame.cols = math.max(0, width - LABEL_W)
+                                    draw()
+                                    redraw_soon()
+                                end
+                            end)
+
+                            local function g(s) return "[" .. GRAY .. "]" .. s .. "[/]" end
+
+                            function header_line(cols)
+                                local rate = cap.rate
+                                local parts = {}
+                                if frame.kind == "trigger" then
+                                    local p = view.shown
+                                    local tail
+                                    if p.item then
+                                        -- A transaction from the decoder pane's list.
+                                        tail = "[" .. ACCENT .. "]◆[/] " .. g("DECODED")
+                                    elseif view.paused then
+                                        local i = packet_index(p) or 0
+                                        tail = string.format("[%s]‹[/] %s [%s]›[/]",
+                                            i > 1 and BRIGHT or FAINT, g(i .. "/" .. #pk.list),
+                                            i < #pk.list and BRIGHT or FAINT)
+                                    else
+                                        local left = math.max(0, math.min(1, (view.until_ - br.clock()) / HOLDS[view.hold_i]))
+                                        local k = math.floor(left * 6 + 0.5)
+                                        tail = "[" .. ACCENT .. "]" .. string.rep("▰", k) .. "[/][" .. FAINT .. "]"
+                                            .. string.rep("▱", 6 - k) .. "[/]"
+                                    end
+                                    local span = frame.z * frame.cols
+                                    local full = frame.full_b - frame.full_a
+                                    parts = {
+                                        { "[" .. BRIGHT .. " bold]" .. (p.item or ("#" .. p.id)) .. "[/]", 1 },
+                                        { g("AT") .. " " .. fmt_abs(p.start / rate), 4 },
+                                        { g("LEN") .. " " .. fmt_time((p.stop - p.start + 1) / rate), 2 },
+                                    }
+                                    if p.records then parts[#parts + 1] = { g("REC") .. " " .. p.records, 5 } end
+                                    if span < full - 1 then
+                                        parts[#parts + 1] = { g("VIEW") .. " " .. fmt_time(span / rate) .. g("/" .. fmt_time(full / rate)), 3 }
+                                    end
+                                    parts[#parts + 1] = { tail, 1 }
+                                elseif frame.kind == "roll" then
+                                    parts = {
+                                        { "[" .. BRIGHT .. " bold]" .. fmt_abs((frame.a + frame.z * frame.cols) / rate) .. "[/]", 1 },
+                                        { g("SPAN") .. " " .. fmt_time(frame.z * frame.cols / rate), 2 },
+                                    }
+                                elseif frame.kind == "armed" then
+                                    local any = link.packets or not cap.info
+                                    parts = {
+                                        { "[" .. ACCENT .. "]" .. ARM[arm_i] .. "[/] " .. g("ARMED"), 1 },
+                                        { "[" .. FAINT .. "]" .. (any and (fmt_time(PACKET_GAP_S) .. " idle") or "no trigger lines") .. "[/]", 2 },
+                                    }
+                                end
+                                return fit_parts(parts, cols)
+                            end
+
+                            function ruler_line(cols)
+                                local cs, styles = {}, {}
+                                for x = 1, cols do cs[x], styles[x] = "─", FAINT end
+                                if frame.edges then
+                                    local rate = cap.rate
+                                    -- Trigger: from the packet's start. Roll: back from the
+                                    -- view's end, the newest tick when live.
+                                    local trig = frame.kind == "trigger"
+                                    local origin = trig and view.shown.start or (frame.a + frame.z * cols)
+                                    local z = math.max(frame.z, 1e-9)
+                                    local step = nice_step(10 * z)
+                                    local a = frame.a
+                                    local free = 1
+                                    local t = math.ceil((a - origin) / step) * step + origin
+                                    while true do
+                                        local x = math.floor((t - a) / z + 0.5) + 1
+                                        if x > cols then break end
+                                        if x >= 1 then
+                                            local zero = trig and t == origin
+                                            cs[x], styles[x] = "┬", zero and ACCENT or GRAY
+                                            local dt = (t - origin) / rate
+                                            local s = (dt > 0 and "+" or "") .. fmt_time(dt)
+                                            if x + 1 >= free and x + utf8.len(s) <= cols then
+                                                local k = 1
+                                                for _, cp in utf8.codes(s) do
+                                                    cs[x + k], styles[x + k] = utf8.char(cp), zero and ACCENT or GRAY
+                                                    k = k + 1
+                                                end
+                                                free = x + k + 1
+                                            end
+                                        end
+                                        t = t + step
+                                    end
+                                    local cc = col_of(view.cursor)
+                                    -- The cursor: a cross on the rule, a highlight on a label.
+                                    if cc then
+                                        if cs[cc] == "─" or cs[cc] == "┬" then cs[cc] = "┼" end
+                                        styles[cc] = ACCENT .. " bold " .. BG_CURSOR
+                                    end
+                                end
+                                return zml_row(cs, function(x) return styles[x] end)
+                            end
+
+                            function draw()
+                                local cols = width - LABEL_W
+                                if cols < 8 then
+                                    content = ""
+                                    return
+                                end
+                                arm_i = arm_i % #ARM + 1
+                                local rate = cap.rate
+                                local left1, left2
+                                if view.cursor then
+                                    local t = view.cursor
+                                    if frame.kind == "trigger" then t = t - view.shown.start end
+                                    local s = fmt_time(t / rate)
+                                    if frame.kind == "trigger" and t > 0 then s = "+" .. s end
+                                    left1 = "[" .. ACCENT .. " bold]" .. pad_to(s, LABEL_W) .. "[/]"
+                                else
+                                    left1 = g(pad_to(view.trigger and "TRIG" or "ROLL", LABEL_W))
+                                end
+                                left2 = g(pad_to(frame.edges and (fmt_time(frame.z / rate) .. "/c") or "", LABEL_W))
+                                content = zcut(left1 .. header_line(cols), width) .. "\n" .. zcut(left2 .. ruler_line(cols), width)
+                                if sheet.open then content = zdim(content) end
+                            end
+                        </scope>
+                    </zml>
+
+                    <tower styles={
+                        width = CELL_W,
+                        height = 2,
+                        frame = EDGE_CELL,
+                        frame_style = GRAY,
+                        gap = 0,
+                    }>
+                        <zml #mode-cell styles={ width=FILL, height=2 }>
+                            <scope>
+                                -- The capture's state and time; then the view's mode, its
+                                -- setting, and whether it is held or zoomed.
+                                function draw()
+                                    local mode
+                                    if view.trigger then
+                                        mode = "[" .. TEXT .. "] TRIG[/] [" .. GRAY .. "]" .. string.format("%gs", HOLDS[view.hold_i]) .. "[/]"
+                                        if view.tzoom == 0 then
+                                            mode = mode .. " [" .. BRIGHT .. "]FIT[/]"
+                                        elseif view.tzoom ~= 1 then
+                                            mode = mode .. string.format(" [%s]%s%.3g[/]", BRIGHT, view.tzoom > 1 and "×" or "÷",
+                                                view.tzoom > 1 and view.tzoom or 1 / view.tzoom)
+                                        end
+                                    else
+                                        mode = "[" .. TEXT .. "] ROLL[/] [" .. GRAY .. "]" .. fmt_time(ZOOMS[view.zoom_i] / cap.rate) .. "[/]"
+                                    end
+                                    if view.paused then mode = mode .. " [" .. ACCENT .. " bold]‖[/]" end
+                                    content = zcut(" " .. state_text(), CELL_W - 1) .. "\n" .. zcut(mode, CELL_W - 1)
+                                    if sheet.open then content = zdim(content) end
+                                end
+                            </scope>
+                        </zml>
+                    </tower>
+                </row>
+
+                <tower styles={ width=FILL, height=FILL, frame="", gap=0 }>
+                <scope>
+                    -- The bands, the strip and the decoder pane: with a decoder, the bands
+                    -- get the upper half (dv.bands_h), the pane the lower.
+                    table.insert(layout, function()
+                        local h = math.max(2, w.height - 1)
+                        local bands_h = h - h // 2
+                        dv.total_h = h
+                        if bands_h ~= dv.bands_h then
+                            dv.bands_h = bands_h
+                            redraw_soon()
+                        end
+                    end)
+                </scope>
+                <tower styles={ width=FILL, height=dv.kind ~= "none" and dv.bands_h or FILL, frame="", gap=0 }>
+                    <scope>
+                        table.insert(layout, function()
+                            lay.width = w.width
+                            -- Not the height it came out at: lanes too tall for their share
+                            -- would keep it.
+                            local h = dv.kind ~= "none" and dv.bands_h or w.height
+                            if h ~= lay.height then
+                                lay.height = h
+                                lanes_fit()
+                                redraw_soon()
+                            end
+                        end)
+                    </scope>
+                    @@BANDS@@
+                    <zml #bg-top hidden styles={ width=FILL, height=bg.top }/>
+                    <row #bg-mid hidden styles={ width=FILL, height=bg.ph, frame="", gap=0 }>
+                        <zml #bg-left styles={ width=bg.left, height=bg.ph }/>
+                        <tower #popup styles={
+                            width = bg.pw,
+                            height = bg.ph,
+                            frame = FRM.light,
+                            frame_style = GRAY,
+                            gap = 0,
+                        }>
+                            <zml #sh-title styles={ width=FILL, height=2 }/>
+                            @@SHEET_ROWS@@
+                            <pad styles={ width=FILL, height=1 }/>
+                            <row #sh-acts styles={ width=FILL, height=1, frame={ " ", "", "", "" }, gap=1 }>
+                                @@SHEET_ACTS@@
+                            </row>
+                        </tower>
+                        <zml #bg-right styles={ width=FILL, height=bg.ph }/>
+                    </row>
+                    <zml #bg-bottom hidden styles={ width=FILL, height=FILL }/>
+                    <row #bands-filler styles={ width=FILL, height=FILL, frame="", gap=0 }>
+                        <pad styles={ width=FILL, height=FILL, frame=EDGE_CONTENT, frame_style=PRIMARY }/>
+                        <tower styles={
+                            width = CELL_W,
+                            height = FILL,
+                            frame = EDGE_CELL,
+                            frame_style = GRAY,
+                        }/>
+                    </row>
+                </tower>
+
+                <zml #dv-tabs styles={ width=FILL, height=1 }>
+                    <scope>
+                        -- The content frame's bottom edge, and the decoder pane's tabs in it
+                        -- once there is a decoder; it takes the selection then (left and
+                        -- right open the tabs).
+                        width = 0
+                        input = {}
+                        table.insert(init, function()
+                            ui.dv.strip = draw
+                            w.has_selection = true
+                            w.has_cursor = false
+                            nav_widget(w, "tabs", focus)
+                        end)
+                        table.insert(layout, function()
+                            if w.width ~= width then
+                                width = w.width
+                                draw()
+                                redraw_soon()
+                            end
+                        end)
+                        function draw() content = dv_strip(width) end
+                    </scope>
+                </zml>
+
+                <tower #decode-area hidden styles={
+                    width = FILL,
+                    height = FILL,
+                    frame = { "│", "", "│", "", "", "", "", "" },
+                    frame_style = sheet.open and DIM_TEXT or GRAY,
+                    gap = 0,
+                }>
+                    <scope>
+                        -- The open decoder's view, half the content frame with the bands.
+                        table.insert(layout, function()
+                            dv.h = w.height
+                            if w.width - 2 ~= dv.inner then
+                                dv.inner = w.width - 2
+                                redraw_soon()
+                            end
+                        end)
+                    </scope>
+
+                    <zml #dv-msg hidden styles={ width=FILL, height=FILL }>
+                        <scope>
+                            table.insert(init, function()
+                                ui.dv.msg = function()
+                                    if dv.kind ~= "msg" then return end
+                                    content = dv_msg_text(dv.inner)
+                                    if sheet.open then content = zdim(content) end
+                                end
+                            end)
+                        </scope>
+                    </zml>
+
+                    <row #dv-i2c hidden styles={ width=FILL, height=FILL, frame="", gap=0 }>
+                        <zml #dv-list styles={ width=dv.detail and (dv.inner // 2) or FILL, height=FILL }>
+                            <scope>
+                                -- The transactions; it takes the selection, and the page's
+                                -- handler gives it its keys (dv_list_key).
+                                input = {}
+                                table.insert(init, function()
+                                    w.has_selection = true
+                                    w.has_cursor = false
+                                    nav_widget(w, "dv:list", focus)
+                                    ui.dv.list = function()
+                                        if dv.kind ~= "i2c" then return end
+                                        local width = dv.detail and (dv.inner // 2) or dv.inner
+                                        content = dv_list_text(width, dv.h)
+                                        if sheet.open then content = zdim(content) end
+                                    end
+                                end)
+                            </scope>
+                        </zml>
+                        <zml #dv-detail hidden styles={
+                            width = FILL,
+                            height = FILL,
+                            frame = { "│ ", "", "", "", "", "", "", "" },
+                            frame_style = sheet.open and DIM_TEXT or GRAY,
+                        }>
+                            <scope>
+                                table.insert(init, function()
+                                    ui.dv.detail = function()
+                                        if dv.kind ~= "i2c" or not dv.detail then return end
+                                        content = dv_detail_text(dv.inner - dv.inner // 2 - 2, dv.h)
+                                        if sheet.open then content = zdim(content) end
+                                    end
+                                end)
+                            </scope>
+                        </zml>
+                    </row>
+
+                    <tower #dv-uart hidden styles={ width=FILL, height=FILL, frame="", gap=0 }>
+                        <row styles={ width=FILL, height=1, frame="", gap=0 }>
+                            <zml #dv-head styles={ width=FILL, height=1 }>
+                                <scope>
+                                    table.insert(init, function()
+                                        ui.dv.head = function()
+                                            if dv.kind ~= "uart" then return end
+                                            content = dv_uart_head(math.max(0, dv.inner - 10))
+                                            if sheet.open then content = zdim(content) end
+                                        end
+                                    end)
+                                </scope>
+                            </zml>
+                            <toggle #dv-hex qs="x" active=false>Hex
+                                <scope>
+                                    -- Text or a hex dump, per decoder; Ctrl+X (QuickStrike).
+                                    table.insert(init, function() nav_widget(w, "dv:hex", focus) end)
+                                    table.insert(strike, function()
+                                        local d = dv_dec()
+                                        if d then d.hex = active end
+                                        dv_update()
+                                    end)
+                                </scope>
+                            </toggle>
+                        </row>
+                        <row styles={ width=FILL, height=FILL, frame="", gap=0 }>
+                            <zml #dv-tx styles={ width=dv.inner // 2, height=FILL }>
+                                <scope>
+                                    table.insert(init, function()
+                                        ui.dv.tx = function()
+                                            if dv.kind ~= "uart" then return end
+                                            content = dv_uart_text("tx", dv.inner // 2, dv.h - 1)
+                                            if sheet.open then content = zdim(content) end
+                                        end
+                                    end)
+                                </scope>
+                            </zml>
+                            <zml #dv-rx styles={
+                                width = FILL,
+                                height = FILL,
+                                frame = { "│", "", "", "", "", "", "", "" },
+                                frame_style = sheet.open and DIM_TEXT or GRAY,
+                            }>
+                                <scope>
+                                    table.insert(init, function()
+                                        ui.dv.rx = function()
+                                            if dv.kind ~= "uart" then return end
+                                            content = dv_uart_text("rx", dv.inner - dv.inner // 2 - 1, dv.h - 1)
+                                            if sheet.open then content = zdim(content) end
+                                        end
+                                    end)
+                                </scope>
+                            </zml>
+                        </row>
+                    </tower>
+                </tower>
+
+                </tower>
+
+                <zml #dv-rule hidden styles={ width=FILL, height=1 }>
+                    <scope>
+                        -- Between the decoder pane and the controls.
+                        table.insert(layout, function()
+                            content = "[" .. (sheet.open and DIM_TEXT or GRAY) .. "]├"
+                                .. string.rep("─", math.max(0, w.width - 2)) .. "┤[/]"
+                        end)
+                    </scope>
+                </zml>
+
+                <row styles={
+                    width = FILL,
+                    frame = { "│ ", "", " │", "", "", "", "", "" },
+                    frame_style = GRAY,
+                    gap = 1,
+                }>
+                    <button #start-stop qs="s">Start
+                        <scope>
+                            -- Static text: QuickStrike places its underline from the text at init.
+                            table.insert(init, function() nav_widget(w, "btn:start", focus) end)
+                            table.insert(poll, function()
+                                content = (st and st.state == "running") and "Stop" or "Start"
+                            end)
+                            table.insert(strike, function() capture_toggle() end)
+                        </scope>
+                    </button>
+                    <button #add-dec qs="a">Add decoder
+                        <scope>
+                            table.insert(init, function() nav_widget(w, "btn:dec", focus) end)
+                            table.insert(strike, function() view_menu() end)
+                        </scope>
+                    </button>
+                    <pad styles={ height=1 }/>
+                    <toggle #trigger-btn qs="g" active=true>Trigger
+                        <scope>
+                            table.insert(init, function() nav_widget(w, "btn:trigger", focus) end)
+                            table.insert(strike, function()
+                                view.trigger, view.cursor = active, nil
+                            end)
+                        </scope>
+                    </toggle>
+                    <button #hold-btn qs="d">Hold 1s
+                        <scope>
+                            table.insert(init, function() nav_widget(w, "btn:hold", focus) end)
+                            table.insert(strike, function() hold_cycle() end)
+                        </scope>
+                    </button>
+                    <button #zoom-out qs=false>−
+                        <scope>
+                            -- Zoom out and in: one character each, so the row fits 80
+                            -- columns with Add decoder; Ctrl+O and Ctrl+N stay (KEYS).
+                            table.insert(init, function() nav_widget(w, "btn:zout", focus) end)
+                            table.insert(strike, function() zoom(1) end)
+                        </scope>
+                    </button>
+                    <button #zoom-in qs=false>+
+                        <scope>
+                            table.insert(init, function() nav_widget(w, "btn:zin", focus) end)
+                            table.insert(strike, function() zoom(-1) end)
+                        </scope>
+                    </button>
+                    <button #pause-view qs="p">Pause
+                        <scope>
+                            table.insert(init, function() nav_widget(w, "btn:pause", focus) end)
+                            table.insert(poll, function() content = view.paused and "Resume" or "Pause" end)
+                            table.insert(strike, function() pause(not view.paused) end)
+                        </scope>
+                    </button>
+                </row>
+
+                <zml styles={ width=FILL, height=1 }>`foot_line(w.width)`</zml>
+            </tower>
+        </tower>
+    ]]
+
+    return {
+        ["/"] = function()
+            -- Not fmt: the client Lua above is full of % format strings.
+            return app((page:gsub("@@([%u_]+)@@", subs)))
+        end,
+    }
+end
