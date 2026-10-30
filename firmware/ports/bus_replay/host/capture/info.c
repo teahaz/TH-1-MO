@@ -92,6 +92,16 @@ int capture_info_from_hello(struct capture_info *info, const struct hello *h)
 }
 
 
+// A copy of src that owns everything it points at, for capture_info_free().
+int capture_info_copy(struct capture_info *dst, const struct capture_info *src)
+{
+    struct hello h = {.channels = src->channels, .data_channels = src->data_channels,
+                      .names = src->names};
+
+    return capture_info_init(dst, &h, src->rate, src->c, src->enabled_set, src->split_set);
+}
+
+
 void capture_info_free(struct capture_info *info)
 {
     if (info->names) {

@@ -8,6 +8,11 @@
  * emit. Items come out of codec_next() in order of their start, across decoders, once no
  * decoder can still emit an earlier one and a late loss report could no longer mark them.
  *
+ * Input that has no heartbeats, such as records read back from a store, gives what a
+ * heartbeat would instead: codec_line_level() a channel's level at the end of a tick, and
+ * codec_advance() that every record up to and including a tick has been given, on every
+ * data channel. The records must then come in tick order.
+ *
  * A decoder reads records, or is stacked on another decoder and reads its items: it sees
  * each of them before it is released, and may add children to it (a chip-level reading of
  * an I2C transaction) or emit items of its own.
@@ -119,6 +124,8 @@ struct codec_dec *codec_dec_at(const struct codec *c, size_t i);
 
 int codec_record(struct codec *c, const struct record *r);
 int codec_heartbeat(struct codec *c, const struct heartbeat *hb);
+int codec_line_level(struct codec *c, uint64_t tick, uint16_t channel, uint8_t level);
+int codec_advance(struct codec *c, uint64_t tick);
 void codec_loss(struct codec *c, const struct loss *loss);
 void codec_finish(struct codec *c);
 struct codec_item *codec_next(struct codec *c);

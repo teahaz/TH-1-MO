@@ -61,6 +61,8 @@ int merge_init(struct merge *m, const struct capture_info *info,
 void merge_free(struct merge *m);
 int merge_record(struct merge *m, const struct record *r);
 int merge_heartbeat(struct merge *m, const struct heartbeat *hb);
+int merge_level(struct merge *m, uint64_t tick, uint16_t channel, uint8_t level);
+int merge_advance(struct merge *m, uint64_t tick);
 void merge_flush(struct merge *m);
 
 #endif

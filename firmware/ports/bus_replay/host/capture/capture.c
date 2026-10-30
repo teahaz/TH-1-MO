@@ -18,6 +18,7 @@
 #include "capture/local.h"
 #include "capture/loss.h"
 #include "capture/recorder.h"
+#include "capture/remote.h"
 #include "capture/source.h"
 #include "capture/thcfile.h"
 #include "capture/wire.h"
@@ -83,6 +84,9 @@ struct capture {
 };
 
 
+static int open_backend(struct capture **out, const struct source_ops *ops, void *src,
+                        const struct capture_handler *handler, bool hello);
+static int begin_recording(struct capture *cap, char *error, size_t size);
 static int set_hello(struct capture *cap, const uint8_t *msg, size_t len);
 static int config_add(struct capture *cap, uint16_t type, const uint8_t *data, size_t len);
 static int configure(struct capture *cap, uint8_t reg, const uint8_t *value, size_t len,
@@ -105,31 +109,7 @@ static uint64_t clock_ns(clockid_t id);
 int capture_open(struct capture **out, const struct source_ops *ops, void *src,
                  const struct capture_handler *handler)
 {
-    struct capture *cap = calloc(1, sizeof(*cap));
-    const uint8_t *msg = NULL;
-    size_t len = 0;
-    int err = 0;
-
-    *out = NULL;
-    if (!cap) {
-        ops->close(src);
-        return -ENOMEM;
-    }
-    cap->ops = ops;
-    cap->src = src;
-    if (handler) {
-        cap->handler = *handler;
-    }
-
-    err = ops->hello(src, &msg, &len);
-    err = err ? err : set_hello(cap, msg, len);
-    if (err < 0) {
-        capture_close(cap);
-        return err;
-    }
-    *out = cap;
-
-    return 0;
+    return open_backend(out, ops, src, handler, true);
 }
 
 
@@ -160,6 +140,25 @@ int capture_open_local(struct capture **out, const struct capture_handler *handl
     }
 
     return capture_open(out, &local_ops, src, handler);
+}
+
+
+/*
+ * Opens a session on a link (capture/remote.h). A link that runs a capture already is not
+ * asked for a hello, which would end it: join it with remote_attach() and capture_attach().
+ */
+int capture_open_remote(struct capture **out, const struct remote_options *opt,
+                        const struct capture_handler *handler)
+{
+    void *src = NULL;
+    int err = remote_open(&src, opt);
+
+    if (err < 0) {
+        *out = NULL;
+        return err;
+    }
+
+    return open_backend(out, &remote_ops, src, handler, !remote_running(src));
 }
 
 
@@ -277,6 +276,16 @@ int capture_hello(struct capture *cap, const struct hello **h)
 }
 
 
+// The hello as the device sent it, for a copy that outlives the session.
+int capture_hello_msg(const struct capture *cap, const uint8_t **msg, size_t *len)
+{
+    *msg = cap->hello_msg;
+    *len = cap->hello_len;
+
+    return cap->have_hello ? 0 : -ENODATA;
+}
+
+
 /*
  * Records the capture to a new capture file at path. Call before capture_start(); the
  * file is created now, so a path that cannot be used fails here (-EEXIST if it exists).
@@ -380,33 +389,129 @@ int capture_start(struct capture *cap, const struct capture_config *cfg, char *e
     free(split_zero);
     err = err ? err : session_init(cap);
     if (err == 0 && cap->rec) {
-        struct recorder_msg *msgs = calloc(cap->config_count ? cap->config_count : 1,
-                                           sizeof(*msgs));
-        struct recorder_header h = {
-            .hello = cap->hello_msg,
-            .hello_len = cap->hello_len,
-            .configs = msgs,
-            .config_count = cap->config_count,
-            .info = &cap->info,
-            .binding = cap->binding,
-            .host = cap->host,
-            .start_time = cap->start_time,
-        };
-
-        for (size_t i = 0; msgs && i < cap->config_count; i++) {
-            msgs[i] = (struct recorder_msg){.type = cap->configs[i].type,
-                                            .data = cap->configs[i].data,
-                                            .len = cap->configs[i].len};
-        }
-        err = msgs ? recorder_begin(cap->rec, &h) : -ENOMEM;
-        free(msgs);
-        if (err < 0) {
-            snprintf(error, size, "can't start recording (err: %d)", err);
-        }
+        err = begin_recording(cap, error, size);
     }
     if (err < 0) {
         cap->ops->stop(cap->src);
         return err;
+    }
+    cap->started = true;
+    cap->st.running = true;
+
+    return 0;
+}
+
+
+/*
+ * Joins a capture that already runs (struct capture_attach), on a live session that has
+ * not started one: the session then parses the stream as one started with those messages.
+ * A recording set with capture_record() starts with it if the stream begins at the
+ * capture's start; one that joins later can't be recorded (-EBUSY). -EPROTO for a hello or
+ * a configuration that does not make a capture.
+ */
+int capture_attach(struct capture *cap, const struct capture_attach *a, char *error,
+                   size_t size)
+{
+    const struct reg *rate_reg = NULL;
+    const struct reg *c_reg = NULL;
+    const struct reg *enabled_reg = NULL;
+    const struct reg *split_reg = NULL;
+    const uint8_t *enabled = NULL;
+    const uint8_t *split = NULL;
+    uint8_t *split_zero = NULL;
+    size_t set_size = 0;
+    uint32_t rate = 0;
+    uint32_t c = 0;
+    int err = 0;
+
+    snprintf(error, size, "%s", "");
+    if (!cap->ops || cap->started) {
+        snprintf(error, size, "no device, or a capture already started");
+        return -EINVAL;
+    }
+    if (cap->rec && a->first_grid) {
+        snprintf(error, size, "a capture joined later can't be recorded");
+        return -EBUSY;
+    }
+    err = set_hello(cap, a->hello, a->hello_len);
+    if (err < 0) {
+        snprintf(error, size, "the hello does not parse (err: %d)", err);
+        return err;
+    }
+    rate_reg = hello_reg(&cap->hello, REG_SAMPLE_RATE);
+    c_reg = hello_reg(&cap->hello, REG_C);
+    enabled_reg = hello_reg(&cap->hello, REG_ENABLED);
+    split_reg = hello_reg(&cap->hello, REG_SPLIT);
+    set_size = ((size_t)cap->hello.channels + 7) / 8;
+    if (!rate_reg || !c_reg || !enabled_reg || enabled_reg->size != set_size ||
+        (split_reg && split_reg->size != set_size)) {
+        snprintf(error, size, "the hello lacks a core register");
+        return -EPROTO;
+    }
+    rate = reg_u32(rate_reg);
+    c = reg_u32(c_reg);
+    enabled = enabled_reg->value;
+    split_zero = calloc(set_size ? set_size : 1, 1);
+    if (!split_zero) {
+        return -ENOMEM;
+    }
+    split = split_reg ? split_reg->value : split_zero;
+
+    // The writes the device accepted, each followed by its reply, set the capture.
+    for (size_t i = 0; i < cap->config_count; i++) {
+        free(cap->configs[i].data);
+    }
+    cap->config_count = 0;
+    for (size_t i = 0; i < a->config_count && err == 0; i++) {
+        const struct recorder_msg *m = &a->configs[i];
+        const struct recorder_msg *r = i + 1 < a->config_count ? &a->configs[i + 1] : NULL;
+        struct config_reply rep;
+
+        err = config_add(cap, m->type, m->data, m->len);
+        if (err < 0 || m->type != THC_ITEM_CONFIG || m->len < 2 || m->data[0] != MSG_CONFIG ||
+            !r || r->type != THC_ITEM_CONFIG_REPLY ||
+            config_reply_parse(r->data, r->len, &rep) < 0 || rep.status != 0) {
+            continue;
+        }
+        if (m->data[1] == REG_SAMPLE_RATE && m->len == 6) {
+            rate = (uint32_t)thc_get_le(&m->data[2], 4);
+        } else if (m->data[1] == REG_C && m->len == 6) {
+            c = (uint32_t)thc_get_le(&m->data[2], 4);
+        } else if (m->data[1] == REG_ENABLED && m->len == 2 + set_size) {
+            enabled = &m->data[2];
+        } else if (m->data[1] == REG_SPLIT && m->len == 2 + set_size) {
+            split = &m->data[2];
+        }
+    }
+
+    capture_info_free(&cap->info);
+    err = err ? err : capture_info_init(&cap->info, &cap->hello, rate, c, enabled, split);
+    free(split_zero);
+    err = err ? err : session_init(cap);
+    if (err < 0) {
+        snprintf(error, size, "the configuration does not make a capture (err: %d)", err);
+        return err;
+    }
+    if (a->first_grid) {
+        for (unsigned int d = 0; d < cap->info.data_channels; d++) {
+            wire_start_at(&cap->wires[d], a->first_grid, true);
+        }
+    }
+    if (a->loss_base) {
+        struct loss_report rep;
+
+        if (loss_report_parse(a->loss_base, a->loss_base_len, cap->info.n, &rep) == 0) {
+            loss_tracker_base(&cap->lt, &rep, wire_tick(&cap->wires[0], rep.end_grid,
+                                                        rep.end_off));
+        }
+    }
+    cap->t0 = clock_ns(CLOCK_MONOTONIC) - a->time;
+    cap->start_time = clock_ns(CLOCK_REALTIME) - a->time;
+    if (cap->rec) {
+        err = begin_recording(cap, error, size);
+        if (err < 0) {
+            return err;
+        }
     }
     cap->started = true;
     cap->st.running = true;
@@ -687,6 +792,23 @@ struct recorder *capture_recorder(const struct capture *cap)
 }
 
 
+// The backend's source, for calls of its own (capture/remote.h); NULL for a file.
+void *capture_source(const struct capture *cap)
+{
+    return cap->src;
+}
+
+
+/*
+ * Where in its data channel's stream the heartbeat being handled starts (bytes from the
+ * stream's start), valid in the heartbeat handler.
+ */
+uint64_t capture_stream_pos(const struct capture *cap, uint16_t data_channel)
+{
+    return data_channel < cap->info.data_channels ? cap->wires[data_channel].hb_pos : 0;
+}
+
+
 struct thc_reader *capture_reader(const struct capture *cap)
 {
     return cap->reader;
@@ -718,6 +840,75 @@ int capture_trailer(const struct capture *cap, uint8_t reason, struct thc_traile
     }
 
     return 0;
+}
+
+
+/*
+ * A session on a device backend (ops, src), which it takes over: it is closed with the
+ * session, also on failure. With hello, it reads the device's hello.
+ */
+static int open_backend(struct capture **out, const struct source_ops *ops, void *src,
+                        const struct capture_handler *handler, bool hello)
+{
+    struct capture *cap = calloc(1, sizeof(*cap));
+    const uint8_t *msg = NULL;
+    size_t len = 0;
+    int err = 0;
+
+    *out = NULL;
+    if (!cap) {
+        ops->close(src);
+        return -ENOMEM;
+    }
+    cap->ops = ops;
+    cap->src = src;
+    if (handler) {
+        cap->handler = *handler;
+    }
+
+    if (hello) {
+        err = ops->hello(src, &msg, &len);
+        err = err ? err : set_hello(cap, msg, len);
+    }
+    if (err < 0) {
+        capture_close(cap);
+        return err;
+    }
+    *out = cap;
+
+    return 0;
+}
+
+
+// The recording's header, from the hello and the configuration, once the capture runs.
+static int begin_recording(struct capture *cap, char *error, size_t size)
+{
+    struct recorder_msg *msgs = calloc(cap->config_count ? cap->config_count : 1,
+                                       sizeof(*msgs));
+    struct recorder_header h = {
+        .hello = cap->hello_msg,
+        .hello_len = cap->hello_len,
+        .configs = msgs,
+        .config_count = cap->config_count,
+        .info = &cap->info,
+        .binding = cap->binding,
+        .host = cap->host,
+        .start_time = cap->start_time,
+    };
+    int err = 0;
+
+    for (size_t i = 0; msgs && i < cap->config_count; i++) {
+        msgs[i] = (struct recorder_msg){.type = cap->configs[i].type,
+                                        .data = cap->configs[i].data,
+                                        .len = cap->configs[i].len};
+    }
+    err = msgs ? recorder_begin(cap->rec, &h) : -ENOMEM;
+    free(msgs);
+    if (err < 0) {
+        snprintf(error, size, "can't start recording (err: %d)", err);
+    }
+
+    return err;
 }
 
 

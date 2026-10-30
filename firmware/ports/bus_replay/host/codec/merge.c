@@ -101,6 +101,37 @@ int merge_heartbeat(struct merge *m, const struct heartbeat *hb)
 }
 
 
+// A channel's level at the end of tick, as a heartbeat of its data channel would give it.
+int merge_level(struct merge *m, uint64_t tick, uint16_t channel, uint8_t level)
+{
+    struct merge_entry e = {.tick = tick, .channel = channel, .level = level, .is_level = true};
+    uint16_t d = channel < m->info->channels ? m->data_channel[channel] : NO_DATA_CHANNEL;
+
+    if (d == NO_DATA_CHANNEL) {
+        return 0;
+    }
+
+    return push(&m->q[d], &e);
+}
+
+
+// Every data channel has handed over everything up to and including tick.
+int merge_advance(struct merge *m, uint64_t tick)
+{
+    for (unsigned int d = 0; d < m->info->data_channels; d++) {
+        struct merge_queue *q = &m->q[d];
+
+        if (!q->have_wm || tick > q->wm) {
+            q->wm = tick;
+            q->have_wm = true;
+        }
+    }
+    release(m, false);
+
+    return 0;
+}
+
+
 // Hands over everything still held, at the end of the input.
 void merge_flush(struct merge *m)
 {

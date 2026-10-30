@@ -18,6 +18,7 @@
 #include "capture/control.h"
 #include "capture/dummy.h"
 #include "capture/recorder.h"
+#include "capture/remote.h"
 #include "capture/source.h"
 #include "capture/thcfile.h"
 #include "common/capture_info.h"
@@ -45,6 +46,26 @@ struct capture_config {
     const uint8_t *split;
 };
 
+/*
+ * A capture that already runs, to join from where it has got to (capture_attach()): the
+ * hello, the configuration messages and replies it was started with, in order (types
+ * THC_ITEM_CONFIG and THC_ITEM_CONFIG_REPLY), the last loss report before the join (NULL
+ * for none), and the grid count at which every data channel's stream begins with a
+ * heartbeat (0: from the capture's start), with the capture's time there (ns from its
+ * start), which item times go on from. The same as a capture file that starts later
+ * (docs/capture-file.md, Header).
+ */
+struct capture_attach {
+    const uint8_t *hello;
+    size_t hello_len;
+    const struct recorder_msg *configs;
+    size_t config_count;
+    const uint8_t *loss_base;
+    size_t loss_base_len;
+    uint64_t first_grid;
+    uint64_t time;
+};
+
 // What a recording adds to the header.
 struct capture_record_options {
     const char *binding;
@@ -61,13 +82,18 @@ int capture_open_dummy(struct capture **out, const struct dummy_options *opt,
 int capture_open_local(struct capture **out, const struct capture_handler *handler);
 int capture_open_file(struct capture **out, const char *path,
                       const struct capture_handler *handler);
+int capture_open_remote(struct capture **out, const struct remote_options *opt,
+                        const struct capture_handler *handler);
 void capture_close(struct capture *cap);
 
 int capture_hello(struct capture *cap, const struct hello **h);
+int capture_hello_msg(const struct capture *cap, const uint8_t **msg, size_t *len);
 int capture_record(struct capture *cap, const char *path,
                    const struct capture_record_options *opt);
 int capture_start(struct capture *cap, const struct capture_config *cfg, char *error,
                   size_t size);
+int capture_attach(struct capture *cap, const struct capture_attach *a, char *error,
+                   size_t size);
 int capture_pull(struct capture *cap, int timeout_ms);
 int capture_stop(struct capture *cap, uint8_t reason);
 int capture_seek(struct capture *cap, uint64_t tick);
@@ -83,6 +109,8 @@ uint64_t capture_overflow(const struct capture *cap);
 uint64_t capture_tail_mismatches(const struct capture *cap);
 struct recorder *capture_recorder(const struct capture *cap);
 struct thc_reader *capture_reader(const struct capture *cap);
+void *capture_source(const struct capture *cap);
+uint64_t capture_stream_pos(const struct capture *cap, uint16_t data_channel);
 int capture_trailer(const struct capture *cap, uint8_t reason, struct thc_trailer *t);
 
 #endif

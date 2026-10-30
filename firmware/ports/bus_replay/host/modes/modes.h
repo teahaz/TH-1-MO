@@ -20,5 +20,9 @@ int capture_main(int argc, char **argv);
 int info_main(int argc, char **argv);
 int decode_main(int argc, char **argv);
 int export_main(int argc, char **argv);
+int link_main(int argc, char **argv);
+
+// The UI (ui/), in the binary only when it was built with CEL (Makefile); NULL without it.
+int ui_main(int argc, char **argv) __attribute__((weak));
 
 #endif

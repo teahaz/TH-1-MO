@@ -206,6 +206,20 @@ int codec_heartbeat(struct codec *c, const struct heartbeat *hb)
 }
 
 
+// A channel's level at the end of tick, as a heartbeat would give it (codec.h).
+int codec_line_level(struct codec *c, uint64_t tick, uint16_t channel, uint8_t level)
+{
+    return merge_level(&c->merge, tick, channel, level);
+}
+
+
+// Every record up to and including tick has been given, on every data channel (codec.h).
+int codec_advance(struct codec *c, uint64_t tick)
+{
+    return merge_advance(&c->merge, tick);
+}
+
+
 /*
  * A loss: the decoders that read a line with lost records hear of it, and their items still
  * held that overlap it are marked.

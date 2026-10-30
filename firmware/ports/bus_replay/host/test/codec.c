@@ -86,6 +86,7 @@ static void test_stacking(void);
 static void test_output(void);
 static void test_pretty(void);
 static void test_args(void);
+static void test_advance(void);
 
 
 int main(void)
@@ -104,6 +105,7 @@ int main(void)
     test_output();
     test_pretty();
     test_args();
+    test_advance();
 
     return test_result(__FILE__);
 }
@@ -997,4 +999,92 @@ static void test_args(void)
     CHECK(d && !strcmp(d->name, "bus"));
     CHECK(codec_count(c) == 3);
     codec_free(c);
+}
+
+
+/*
+ * Records with levels and advances in place of heartbeats, at steps that are not the
+ * grid: the same items, written out the same, as with heartbeats.
+ */
+static void test_advance(void)
+{
+    static const uint64_t steps[] = {1, 37, 1000};
+    struct sim s;
+    struct got want = {0};
+    struct codec *c = NULL;
+    struct output_options opt = {.level = 9, .rate = RATE, .name_width = 6};
+    char *a = NULL;
+    size_t a_len = 0;
+    FILE *fa = NULL;
+
+    sim_init(&s);
+    i2c_start(&s);
+    i2c_byte(&s, 0x88, 0);
+    i2c_byte(&s, 0x24, 1);
+    i2c_stop(&s);
+    s.t += 3 * C;
+    uart_byte(&s, TX, 'h', false);
+    uart_byte(&s, TX, 'i', true);
+    s.t += 3 * C;
+    i2c_start(&s);
+    i2c_byte(&s, 0x89, 0);
+    i2c_byte(&s, 0x55, 1);
+    i2c_stop(&s);
+
+    c = session(&s, "i2c", "scl=0,sda=1", 0);
+    CHECK(codec_add(c, codec_find("uart"), "tx=2,baud=100000", NULL, NULL, NULL, 0) == 0);
+    run(&s, c, &want, true);
+    CHECK(want.count == 3);
+    fa = open_memstream(&a, &a_len);
+    for (size_t i = 0; i < want.count; i++) {
+        output_text(fa, want.item[i], &opt);
+    }
+    fclose(fa);
+    got_free(&want);
+    codec_free(c);
+
+    for (size_t k = 0; k < sizeof(steps) / sizeof(steps[0]); k++) {
+        struct got g = {0};
+        uint8_t lv[CHANNELS] = {1, 1, 1, 1};
+        uint64_t end = s.t + 200 * C;
+        struct codec_item *it = NULL;
+        char *b = NULL;
+        size_t b_len = 0;
+        FILE *fb = NULL;
+        size_t r = 0;
+
+        c = session(&s, "i2c", "scl=0,sda=1", 0);
+        CHECK(codec_add(c, codec_find("uart"), "tx=2,baud=100000", NULL, NULL, NULL, 0) == 0);
+        for (uint64_t t = 0; t <= end; t += steps[k]) {
+            while (r < s.count && s.rec[r].tick <= t) {
+                CHECK(codec_record(c, &s.rec[r]) == 0);
+                lv[s.rec[r].channel] = s.rec[r].level;
+                r++;
+            }
+            for (unsigned int ch = 0; ch < CHANNELS; ch++) {
+                CHECK(codec_line_level(c, t, (uint16_t)ch, lv[ch]) == 0);
+            }
+            CHECK(codec_advance(c, t) == 0);
+            while ((it = codec_next(c)) && g.count < ITEMS_MAX) {
+                g.item[g.count++] = it;
+            }
+        }
+        codec_finish(c);
+        while ((it = codec_next(c)) && g.count < ITEMS_MAX) {
+            g.item[g.count++] = it;
+        }
+        CHECK(codec_error(c) == 0);
+        CHECK(g.count == 3);
+
+        fb = open_memstream(&b, &b_len);
+        for (size_t i = 0; i < g.count; i++) {
+            output_text(fb, g.item[i], &opt);
+        }
+        fclose(fb);
+        CHECK(a_len == b_len && a && b && !memcmp(a, b, a_len));
+        free(b);
+        got_free(&g);
+        codec_free(c);
+    }
+    free(a);
 }

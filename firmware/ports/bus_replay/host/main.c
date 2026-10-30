@@ -14,13 +14,12 @@ struct mode {
 };
 
 
-static int not_implemented(int argc, char **argv);
 static void usage(FILE *out);
 
 
 static const struct mode modes[] = {
-    {"ui", not_implemented},
-    {"link", not_implemented},
+    {"ui", ui_main},
+    {"link", link_main},
     {"capture", capture_main},
     {"info", info_main},
     {"decode", decode_main},
@@ -35,13 +34,20 @@ int main(int argc, char **argv)
         return 0;
     }
     if (argc < 2) {
-        char *ui_argv[] = {"ui", NULL};
+        static char *ui_argv[] = {"bus-replay", "ui", NULL};
 
-        return modes[0].run(1, ui_argv);
+        argc = 2;
+        argv = ui_argv;
     }
 
     for (size_t i = 0; i < sizeof(modes) / sizeof(modes[0]); i++) {
         if (!strcmp(argv[1], modes[i].name)) {
+            if (!modes[i].run) {
+                fprintf(stderr,
+                        "bus-replay: %s: not in this build (it needs ui/cel/ and vendor/CEL-b1)\n",
+                        argv[1]);
+                return 1;
+            }
             return modes[i].run(argc - 1, argv + 1);
         }
     }
@@ -51,23 +57,14 @@ int main(int argc, char **argv)
 }
 
 
-static int not_implemented(int argc, char **argv)
-{
-    (void)argc;
-
-    fprintf(stderr, "bus-replay: %s: not implemented\n", argv[0]);
-    return 1;
-}
-
-
 static void usage(FILE *out)
 {
     fprintf(out,
             "usage: bus-replay [MODE] [OPTIONS]\n"
             "\n"
             "modes:\n"
-            "  ui        the UI (the default; not implemented yet)\n"
-            "  link      the device link, served over HTTP (not implemented yet)\n"
+            "  ui        the terminal UI (the default; needs a build with CEL)\n"
+            "  link      the device, served to the UI over a Unix socket\n"
             "  capture   capture from the device, optionally recording to a .thcapture file\n"
             "  info      what a .thcapture file holds: device, settings, per-channel counts\n"
             "  decode    decode a .thcapture file (I2C, UART, ...) to text or JSON\n"
